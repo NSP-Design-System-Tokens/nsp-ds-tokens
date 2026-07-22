@@ -1,0 +1,323 @@
+{
+  "$collections": {
+    "1. Primitives": {
+      "color": {
+        "white": {
+          "$type": "color",
+          "$value": "#ffffff"
+        },
+        "black": {
+          "$type": "color",
+          "$value": "#000000"
+        },
+        "brand": {
+          "50": {
+            "$type": "color",
+            "$value": "#fce5ef"
+          },
+          "100": {
+            "$type": "color",
+            "$value": "#f9cee2"
+          },
+          "300": {
+            "$type": "color",
+            "$value": "#ef56af"
+          },
+          "500": {
+            "$type": "color",
+            "$value": "#911e50"
+          },
+          "700": {
+            "$type": "color",
+            "$value": "#5b113e"
+          },
+          "900": {
+            "$type": "color",
+            "$value": "#2e051e"
+          }
+        },
+        "gold": {
+          "300": {
+            "$type": "color",
+            "$value": "#c59c69"
+          },
+          "500": {
+            "$type": "color",
+            "$value": "#826643"
+          },
+          "700": {
+            "$type": "color",
+            "$value": "#4f3d26"
+          }
+        },
+        "grey": {
+          "50": {
+            "$type": "color",
+            "$value": "#f1f1eb"
+          },
+          "100": {
+            "$type": "color",
+            "$value": "#e3e3dd"
+          },
+          "300": {
+            "$type": "color",
+            "$value": "#a9a9a4"
+          },
+          "500": {
+            "$type": "color",
+            "$value": "#747471"
+          },
+          "700": {
+            "$type": "color",
+            "$value": "#444443"
+          },
+          "900": {
+            "$type": "color",
+            "$value": "#1c1c1b"
+          }
+        }
+      },
+      "size": {
+        "0": {
+          "$type": "number",
+          "$value": 0
+        },
+        "50": {
+          "$type": "number",
+          "$value": 2
+        },
+        "100": {
+          "$type": "number",
+          "$value": 4
+        },
+        "200": {
+          "$type": "number",
+          "$value": 8
+        },
+        "300": {
+          "$type": "number",
+          "$value": 12
+        },
+        "400": {
+          "$type": "number",
+          "$value": 16
+        },
+        "600": {
+          "$type": "number",
+          "$value": 24
+        },
+        "800": {
+          "$type": "number",
+          "$value": 40
+        },
+        "1200": {
+          "$type": "number",
+          "$value": 80
+        }
+      },
+      "font": {
+        "family": {
+          "heading": {
+            "$type": "fontFamily",
+            "$value": "Kabel"
+          },
+          "body": {
+            "$type": "fontFamily",
+            "$value": "Kabel Light"
+          }
+        },
+        "weight": {
+          "regular": {
+            "$type": "fontWeight",
+            "$value": 400
+          },
+          "bold": {
+            "$type": "fontWeight",
+            "$value": 700
+          }
+        },
+        "line-height": {
+          "tight": {
+            "$type": "number",
+            "$value": 1.1
+          },
+          "normal": {
+            "$type": "number",
+            "$value": 1.5
+          }
+        }
+      }
+    },
+    "2. Brand": {
+      "palette": {
+        "brand": {
+          "default": {
+            "$type": "color",
+            "$value": "{color.brand.500}"
+          },
+          "emphasis": {
+            "$type": "color",
+            "$value": "{color.brand.700}"
+          },
+          "subtle": {
+            "$type": "color",
+            "$value": "{color.brand.100}"
+          }
+        },
+        "accent": {
+          "default": {
+            "$type": "color",
+            "$value": "{color.gold.500}"
+          }
+        },
+        "neutral": {
+          "0": {
+            "$type": "color",
+            "$value": "{color.white}"
+          },
+          "low": {
+            "$type": "color",
+            "$value": "{color.grey.100}"
+          },
+          "mid": {
+            "$type": "color",
+            "$value": "{color.grey.300}"
+          },
+          "high": {
+            "$type": "color",
+            "$value": "{color.grey.700}"
+          },
+          "max": {
+            "$type": "color",
+            "$value": "{color.grey.900}"
+          }
+        }
+      }
+    },
+    "3. Semantic": {
+      "surface": {
+        "page": {
+          "$type": "color",
+          "$value": "{palette.neutral.0}",
+          "$extensions": {
+            "com.figma.modes": {
+              "light": "{palette.neutral.0}",
+              "dark": "{palette.neutral.max}"
+            }
+          }
+        },
+        "raised": {
+          "$type": "color",
+          "$value": "{palette.neutral.low}",
+          "$extensions": {
+            "com.figma.modes": {
+              "light": "{palette.neutral.low}",
+              "dark": "{palette.neutral.high}"
+            }
+          }
+        },
+        "brand": {
+          "$type": "color",
+          "$value": "{palette.brand.default}",
+          "$extensions": {
+            "com.figma.modes": {
+              "light": "{palette.brand.default}",
+              "dark": "{palette.brand.subtle}"
+            }
+          }
+        }
+      },
+      "text": {
+        "default": {
+          "$type": "color",
+          "$value": "{palette.neutral.high}",
+          "$extensions": {
+            "com.figma.modes": {
+              "light": "{palette.neutral.high}",
+              "dark": "{palette.neutral.low}"
+            }
+          }
+        },
+        "muted": {
+          "$type": "color",
+          "$value": "{palette.neutral.mid}",
+          "$extensions": {
+            "com.figma.modes": {
+              "light": "{palette.neutral.mid}",
+              "dark": "{palette.neutral.mid}"
+            }
+          }
+        },
+        "on-brand": {
+          "$type": "color",
+          "$value": "{palette.neutral.0}",
+          "$extensions": {
+            "com.figma.modes": {
+              "light": "{palette.neutral.0}",
+              "dark": "{palette.neutral.max}"
+            }
+          }
+        }
+      },
+      "border": {
+        "default": {
+          "$type": "color",
+          "$value": "{palette.neutral.mid}",
+          "$extensions": {
+            "com.figma.modes": {
+              "light": "{palette.neutral.mid}",
+              "dark": "{palette.neutral.high}"
+            }
+          }
+        }
+      }
+    },
+    "4. Responsive": {
+      "type-size": {
+        "display": {
+          "$type": "number",
+          "$value": 40,
+          "$extensions": {
+            "com.figma.modes": {
+              "base": 40,
+              "md": 72,
+              "lg": 100
+            }
+          }
+        },
+        "h1": {
+          "$type": "number",
+          "$value": 32,
+          "$extensions": {
+            "com.figma.modes": {
+              "base": 32,
+              "md": 44,
+              "lg": 56
+            }
+          }
+        },
+        "body": {
+          "$type": "number",
+          "$value": 16,
+          "$extensions": {
+            "com.figma.modes": {
+              "base": 16,
+              "md": 18,
+              "lg": 18
+            }
+          }
+        }
+      },
+      "breakpoint": {
+        "md": {
+          "$type": "number",
+          "$value": 768
+        },
+        "lg": {
+          "$type": "number",
+          "$value": 1200
+        }
+      }
+    }
+  }
+}

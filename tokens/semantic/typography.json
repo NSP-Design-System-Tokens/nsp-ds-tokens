@@ -1,0 +1,13 @@
+{
+  "typography": {
+    "display": { "$type": "typography", "$value": {
+      "fontFamily": "{font.family.heading}", "fontWeight": "{font.weight.bold}",
+      "fontSize": "{type-size.display}", "lineHeight": "{font.line-height.tight}" } },
+    "h1": { "$type": "typography", "$value": {
+      "fontFamily": "{font.family.heading}", "fontWeight": "{font.weight.bold}",
+      "fontSize": "{type-size.h1}", "lineHeight": "{font.line-height.tight}" } },
+    "body": { "$type": "typography", "$value": {
+      "fontFamily": "{font.family.body}", "fontWeight": "{font.weight.regular}",
+      "fontSize": "{type-size.body}", "lineHeight": "{font.line-height.normal}" } }
+  }
+}

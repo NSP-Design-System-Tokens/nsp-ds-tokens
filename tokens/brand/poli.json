@@ -1,0 +1,19 @@
+{
+  "palette": {
+    "brand": {
+      "default":  { "$type": "color", "$value": "{color.brand.500}" },
+      "emphasis": { "$type": "color", "$value": "{color.brand.700}" },
+      "subtle":   { "$type": "color", "$value": "{color.brand.100}" }
+    },
+    "accent": {
+      "default": { "$type": "color", "$value": "{color.gold.500}" }
+    },
+    "neutral": {
+      "0":    { "$type": "color", "$value": "{color.white}" },
+      "low":  { "$type": "color", "$value": "{color.grey.100}" },
+      "mid":  { "$type": "color", "$value": "{color.grey.300}" },
+      "high": { "$type": "color", "$value": "{color.grey.700}" },
+      "max":  { "$type": "color", "$value": "{color.grey.900}" }
+    }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "font": {
+    "family": {
+      "heading": { "$type": "fontFamily", "$value": "Kabel" },
+      "body":    { "$type": "fontFamily", "$value": "Kabel Light" }
+    },
+    "weight": {
+      "regular": { "$type": "fontWeight", "$value": 400 },
+      "bold":    { "$type": "fontWeight", "$value": 700 }
+    },
+    "line-height": {
+      "tight":  { "$type": "number", "$value": 1.1 },
+      "normal": { "$type": "number", "$value": 1.5 }
+    }
+  }
+}

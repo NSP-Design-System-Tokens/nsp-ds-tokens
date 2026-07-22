@@ -1,0 +1,15 @@
+{
+  "surface": {
+    "page":   { "$type": "color", "$value": "{palette.neutral.0}",   "$extensions": { "com.figma.modes": { "light": "{palette.neutral.0}",   "dark": "{palette.neutral.max}" } } },
+    "raised": { "$type": "color", "$value": "{palette.neutral.low}",  "$extensions": { "com.figma.modes": { "light": "{palette.neutral.low}",  "dark": "{palette.neutral.high}" } } },
+    "brand":  { "$type": "color", "$value": "{palette.brand.default}", "$extensions": { "com.figma.modes": { "light": "{palette.brand.default}", "dark": "{palette.brand.subtle}" } } }
+  },
+  "text": {
+    "default":  { "$type": "color", "$value": "{palette.neutral.high}", "$extensions": { "com.figma.modes": { "light": "{palette.neutral.high}", "dark": "{palette.neutral.low}" } } },
+    "muted":    { "$type": "color", "$value": "{palette.neutral.mid}",  "$extensions": { "com.figma.modes": { "light": "{palette.neutral.mid}",  "dark": "{palette.neutral.mid}" } } },
+    "on-brand": { "$type": "color", "$value": "{palette.neutral.0}",    "$extensions": { "com.figma.modes": { "light": "{palette.neutral.0}",    "dark": "{palette.neutral.max}" } } }
+  },
+  "border": {
+    "default": { "$type": "color", "$value": "{palette.neutral.mid}", "$extensions": { "com.figma.modes": { "light": "{palette.neutral.mid}", "dark": "{palette.neutral.high}" } } }
+  }
+}

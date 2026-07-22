@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>nsp-tokens preview</title>
+<style>
+/* Generated. Edit tokens/, not this file. */
+
+:root {
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-brand-50: #fce5ef;
+  --color-brand-100: #f9cee2;
+  --color-brand-300: #ef56af;
+  --color-brand-500: #911e50;
+  --color-brand-700: #5b113e;
+  --color-brand-900: #2e051e;
+  --color-gold-300: #c59c69;
+  --color-gold-500: #826643;
+  --color-gold-700: #4f3d26;
+  --color-grey-50: #f1f1eb;
+  --color-grey-100: #e3e3dd;
+  --color-grey-300: #a9a9a4;
+  --color-grey-500: #747471;
+  --color-grey-700: #444443;
+  --color-grey-900: #1c1c1b;
+  --size-0: 0px;
+  --size-50: 2px;
+  --size-100: 4px;
+  --size-200: 8px;
+  --size-300: 12px;
+  --size-400: 16px;
+  --size-600: 24px;
+  --size-800: 40px;
+  --size-1200: 80px;
+  --font-family-heading: Kabel;
+  --font-family-body: Kabel Light;
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+  --font-line-height-tight: 1.1;
+  --font-line-height-normal: 1.5;
+  --palette-brand-default: var(--color-brand-500);
+  --palette-brand-emphasis: var(--color-brand-700);
+  --palette-brand-subtle: var(--color-brand-100);
+  --palette-accent-default: var(--color-gold-500);
+  --palette-neutral-0: var(--color-white);
+  --palette-neutral-low: var(--color-grey-100);
+  --palette-neutral-mid: var(--color-grey-300);
+  --palette-neutral-high: var(--color-grey-700);
+  --palette-neutral-max: var(--color-grey-900);
+  --type-size-display: 40px;
+  --type-size-h1: 32px;
+  --type-size-body: 16px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1200px;
+  --surface-page: var(--palette-neutral-0);
+  --surface-raised: var(--palette-neutral-low);
+  --surface-brand: var(--palette-brand-default);
+  --text-default: var(--palette-neutral-high);
+  --text-muted: var(--palette-neutral-mid);
+  --text-on-brand: var(--palette-neutral-0);
+  --border-default: var(--palette-neutral-mid);
+  --typography-display-font-family: var(--font-family-heading);
+  --typography-display-font-weight: var(--font-weight-bold);
+  --typography-display-font-size: var(--type-size-display);
+  --typography-display-line-height: var(--font-line-height-tight);
+  --typography-h1-font-family: var(--font-family-heading);
+  --typography-h1-font-weight: var(--font-weight-bold);
+  --typography-h1-font-size: var(--type-size-h1);
+  --typography-h1-line-height: var(--font-line-height-tight);
+  --typography-body-font-family: var(--font-family-body);
+  --typography-body-font-weight: var(--font-weight-regular);
+  --typography-body-font-size: var(--type-size-body);
+  --typography-body-line-height: var(--font-line-height-normal);
+  --shadow-sm: 0px 1px 3px 0px var(--color-grey-900);
+  --shadow-md: 0px 4px 12px 0px var(--color-grey-900);
+}
+
+[data-theme="dark"] {
+  --surface-page: var(--palette-neutral-max);
+  --surface-raised: var(--palette-neutral-high);
+  --surface-brand: var(--palette-brand-subtle);
+  --text-default: var(--palette-neutral-low);
+  --text-muted: var(--palette-neutral-mid);
+  --text-on-brand: var(--palette-neutral-max);
+  --border-default: var(--palette-neutral-high);
+}
+
+@media (min-width: 768px) {
+  :root {
+    --type-size-display: 72px;
+    --type-size-h1: 44px;
+    --type-size-body: 18px;
+  }
+}
+
+@media (min-width: 1200px) {
+  :root {
+    --type-size-display: 100px;
+    --type-size-h1: 56px;
+    --type-size-body: 18px;
+  }
+}
+
+</style>
+<style>
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: ui-sans-serif, system-ui, sans-serif;
+    background: var(--surface-page); color: var(--text-default); transition: background .2s, color .2s; }
+  header { position: sticky; top:0; z-index:10; display:flex; align-items:center; justify-content:space-between;
+    padding:16px 32px; background: var(--surface-page); border-bottom:1px solid var(--border-default); }
+  header h1 { font-size:18px; margin:0; letter-spacing:.02em; }
+  .toggle { border:1px solid var(--border-default); background: var(--surface-raised); color: var(--text-default);
+    padding:8px 16px; border-radius:8px; cursor:pointer; font-size:14px; }
+  main { max-width:1000px; margin:0 auto; padding:32px; }
+  section { margin-bottom:48px; }
+  h2 { font-size:13px; text-transform:uppercase; letter-spacing:.08em; color: var(--text-muted);
+    margin:0 0 16px; font-weight:600; }
+  .row { display:flex; flex-wrap:wrap; gap:16px; }
+  .chip { width:132px; }
+  .sw { width:132px; height:60px; border-radius:8px; border:1px solid var(--border-default); }
+  .shbox { width:132px; height:60px; border-radius:8px; background: var(--surface-raised); }
+  .lbl { font-size:12px; margin-top:8px; word-break:break-all; }
+  .val { font-size:11px; color: var(--text-muted); word-break:break-all; }
+  .stack { display:flex; flex-direction:column; gap:16px; }
+  .bar-row { display:flex; align-items:center; gap:16px; }
+  .bar-lbl { width:56px; font-size:13px; }
+  .bar { height:16px; background: var(--surface-brand); border-radius:2px; min-width:1px; }
+  .bar-val { font-size:12px; color: var(--text-muted); }
+  .type-row { display:flex; align-items:baseline; justify-content:space-between; gap:24px;
+    border-bottom:1px solid var(--border-default); padding-bottom:12px; }
+  .type-row .val { font-size:12px; white-space:nowrap; }
+</style>
+</head>
+<body>
+<header><h1>nsp-tokens</h1><button class="toggle" id="t">Dark</button></header>
+<main>
+<section><h2>Primitives — palette</h2><div class="row"><div class="chip"><div class="sw" style="background:var(--color-white)"></div>
+  <div class="lbl">color-white</div><div class="val">#ffffff</div></div><div class="chip"><div class="sw" style="background:var(--color-black)"></div>
+  <div class="lbl">color-black</div><div class="val">#000000</div></div><div class="chip"><div class="sw" style="background:var(--color-brand-50)"></div>
+  <div class="lbl">color-brand-50</div><div class="val">#fce5ef</div></div><div class="chip"><div class="sw" style="background:var(--color-brand-100)"></div>
+  <div class="lbl">color-brand-100</div><div class="val">#f9cee2</div></div><div class="chip"><div class="sw" style="background:var(--color-brand-300)"></div>
+  <div class="lbl">color-brand-300</div><div class="val">#ef56af</div></div><div class="chip"><div class="sw" style="background:var(--color-brand-500)"></div>
+  <div class="lbl">color-brand-500</div><div class="val">#911e50</div></div><div class="chip"><div class="sw" style="background:var(--color-brand-700)"></div>
+  <div class="lbl">color-brand-700</div><div class="val">#5b113e</div></div><div class="chip"><div class="sw" style="background:var(--color-brand-900)"></div>
+  <div class="lbl">color-brand-900</div><div class="val">#2e051e</div></div><div class="chip"><div class="sw" style="background:var(--color-gold-300)"></div>
+  <div class="lbl">color-gold-300</div><div class="val">#c59c69</div></div><div class="chip"><div class="sw" style="background:var(--color-gold-500)"></div>
+  <div class="lbl">color-gold-500</div><div class="val">#826643</div></div><div class="chip"><div class="sw" style="background:var(--color-gold-700)"></div>
+  <div class="lbl">color-gold-700</div><div class="val">#4f3d26</div></div><div class="chip"><div class="sw" style="background:var(--color-grey-50)"></div>
+  <div class="lbl">color-grey-50</div><div class="val">#f1f1eb</div></div><div class="chip"><div class="sw" style="background:var(--color-grey-100)"></div>
+  <div class="lbl">color-grey-100</div><div class="val">#e3e3dd</div></div><div class="chip"><div class="sw" style="background:var(--color-grey-300)"></div>
+  <div class="lbl">color-grey-300</div><div class="val">#a9a9a4</div></div><div class="chip"><div class="sw" style="background:var(--color-grey-500)"></div>
+  <div class="lbl">color-grey-500</div><div class="val">#747471</div></div><div class="chip"><div class="sw" style="background:var(--color-grey-700)"></div>
+  <div class="lbl">color-grey-700</div><div class="val">#444443</div></div><div class="chip"><div class="sw" style="background:var(--color-grey-900)"></div>
+  <div class="lbl">color-grey-900</div><div class="val">#1c1c1b</div></div></div></section>
+<section><h2>Brand — palette slots</h2><div class="row"><div class="chip"><div class="sw" style="background:var(--palette-brand-default)"></div>
+  <div class="lbl">palette-brand-default</div><div class="val">var(--color-brand-500)</div></div><div class="chip"><div class="sw" style="background:var(--palette-brand-emphasis)"></div>
+  <div class="lbl">palette-brand-emphasis</div><div class="val">var(--color-brand-700)</div></div><div class="chip"><div class="sw" style="background:var(--palette-brand-subtle)"></div>
+  <div class="lbl">palette-brand-subtle</div><div class="val">var(--color-brand-100)</div></div><div class="chip"><div class="sw" style="background:var(--palette-accent-default)"></div>
+  <div class="lbl">palette-accent-default</div><div class="val">var(--color-gold-500)</div></div><div class="chip"><div class="sw" style="background:var(--palette-neutral-0)"></div>
+  <div class="lbl">palette-neutral-0</div><div class="val">var(--color-white)</div></div><div class="chip"><div class="sw" style="background:var(--palette-neutral-low)"></div>
+  <div class="lbl">palette-neutral-low</div><div class="val">var(--color-grey-100)</div></div><div class="chip"><div class="sw" style="background:var(--palette-neutral-mid)"></div>
+  <div class="lbl">palette-neutral-mid</div><div class="val">var(--color-grey-300)</div></div><div class="chip"><div class="sw" style="background:var(--palette-neutral-high)"></div>
+  <div class="lbl">palette-neutral-high</div><div class="val">var(--color-grey-700)</div></div><div class="chip"><div class="sw" style="background:var(--palette-neutral-max)"></div>
+  <div class="lbl">palette-neutral-max</div><div class="val">var(--color-grey-900)</div></div></div></section>
+<section><h2>Semantic — roles (toggle affects these)</h2><div class="row"><div class="chip"><div class="sw" style="background:var(--surface-page)"></div>
+  <div class="lbl">surface-page</div><div class="val">var(--palette-neutral-0)</div></div><div class="chip"><div class="sw" style="background:var(--surface-raised)"></div>
+  <div class="lbl">surface-raised</div><div class="val">var(--palette-neutral-low)</div></div><div class="chip"><div class="sw" style="background:var(--surface-brand)"></div>
+  <div class="lbl">surface-brand</div><div class="val">var(--palette-brand-default)</div></div><div class="chip"><div class="sw" style="background:var(--text-default)"></div>
+  <div class="lbl">text-default</div><div class="val">var(--palette-neutral-high)</div></div><div class="chip"><div class="sw" style="background:var(--text-muted)"></div>
+  <div class="lbl">text-muted</div><div class="val">var(--palette-neutral-mid)</div></div><div class="chip"><div class="sw" style="background:var(--text-on-brand)"></div>
+  <div class="lbl">text-on-brand</div><div class="val">var(--palette-neutral-0)</div></div><div class="chip"><div class="sw" style="background:var(--border-default)"></div>
+  <div class="lbl">border-default</div><div class="val">var(--palette-neutral-mid)</div></div></div></section>
+<section><h2>Typography — composites (resize the window to see the responsive scale)</h2>
+    <div class="stack"><div class="type-row">
+  <span style="font-family:var(--typography-display-font-family);font-weight:var(--typography-display-font-weight);font-size:var(--typography-display-font-size);line-height:var(--typography-display-line-height)">display</span>
+  <span class="val">size var(--typography-display-font-size)</span></div><div class="type-row">
+  <span style="font-family:var(--typography-h1-font-family);font-weight:var(--typography-h1-font-weight);font-size:var(--typography-h1-font-size);line-height:var(--typography-h1-line-height)">h1</span>
+  <span class="val">size var(--typography-h1-font-size)</span></div><div class="type-row">
+  <span style="font-family:var(--typography-body-font-family);font-weight:var(--typography-body-font-weight);font-size:var(--typography-body-font-size);line-height:var(--typography-body-line-height)">body</span>
+  <span class="val">size var(--typography-body-font-size)</span></div></div></section>
+<section><h2>Elevation — shadows</h2><div class="row"><div class="chip">
+  <div class="shbox" style="box-shadow:var(--shadow-sm)"></div><div class="lbl">shadow-sm</div></div><div class="chip">
+  <div class="shbox" style="box-shadow:var(--shadow-md)"></div><div class="lbl">shadow-md</div></div></div></section>
+<section><h2>Sizing</h2><div class="stack"><div class="bar-row"><div class="bar-lbl">0</div>
+  <div class="bar" style="width:var(--size-0)"></div><div class="bar-val">0px</div></div><div class="bar-row"><div class="bar-lbl">50</div>
+  <div class="bar" style="width:var(--size-50)"></div><div class="bar-val">2px</div></div><div class="bar-row"><div class="bar-lbl">100</div>
+  <div class="bar" style="width:var(--size-100)"></div><div class="bar-val">4px</div></div><div class="bar-row"><div class="bar-lbl">200</div>
+  <div class="bar" style="width:var(--size-200)"></div><div class="bar-val">8px</div></div><div class="bar-row"><div class="bar-lbl">300</div>
+  <div class="bar" style="width:var(--size-300)"></div><div class="bar-val">12px</div></div><div class="bar-row"><div class="bar-lbl">400</div>
+  <div class="bar" style="width:var(--size-400)"></div><div class="bar-val">16px</div></div><div class="bar-row"><div class="bar-lbl">600</div>
+  <div class="bar" style="width:var(--size-600)"></div><div class="bar-val">24px</div></div><div class="bar-row"><div class="bar-lbl">800</div>
+  <div class="bar" style="width:var(--size-800)"></div><div class="bar-val">40px</div></div><div class="bar-row"><div class="bar-lbl">1200</div>
+  <div class="bar" style="width:var(--size-1200)"></div><div class="bar-val">80px</div></div></div></section>
+</main>
+<script>
+  const r=document.documentElement,b=document.getElementById("t");
+  b.addEventListener("click",()=>{const d=r.getAttribute("data-theme")==="dark";
+    r.setAttribute("data-theme",d?"light":"dark");b.textContent=d?"Dark":"Light";});
+</script>
+</body>
+</html>

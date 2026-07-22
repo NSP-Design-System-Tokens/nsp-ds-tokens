@@ -1,0 +1,96 @@
+{
+  "textStyles": [
+    {
+      "name": "Display/Base",
+      "fontFamily": "Kabel",
+      "fontStyle": "Bold",
+      "fontSize": 40,
+      "lineHeight": "110%",
+      "letterSpacing": "0px",
+      "textDecoration": "NONE",
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "Display/Md",
+      "fontFamily": "Kabel",
+      "fontStyle": "Bold",
+      "fontSize": 72,
+      "lineHeight": "110%",
+      "letterSpacing": "0px",
+      "textDecoration": "NONE",
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "Display/Lg",
+      "fontFamily": "Kabel",
+      "fontStyle": "Bold",
+      "fontSize": 100,
+      "lineHeight": "110%",
+      "letterSpacing": "0px",
+      "textDecoration": "NONE",
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "H1/Base",
+      "fontFamily": "Kabel",
+      "fontStyle": "Bold",
+      "fontSize": 32,
+      "lineHeight": "110%",
+      "letterSpacing": "0px",
+      "textDecoration": "NONE",
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "H1/Md",
+      "fontFamily": "Kabel",
+      "fontStyle": "Bold",
+      "fontSize": 44,
+      "lineHeight": "110%",
+      "letterSpacing": "0px",
+      "textDecoration": "NONE",
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "H1/Lg",
+      "fontFamily": "Kabel",
+      "fontStyle": "Bold",
+      "fontSize": 56,
+      "lineHeight": "110%",
+      "letterSpacing": "0px",
+      "textDecoration": "NONE",
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "Body/Base",
+      "fontFamily": "Kabel Light",
+      "fontStyle": "Regular",
+      "fontSize": 16,
+      "lineHeight": "150%",
+      "letterSpacing": "0px",
+      "textDecoration": "NONE",
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "Body/Md",
+      "fontFamily": "Kabel Light",
+      "fontStyle": "Regular",
+      "fontSize": 18,
+      "lineHeight": "150%",
+      "letterSpacing": "0px",
+      "textDecoration": "NONE",
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "Body/Lg",
+      "fontFamily": "Kabel Light",
+      "fontStyle": "Regular",
+      "fontSize": 18,
+      "lineHeight": "150%",
+      "letterSpacing": "0px",
+      "textDecoration": "NONE",
+      "textCase": "ORIGINAL"
+    }
+  ],
+  "colorStyles": [],
+  "gridStyles": []
+}

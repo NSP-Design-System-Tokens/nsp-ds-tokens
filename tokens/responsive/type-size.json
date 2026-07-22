@@ -1,0 +1,7 @@
+{
+  "type-size": {
+    "display": { "$type": "dimension", "$value": "40px", "$extensions": { "com.figma.modes": { "base": "40px", "md": "72px", "lg": "100px" } } },
+    "h1":      { "$type": "dimension", "$value": "32px", "$extensions": { "com.figma.modes": { "base": "32px", "md": "44px", "lg": "56px" } } },
+    "body":    { "$type": "dimension", "$value": "16px", "$extensions": { "com.figma.modes": { "base": "16px", "md": "18px", "lg": "18px" } } }
+  }
+}
