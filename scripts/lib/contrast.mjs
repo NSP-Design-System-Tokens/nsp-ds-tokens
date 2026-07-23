@@ -170,14 +170,6 @@ export const CONTRAST_EXEMPT = {
   "text.primary-hover × surface.floating":
     "USAGE (revisable) — brand hover state does not occur in floating containers. Revisit if floating hosts interactive brand states.",
 
-  // REAL GAP — icon.primary in dropdown item appears directly on surface.floating
-  // (no per-item inner card). Fails 3.0 by 0.013 ratio points (2.99 vs 3.0).
-  // Gap is imperceptible visually but fails the gate. Options: nudge brand.200
-  // dark from oklch(0.80) to oklch(0.81) — imperceptible delta — or constrain
-  // usage to icon.dark for floating item icons. Archived here pending decision.
-  "icon.primary × surface.floating":
-    "REAL GAP — brand icon in dropdown item sits directly on floating (no per-item card); fails 3.0 by 0.013. Fix: nudge brand.200 dark or constrain to icon.dark in dropdown items.",
-
   // USAGE — decorative brand-tint icon; same reasoning as text.primary-light
   // (already globally exempt). No fixed floating pairing; contrast is the
   // consumer's responsibility when placing on arbitrary surfaces.
