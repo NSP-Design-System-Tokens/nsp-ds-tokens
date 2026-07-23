@@ -434,10 +434,10 @@
     },
     "error": {
       "$type": "color",
-      "$value": "{palette.error.11}",
+      "$value": "{palette.error.500}",
       "$extensions": {
         "com.figma.modes": {
-          "light": "{palette.error.11}",
+          "light": "{palette.error.500}",
           "dark": "{palette.error.200}"
         }
       }
