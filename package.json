@@ -6,6 +6,7 @@
   "description": "Code-first design tokens: modular DTCG source, one build, Figma + web outputs.",
   "scripts": {
     "validate": "node scripts/validate.mjs",
+    "contrast-report": "node scripts/contrast-report.mjs",
     "build:figma": "node scripts/build-figma.mjs",
     "build:css": "node scripts/build-css.mjs",
     "build:preview": "node scripts/build-preview.mjs",
@@ -14,5 +15,8 @@
   "dependencies": {
     "culori": "^4.0.1",
     "style-dictionary": "^4.3.3"
+  },
+  "devDependencies": {
+    "@radix-ui/colors": "^3.0.0"
   }
 }

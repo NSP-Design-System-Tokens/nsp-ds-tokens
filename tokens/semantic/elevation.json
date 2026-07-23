@@ -1,8 +1,224 @@
 {
   "shadow": {
-    "sm": { "$type": "shadow", "$value": {
-      "color": "{color.grey.900}", "offsetX": "0px", "offsetY": "1px", "blur": "3px", "spread": "0px" } },
-    "md": { "$type": "shadow", "$value": {
-      "color": "{color.grey.900}", "offsetX": "0px", "offsetY": "4px", "blur": "12px", "spread": "0px" } }
+    "sm": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "color": "{palette.neutral.800-a10}",
+          "offsetX": "0px",
+          "offsetY": "1px",
+          "blur": "2px",
+          "spread": "0px"
+        },
+        {
+          "color": "{palette.neutral.800-a05}",
+          "offsetX": "0px",
+          "offsetY": "2px",
+          "blur": "8px",
+          "spread": "0px"
+        }
+      ],
+      "$extensions": {
+        "com.figma.modes": {
+          "light": [
+            {
+              "color": "{palette.neutral.800-a10}",
+              "offsetX": "0px",
+              "offsetY": "1px",
+              "blur": "2px",
+              "spread": "0px"
+            },
+            {
+              "color": "{palette.neutral.800-a05}",
+              "offsetX": "0px",
+              "offsetY": "2px",
+              "blur": "8px",
+              "spread": "0px"
+            }
+          ],
+          "dark": [
+            {
+              "color": "{palette.neutral.800-a20}",
+              "offsetX": "0px",
+              "offsetY": "1px",
+              "blur": "2px",
+              "spread": "0px"
+            },
+            {
+              "color": "{palette.neutral.800-a10}",
+              "offsetX": "0px",
+              "offsetY": "2px",
+              "blur": "8px",
+              "spread": "0px"
+            }
+          ]
+        }
+      }
+    },
+    "md": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "color": "{palette.neutral.800-a10}",
+          "offsetX": "0px",
+          "offsetY": "4px",
+          "blur": "8px",
+          "spread": "0px"
+        },
+        {
+          "color": "{palette.neutral.800-a10}",
+          "offsetX": "0px",
+          "offsetY": "8px",
+          "blur": "24px",
+          "spread": "0px"
+        }
+      ],
+      "$extensions": {
+        "com.figma.modes": {
+          "light": [
+            {
+              "color": "{palette.neutral.800-a10}",
+              "offsetX": "0px",
+              "offsetY": "4px",
+              "blur": "8px",
+              "spread": "0px"
+            },
+            {
+              "color": "{palette.neutral.800-a10}",
+              "offsetX": "0px",
+              "offsetY": "8px",
+              "blur": "24px",
+              "spread": "0px"
+            }
+          ],
+          "dark": [
+            {
+              "color": "{palette.neutral.800-a20}",
+              "offsetX": "0px",
+              "offsetY": "4px",
+              "blur": "8px",
+              "spread": "0px"
+            },
+            {
+              "color": "{palette.neutral.800-a20}",
+              "offsetX": "0px",
+              "offsetY": "8px",
+              "blur": "24px",
+              "spread": "0px"
+            }
+          ]
+        }
+      }
+    },
+    "lg": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "color": "{palette.neutral.800-a10}",
+          "offsetX": "0px",
+          "offsetY": "8px",
+          "blur": "16px",
+          "spread": "0px"
+        },
+        {
+          "color": "{palette.neutral.800-a10}",
+          "offsetX": "0px",
+          "offsetY": "12px",
+          "blur": "32px",
+          "spread": "0px"
+        }
+      ],
+      "$extensions": {
+        "com.figma.modes": {
+          "light": [
+            {
+              "color": "{palette.neutral.800-a10}",
+              "offsetX": "0px",
+              "offsetY": "8px",
+              "blur": "16px",
+              "spread": "0px"
+            },
+            {
+              "color": "{palette.neutral.800-a10}",
+              "offsetX": "0px",
+              "offsetY": "12px",
+              "blur": "32px",
+              "spread": "0px"
+            }
+          ],
+          "dark": [
+            {
+              "color": "{palette.neutral.800-a20}",
+              "offsetX": "0px",
+              "offsetY": "8px",
+              "blur": "16px",
+              "spread": "0px"
+            },
+            {
+              "color": "{palette.neutral.800-a20}",
+              "offsetX": "0px",
+              "offsetY": "12px",
+              "blur": "32px",
+              "spread": "0px"
+            }
+          ]
+        }
+      }
+    },
+    "xl": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "color": "{palette.neutral.800-a10}",
+          "offsetX": "0px",
+          "offsetY": "12px",
+          "blur": "24px",
+          "spread": "0px"
+        },
+        {
+          "color": "{palette.neutral.800-a10}",
+          "offsetX": "0px",
+          "offsetY": "20px",
+          "blur": "48px",
+          "spread": "0px"
+        }
+      ],
+      "$extensions": {
+        "com.figma.modes": {
+          "light": [
+            {
+              "color": "{palette.neutral.800-a10}",
+              "offsetX": "0px",
+              "offsetY": "12px",
+              "blur": "24px",
+              "spread": "0px"
+            },
+            {
+              "color": "{palette.neutral.800-a10}",
+              "offsetX": "0px",
+              "offsetY": "20px",
+              "blur": "48px",
+              "spread": "0px"
+            }
+          ],
+          "dark": [
+            {
+              "color": "{palette.neutral.800-a20}",
+              "offsetX": "0px",
+              "offsetY": "12px",
+              "blur": "24px",
+              "spread": "0px"
+            },
+            {
+              "color": "{palette.neutral.800-a20}",
+              "offsetX": "0px",
+              "offsetY": "20px",
+              "blur": "48px",
+              "spread": "0px"
+            }
+          ]
+        }
+      }
+    }
   }
 }

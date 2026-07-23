@@ -82,25 +82,65 @@
     },
     "secondary": {
       "$type": "color",
-      "$value": "{palette.secondary.500}",
+      "$value": "{palette.secondary.3}",
       "$extensions": {
         "com.figma.modes": {
-          "light": "{palette.secondary.500}",
-          "dark": "{palette.secondary.500}"
+          "light": "{palette.secondary.3}",
+          "dark": "{palette.secondary.3d}"
         }
       }
     },
     "secondary-hover": {
       "$type": "color",
-      "$value": "{palette.secondary.600}",
+      "$value": "{palette.secondary.4}",
       "$extensions": {
         "com.figma.modes": {
-          "light": "{palette.secondary.600}",
-          "dark": "{palette.secondary.400}"
+          "light": "{palette.secondary.4}",
+          "dark": "{palette.secondary.4d}"
         }
       }
     },
-    "secondary-dark": {
+    "secondary-active": {
+      "$type": "color",
+      "$value": "{palette.secondary.5}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.secondary.5}",
+          "dark": "{palette.secondary.5d}"
+        }
+      }
+    },
+    "tertiary": {
+      "$type": "color",
+      "$value": "{palette.tertiary.3}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.tertiary.3}",
+          "dark": "{palette.tertiary.3d}"
+        }
+      }
+    },
+    "tertiary-hover": {
+      "$type": "color",
+      "$value": "{palette.tertiary.4}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.tertiary.4}",
+          "dark": "{palette.tertiary.4d}"
+        }
+      }
+    },
+    "tertiary-active": {
+      "$type": "color",
+      "$value": "{palette.tertiary.5}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.tertiary.5}",
+          "dark": "{palette.tertiary.5d}"
+        }
+      }
+    },
+    "tertiary-dark": {
       "$type": "color",
       "$value": "{palette.neutral.700}",
       "$extensions": {
@@ -110,7 +150,7 @@
         }
       }
     },
-    "secondary-darker": {
+    "tertiary-darker": {
       "$type": "color",
       "$value": "{palette.neutral.800}",
       "$extensions": {
@@ -312,6 +352,26 @@
         }
       }
     },
+    "on-secondary": {
+      "$type": "color",
+      "$value": "{palette.secondary.12}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.secondary.12}",
+          "dark": "{palette.secondary.12d}"
+        }
+      }
+    },
+    "on-tertiary": {
+      "$type": "color",
+      "$value": "{palette.tertiary.12}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.tertiary.12}",
+          "dark": "{palette.tertiary.12d}"
+        }
+      }
+    },
     "on-dark": {
       "$type": "color",
       "$value": "{palette.neutral.0}",
@@ -324,21 +384,21 @@
     },
     "on-error": {
       "$type": "color",
-      "$value": "{palette.neutral.0}",
+      "$value": "{palette.neutral.black}",
       "$extensions": {
         "com.figma.modes": {
-          "light": "{palette.neutral.0}",
-          "dark": "{palette.neutral.0}"
+          "light": "{palette.neutral.black}",
+          "dark": "{palette.neutral.black}"
         }
       }
     },
     "on-success": {
       "$type": "color",
-      "$value": "{palette.neutral.0}",
+      "$value": "{palette.neutral.black}",
       "$extensions": {
         "com.figma.modes": {
-          "light": "{palette.neutral.0}",
-          "dark": "{palette.neutral.0}"
+          "light": "{palette.neutral.black}",
+          "dark": "{palette.neutral.black}"
         }
       }
     },
@@ -374,10 +434,10 @@
     },
     "error": {
       "$type": "color",
-      "$value": "{palette.error.500}",
+      "$value": "{palette.error.11}",
       "$extensions": {
         "com.figma.modes": {
-          "light": "{palette.error.500}",
+          "light": "{palette.error.11}",
           "dark": "{palette.error.200}"
         }
       }
@@ -394,10 +454,10 @@
     },
     "success": {
       "$type": "color",
-      "$value": "{palette.success.default}",
+      "$value": "{palette.success.11}",
       "$extensions": {
         "com.figma.modes": {
-          "light": "{palette.success.default}",
+          "light": "{palette.success.11}",
           "dark": "{palette.success.200}"
         }
       }
@@ -600,11 +660,11 @@
     },
     "secondary": {
       "$type": "color",
-      "$value": "{palette.secondary.500}",
+      "$value": "{palette.secondary.11}",
       "$extensions": {
         "com.figma.modes": {
-          "light": "{palette.secondary.500}",
-          "dark": "{palette.neutral.300}"
+          "light": "{palette.secondary.11}",
+          "dark": "{palette.secondary.12d}"
         }
       }
     },
@@ -638,6 +698,26 @@
         }
       }
     },
+    "on-secondary": {
+      "$type": "color",
+      "$value": "{palette.secondary.12}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.secondary.12}",
+          "dark": "{palette.secondary.12d}"
+        }
+      }
+    },
+    "on-tertiary": {
+      "$type": "color",
+      "$value": "{palette.tertiary.12}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.tertiary.12}",
+          "dark": "{palette.tertiary.12d}"
+        }
+      }
+    },
     "on-dark": {
       "$type": "color",
       "$value": "{palette.neutral.0}",
@@ -650,21 +730,21 @@
     },
     "on-error": {
       "$type": "color",
-      "$value": "{palette.neutral.0}",
+      "$value": "{palette.neutral.black}",
       "$extensions": {
         "com.figma.modes": {
-          "light": "{palette.neutral.0}",
-          "dark": "{palette.neutral.0}"
+          "light": "{palette.neutral.black}",
+          "dark": "{palette.neutral.black}"
         }
       }
     },
     "on-success": {
       "$type": "color",
-      "$value": "{palette.neutral.0}",
+      "$value": "{palette.neutral.black}",
       "$extensions": {
         "com.figma.modes": {
-          "light": "{palette.neutral.0}",
-          "dark": "{palette.neutral.0}"
+          "light": "{palette.neutral.black}",
+          "dark": "{palette.neutral.black}"
         }
       }
     },

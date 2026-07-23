@@ -12,20 +12,43 @@ export const TOKENS_DIR = resolve(ROOT, "tokens");
 export const TIERS = {
   "1. Primitives": ["color", "size", "font"],
   "2. Brand": ["palette"],
-  "3. Semantic": ["surface", "text", "border", "interactive", "typography", "shadow"],
+  "3. Semantic": [
+    "surface",
+    "text",
+    "stroke",
+    "logo",
+    "icon",
+    "emphasis-brand",
+    "emphasis",
+    "typography",
+    "shadow",
+  ],
   "4. Responsive": ["type-size", "breakpoint"],
 };
 
 // which top-level groups carry which mode axis
-export const COLOR_MODE_GROUPS = ["surface", "text", "border", "interactive"];
+export const COLOR_MODE_GROUPS = [
+  "surface",
+  "text",
+  "stroke",
+  "logo",
+  "icon",
+  "emphasis-brand",
+  "emphasis",
+];
 export const RESP_MODE_GROUPS = ["type-size"];
 
 export const isLeaf = (n) => n && typeof n === "object" && "$value" in n;
 
 function deepMerge(a, b, path = "") {
   for (const [k, v] of Object.entries(b)) {
-    if (k in a && isLeaf(a[k]) === false && isLeaf(v) === false &&
-        typeof a[k] === "object" && typeof v === "object") {
+    if (
+      k in a &&
+      isLeaf(a[k]) === false &&
+      isLeaf(v) === false &&
+      typeof a[k] === "object" &&
+      typeof v === "object"
+    ) {
       deepMerge(a[k], v, `${path}.${k}`);
     } else if (k in a) {
       throw new Error(`token collision at ${path}.${k} (defined in two files)`);
@@ -60,7 +83,8 @@ export function eachLeaf(tree, cb, path = []) {
 export function listModes(subtree) {
   const modes = new Set();
   JSON.stringify(subtree, (k, v) => {
-    if (k === "com.figma.modes" && v) Object.keys(v).forEach((m) => modes.add(m));
+    if (k === "com.figma.modes" && v)
+      Object.keys(v).forEach((m) => modes.add(m));
     return v;
   });
   return [...modes];
@@ -75,7 +99,8 @@ export function pickMode(subtree, mode) {
       return { $type: n.$type, $value: value };
     }
     const out = {};
-    for (const [k, v] of Object.entries(n)) if (!k.startsWith("$")) out[k] = walk(v);
+    for (const [k, v] of Object.entries(n))
+      if (!k.startsWith("$")) out[k] = walk(v);
     return out;
   };
   return walk(subtree);

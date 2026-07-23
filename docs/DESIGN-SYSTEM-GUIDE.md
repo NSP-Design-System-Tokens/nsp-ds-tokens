@@ -18,6 +18,102 @@ never reads a primitive. Enforce it in CI, not in code review.
 
 ## 2. Color
 
+### Color scale sources
+
+All ramps in `core/color.json` follow one of two origins. This is the authoritative rule; CLAUDE.md carries the short-form summary.
+
+**Rule: functional/neutral colors use Radix as-is; brand identity colors use a custom scale built with the Radix method.**
+
+| Category                             | Origin               | Rationale                                                                                                       |
+| ------------------------------------ | -------------------- | --------------------------------------------------------------------------------------------------------------- |
+| Neutrals (`mauve`)                   | Radix as-is          | Gray ramps have no brand identity. Canonical Radix gives tested perceptual steps and a maintained dark variant. |
+| Secondary/tertiary (`pink`, `mauve`) | Radix as-is          | Supporting hues chosen from Radix: consistent perceptual model, no brand exclusivity required.                  |
+| Status (`red`, `green`, `orange`)    | Radix as-is          | Functional signals, not brand. Standard Radix red/green/orange are universally legible and well-tested.         |
+| Brand identity (`poli-magenta`)      | Custom, Radix method | The hue a brand owns must be exact. Custom scale preserves the exact identity hex at step 9.                    |
+
+**When adding a new scale:**
+
+- New neutral or status hue → import Radix as-is, same `light.1-12` / `dark.1-12` structure.
+- New brand identity → generate a custom scale anchored on the brand's identity hex (see below).
+- New brand (`brand/<name>.json`) → generate its own custom scale; shared Radix scales (mauve, red, green, orange) are not re-generated per brand.
+
+#### Radix step conventions in this system
+
+Radix 12-step scales assign functional meaning by position:
+
+| Steps | Role                                                           |
+| ----- | -------------------------------------------------------------- |
+| 1–2   | App / page backgrounds                                         |
+| 3–5   | Component ghost backgrounds (buttons, chips, tags)             |
+| 6–8   | Borders and separators                                         |
+| 9–10  | Solid fills (buttons, badges); step 9 = identity anchor        |
+| 11    | Accessible text on light backgrounds (≥ 4.5:1 on white)        |
+| 12    | Accessible text on dark backgrounds (≥ 4.5:1 on dark surfaces) |
+
+Palette slots map to these steps. For `on-<role>` text colors sitting ON a solid fill (step 9): bright-hue fills (red, green) don't achieve 4.5:1 with white; use `palette.neutral.black` as the `text.on-<role>` value instead (matches the warning convention: `text.on-warning` already uses `palette.neutral.900`).
+
+#### Regenerating the Poli brand scale
+
+If the Poli identity color (`#911e50`) changes, regenerate `color.poli-magenta` with:
+
+```js
+// Node.js — requires culori (already in devDependencies)
+import { oklch, formatHex, clampChroma } from "culori";
+
+const ANCHOR = "#911e50"; // brand identity color — step 9
+const BASE = oklch(ANCHOR); // { l, c, h } in OKLCH
+
+// 12 lightness stops: step 1 lightest, step 12 darkest (light scale)
+// Dark scale mirrors: step 1 darkest, step 12 lightest
+const LIGHT_L = [
+  0.985,
+  0.97,
+  0.94,
+  0.91,
+  0.87,
+  0.82,
+  0.74,
+  0.63,
+  BASE.l,
+  BASE.l - 0.05,
+  BASE.l - 0.12,
+  BASE.l - 0.22,
+];
+const DARK_L = [
+  0.1,
+  0.14,
+  0.19,
+  0.24,
+  0.28,
+  0.32,
+  0.37,
+  0.4,
+  BASE.l,
+  BASE.l + 0.06,
+  BASE.l + 0.18,
+  BASE.l + 0.32,
+];
+
+function step(l, c, h) {
+  return formatHex(clampChroma({ mode: "oklch", l, c, h }, "oklch"));
+}
+
+const light = LIGHT_L.map((l, i) => ({
+  [`${i + 1}`]: step(l, BASE.c * (i < 8 ? 0.6 + i * 0.05 : 1), BASE.h),
+}));
+const dark = DARK_L.map((l, i) => ({
+  [`${i + 1}`]: step(l, BASE.c * (i < 8 ? 0.5 + i * 0.08 : 1), BASE.h),
+}));
+```
+
+**Verification after regeneration:**
+
+1. Step 9 hex must equal the identity hex (or differ by ≤ 1 in each RGB channel after sRGB rounding).
+2. Run `npm run validate` — gate must be green.
+3. Check `npm run contrast-report` for any new borderline pairs on primary tokens.
+
+Chroma values in the script above are indicative; tweak the multiplier per-step if any stop is visually muddy or if the gate reports a borderline. The principle is: chroma ramps up toward step 9 and tapers on steps 10–12.
+
 ### Ramps
 
 Author perceptual ramps in OKLCH: constant hue, lightness descending evenly,

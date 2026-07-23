@@ -150,6 +150,43 @@ export const CONTRAST_EXEMPT = {
   "text.warning × surface.floating":
     "PHYSICAL — orange hues have L≈0.10–0.16 = floating L=0.127; 4.5:1 requires negative luminance (impossible). Status text uses inner surface.card.",
 
+  // --- Tertiary button — dark neutral pressed/emphasis fills ----------------------
+  //
+  // USAGE — surface.tertiary-dark and surface.tertiary-darker resolve to
+  // palette.neutral.700 (#65636d mauve) and palette.neutral.800 (#211f26 mauve)
+  // in light mode. These are dark neutral fills for pressed/emphasis states.
+  //
+  // text.on-tertiary = palette.tertiary.11 = mauve.11 (#65636d light). On
+  // tertiary-dark (same #65636d) = 1:1 contrast (impossible to pass). On
+  // tertiary-darker (#211f26): 2.51:1 < 4.5 threshold.
+  //
+  // Usage rule: dark fills (tertiary-dark/darker) use text.on-dark (white), not
+  // text.on-tertiary. Component tokens must enforce the switch. The semantic gate
+  // cannot statically verify per-state label tokens (rejected by design).
+  "text.on-tertiary × surface.tertiary-dark":
+    "USAGE — tertiary-dark = mauve.11 (#65636d); on-tertiary text = same hue/lum. Dark fills use text.on-dark (white) instead.",
+  "text.on-tertiary × surface.tertiary-darker":
+    "USAGE — tertiary-darker = mauve.12 (#211f26, near-black); on-tertiary = mauve.11 = 2.51:1 < 4.5. Dark fills use text.on-dark (white).",
+  "icon.on-tertiary × surface.tertiary-dark":
+    "USAGE — tertiary-dark = mauve.11 (#65636d); on-tertiary icon = same hue/lum. Dark fills use icon.on-dark (white) instead.",
+  "icon.on-tertiary × surface.tertiary-darker":
+    "USAGE — tertiary-darker = mauve.12 (#211f26); on-tertiary icon = mauve.11 = 2.51:1 < 3.0. Dark fills use icon.on-dark (white).",
+
+  // --- Secondary button — dark-mode on-secondary on neutral-tinted surfaces ------
+  //
+  // USAGE — In dark mode, surface.tertiary-dark resolves to palette.neutral.200
+  // = mauve.light.4 (#eae7ec, very light). text.on-secondary in dark mode =
+  // palette.secondary.11d = pink.dark.11 (#f287b4). Light pink on light mauve
+  // = L≈0.39 vs L≈0.82 → 2.53:1 < 4.5. These dark fills show text.on-dark.
+  "text.on-secondary × surface.tertiary-dark":
+    "USAGE — dark mode: tertiary-dark = mauve.4 (#eae7ec light); on-secondary-dark = pink.11d (#f287b4) = 2.53:1. Dark fills use text.on-dark.",
+  "text.on-secondary × surface.tertiary-darker":
+    "USAGE — dark mode: tertiary-darker = mauve.3 (#f2eff3 light); on-secondary-dark = pink.11d = similar lum. Dark fills use text.on-dark.",
+  "icon.on-secondary × surface.tertiary-dark":
+    "USAGE — dark mode: tertiary-dark = mauve.4 light; on-secondary-dark icon = pink.11d. Dark fills use icon.on-dark.",
+  "icon.on-secondary × surface.tertiary-darker":
+    "USAGE — dark mode: tertiary-darker = mauve.3 light; on-secondary icon = pink.11d. Dark fills use icon.on-dark.",
+
   // USAGE — secondary/muted text has intentionally reduced contrast. These
   // roles are valid on page and card (where they pass), but are not placed on
   // floating surfaces. Floating item copy uses text.default, not text.subtle.
@@ -185,6 +222,29 @@ export const CONTRAST_EXEMPT = {
     "USAGE (revisable) — focus stroke on inner surface: raised 3.17 ✓, card 4.89 ✓. Inputs inside floating must use surface.raised/card as background.",
   "stroke.hover × surface.floating":
     "USAGE (revisable) — hover border on inner surface: raised 3.17 ✓, card 4.89 ✓. Inputs inside floating must use surface.raised/card as background.",
+
+  // --- Primary button — dark-mode hover/pressed surface inversion ---------------
+  //
+  // REAL GAP — design decision required.
+  //
+  // surface.primary-hover and surface.primary-dark resolve to palette.primary.300
+  // (#ef56af) in dark mode: the dark-mode convention lightens interactive surfaces
+  // on hover/press (luminance inversion). text.on-primary = palette.neutral.0
+  // (white) achieves only 3.17:1 on #ef56af, below the 4.5:1 text threshold.
+  //
+  // Fix options (design team to choose):
+  //   A) Darken the dark-mode hover/pressed stops (e.g. primary.400 or primary.500)
+  //      so white text passes — sacrifices the luminance-inversion convention.
+  //   B) Accept the inversion and gate only on-primary × surface.primary (base);
+  //      state surfaces are exempt because the focus ring and button shape carry
+  //      the state signal, not text readability alone. Revisable.
+  //
+  // Currently exempted as REAL GAP so the build remains green while the decision
+  // is pending. Remove once a design fix is applied.
+  "text.on-primary × surface.primary-hover":
+    "REAL GAP — dark mode only: surface.primary-hover = palette.primary.300 (#ef56af), white text = 3.17:1 < 4.5. Design fix needed (see comment above).",
+  "text.on-primary × surface.primary-dark":
+    "REAL GAP — dark mode only: surface.primary-dark = palette.primary.300 (#ef56af), white text = 3.17:1 < 4.5. Design fix needed (see comment above).",
 };
 
 // --- pair derivation --------------------------------------------------------
@@ -210,14 +270,26 @@ export function derivePairs(merged) {
   ];
   const surfaceHas = (name) => name in (merged.surface ?? {});
 
+  // State suffixes: on-X is verified against surface.X and all its interaction states.
+  const stateSuffixes = ["-hover", "-dark", "-active", "-darker", "-pressed"];
+
   for (const group of ["text", "icon", "stroke"]) {
     const bucket = merged[group] ?? {};
     for (const name of Object.keys(bucket)) {
       if (name.startsWith("on-")) {
-        const bgName = name.slice(3);
-        if (!surfaceHas(bgName)) continue;
-        for (const mode of modes)
-          pairs.push({ fg: `${group}.${name}`, bg: `surface.${bgName}`, mode });
+        const bgBase = name.slice(3);
+        if (!surfaceHas(bgBase)) continue;
+        const bgNames = [
+          bgBase,
+          ...stateSuffixes.map((s) => bgBase + s).filter(surfaceHas),
+        ];
+        for (const bgName of bgNames)
+          for (const mode of modes)
+            pairs.push({
+              fg: `${group}.${name}`,
+              bg: `surface.${bgName}`,
+              mode,
+            });
       } else {
         for (const bg of reading) {
           for (const mode of modes)

@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-Handoff for Claude Code. Read before touching anything.
+Handoff for Claude Code. Read before touching anything. For the reasoning and best practice behind these rules see `docs/DESIGN-SYSTEM-GUIDE.md`.
 
 ## What this is
 
@@ -59,6 +59,25 @@ source.
 - `shadow` bundles color/offset/blur/spread. CSS emits a `box-shadow` string.
   Figma effect styles are not imported by the plugin, so shadow is web-only for
   now; expose decomposed number/color variables if Figma needs them.
+
+## Color scale sources (authoritative rule)
+
+All ramps in `core/color.json` follow one of two origins. The rule is stated once here; `docs/DESIGN-SYSTEM-GUIDE.md § Color scale sources` has the full rationale and the brand-scale regeneration recipe.
+
+| Category         | Origin                   | Scales                                             |
+| ---------------- | ------------------------ | -------------------------------------------------- |
+| Neutral + states | **Radix as-is**          | `mauve`, `pink`, `red`, `green`, `orange`          |
+| Brand identity   | **Custom, Radix method** | `poli-magenta` (and each future brand's own scale) |
+
+**Radix as-is** — import the exact hex values from `@radix-ui/colors`. No tweaks. Use light.1-12 / dark.1-12 structure.
+
+**Custom, Radix method** — generate a 12-step OKLCH scale anchored on the brand's identity color, then snap it to hex. Step 9 = identity color (exact). See the guide for the regeneration script.
+
+### When to use which
+
+- Functional / neutral colors (grey ramps, status colors) → Radix as-is. Not brand, so canonical Radix is fine.
+- Identity colors (the hue a brand owns) → custom Radix method. Preserves exact brand hex at step 9.
+- New brand: copy `brand/poli.json` → `brand/<name>.json`, generate its own custom scale, wire `palette.primary` to it. Neutral and state scales are shared across brands.
 
 ## Color space
 

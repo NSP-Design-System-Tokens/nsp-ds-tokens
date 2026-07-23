@@ -43,7 +43,8 @@ function figmaLeaf(node) {
 function convertTree(tree) {
   if (isLeaf(tree)) return figmaLeaf(tree);
   const out = {};
-  for (const [k, v] of Object.entries(tree)) if (!k.startsWith("$")) out[k] = convertTree(v);
+  for (const [k, v] of Object.entries(tree))
+    if (!k.startsWith("$")) out[k] = convertTree(v);
   return out;
 }
 
@@ -61,7 +62,7 @@ for (const [tier, groups] of Object.entries(TIERS)) {
 mkdirSync(resolve(ROOT, "dist"), { recursive: true });
 writeFileSync(
   resolve(ROOT, "dist/figma-variables.json"),
-  JSON.stringify({ $collections: collections }, null, 2) + "\n"
+  JSON.stringify({ $collections: collections }, null, 2) + "\n",
 );
 console.log("figma  -> dist/figma-variables.json");
 
@@ -74,7 +75,9 @@ function resolve1(ref, mode) {
   if (!leaf) return undefined;
   const modes = leaf.$extensions?.["com.figma.modes"];
   const val = modes && mode in modes ? modes[mode] : leaf.$value;
-  return typeof val === "string" && val.startsWith("{") ? resolve1(val, mode) : val;
+  return typeof val === "string" && val.startsWith("{")
+    ? resolve1(val, mode)
+    : val;
 }
 function modesOf(ref) {
   const leaf = getLeaf(ref.replace(/[{}]/g, ""));
@@ -82,7 +85,13 @@ function modesOf(ref) {
   return m ? Object.keys(m) : [null];
 }
 
-const WEIGHT = { 300: "Light", 400: "Regular", 500: "Medium", 600: "SemiBold", 700: "Bold" };
+const WEIGHT = {
+  300: "Light",
+  400: "Regular",
+  500: "Medium",
+  600: "SemiBold",
+  700: "Bold",
+};
 const cap = (s) => (s ? s[0].toUpperCase() + s.slice(1) : s);
 
 const textStyles = [];
@@ -108,6 +117,9 @@ for (const [name, node] of Object.entries(merged.typography ?? {})) {
 
 writeFileSync(
   resolve(ROOT, "dist/figma-styles.json"),
-  JSON.stringify({ textStyles, colorStyles: [], gridStyles: [] }, null, 2) + "\n"
+  JSON.stringify({ textStyles, colorStyles: [], gridStyles: [] }, null, 2) +
+    "\n",
 );
-console.log(`figma  -> dist/figma-styles.json (${textStyles.length} text styles)`);
+console.log(
+  `figma  -> dist/figma-styles.json (${textStyles.length} text styles)`,
+);

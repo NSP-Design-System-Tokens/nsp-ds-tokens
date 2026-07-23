@@ -199,13 +199,18 @@ function hasIssues(byBg) {
   return false;
 }
 
-function ctSwatch(group, fgHex, bgHex) {
-  const base = `width:36px;height:26px;border-radius:3px;flex-shrink:0;display:flex;align-items:center;justify-content:center;background:${bgHex}`;
-  if (group === "text")
-    return `<div style="${base}"><span style="color:${fgHex};font-size:13px;font-weight:600;line-height:1;font-family:ui-sans-serif,sans-serif">Aa</span></div>`;
-  if (group === "stroke")
-    return `<div style="${base};outline:2px solid ${fgHex};outline-offset:-2px"></div>`;
-  return `<div style="${base}"><div style="width:12px;height:12px;border-radius:50%;background:${fgHex}"></div></div>`;
+function tokenVar(token) {
+  return token.replace(/\./g, "-");
+}
+
+function wcagLevel(ratio, group) {
+  if (group === "text") {
+    if (ratio >= 7.0) return "AAA";
+    if (ratio >= 4.5) return "AA";
+  } else {
+    if (ratio >= 3.0) return "AA";
+  }
+  return null;
 }
 
 function ctExemptLabel(r) {
@@ -219,19 +224,75 @@ function ctExemptLabel(r) {
   return ["exempt", reason];
 }
 
-function ctCell(group, r) {
-  if (!r) return `<div class="ct-cell ct-na"></div>`;
-  const swatch = ctSwatch(group, r.fgHex, r.bgHex);
-  if (r.status === "exempt") {
-    const [label, reason] = ctExemptLabel(r);
+function ctSample(group, fgName, bgName) {
+  const fv = tokenVar(fgName);
+  const bv = tokenVar(bgName);
+  if (group === "text")
+    return `<div class="ct-sample" style="background:var(--${bv})"><span class="ct-sample-aa" style="color:var(--${fv})">Aa</span></div>`;
+  if (group === "stroke")
+    return `<div class="ct-sample" style="background:var(--${bv});box-shadow:inset 0 0 0 2px var(--${fv})"></div>`;
+  return `<div class="ct-sample" style="background:var(--${bv})"><div class="ct-sample-dot" style="background:var(--${fv})"></div></div>`;
+}
+
+function ctRow(group, fgName, bgName, modes) {
+  const light = modes.light;
+  const dark = modes.dark;
+  if (!light && !dark) return "";
+  const sample = ctSample(group, fgName, bgName);
+  const first = light || dark;
+
+  if (first.status === "exempt") {
+    const [label, reason] = ctExemptLabel(first);
     const esc = reason.replace(/"/g, "'");
-    return `<div class="ct-cell ct-exempt" title="${esc}">${swatch}<span class="ct-ratio">${label}</span></div>`;
+    const scMatch = reason.match(/SC\s+[\d.]+/);
+    const hint = scMatch
+      ? `<span class="ct-ratio-muted">${scMatch[0]}</span>`
+      : "";
+    return `<div class="ct-row ct-row-exempt">
+      ${sample}
+      <div class="ct-info">
+        <div class="ct-bg-label">${bgName}</div>
+        <div class="ct-result">
+          <span class="ct-badge ct-v-exempt" title="${esc}">${label}</span>${hint}
+        </div>
+      </div>
+    </div>`;
   }
-  if (r.status === "FAIL")
-    return `<div class="ct-cell ct-fail">${swatch}<span class="ct-ratio">${r.ratio.toFixed(2)}:1</span></div>`;
-  if (r.ratio >= r.threshold * 1.15)
-    return `<div class="ct-cell ct-ok">${swatch}<span class="ct-ratio">${r.ratio.toFixed(2)}:1</span></div>`;
-  return `<div class="ct-cell ct-borderline">${swatch}<span class="ct-ratio">${r.ratio.toFixed(2)}:1 ⚠</span></div>`;
+
+  const modeSpans = (r, mode) => {
+    if (!r) return "";
+    const ratio = r.ratio;
+    const thr = r.threshold;
+    const cls =
+      ratio >= thr * 1.15
+        ? "ct-v-passa"
+        : ratio >= thr
+          ? "ct-v-borderline"
+          : "ct-v-fail";
+    const label =
+      ratio >= thr * 1.15 ? "PASSA" : ratio >= thr ? "BORDERLINE" : "FAIL";
+    const level = wcagLevel(ratio, group);
+    const ratioStr = ratio.toFixed(2) + ":1" + (level ? " · " + level : "");
+    return (
+      `<span data-mode="${mode}" class="ct-badge ${cls}">${label}</span>` +
+      `<span data-mode="${mode}" class="ct-ratio-muted">${ratioStr}</span>`
+    );
+  };
+
+  const isIssue = (r) =>
+    r &&
+    (r.status === "FAIL" ||
+      (r.status === "ok" && r.ratio < r.threshold * 1.15));
+  const rowIssue = isIssue(light) || isIssue(dark);
+  return `<div class="ct-row${rowIssue ? " ct-row-issue" : ""}">
+    ${sample}
+    <div class="ct-info">
+      <div class="ct-bg-label">${bgName}</div>
+      <div class="ct-result">
+        ${modeSpans(light, "light")}${modeSpans(dark, "dark")}
+      </div>
+    </div>
+  </div>`;
 }
 
 const CT_GROUPS = ["text", "icon", "stroke"];
@@ -246,6 +307,9 @@ for (const r of results) {
   byBg.get(r.bg)[r.mode] = r;
 }
 
+// on-X tokens verify colored surfaces — always shown regardless of issues filter.
+const isOnToken = (fgName) => fgName.split(".")[1]?.startsWith("on-");
+
 const ctGroupsHtml = CT_GROUPS.map((group) => {
   const byFg = ctData.get(group);
   if (!byFg || byFg.size === 0) return "";
@@ -254,22 +318,12 @@ const ctGroupsHtml = CT_GROUPS.map((group) => {
   const tokenBlocks = [...byFg.entries()]
     .map(([fgName, byBg]) => {
       const tokenHasIssues = hasIssues(byBg);
+      const colored = isOnToken(fgName);
       const rows = [...byBg.entries()]
-        .map(
-          ([bgName, modes]) => `<div class="ct-row">
-        <div class="ct-bg-label">${bgName}</div>
-        ${ctCell(group, modes.light)}
-        ${ctCell(group, modes.dark)}
-      </div>`,
-        )
+        .map(([bgName, modes]) => ctRow(group, fgName, bgName, modes))
         .join("");
-      return `<div class="ct-token" data-issues="${tokenHasIssues}">
-      <div class="ct-token-name">${fgName}</div>
-      <div class="ct-mode-hdr">
-        <div></div>
-        <div class="ct-mode-lbl">light</div>
-        <div class="ct-mode-lbl">dark</div>
-      </div>
+      return `<div class="ct-token" data-issues="${tokenHasIssues}" data-colored="${colored}">
+      <div class="ct-token-name">${colored ? "★ " : ""}${fgName}</div>
       ${rows}
     </div>`;
     })
@@ -394,19 +448,38 @@ ${css}
   #view-contrast:not(.show-all) .subsec[data-issues="false"] { display: none; }
   #view-contrast:not(.show-all) .ct-token[data-issues="false"] { display: none; }
 
-  .ct-group { display:flex; flex-wrap:wrap; gap:16px 24px; }
-  .ct-token { min-width:340px; flex:0 1 340px; margin-bottom:4px; }
-  .ct-token-name { font-size:12px; font-weight:600; margin-bottom:4px; color:var(--text-default); }
-  .ct-mode-hdr { display:grid; grid-template-columns:150px 1fr 1fr; gap:4px; margin-bottom:2px; }
-  .ct-mode-lbl { font-size:10px; text-transform:uppercase; letter-spacing:.08em; color:var(--text-subtle); padding-left:6px; }
-  .ct-row { display:grid; grid-template-columns:150px 1fr 1fr; align-items:center; gap:4px; margin-bottom:3px; }
-  .ct-bg-label { font-size:10px; color:var(--text-subtle); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
-  .ct-cell { display:flex; align-items:center; gap:6px; padding:3px 6px; border-radius:4px; min-height:30px; }
-  .ct-ratio { font-size:11px; font-variant-numeric:tabular-nums; white-space:nowrap; }
-  .ct-ok         { background:rgba(0,161,69,0.10); }
-  .ct-borderline { background:rgba(180,140,0,0.12); }
-  .ct-fail       { background:rgba(204,0,43,0.10); }
-  .ct-exempt     { background:rgba(120,120,120,0.08); color:var(--text-subtle); }
+  /* on-X (colored surface) blocks always visible — highest-priority pairs */
+  #view-contrast:not(.show-all) .ct-token[data-colored="true"] { display: block; }
+  /* keep the subsec visible if it contains at least one colored token */
+  #view-contrast:not(.show-all) .subsec:has(.ct-token[data-colored="true"]) { display: block; }
+
+  /* mode toggle: show only the active mode's verdict spans */
+  html[data-theme="light"] [data-mode="dark"]  { display: none; }
+  html[data-theme="dark"]  [data-mode="light"] { display: none; }
+
+  .ct-group { display:flex; flex-wrap:wrap; gap:12px 20px; }
+  .ct-token { min-width:280px; flex:0 1 280px; margin-bottom:4px; }
+  .ct-token-name { font-size:12px; font-weight:600; margin-bottom:6px;
+    color:var(--text-default); padding-bottom:4px; border-bottom:1px solid var(--stroke-divider); }
+  .ct-row { display:flex; align-items:center; gap:10px; margin-bottom:5px; }
+  .ct-row-exempt { opacity:.7; }
+  .ct-sample { width:52px; height:38px; border-radius:4px; flex-shrink:0;
+    display:flex; align-items:center; justify-content:center;
+    outline:1px solid var(--stroke-default); outline-offset:-1px; }
+  .ct-sample-aa { font-size:14px; font-weight:700; font-family:ui-sans-serif,sans-serif; line-height:1; }
+  .ct-sample-dot { width:16px; height:16px; border-radius:50%; }
+  .ct-info { flex:1; min-width:0; }
+  .ct-bg-label { font-size:10px; color:var(--text-subtle); white-space:nowrap;
+    overflow:hidden; text-overflow:ellipsis; margin-bottom:3px; }
+  .ct-result { display:flex; align-items:center; gap:7px; flex-wrap:wrap; }
+  .ct-badge { font-size:10px; font-weight:700; padding:2px 7px; border-radius:10px;
+    letter-spacing:.05em; flex-shrink:0; white-space:nowrap; }
+  .ct-v-passa      { background:rgba(0,161,69,0.13); color:var(--text-success); }
+  .ct-v-borderline { background:rgba(180,140,0,0.15); color:var(--text-warning); }
+  .ct-v-fail       { background:rgba(204,0,43,0.13); color:var(--text-error); }
+  .ct-v-exempt     { background:rgba(120,120,120,0.10); color:var(--text-subtle); }
+  .ct-ratio-muted { font-size:10px; font-variant-numeric:tabular-nums;
+    color:var(--text-subtle); white-space:nowrap; }
 
   @media (max-width: 900px) {
     .layout { grid-template-columns: 1fr; }
