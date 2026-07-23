@@ -3,31 +3,31 @@
     "primary": {
       "50": {
         "$type": "color",
-        "$value": "{color.poli-magenta.light.2}"
+        "$value": "{color.magenta.light.2}"
       },
       "100": {
         "$type": "color",
-        "$value": "{color.poli-magenta.light.3}"
+        "$value": "{color.magenta.light.3}"
       },
       "200": {
         "$type": "color",
-        "$value": "{color.poli-magenta.dark.12}"
+        "$value": "{color.magenta.dark.12}"
       },
       "300": {
         "$type": "color",
-        "$value": "{color.poli-magenta.light.8}"
+        "$value": "{color.magenta.light.8}"
       },
       "500": {
         "$type": "color",
-        "$value": "{color.poli-magenta.light.9}"
+        "$value": "{color.magenta.light.9}"
       },
       "700": {
         "$type": "color",
-        "$value": "{color.poli-magenta.light.10}"
+        "$value": "{color.magenta.light.10}"
       },
       "900": {
         "$type": "color",
-        "$value": "{color.poli-magenta.light.12}"
+        "$value": "{color.magenta.light.12}"
       },
       "default": {
         "$type": "color",
@@ -133,31 +133,31 @@
     "accent": {
       "2": {
         "$type": "color",
-        "$value": "{color.gold.2}"
+        "$value": "{color.bronze.light.2}"
       },
       "3": {
         "$type": "color",
-        "$value": "{color.gold.3}"
+        "$value": "{color.bronze.light.3}"
       },
       "4": {
         "$type": "color",
-        "$value": "{color.gold.4}"
+        "$value": "{color.bronze.light.4}"
       },
       "5": {
         "$type": "color",
-        "$value": "{color.gold.5}"
+        "$value": "{color.bronze.light.5}"
       },
       "7": {
         "$type": "color",
-        "$value": "{color.gold.7}"
+        "$value": "{color.bronze.light.7}"
       },
       "9": {
         "$type": "color",
-        "$value": "{color.gold.9}"
+        "$value": "{color.bronze.light.9}"
       },
       "10": {
         "$type": "color",
-        "$value": "{color.gold.10}"
+        "$value": "{color.bronze.light.10}"
       },
       "default": {
         "$type": "color",
@@ -225,29 +225,21 @@
         "$type": "color",
         "$value": "{color.mauve.light.12}"
       },
-      "800-a05": {
+      "a1": {
         "$type": "color",
-        "$value": "{color.grey.800-a05}"
+        "$value": "{color.black-alpha.a1}"
       },
-      "800-a10": {
+      "a2": {
         "$type": "color",
-        "$value": "{color.grey.800-a10}"
+        "$value": "{color.black-alpha.a2}"
       },
-      "800-a20": {
+      "a4": {
         "$type": "color",
-        "$value": "{color.grey.800-a20}"
+        "$value": "{color.black-alpha.a4}"
       },
-      "800-a30": {
+      "a9": {
         "$type": "color",
-        "$value": "{color.grey.800-a30}"
-      },
-      "800-a70": {
-        "$type": "color",
-        "$value": "{color.grey.800-a70}"
-      },
-      "500-a70": {
-        "$type": "color",
-        "$value": "{color.grey.500-a70}"
+        "$value": "{color.black-alpha.a9}"
       },
       "low": {
         "$type": "color",

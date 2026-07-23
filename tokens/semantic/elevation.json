@@ -4,14 +4,14 @@
       "$type": "shadow",
       "$value": [
         {
-          "color": "{palette.neutral.800-a10}",
+          "color": "{palette.neutral.a2}",
           "offsetX": "0px",
           "offsetY": "1px",
           "blur": "2px",
           "spread": "0px"
         },
         {
-          "color": "{palette.neutral.800-a05}",
+          "color": "{palette.neutral.a1}",
           "offsetX": "0px",
           "offsetY": "2px",
           "blur": "8px",
@@ -22,14 +22,14 @@
         "com.figma.modes": {
           "light": [
             {
-              "color": "{palette.neutral.800-a10}",
+              "color": "{palette.neutral.a2}",
               "offsetX": "0px",
               "offsetY": "1px",
               "blur": "2px",
               "spread": "0px"
             },
             {
-              "color": "{palette.neutral.800-a05}",
+              "color": "{palette.neutral.a1}",
               "offsetX": "0px",
               "offsetY": "2px",
               "blur": "8px",
@@ -38,14 +38,14 @@
           ],
           "dark": [
             {
-              "color": "{palette.neutral.800-a20}",
+              "color": "{palette.neutral.a4}",
               "offsetX": "0px",
               "offsetY": "1px",
               "blur": "2px",
               "spread": "0px"
             },
             {
-              "color": "{palette.neutral.800-a10}",
+              "color": "{palette.neutral.a2}",
               "offsetX": "0px",
               "offsetY": "2px",
               "blur": "8px",
@@ -59,14 +59,14 @@
       "$type": "shadow",
       "$value": [
         {
-          "color": "{palette.neutral.800-a10}",
+          "color": "{palette.neutral.a2}",
           "offsetX": "0px",
           "offsetY": "4px",
           "blur": "8px",
           "spread": "0px"
         },
         {
-          "color": "{palette.neutral.800-a10}",
+          "color": "{palette.neutral.a2}",
           "offsetX": "0px",
           "offsetY": "8px",
           "blur": "24px",
@@ -77,14 +77,14 @@
         "com.figma.modes": {
           "light": [
             {
-              "color": "{palette.neutral.800-a10}",
+              "color": "{palette.neutral.a2}",
               "offsetX": "0px",
               "offsetY": "4px",
               "blur": "8px",
               "spread": "0px"
             },
             {
-              "color": "{palette.neutral.800-a10}",
+              "color": "{palette.neutral.a2}",
               "offsetX": "0px",
               "offsetY": "8px",
               "blur": "24px",
@@ -93,14 +93,14 @@
           ],
           "dark": [
             {
-              "color": "{palette.neutral.800-a20}",
+              "color": "{palette.neutral.a4}",
               "offsetX": "0px",
               "offsetY": "4px",
               "blur": "8px",
               "spread": "0px"
             },
             {
-              "color": "{palette.neutral.800-a20}",
+              "color": "{palette.neutral.a4}",
               "offsetX": "0px",
               "offsetY": "8px",
               "blur": "24px",
@@ -114,14 +114,14 @@
       "$type": "shadow",
       "$value": [
         {
-          "color": "{palette.neutral.800-a10}",
+          "color": "{palette.neutral.a2}",
           "offsetX": "0px",
           "offsetY": "8px",
           "blur": "16px",
           "spread": "0px"
         },
         {
-          "color": "{palette.neutral.800-a10}",
+          "color": "{palette.neutral.a2}",
           "offsetX": "0px",
           "offsetY": "12px",
           "blur": "32px",
@@ -132,14 +132,14 @@
         "com.figma.modes": {
           "light": [
             {
-              "color": "{palette.neutral.800-a10}",
+              "color": "{palette.neutral.a2}",
               "offsetX": "0px",
               "offsetY": "8px",
               "blur": "16px",
               "spread": "0px"
             },
             {
-              "color": "{palette.neutral.800-a10}",
+              "color": "{palette.neutral.a2}",
               "offsetX": "0px",
               "offsetY": "12px",
               "blur": "32px",
@@ -148,14 +148,14 @@
           ],
           "dark": [
             {
-              "color": "{palette.neutral.800-a20}",
+              "color": "{palette.neutral.a4}",
               "offsetX": "0px",
               "offsetY": "8px",
               "blur": "16px",
               "spread": "0px"
             },
             {
-              "color": "{palette.neutral.800-a20}",
+              "color": "{palette.neutral.a4}",
               "offsetX": "0px",
               "offsetY": "12px",
               "blur": "32px",
@@ -169,14 +169,14 @@
       "$type": "shadow",
       "$value": [
         {
-          "color": "{palette.neutral.800-a10}",
+          "color": "{palette.neutral.a2}",
           "offsetX": "0px",
           "offsetY": "12px",
           "blur": "24px",
           "spread": "0px"
         },
         {
-          "color": "{palette.neutral.800-a10}",
+          "color": "{palette.neutral.a2}",
           "offsetX": "0px",
           "offsetY": "20px",
           "blur": "48px",
@@ -187,14 +187,14 @@
         "com.figma.modes": {
           "light": [
             {
-              "color": "{palette.neutral.800-a10}",
+              "color": "{palette.neutral.a2}",
               "offsetX": "0px",
               "offsetY": "12px",
               "blur": "24px",
               "spread": "0px"
             },
             {
-              "color": "{palette.neutral.800-a10}",
+              "color": "{palette.neutral.a2}",
               "offsetX": "0px",
               "offsetY": "20px",
               "blur": "48px",
@@ -203,14 +203,14 @@
           ],
           "dark": [
             {
-              "color": "{palette.neutral.800-a20}",
+              "color": "{palette.neutral.a4}",
               "offsetX": "0px",
               "offsetY": "12px",
               "blur": "24px",
               "spread": "0px"
             },
             {
-              "color": "{palette.neutral.800-a20}",
+              "color": "{palette.neutral.a4}",
               "offsetX": "0px",
               "offsetY": "20px",
               "blur": "48px",

@@ -21,17 +21,19 @@ const refToVar = (v) =>
 const scalar = (v) => (typeof v === "string" ? refToVar(v) : String(v));
 const bpWidth = (mode) => merged.breakpoint?.[mode]?.$value;
 
-// emit `--group-path: value` for every leaf in a group, at an optional mode
-function emitGroup(group, mode) {
+// emit `--group-path: value` for every leaf in a group, at an optional mode.
+// onlyModed: skip leaves that don't declare the requested mode explicitly
+// (used to emit dark overrides only for tokens whose value changes per mode).
+function emitGroup(group, mode, { onlyModed = false } = {}) {
   const tree = merged[group];
   if (!tree) return [];
   const lines = [];
   eachLeaf(tree, (n, path) => {
+    const hasMode =
+      mode && n.$extensions?.["com.figma.modes"]?.[mode] !== undefined;
+    if (onlyModed && !hasMode) return;
     const name = [group, ...path].join("-");
-    const v =
-      mode && n.$extensions?.["com.figma.modes"]?.[mode] !== undefined
-        ? n.$extensions["com.figma.modes"][mode]
-        : n.$value;
+    const v = hasMode ? n.$extensions["com.figma.modes"][mode] : n.$value;
     lines.push(`  --${name}: ${scalar(v)};`);
   });
   return lines;
@@ -97,8 +99,10 @@ const rootLines = [
   ...emitShadow("light"),
 ];
 
-// --- dark : semantic color overrides only ---
+// --- dark : primitive+palette dark values (only where they differ) + semantic ---
 const darkLines = [
+  ...emitGroup("color", "dark", { onlyModed: true }),
+  ...emitGroup("palette", "dark", { onlyModed: true }),
   ...emitGroup("surface", "dark"),
   ...emitGroup("text", "dark"),
   ...emitGroup("stroke", "dark"),

@@ -222,11 +222,11 @@
     },
     "blur": {
       "$type": "color",
-      "$value": "{palette.neutral.800-a05}",
+      "$value": "{palette.neutral.a1}",
       "$extensions": {
         "com.figma.modes": {
-          "light": "{palette.neutral.800-a05}",
-          "dark": "{palette.neutral.800-a05}"
+          "light": "{palette.neutral.a1}",
+          "dark": "{palette.neutral.a1}"
         }
       }
     },
@@ -272,11 +272,11 @@
     },
     "overlay": {
       "$type": "color",
-      "$value": "{palette.neutral.800-a70}",
+      "$value": "{palette.neutral.a9}",
       "$extensions": {
         "com.figma.modes": {
-          "light": "{palette.neutral.800-a70}",
-          "dark": "{palette.neutral.800-a70}"
+          "light": "{palette.neutral.a9}",
+          "dark": "{palette.neutral.a9}"
         }
       }
     }
@@ -516,11 +516,11 @@
     },
     "divider": {
       "$type": "color",
-      "$value": "{palette.neutral.800-a10}",
+      "$value": "{palette.neutral.a2}",
       "$extensions": {
         "com.figma.modes": {
-          "light": "{palette.neutral.800-a10}",
-          "dark": "{palette.neutral.800-a10}"
+          "light": "{palette.neutral.a2}",
+          "dark": "{palette.neutral.a2}"
         }
       }
     },
