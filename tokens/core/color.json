@@ -9,50 +9,18 @@
       "$value": "#000000"
     },
     "gold": {
-      "50": {
-        "$type": "color",
-        "$value": "#f9efe6"
-      },
-      "100": {
-        "$type": "color",
-        "$value": "#f3dcc5"
-      },
-      "200": {
-        "$type": "color",
-        "$value": "#e8b97d"
-      },
-      "300": {
-        "$type": "color",
-        "$value": "#c59c69"
-      },
-      "400": {
-        "$type": "color",
-        "$value": "#a38055"
-      },
-      "500": {
-        "$type": "color",
-        "$value": "#826643"
-      },
-      "600": {
-        "$type": "color",
-        "$value": "#685134"
-      },
-      "700": {
-        "$type": "color",
-        "$value": "#4f3d26"
-      },
-      "800": {
-        "$type": "color",
-        "$value": "#372a19"
-      },
-      "900": {
-        "$type": "color",
-        "$value": "#21180c"
-      },
-      "950": {
-        "$type": "color",
-        "$value": "#171007"
-      }
+      "1": { "$type": "color", "$value": "#fefbf9" },
+      "2": { "$type": "color", "$value": "#f9efe6" },
+      "3": { "$type": "color", "$value": "#f3dcc5" },
+      "4": { "$type": "color", "$value": "#e8b97d" },
+      "5": { "$type": "color", "$value": "#c59c69" },
+      "6": { "$type": "color", "$value": "#b48e5f" },
+      "7": { "$type": "color", "$value": "#a38055" },
+      "8": { "$type": "color", "$value": "#92734c" },
+      "9": { "$type": "color", "$value": "#826643" },
+      "10": { "$type": "color", "$value": "#685134" },
+      "11": { "$type": "color", "$value": "#4f3d26" },
+      "12": { "$type": "color", "$value": "#372a19" }
     },
     "green": {
       "light": {
@@ -85,74 +53,12 @@
       }
     },
     "grey": {
-      "50": {
-        "$type": "color",
-        "$value": "#f3f3f3"
-      },
-      "100": {
-        "$type": "color",
-        "$value": "#e8e8e8"
-      },
-      "200": {
-        "$type": "color",
-        "$value": "#d1d1d1"
-      },
-      "300": {
-        "$type": "color",
-        "$value": "#b9b9b9"
-      },
-      "400": {
-        "$type": "color",
-        "$value": "#a3a3a3"
-      },
-      "500": {
-        "$type": "color",
-        "$value": "#8e8e8e"
-      },
-      "600": {
-        "$type": "color",
-        "$value": "#797979"
-      },
-      "700": {
-        "$type": "color",
-        "$value": "#646464"
-      },
-      "800": {
-        "$type": "color",
-        "$value": "#424242"
-      },
-      "900": {
-        "$type": "color",
-        "$value": "#242424"
-      },
-      "950": {
-        "$type": "color",
-        "$value": "#151515"
-      },
-      "800-a05": {
-        "$type": "color",
-        "$value": "#4242420d"
-      },
-      "800-a10": {
-        "$type": "color",
-        "$value": "#4242421a"
-      },
-      "800-a20": {
-        "$type": "color",
-        "$value": "#42424233"
-      },
-      "800-a30": {
-        "$type": "color",
-        "$value": "#4242424d"
-      },
-      "800-a70": {
-        "$type": "color",
-        "$value": "#424242b2"
-      },
-      "500-a70": {
-        "$type": "color",
-        "$value": "#8e8e8eb2"
-      }
+      "800-a05": { "$type": "color", "$value": "#4242420d" },
+      "800-a10": { "$type": "color", "$value": "#4242421a" },
+      "800-a20": { "$type": "color", "$value": "#42424233" },
+      "800-a30": { "$type": "color", "$value": "#4242424d" },
+      "800-a70": { "$type": "color", "$value": "#424242b2" },
+      "500-a70": { "$type": "color", "$value": "#8e8e8eb2" }
     },
     "orange": {
       "light": {
@@ -212,36 +118,6 @@
         "10": { "$type": "color", "$value": "#ec5d5e" },
         "11": { "$type": "color", "$value": "#ff9592" },
         "12": { "$type": "color", "$value": "#ffd1d9" }
-      }
-    },
-    "brand": {
-      "50": {
-        "$type": "color",
-        "$value": "#fce5ef"
-      },
-      "100": {
-        "$type": "color",
-        "$value": "#f9cee2"
-      },
-      "200": {
-        "$type": "color",
-        "$value": "oklch(0.81 0.14 350)"
-      },
-      "300": {
-        "$type": "color",
-        "$value": "#ef56af"
-      },
-      "500": {
-        "$type": "color",
-        "$value": "#911e50"
-      },
-      "700": {
-        "$type": "color",
-        "$value": "#5b113e"
-      },
-      "900": {
-        "$type": "color",
-        "$value": "#2e051e"
       }
     },
     "mauve": {

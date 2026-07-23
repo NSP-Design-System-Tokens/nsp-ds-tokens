@@ -824,11 +824,11 @@
     },
     "subtle": {
       "$type": "color",
-      "$value": "{palette.accent.50}",
+      "$value": "{palette.accent.2}",
       "$extensions": {
         "com.figma.modes": {
-          "light": "{palette.accent.50}",
-          "dark": "{palette.accent.200}"
+          "light": "{palette.accent.2}",
+          "dark": "{palette.accent.4}"
         }
       }
     }
