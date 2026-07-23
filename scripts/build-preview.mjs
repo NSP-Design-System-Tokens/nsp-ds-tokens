@@ -1,9 +1,8 @@
 // Build: build/css/tokens.css -> build/preview/index.html
-// Self-contained gallery. Parses :root so names always match the build. Groups
-// primitives + palette by family, semantic tokens by role. Sticky side-nav
-// indexes every subsection. Contrast section shows WCAG 2.2 AA pair verdicts
-// using checkContrast() — the same call the validate gate makes. Preview and
-// gate are guaranteed to agree: identical pair enumeration, identical thresholds.
+// Tabbed preview: Palette · Semantic · Contrast · Type & Scales.
+// Contrast view defaults to issues-only (borderline + fail).
+// Dark/light toggle is global — independent of active view.
+// Pair enumeration identical to validate gate (shared checkContrast()).
 
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { resolve } from "node:path";
@@ -28,9 +27,10 @@ function splitFamily(name, prefix) {
   const rest = name.slice(prefix.length).split("-");
   let i = rest.findIndex((s) => /^\d/.test(s));
   if (i === -1) i = rest.length;
-  const family = rest.slice(0, i).join("-") || "base";
-  const stop = rest.slice(i).join("-");
-  return { family, stop };
+  return {
+    family: rest.slice(0, i).join("-") || "base",
+    stop: rest.slice(i).join("-"),
+  };
 }
 
 function groupBy(list, keyFn) {
@@ -44,8 +44,8 @@ function groupBy(list, keyFn) {
 }
 
 const stopSort = (a, b) => {
-  const na = parseInt(a, 10);
-  const nb = parseInt(b, 10);
+  const na = parseInt(a, 10),
+    nb = parseInt(b, 10);
   if (!isNaN(na) && !isNaN(nb) && na !== nb) return na - nb;
   if (!isNaN(na) && isNaN(nb)) return -1;
   if (isNaN(na) && !isNaN(nb)) return 1;
@@ -62,9 +62,6 @@ const subsec = (id, title, count, chips) => `<div class="subsec" id="${id}">
 
 const sec = (id, title, inner) =>
   `<section id="${id}"><h2>${title}</h2>${inner}</section>`;
-
-const nav = [];
-const navSec = (id, label, subs = []) => nav.push({ id, label, subs });
 
 // --- primitives -------------------------------------------------------------
 const primFamilies = groupBy(
@@ -89,11 +86,6 @@ const primSubs = primFamilies.map(([family, list]) => {
     html: subsec(id, family, sorted.length, sorted.map(chip)),
   };
 });
-navSec(
-  "sec-primitives",
-  "Primitives",
-  primSubs.map((s) => ({ id: s.id, label: `${s.family} · ${s.count}` })),
-);
 const primInner = primSubs.map((s) => s.html).join("");
 
 // --- brand palette ----------------------------------------------------------
@@ -116,11 +108,6 @@ const palSubs = palFamilies.map(([family, list]) => {
     html: subsec(id, family, sorted.length, sorted.map(chip)),
   };
 });
-navSec(
-  "sec-brand",
-  "Brand",
-  palSubs.map((s) => ({ id: s.id, label: `${s.family} · ${s.count}` })),
-);
 const palInner = palSubs.map((s) => s.html).join("");
 
 // --- semantic ---------------------------------------------------------------
@@ -152,11 +139,6 @@ const semSubs = semanticGroups.map(([role, list]) => {
     html: subsec(id, role, list.length, list.map(chip)),
   };
 });
-navSec(
-  "sec-semantic",
-  "Semantic",
-  semSubs.map((s) => ({ id: s.id, label: `${s.role} · ${s.count}` })),
-);
 const semInner = semSubs.map((s) => s.html).join("");
 
 // --- typography -------------------------------------------------------------
@@ -174,7 +156,6 @@ const typeSamples = typeNames
   <span class="val">size var(--typography-${n}-font-size)</span></div>`,
   )
   .join("");
-navSec("sec-typography", `Typography · ${typeNames.length}`);
 
 // --- shadows ----------------------------------------------------------------
 const shadowVars = pick(/^shadow-/);
@@ -183,7 +164,6 @@ const shadows = shadowVars.map(
   <div class="shbox" style="box-shadow:var(--${v.name})"></div>
   <div class="lbl">${v.name}</div></div>`,
 );
-navSec("sec-elevation", `Elevation · ${shadowVars.length}`);
 
 // --- sizing -----------------------------------------------------------------
 const sizeVars = pick(/^size-/)
@@ -194,12 +174,8 @@ const sizeBars = sizeVars.map(
     `<div class="bar-row"><div class="bar-lbl">${v.name.replace("size-", "")}</div>
   <div class="bar" style="width:var(--${v.name})"></div><div class="bar-val">${v.value}</div></div>`,
 );
-navSec("sec-sizing", `Sizing · ${sizeVars.length}`);
 
 // --- contrast ---------------------------------------------------------------
-// Same checkContrast() call as validate. Pair enumeration and threshold logic
-// are shared — preview counts and gate verdicts will always match.
-
 const merged = loadMerged();
 const { results, failures } = checkContrast(merged);
 
@@ -211,25 +187,16 @@ const ctBorderline = results.filter(
 );
 const ctExempt = results.filter((r) => r.status === "exempt");
 
-const ctSummary = `<div class="ct-summary">
-  <span class="ct-s ct-s-ok">${ctComfortable.length} ok</span>
-  <span class="ct-s ct-s-borderline">${ctBorderline.length} borderline</span>
-  <span class="ct-s ct-s-exempt">${ctExempt.length} exempt</span>
-  <span class="ct-s ct-s-fail">${failures.length} fail</span>
-  <span class="ct-s-meta">· ${results.length} pairs total · green ≥1.15× threshold, yellow 1.0–1.15×, red &lt;1.0×</span>
-</div>`;
-
-// Group: fgGroup → fgName → bgName → { light?, dark? }
-const CT_GROUPS = ["text", "icon", "stroke"];
-const ctData = new Map(CT_GROUPS.map((g) => [g, new Map()]));
-for (const r of results) {
-  const group = r.fg.split(".")[0];
-  if (!ctData.has(group)) continue;
-  const byFg = ctData.get(group);
-  if (!byFg.has(r.fg)) byFg.set(r.fg, new Map());
-  const byBg = byFg.get(r.fg);
-  if (!byBg.has(r.bg)) byBg.set(r.bg, {});
-  byBg.get(r.bg)[r.mode] = r;
+function hasIssues(byBg) {
+  for (const modes of byBg.values())
+    for (const r of Object.values(modes))
+      if (
+        r &&
+        (r.status === "FAIL" ||
+          (r.status === "ok" && r.ratio < r.threshold * 1.15))
+      )
+        return true;
+  return false;
 }
 
 function ctSwatch(group, fgHex, bgHex) {
@@ -267,12 +234,26 @@ function ctCell(group, r) {
   return `<div class="ct-cell ct-borderline">${swatch}<span class="ct-ratio">${r.ratio.toFixed(2)}:1 ⚠</span></div>`;
 }
 
-const ctGroupHtml = CT_GROUPS.map((group) => {
+const CT_GROUPS = ["text", "icon", "stroke"];
+const ctData = new Map(CT_GROUPS.map((g) => [g, new Map()]));
+for (const r of results) {
+  const group = r.fg.split(".")[0];
+  if (!ctData.has(group)) continue;
+  const byFg = ctData.get(group);
+  if (!byFg.has(r.fg)) byFg.set(r.fg, new Map());
+  const byBg = byFg.get(r.fg);
+  if (!byBg.has(r.bg)) byBg.set(r.bg, {});
+  byBg.get(r.bg)[r.mode] = r;
+}
+
+const ctGroupsHtml = CT_GROUPS.map((group) => {
   const byFg = ctData.get(group);
   if (!byFg || byFg.size === 0) return "";
   const id = `sub-contrast-${group}`;
+  const groupHasIssues = [...byFg.values()].some(hasIssues);
   const tokenBlocks = [...byFg.entries()]
     .map(([fgName, byBg]) => {
+      const tokenHasIssues = hasIssues(byBg);
       const rows = [...byBg.entries()]
         .map(
           ([bgName, modes]) => `<div class="ct-row">
@@ -282,7 +263,7 @@ const ctGroupHtml = CT_GROUPS.map((group) => {
       </div>`,
         )
         .join("");
-      return `<div class="ct-token">
+      return `<div class="ct-token" data-issues="${tokenHasIssues}">
       <div class="ct-token-name">${fgName}</div>
       <div class="ct-mode-hdr">
         <div></div>
@@ -293,57 +274,46 @@ const ctGroupHtml = CT_GROUPS.map((group) => {
     </div>`;
     })
     .join("");
-  return `<div class="subsec" id="${id}">
+  return `<div class="subsec" id="${id}" data-issues="${groupHasIssues}">
   <h3>${group} <span class="count">· ${byFg.size} tokens</span></h3>
   <div class="ct-group">${tokenBlocks}</div>
 </div>`;
 }).join("");
 
-navSec(
-  "sec-contrast",
-  "Contrast",
-  CT_GROUPS.map((g) => ({
-    id: `sub-contrast-${g}`,
-    label: `${g} · ${ctData.get(g)?.size ?? 0}`,
-  })),
-);
-const contrastInner = ctSummary + ctGroupHtml;
+// Summary: in issues-only mode show borderline+fail badges + hidden note.
+// .ct-s-ok and .ct-s-exempt are hidden by CSS until show-all is toggled.
+const ctSummary = `<div class="ct-summary">
+  <span class="ct-s ct-s-ok">${ctComfortable.length} ok</span>
+  <span class="ct-s ct-s-borderline">${ctBorderline.length} borderline</span>
+  <span class="ct-s ct-s-fail">${failures.length} fail</span>
+  <span class="ct-s ct-s-exempt">${ctExempt.length} exempt</span>
+  <span class="ct-meta" id="ct-note">&nbsp;· ${ctComfortable.length} ok · ${ctExempt.length} exempt hidden</span>
+  <button class="ct-toggle" id="ct-toggle" onclick="toggleContrast()">show all ${results.length}</button>
+</div>`;
 
-// --- body -------------------------------------------------------------------
-const body = [
-  sec("sec-primitives", "Primitives — color ramps", primInner),
-  sec("sec-brand", "Brand — palette slots", palInner),
-  sec("sec-semantic", "Semantic — roles (toggle affects these)", semInner),
-  sec(
-    "sec-typography",
-    "Typography — composites (resize the window to see the responsive scale)",
-    `<div class="stack">${typeSamples}</div>`,
-  ),
-  sec(
-    "sec-elevation",
-    "Elevation — shadows",
-    `<div class="row">${shadows.join("")}</div>`,
-  ),
-  sec("sec-sizing", "Sizing", `<div class="stack">${sizeBars.join("")}</div>`),
-  sec(
-    "sec-contrast",
-    "Contrast — WCAG 2.2 AA verdicts (same pairs as the validate gate)",
-    contrastInner,
-  ),
-].join("\n");
+const contrastInner = ctSummary + ctGroupsHtml;
+
+// --- views ------------------------------------------------------------------
+const viewPalette = `<div class="view active" id="view-palette">
+  ${sec("sec-primitives", "Primitives — color ramps", primInner)}
+  ${sec("sec-brand", "Brand — palette slots", palInner)}
+</div>`;
+
+const viewSemantic = `<div class="view" id="view-semantic">
+  ${sec("sec-semantic", "Semantic — roles (toggle affects these)", semInner)}
+</div>`;
+
+const viewContrast = `<div class="view" id="view-contrast">
+  ${sec("sec-contrast", "Contrast — WCAG 2.2 AA verdicts (same pairs as validate gate)", contrastInner)}
+</div>`;
+
+const viewScales = `<div class="view" id="view-scales">
+  ${sec("sec-typography", `Typography · ${typeNames.length} — resize to see responsive scale`, `<div class="stack">${typeSamples}</div>`)}
+  ${sec("sec-elevation", `Elevation · ${shadowVars.length} — shadows`, `<div class="row">${shadows.join("")}</div>`)}
+  ${sec("sec-sizing", "Sizing", `<div class="stack">${sizeBars.join("")}</div>`)}
+</div>`;
 
 // --- html -------------------------------------------------------------------
-const navHtml = nav
-  .map(
-    ({ id, label, subs }) =>
-      `<li><a href="#${id}">${label}</a>${
-        subs && subs.length
-          ? `<ul>${subs.map((s) => `<li><a href="#${s.id}">${s.label}</a></li>`).join("")}</ul>`
-          : ""
-      }</li>`,
-  )
-  .join("");
-
 const html = `<!doctype html>
 <html lang="en" data-theme="light">
 <head>
@@ -364,24 +334,26 @@ ${css}
   .toggle { border:1px solid var(--stroke-default); background: var(--surface-card); color: var(--text-default);
     padding:8px 16px; border-radius:8px; cursor:pointer; font-size:14px; }
 
-  .layout { display: grid; grid-template-columns: 240px 1fr; max-width: 1400px; margin: 0 auto; }
-  nav.index { position: sticky; top: 72px; align-self: start; padding: 24px 16px 24px 32px;
+  .layout { display: grid; grid-template-columns: 200px 1fr; max-width: 1400px; margin: 0 auto; }
+  nav.index { position: sticky; top: 72px; align-self: start; padding: 24px 16px;
     max-height: calc(100vh - 72px); overflow-y: auto; border-right:1px solid var(--stroke-divider); }
   nav.index ul { list-style: none; margin: 0; padding: 0; }
-  nav.index > ul > li { margin-bottom: 12px; }
-  nav.index > ul > li > a { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: .08em;
-    color: var(--text-default); text-decoration: none; display:block; padding:4px 0; }
-  nav.index ul ul { margin: 4px 0 8px 0; padding-left: 8px; border-left: 1px solid var(--stroke-divider); }
-  nav.index ul ul li { margin: 0; }
-  nav.index ul ul a { font-size: 11px; color: var(--text-subtle); text-decoration: none;
-    display: block; padding: 3px 8px; text-transform: none; letter-spacing: 0; font-weight: 400; }
-  nav.index ul ul a:hover { color: var(--text-default); }
+  nav.index li { margin-bottom: 2px; }
+  .nav-btn { background: none; border: none; border-left: 3px solid transparent;
+    cursor: pointer; font-size: 12px; font-weight: 600; text-transform: uppercase;
+    letter-spacing: .08em; color: var(--text-subtle); text-align: left; width: 100%;
+    padding: 8px 0 8px 12px; display: block; font-family: inherit; transition: color .15s; }
+  .nav-btn.nav-active { color: var(--text-default); border-left-color: var(--text-primary); }
+  .nav-btn:hover { color: var(--text-default); }
+
+  .view { display: none; }
+  .view.active { display: block; }
 
   main { padding:32px 40px; min-width: 0; }
-  section { margin-bottom:56px; scroll-margin-top: 80px; }
+  section { margin-bottom:56px; }
   h2 { font-size:13px; text-transform:uppercase; letter-spacing:.08em; color: var(--text-subtle);
     margin:0 0 20px; font-weight:600; border-bottom:1px solid var(--stroke-divider); padding-bottom:8px; }
-  .subsec { margin-bottom:28px; scroll-margin-top: 80px; }
+  .subsec { margin-bottom:28px; }
   .subsec h3 { font-size:12px; text-transform:uppercase; letter-spacing:.05em; color: var(--text-default);
     margin:0 0 12px; font-weight:600; opacity:.75; }
   .subsec h3 .count { font-weight: 400; opacity: .6; margin-left: 4px; font-size: 11px; }
@@ -400,14 +372,28 @@ ${css}
     border-bottom:1px solid var(--stroke-divider); padding-bottom:12px; }
   .type-row .val { font-size:11px; white-space:nowrap; color: var(--text-subtle); }
 
-  /* contrast section */
+  /* contrast ---------------------------------------------------------------- */
   .ct-summary { display:flex; align-items:center; gap:10px; margin-bottom:24px; flex-wrap:wrap; }
   .ct-s { font-size:12px; font-weight:600; padding:4px 12px; border-radius:12px; border:1.5px solid; }
-  .ct-s-ok      { border-color: var(--text-success);  color: var(--text-success); }
+  .ct-s-ok         { border-color: var(--text-success); color: var(--text-success); }
   .ct-s-borderline { border-color: var(--text-warning); color: var(--text-warning); }
-  .ct-s-exempt  { border-color: var(--stroke-default); color: var(--text-subtle); }
-  .ct-s-fail    { border-color: var(--text-error);   color: var(--text-error); }
-  .ct-s-meta    { font-size:11px; color: var(--text-subtle); }
+  .ct-s-exempt     { border-color: var(--stroke-default); color: var(--text-subtle); }
+  .ct-s-fail       { border-color: var(--text-error); color: var(--text-error); }
+  .ct-meta   { font-size:11px; color: var(--text-subtle); }
+  .ct-toggle { background: none; border: 1px solid var(--stroke-default); color: var(--text-subtle);
+    padding: 4px 10px; border-radius: 8px; cursor: pointer; font-size: 11px; font-family: inherit; }
+  .ct-toggle:hover { color: var(--text-default); border-color: var(--stroke-hover); }
+
+  /* issues-only mode: hide ok+exempt badges, show hidden note */
+  #view-contrast:not(.show-all) .ct-s-ok,
+  #view-contrast:not(.show-all) .ct-s-exempt { display: none; }
+  #view-contrast:not(.show-all) #ct-note { display: inline; }
+  #view-contrast.show-all #ct-note { display: none; }
+
+  /* filter tokens and groups that have no issues */
+  #view-contrast:not(.show-all) .subsec[data-issues="false"] { display: none; }
+  #view-contrast:not(.show-all) .ct-token[data-issues="false"] { display: none; }
+
   .ct-group { display:flex; flex-wrap:wrap; gap:16px 24px; }
   .ct-token { min-width:340px; flex:0 1 340px; margin-bottom:4px; }
   .ct-token-name { font-size:12px; font-weight:600; margin-bottom:4px; color:var(--text-default); }
@@ -425,22 +411,57 @@ ${css}
   @media (max-width: 900px) {
     .layout { grid-template-columns: 1fr; }
     nav.index { position: static; max-height: none; border-right: none;
-      border-bottom: 1px solid var(--stroke-divider); padding: 16px 24px; }
+      border-bottom: 1px solid var(--stroke-divider); padding: 12px 24px; }
+    nav.index ul { display: flex; gap: 4px; }
+    .nav-btn { border-left: none; border-bottom: 3px solid transparent;
+      padding: 8px 10px; width: auto; }
+    .nav-btn.nav-active { border-bottom-color: var(--text-primary); }
   }
 </style>
 </head>
 <body>
 <header><h1>nsp-tokens</h1><button class="toggle" id="t">Dark</button></header>
 <div class="layout">
-<nav class="index"><ul>${navHtml}</ul></nav>
+<nav class="index">
+  <ul>
+    <li><button class="nav-btn nav-active" data-view="palette"  onclick="switchView('palette')">Palette</button></li>
+    <li><button class="nav-btn"            data-view="semantic" onclick="switchView('semantic')">Semantic</button></li>
+    <li><button class="nav-btn"            data-view="contrast" onclick="switchView('contrast')">Contrast</button></li>
+    <li><button class="nav-btn"            data-view="scales"   onclick="switchView('scales')">Type &amp; Scales</button></li>
+  </ul>
+</nav>
 <main>
-${body}
+${viewPalette}
+${viewSemantic}
+${viewContrast}
+${viewScales}
 </main>
 </div>
 <script>
-  const r=document.documentElement,b=document.getElementById("t");
-  b.addEventListener("click",()=>{const d=r.getAttribute("data-theme")==="dark";
-    r.setAttribute("data-theme",d?"light":"dark");b.textContent=d?"Dark":"Light";});
+  function switchView(name) {
+    document.querySelectorAll('.view').forEach(function(v) { v.classList.remove('active'); });
+    document.querySelectorAll('.nav-btn').forEach(function(b) { b.classList.remove('nav-active'); });
+    document.getElementById('view-' + name).classList.add('active');
+    document.querySelector('.nav-btn[data-view="' + name + '"]').classList.add('nav-active');
+    window.scrollTo(0, 0);
+  }
+
+  function toggleContrast() {
+    var v = document.getElementById('view-contrast');
+    var btn = document.getElementById('ct-toggle');
+    if (v.classList.toggle('show-all')) {
+      btn.textContent = 'issues only';
+    } else {
+      btn.textContent = 'show all ${results.length}';
+    }
+  }
+
+  var r = document.documentElement, b = document.getElementById('t');
+  b.addEventListener('click', function() {
+    var d = r.getAttribute('data-theme') === 'dark';
+    r.setAttribute('data-theme', d ? 'light' : 'dark');
+    b.textContent = d ? 'Dark' : 'Light';
+  });
 </script>
 </body>
 </html>
