@@ -122,51 +122,77 @@ export const CONTRAST_EXEMPT = {
   "text.primary-xlight":
     "brand-tinted decorative variant — arbitrary background, contrast is consumer's responsibility",
 
-  // Usage constraints — not WCAG exemptions but usage restrictions.
+  // --- Floating surface constraints -------------------------------------------
   //
   // surface.floating (dropdowns, tooltips, popovers, context menus) is a
-  // POSITIONING container. Its luminance sits in a physical dead zone:
-  // neutral.700 L≈0.127 makes 4.5:1 impossible for any chromatic color
-  // (saturated status hues peak at L≈0.10–0.16, matching the surface).
+  // POSITIONING container. Content — including text, icons, and inputs —
+  // lives on an inner surface.card or surface.raised, not directly on floating.
   //
-  // Rule: text on floating surfaces uses an INNER surface.card container.
-  // Floating sets position; card sets the reading background. Components that
-  // place text directly on surface.floating must use text.default only.
+  // Two distinct reasons apply below. They are labeled explicitly:
+  //   PHYSICAL   — mathematically impossible regardless of token choice.
+  //                Invalicabile. Changing values cannot fix this.
+  //   USAGE      — design decision, not physical impossibility. Revisable if
+  //                the intended use of the container type changes.
+  //   REAL GAP   — real occurrence not covered by inner-container model; noted
+  //                for deliberate follow-up, not silently archived.
 
-  // Muted/secondary text — reduced contrast is the intent; not for elevated surfaces.
-  "text.subtle × surface.floating":
-    "usage constraint — secondary text not for floating; use text.default on floating containers",
-  "text.placeholder × surface.floating":
-    "usage constraint — placeholder text not for floating; use text.default on floating containers",
-
-  // Brand-chromatic text — decorative/identity role; not placed in floating contexts.
-  "text.title × surface.floating":
-    "usage constraint — brand heading not placed on floating surfaces; floating uses inner surface.card for rich content",
-  "text.primary × surface.floating":
-    "usage constraint — brand primary text not placed on floating surfaces; floating uses inner surface.card for rich content",
-  "text.primary-hover × surface.floating":
-    "usage constraint — brand hover state not placed on floating surfaces; floating uses inner surface.card for rich content",
-
-  // Status text — chromatic status hues have L≈0.10–0.16, matching floating L=0.127;
-  // no status stop achieves 4.5:1 here (physics, not calibration). Status text
-  // inside floating containers (validation tooltips, status popovers) sits on an
-  // inner surface.card, not directly on surface.floating.
+  // PHYSICAL — chromatic status hues (red, green, orange) have WCAG luminance
+  // L≈0.10–0.16, which matches floating dark L=0.127 exactly. No stop of any
+  // status ramp can achieve 4.5:1: dark-text direction requires negative
+  // luminance (impossible); light-text direction requires L≥0.747, which
+  // destroys chromatic identity. Proven mathematically; not a calibration issue.
+  // Status text inside floating (validation tooltips, status popovers) must use
+  // an inner surface.card container. Invalicabile.
   "text.error × surface.floating":
-    "usage constraint — status text on floating uses inner surface.card; floating is positioning only",
+    "PHYSICAL — red hues have L≈0.10–0.16 = floating L=0.127; 4.5:1 requires negative luminance (impossible). Status text uses inner surface.card.",
   "text.success × surface.floating":
-    "usage constraint — status text on floating uses inner surface.card; floating is positioning only",
+    "PHYSICAL — green hues have L≈0.10–0.16 = floating L=0.127; 4.5:1 requires negative luminance (impossible). Status text uses inner surface.card.",
   "text.warning × surface.floating":
-    "usage constraint — status text on floating uses inner surface.card; floating is positioning only",
+    "PHYSICAL — orange hues have L≈0.10–0.16 = floating L=0.127; 4.5:1 requires negative luminance (impossible). Status text uses inner surface.card.",
 
-  // Brand icons and strokes — same positioning constraint as brand text.
+  // USAGE — secondary/muted text has intentionally reduced contrast. These
+  // roles are valid on page and card (where they pass), but are not placed on
+  // floating surfaces. Floating item copy uses text.default, not text.subtle.
+  // Revisable if the design evolves to use reduced-contrast text in floating.
+  "text.subtle × surface.floating":
+    "USAGE (revisable) — reduced-contrast secondary role; not placed on floating surfaces. Use text.default for floating item copy.",
+  "text.placeholder × surface.floating":
+    "USAGE (revisable) — placeholder text not placed on floating; inputs inside floating use inner surface (raised/card) with their own placeholder treatment.",
+
+  // USAGE — brand-chromatic heading and primary text do not occur in floating
+  // containers (dropdowns, tooltips, popovers). No such pairing exists in the
+  // intended use of these container types. Revisable if floating is extended to
+  // host richer content (e.g., a feature-rich popover with a brand headline).
+  "text.title × surface.floating":
+    "USAGE (revisable) — brand heading does not occur in floating containers (dropdown/tooltip/popover). Revisit if floating hosts rich branded content.",
+  "text.primary × surface.floating":
+    "USAGE (revisable) — brand primary text does not occur in floating containers. Revisit if floating hosts interactive brand-colored copy.",
+  "text.primary-hover × surface.floating":
+    "USAGE (revisable) — brand hover state does not occur in floating containers. Revisit if floating hosts interactive brand states.",
+
+  // REAL GAP — icon.primary in dropdown item appears directly on surface.floating
+  // (no per-item inner card). Fails 3.0 by 0.013 ratio points (2.99 vs 3.0).
+  // Gap is imperceptible visually but fails the gate. Options: nudge brand.200
+  // dark from oklch(0.80) to oklch(0.81) — imperceptible delta — or constrain
+  // usage to icon.dark for floating item icons. Archived here pending decision.
   "icon.primary × surface.floating":
-    "usage constraint — brand icon on floating uses inner surface.card container",
+    "REAL GAP — brand icon in dropdown item sits directly on floating (no per-item card); fails 3.0 by 0.013. Fix: nudge brand.200 dark or constrain to icon.dark in dropdown items.",
+
+  // USAGE — decorative brand-tint icon; same reasoning as text.primary-light
+  // (already globally exempt). No fixed floating pairing; contrast is the
+  // consumer's responsibility when placing on arbitrary surfaces.
   "icon.primary-light × surface.floating":
-    "brand-tinted decorative icon variant on floating — arbitrary surface context, contrast is consumer's responsibility",
+    "USAGE (revisable) — decorative brand-tint icon; no fixed floating pairing. Contrast is consumer's responsibility.",
+
+  // USAGE — stroke.primary/hover pass on surface.raised (3.17) and surface.card
+  // (4.89). In a command palette, the input background must be surface.raised or
+  // surface.card, not surface.floating directly. The focus ring is then on
+  // raised/card, where it passes. Inner-container model holds; not a real gap.
+  // Revisable if an input is placed directly on floating without inner surface.
   "stroke.primary × surface.floating":
-    "usage constraint — brand focus stroke on floating uses inner surface.card container",
+    "USAGE (revisable) — focus stroke on inner surface: raised 3.17 ✓, card 4.89 ✓. Inputs inside floating must use surface.raised/card as background.",
   "stroke.hover × surface.floating":
-    "usage constraint — brand hover stroke on floating uses inner surface.card container",
+    "USAGE (revisable) — hover border on inner surface: raised 3.17 ✓, card 4.89 ✓. Inputs inside floating must use surface.raised/card as background.",
 };
 
 // --- pair derivation --------------------------------------------------------
