@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-Handoff for Claude Code. Read before touching anything. For the reasoning and best practice behind these rules see `docs/DESIGN-SYSTEM-GUIDE.md`.
+Handoff for Claude Code. Read before touching anything. For the reasoning and best practice behind these rules see `docs/DESIGN-SYSTEM-GUIDE.md`. For planned work not yet in the system see `ROADMAP.md`.
 
 ## What this is
 
