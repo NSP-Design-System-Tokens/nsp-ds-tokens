@@ -8,6 +8,10 @@ import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import { resolve } from "node:path";
 import { ROOT, loadMerged } from "./lib/tokens.mjs";
 import { checkContrast, CONTRAST_EXEMPT } from "./lib/contrast.mjs";
+import { paletteSlotOrigins } from "./lib/origin.mjs";
+
+const merged = loadMerged();
+const slotOrigins = paletteSlotOrigins(merged);
 
 const css = readFileSync(resolve(ROOT, "build/css/tokens.css"), "utf8");
 const rootBlock = css.match(/:root\s*\{([\s\S]*?)\n\}/)[1];
@@ -25,7 +29,7 @@ const slug = (s) =>
 
 function splitFamily(name, prefix) {
   const rest = name.slice(prefix.length).split("-");
-  let i = rest.findIndex((s) => /^\d/.test(s));
+  let i = rest.findIndex((s) => /^\d|^a\d/.test(s));
   if (i === -1) i = rest.length;
   return {
     family: rest.slice(0, i).join("-") || "base",
@@ -64,14 +68,29 @@ const sec = (id, title, inner) =>
   `<section id="${id}"><h2>${title}</h2>${inner}</section>`;
 
 // --- primitives -------------------------------------------------------------
+// Group by family, then merge light/dark pairs into one subsec per base color.
 const primFamilies = groupBy(
   pick(/^color-/),
   (v) => splitFamily(v.name, "color-").family,
 ).sort(([a], [b]) => a.localeCompare(b));
 
-const primSubs = primFamilies.map(([family, list]) => {
-  const id = `sub-color-${slug(family)}`;
-  const sorted = list
+const colorGroups = new Map();
+for (const [family, list] of primFamilies) {
+  const isLight = family.endsWith("-light");
+  const isDark = family.endsWith("-dark");
+  const base = isLight
+    ? family.slice(0, -6)
+    : isDark
+      ? family.slice(0, -5)
+      : family;
+  const mode = isLight ? "light" : isDark ? "dark" : "flat";
+  if (!colorGroups.has(base))
+    colorGroups.set(base, { light: [], dark: [], flat: [] });
+  colorGroups.get(base)[mode].push(...list);
+}
+
+const sortList = (list) =>
+  list
     .slice()
     .sort((a, b) =>
       stopSort(
@@ -79,13 +98,31 @@ const primSubs = primFamilies.map(([family, list]) => {
         splitFamily(b.name, "color-").stop,
       ),
     );
-  return {
-    id,
-    family,
-    count: sorted.length,
-    html: subsec(id, family, sorted.length, sorted.map(chip)),
-  };
-});
+
+const modeRow = (label, list) =>
+  `<div class="mode-label">${label}</div><div class="row">${sortList(list).map(chip).join("")}</div>`;
+
+const primSubs = [...colorGroups.entries()]
+  .sort(([a], [b]) => a.localeCompare(b))
+  .map(([base, modes]) => {
+    const id = `sub-color-${slug(base)}`;
+    const total = modes.light.length + modes.dark.length + modes.flat.length;
+    const inner =
+      modes.flat.length > 0
+        ? `<div class="row">${sortList(modes.flat).map(chip).join("")}</div>`
+        : [
+            modes.light.length ? modeRow("Light", modes.light) : "",
+            modes.dark.length ? modeRow("Dark", modes.dark) : "",
+          ].join("");
+    return {
+      id,
+      base,
+      html: `<div class="subsec" id="${id}">
+  <h3>${base} <span class="count">· ${total}</span></h3>
+  ${inner}
+</div>`,
+    };
+  });
 const primInner = primSubs.map((s) => s.html).join("");
 
 // --- brand palette ----------------------------------------------------------
@@ -104,11 +141,28 @@ const palSubs = palFamilies.map(([family, list]) => {
   return {
     id,
     family,
+    origin: slotOrigins[family] ?? "base",
     count: sorted.length,
     html: subsec(id, family, sorted.length, sorted.map(chip)),
   };
 });
-const palInner = palSubs.map((s) => s.html).join("");
+
+const palGroup = (subs, label, cls) =>
+  subs.length
+    ? `<div class="origin-group"><div class="origin-label ${cls}">${label}</div>${subs.map((s) => s.html).join("")}</div>`
+    : "";
+
+const palInner =
+  palGroup(
+    palSubs.filter((s) => s.origin === "brand-poli"),
+    "Brand Poli — identity slots",
+    "origin-brand-poli",
+  ) +
+  palGroup(
+    palSubs.filter((s) => s.origin === "base"),
+    "Base — shared across brands",
+    "origin-base",
+  );
 
 // --- semantic ---------------------------------------------------------------
 const SEMANTIC_ROLES = [
@@ -176,7 +230,6 @@ const sizeBars = sizeVars.map(
 );
 
 // --- contrast ---------------------------------------------------------------
-const merged = loadMerged();
 const { results, failures } = checkContrast(merged);
 
 const ctComfortable = results.filter(
@@ -412,6 +465,16 @@ ${css}
     margin:0 0 12px; font-weight:600; opacity:.75; }
   .subsec h3 .count { font-weight: 400; opacity: .6; margin-left: 4px; font-size: 11px; }
   .row { display:flex; flex-wrap:wrap; gap:14px; }
+  .mode-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.08em;
+    color:var(--text-subtle); width:100%; margin:8px 0 4px; opacity:.7; }
+  .mode-label:first-child { margin-top:0; }
+  .origin-group { margin-bottom:32px; }
+  .origin-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.08em;
+    padding:4px 10px; border-radius:4px; display:inline-block; margin-bottom:16px; }
+  .origin-brand-poli { background:color-mix(in srgb,var(--surface-primary) 20%,transparent);
+    color:var(--text-primary); border:1px solid color-mix(in srgb,var(--surface-primary) 40%,transparent); }
+  .origin-base { background:color-mix(in srgb,var(--surface-card) 60%,transparent);
+    color:var(--text-subtle); border:1px solid var(--stroke-divider); }
   .chip { width:132px; }
   .sw { width:132px; height:56px; border-radius:6px; border:1px solid var(--stroke-divider); }
   .shbox { width:132px; height:56px; border-radius:6px; background: var(--surface-card); }
