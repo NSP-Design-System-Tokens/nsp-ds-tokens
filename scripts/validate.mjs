@@ -12,6 +12,12 @@ import {
   RESP_MODE_GROUPS,
 } from "./lib/tokens.mjs";
 import { checkContrast } from "./lib/contrast.mjs";
+import {
+  refsIn,
+  deriveSemanticOrigins,
+  paletteSlotOrigins,
+  VALID_ORIGINS,
+} from "./lib/origin.mjs";
 
 const merged = loadMerged();
 const errors = [];
@@ -34,19 +40,6 @@ const NAME = /^[a-z0-9]+(-[a-z0-9]+)*$/;
 // 1. collect every leaf path
 const paths = new Set();
 eachLeaf(merged, (n, path) => paths.add(path.join(".")));
-
-const refsIn = (val) => {
-  const acc = [];
-  const scan = (v) => {
-    if (typeof v === "string") {
-      for (const m of v.matchAll(/\{([^}]+)\}/g)) acc.push(m[1]);
-    } else if (v && typeof v === "object") {
-      Object.values(v).forEach(scan);
-    }
-  };
-  scan(val);
-  return acc;
-};
 
 // 2. per-leaf checks: type, naming, reference integrity (value + modes)
 eachLeaf(merged, (n, path) => {
@@ -121,12 +114,60 @@ for (const g of SEMANTIC_GROUPS) {
   });
 }
 
+// 4. origin completeness: every leaf under color.* (primitives) and palette.*
+// (brand slots) must inherit an $extensions.nsp.origin from an ancestor group.
+// Enforces the base vs brand-poli anchor marker (see ROADMAP.md § Fase D3).
+function checkOrigin(subtree, rootName) {
+  if (!subtree) return;
+  const walk = (node, path, inherited) => {
+    if (!node || typeof node !== "object") return;
+    const origin = node.$extensions?.nsp?.origin ?? inherited;
+    if (isLeaf(node)) {
+      if (!origin) {
+        errors.push(
+          `origin: ${[rootName, ...path].join(".")} missing $extensions.nsp.origin`,
+        );
+      } else if (!VALID_ORIGINS.has(origin)) {
+        errors.push(
+          `origin: ${[rootName, ...path].join(".")} unknown origin "${origin}" (allowed: ${[...VALID_ORIGINS].join(", ")})`,
+        );
+      }
+      return;
+    }
+    for (const [k, v] of Object.entries(node)) {
+      if (k.startsWith("$")) continue;
+      walk(v, [...path, k], origin);
+    }
+  };
+  walk(subtree, [], null);
+}
+checkOrigin(merged.color, "color");
+checkOrigin(merged.palette, "palette");
+
+// 5. semantic origin integrity: derive origin for every semantic token from the
+// palette marker graph. Fail if any semantic token refs a palette slot whose
+// origin is not declared (unanchored graph = extraction script would miss it).
+const { results: semanticOrigins, errors: semanticUnanchored } =
+  deriveSemanticOrigins(merged);
+for (const { path, unanchored } of semanticUnanchored) {
+  errors.push(
+    `origin: semantic ${path} refs palette slot(s) without declared origin: ${unanchored.join(", ")}`,
+  );
+}
+
 if (errors.length) {
   console.error(`validate: ${errors.length} problem(s)`);
   for (const e of errors) console.error("  - " + e);
   process.exit(1);
 }
 console.log(`validate: ok (${paths.size} tokens)`);
+
+// origin audit: distribution of derived semantic origins (informational)
+const originCounts = { base: 0, "brand-poli": 0 };
+for (const { origin } of semanticOrigins) originCounts[origin]++;
+console.log(
+  `origin:  semantic ${semanticOrigins.length} tokens — base: ${originCounts.base}, brand-poli: ${originCounts["brand-poli"]}`,
+);
 
 // 4. warning: unused primitives (dead ramps / stops)
 // Collect every path referenced anywhere in the tree, then flag primitives

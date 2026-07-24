@@ -2,13 +2,16 @@
   "color": {
     "white": {
       "$type": "color",
-      "$value": "#ffffff"
+      "$value": "#ffffff",
+      "$extensions": { "nsp": { "origin": "base" } }
     },
     "black": {
       "$type": "color",
-      "$value": "#000000"
+      "$value": "#000000",
+      "$extensions": { "nsp": { "origin": "base" } }
     },
     "bronze": {
+      "$extensions": { "nsp": { "origin": "brand-poli" } },
       "light": {
         "1": { "$type": "color", "$value": "#fdfcfc" },
         "2": { "$type": "color", "$value": "#fdf7f5" },
@@ -39,6 +42,7 @@
       }
     },
     "green": {
+      "$extensions": { "nsp": { "origin": "base" } },
       "light": {
         "1": { "$type": "color", "$value": "#fbfefc" },
         "2": { "$type": "color", "$value": "#f4fbf6" },
@@ -69,6 +73,7 @@
       }
     },
     "black-alpha": {
+      "$extensions": { "nsp": { "origin": "base" } },
       "a1": { "$type": "color", "$value": "#0000000d" },
       "a2": { "$type": "color", "$value": "#0000001a" },
       "a3": { "$type": "color", "$value": "#00000026" },
@@ -83,6 +88,7 @@
       "a12": { "$type": "color", "$value": "#000000f2" }
     },
     "orange": {
+      "$extensions": { "nsp": { "origin": "base" } },
       "light": {
         "1": { "$type": "color", "$value": "#fefcfb" },
         "2": { "$type": "color", "$value": "#fff7ed" },
@@ -113,6 +119,7 @@
       }
     },
     "red": {
+      "$extensions": { "nsp": { "origin": "base" } },
       "light": {
         "1": { "$type": "color", "$value": "#fffcfc" },
         "2": { "$type": "color", "$value": "#fff7f7" },
@@ -143,6 +150,7 @@
       }
     },
     "mauve": {
+      "$extensions": { "nsp": { "origin": "base" } },
       "light": {
         "1": { "$type": "color", "$value": "#fdfcfd" },
         "2": { "$type": "color", "$value": "#faf9fb" },
@@ -173,6 +181,7 @@
       }
     },
     "pink": {
+      "$extensions": { "nsp": { "origin": "brand-poli" } },
       "light": {
         "1": { "$type": "color", "$value": "#fff7f9" },
         "2": { "$type": "color", "$value": "#feeef4" },
@@ -203,6 +212,7 @@
       }
     },
     "magenta": {
+      "$extensions": { "nsp": { "origin": "brand-poli" } },
       "light": {
         "1": { "$type": "color", "$value": "#fffcfd" },
         "2": { "$type": "color", "$value": "#fff5f8" },

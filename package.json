@@ -1,9 +1,19 @@
 {
   "name": "nsp-tokens",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.2.0",
   "type": "module",
   "description": "Code-first design tokens: modular DTCG source, one build, Figma + web outputs.",
+  "files": [
+    "tokens",
+    "scripts",
+    "docs",
+    "dist",
+    "build/css",
+    "build/tailwind",
+    "CLAUDE.md",
+    "ROADMAP.md",
+    "CHANGELOG.md"
+  ],
   "scripts": {
     "validate": "node scripts/validate.mjs",
     "contrast-report": "node scripts/contrast-report.mjs",

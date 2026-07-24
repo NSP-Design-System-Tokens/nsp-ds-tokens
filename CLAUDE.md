@@ -79,6 +79,20 @@ All ramps in `core/color.json` follow one of two origins. The rule is stated onc
 - Identity colors (the hue a brand owns) → custom Radix method. Preserves exact brand hex at step 9.
 - New brand: copy `brand/poli.json` → `brand/<name>.json`, generate its own custom scale, wire `palette.primary` to it. Neutral and state scales are shared across brands.
 
+## Origin marker (base vs brand-poli)
+
+Ogni gruppo di primitivi color e ogni slot `palette.*` porta un marcatore architetturale in `$extensions.nsp.origin`:
+
+- `"base"` — condiviso da tutti i progetti (neutri, stati, alpha, slot funzionali `neutral/error/success/warning`).
+- `"brand-poli"` — Poli-specifico (`magenta`, `bronze`, `pink`, slot identity `primary/secondary/tertiary/accent`).
+
+Regole:
+
+1. Quando aggiungi un nuovo gruppo primitivo o slot palette, **devi** aggiungere il marker esplicito. L'assenza non è consentita (evita ambiguità).
+2. Il marker è metadato architettonico, NON descrizione d'uso. `$description` resta libero per la descrizione d'uso reale.
+3. Il validator/build ignora `$extensions.nsp` (namespace custom). Non rompe nulla.
+4. Il marker è il criterio automatico dell'estrazione futura (Fase D3, vedi `ROADMAP.md`): script filtrerà `origin === "brand-poli"` per spostare i nodi in un repo di progetto separato.
+
 ## Color space
 
 Existing brand palettes stay in exact hex. New palettes may be authored in OKLCH;

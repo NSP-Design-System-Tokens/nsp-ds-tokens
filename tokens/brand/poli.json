@@ -1,6 +1,7 @@
 {
   "palette": {
     "primary": {
+      "$extensions": { "nsp": { "origin": "brand-poli" } },
       "50": {
         "$type": "color",
         "$value": "{color.magenta.light.2}"
@@ -47,6 +48,7 @@
       }
     },
     "secondary": {
+      "$extensions": { "nsp": { "origin": "brand-poli" } },
       "3": {
         "$type": "color",
         "$value": "{color.pink.light.3}"
@@ -89,6 +91,7 @@
       }
     },
     "tertiary": {
+      "$extensions": { "nsp": { "origin": "brand-poli" } },
       "3": {
         "$type": "color",
         "$value": "{color.mauve.light.3}"
@@ -131,6 +134,7 @@
       }
     },
     "accent": {
+      "$extensions": { "nsp": { "origin": "brand-poli" } },
       "2": {
         "$type": "color",
         "$value": "{color.bronze.light.2}"
@@ -173,6 +177,7 @@
       }
     },
     "neutral": {
+      "$extensions": { "nsp": { "origin": "base" } },
       "0": {
         "$type": "color",
         "$value": "{color.white}"
@@ -259,6 +264,7 @@
       }
     },
     "error": {
+      "$extensions": { "nsp": { "origin": "base" } },
       "200": {
         "$type": "color",
         "$value": "{color.red.dark.12}"
@@ -281,6 +287,7 @@
       }
     },
     "success": {
+      "$extensions": { "nsp": { "origin": "base" } },
       "200": {
         "$type": "color",
         "$value": "{color.green.dark.12}"
@@ -303,6 +310,7 @@
       }
     },
     "warning": {
+      "$extensions": { "nsp": { "origin": "base" } },
       "300": {
         "$type": "color",
         "$value": "{color.orange.dark.12}"
