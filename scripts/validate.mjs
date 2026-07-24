@@ -35,7 +35,7 @@ const TYPES = new Set([
   "duration",
   "cubicBezier",
 ]);
-const NAME = /^[a-z0-9]+(-[a-z0-9]+)*$/;
+const NAME = /^[a-z0-9]+(-[a-z0-9]+)*$|^\d+\.\d+$/;
 
 // 1. collect every leaf path
 const paths = new Set();

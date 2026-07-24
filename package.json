@@ -10,6 +10,7 @@
     "dist",
     "build/css",
     "build/tailwind",
+    "README.md",
     "CLAUDE.md",
     "ROADMAP.md",
     "CHANGELOG.md"

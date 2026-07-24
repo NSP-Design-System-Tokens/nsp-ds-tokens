@@ -32,7 +32,11 @@ function emitGroup(group, mode) {
       mode && n.$extensions?.["com.figma.modes"]?.[mode] !== undefined
         ? n.$extensions["com.figma.modes"][mode]
         : n.$value;
-    lines.push(`  --${name}: ${scalar(v)};`);
+    const cssValue =
+      n.$type === "cubicBezier" && Array.isArray(v)
+        ? `cubic-bezier(${v.join(", ")})`
+        : scalar(v);
+    lines.push(`  --${name}: ${cssValue};`);
   });
   return lines;
 }
@@ -47,6 +51,7 @@ function emitTypography() {
       fontWeight: "font-weight",
       fontSize: "font-size",
       lineHeight: "line-height",
+      letterSpacing: "letter-spacing",
     };
     for (const [key, css] of Object.entries(map)) {
       if (c[key] !== undefined)
@@ -83,6 +88,10 @@ const rootLines = [
   ...emitGroup("color"),
   ...emitGroup("size"),
   ...emitGroup("font"),
+  ...emitGroup("spacing"),
+  ...emitGroup("motion"),
+  ...emitGroup("z-index"),
+  ...emitGroup("border-width"),
   ...emitGroup("palette"),
   ...emitGroup("type-size", "base"),
   ...emitGroup("breakpoint"),
@@ -93,6 +102,11 @@ const rootLines = [
   ...emitGroup("icon", "light"),
   ...emitGroup("emphasis-brand", "light"),
   ...emitGroup("emphasis", "light"),
+  ...emitGroup("inset"),
+  ...emitGroup("stack"),
+  ...emitGroup("inline"),
+  ...emitGroup("section-gap"),
+  ...emitGroup("page-margin"),
   ...emitTypography(),
   ...emitShadow("light"),
 ];
@@ -155,6 +169,7 @@ for (const g of [
 ])
   collect(g, colors, false);
 collect("size", spacing, true);
+collect("spacing", spacing, true);
 collect("type-size", fontSize, true);
 
 mkdirSync(resolve(ROOT, "build/tailwind"), { recursive: true });

@@ -206,8 +206,8 @@ const typeNames = [
 const typeSamples = typeNames
   .map(
     (n) => `<div class="type-row">
-  <span style="font-family:var(--typography-${n}-font-family);font-weight:var(--typography-${n}-font-weight);font-size:var(--typography-${n}-font-size);line-height:var(--typography-${n}-line-height)">${n}</span>
-  <span class="val">size var(--typography-${n}-font-size)</span></div>`,
+  <span style="font-family:var(--typography-${n}-font-family);font-weight:var(--typography-${n}-font-weight);font-size:var(--typography-${n}-font-size);line-height:var(--typography-${n}-line-height);letter-spacing:var(--typography-${n}-letter-spacing)">${n}</span>
+  <span class="val">var(--typography-${n}-font-size) / var(--typography-${n}-line-height) · tracking var(--typography-${n}-letter-spacing)</span></div>`,
   )
   .join("");
 
@@ -218,6 +218,93 @@ const shadows = shadowVars.map(
   <div class="shbox" style="box-shadow:var(--${v.name})"></div>
   <div class="lbl">${v.name}</div></div>`,
 );
+
+// --- font size primitives ---------------------------------------------------
+const fontSizeVars = pick(/^font-size-/)
+  .slice()
+  .sort((a, b) => parseFloat(a.value) - parseFloat(b.value));
+const fontSizeBars = fontSizeVars.map(
+  (v) =>
+    `<div class="bar-row"><div class="bar-lbl">${v.name.replace("font-size-", "")}</div>
+  <div class="bar" style="width:var(--${v.name})"></div><div class="bar-val">${v.value}</div></div>`,
+);
+
+// --- letter spacing primitives ----------------------------------------------
+const letterSpacingVars = pick(/^font-letter-spacing-/);
+const letterSpacingRows = letterSpacingVars
+  .map(
+    (v) => `<div class="type-row">
+  <span style="letter-spacing:var(--${v.name});font-size:16px">The quick brown fox · ${v.name.replace("font-letter-spacing-", "")}</span>
+  <span class="val">${v.value}</span></div>`,
+  )
+  .join("");
+
+// --- spacing scale ----------------------------------------------------------
+const spacingVars = pick(/^spacing-/)
+  .slice()
+  .sort((a, b) => parseFloat(a.value) - parseFloat(b.value));
+const spacingBars = spacingVars.map(
+  (v) =>
+    `<div class="bar-row"><div class="bar-lbl">${v.name.replace("spacing-", "")}</div>
+  <div class="bar" style="width:min(var(--${v.name}),600px)"></div><div class="bar-val">${v.value}</div></div>`,
+);
+
+// --- semantic spacing roles -------------------------------------------------
+const spacingRoles = ["inset", "stack", "inline", "section-gap", "page-margin"];
+const semanticSpacingGroups = spacingRoles
+  .map((role) => {
+    const list = pick(new RegExp(`^${role}-`));
+    if (!list.length) return "";
+    const id = `sub-space-${slug(role)}`;
+    const roleChips = list.map(
+      (v) => `<div class="chip">
+  <div class="sw" style="background:var(--surface-primary);width:min(var(--${v.name}),96px);height:min(var(--${v.name}),96px)"></div>
+  <div class="lbl">${v.name.replace(role + "-", "")}</div><div class="val">${v.value}</div></div>`,
+    );
+    return subsec(id, role, list.length, roleChips);
+  })
+  .filter(Boolean)
+  .join("");
+
+// --- motion -----------------------------------------------------------------
+const durationVars = pick(/^motion-duration-/);
+const durationBars = durationVars.map(
+  (v) =>
+    `<div class="bar-row"><div class="bar-lbl">${v.name.replace("motion-duration-", "")}</div>
+  <div class="bar-val">${v.value}</div></div>`,
+);
+const easingVars = pick(/^motion-easing-/);
+const easingRows = easingVars
+  .map(
+    (
+      v,
+    ) => `<div class="bar-row"><div class="bar-lbl">${v.name.replace("motion-easing-", "")}</div>
+  <div class="bar-val">${v.value}</div></div>`,
+  )
+  .join("");
+
+// --- z-index ----------------------------------------------------------------
+const zIndexVars = pick(/^z-index-/)
+  .slice()
+  .sort((a, b) => parseInt(a.value) - parseInt(b.value));
+const zIndexRows = zIndexVars
+  .map(
+    (v) =>
+      `<div class="bar-row"><div class="bar-lbl">${v.name.replace("z-index-", "")}</div>
+  <div class="bar-val" style="font-weight:600">${v.value}</div></div>`,
+  )
+  .join("");
+
+// --- border width -----------------------------------------------------------
+const bwVars = pick(/^border-width-/);
+const bwRows = bwVars
+  .map(
+    (v) =>
+      `<div class="bar-row"><div class="bar-lbl">${v.name.replace("border-width-", "")}</div>
+  <div class="bw-bar" style="border-top-width:var(--${v.name})"></div>
+  <div class="bar-val">${v.value}</div></div>`,
+  )
+  .join("");
 
 // --- sizing -----------------------------------------------------------------
 const sizeVars = pick(/^size-/)
@@ -416,6 +503,14 @@ const viewContrast = `<div class="view" id="view-contrast">
 
 const viewScales = `<div class="view" id="view-scales">
   ${sec("sec-typography", `Typography · ${typeNames.length} — resize to see responsive scale`, `<div class="stack">${typeSamples}</div>`)}
+  ${sec("sec-font-size", `Font Size Scale · ${fontSizeVars.length}`, `<div class="stack">${fontSizeBars.join("")}</div>`)}
+  ${sec("sec-letter-spacing", "Letter Spacing", `<div class="stack">${letterSpacingRows}</div>`)}
+  ${sec("sec-spacing", `Spacing Scale · ${spacingVars.length}`, `<div class="stack">${spacingBars.join("")}</div>`)}
+  ${sec("sec-semantic-spacing", "Semantic Spacing Roles", semanticSpacingGroups)}
+  ${sec("sec-motion-dur", `Motion — Duration · ${durationVars.length}`, `<div class="stack">${durationBars.join("")}</div>`)}
+  ${sec("sec-motion-ease", `Motion — Easing · ${easingVars.length}`, `<div class="stack">${easingRows}</div>`)}
+  ${sec("sec-z-index", `Z-Index · ${zIndexVars.length}`, `<div class="stack">${zIndexRows}</div>`)}
+  ${sec("sec-border-width", "Border Width", `<div class="stack">${bwRows}</div>`)}
   ${sec("sec-elevation", `Elevation · ${shadowVars.length} — shadows`, `<div class="row">${shadows.join("")}</div>`)}
   ${sec("sec-sizing", "Sizing", `<div class="stack">${sizeBars.join("")}</div>`)}
 </div>`;
@@ -484,6 +579,7 @@ ${css}
   .bar-row { display:flex; align-items:center; gap:16px; }
   .bar-lbl { width:64px; font-size:12px; }
   .bar { height:14px; background: var(--surface-primary); border-radius:2px; min-width:1px; }
+  .bw-bar { width:120px; border-top-style:solid; border-top-color:var(--text-default); }
   .bar-val { font-size:11px; color: var(--text-subtle); }
   .type-row { display:flex; align-items:baseline; justify-content:space-between; gap:24px;
     border-bottom:1px solid var(--stroke-divider); padding-bottom:12px; }

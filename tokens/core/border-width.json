@@ -1,0 +1,7 @@
+{
+  "border-width": {
+    "hairline": { "$type": "dimension", "$value": "1px" },
+    "thin": { "$type": "dimension", "$value": "2px" },
+    "thick": { "$type": "dimension", "$value": "4px" }
+  }
+}

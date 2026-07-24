@@ -5,8 +5,9 @@
       "$value": {
         "fontFamily": "{font.family.sans}",
         "fontWeight": "{font.weight.light}",
-        "fontSize": "{type-size.display}",
-        "lineHeight": "{font.line-height.110}"
+        "fontSize": "{font.size.8xl}",
+        "lineHeight": "{font.line-height.100}",
+        "letterSpacing": "{font.letter-spacing.tight}"
       }
     },
     "h1": {
@@ -14,8 +15,9 @@
       "$value": {
         "fontFamily": "{font.family.sans}",
         "fontWeight": "{font.weight.semibold}",
-        "fontSize": "{type-size.h1}",
-        "lineHeight": "{font.line-height.120}"
+        "fontSize": "{font.size.6xl}",
+        "lineHeight": "{font.line-height.110}",
+        "letterSpacing": "{font.letter-spacing.tight}"
       }
     },
     "h2": {
@@ -23,8 +25,9 @@
       "$value": {
         "fontFamily": "{font.family.sans}",
         "fontWeight": "{font.weight.semibold}",
-        "fontSize": "{type-size.h2}",
-        "lineHeight": "{font.line-height.125}"
+        "fontSize": "{font.size.5xl}",
+        "lineHeight": "{font.line-height.120}",
+        "letterSpacing": "{font.letter-spacing.snug}"
       }
     },
     "h3": {
@@ -32,8 +35,9 @@
       "$value": {
         "fontFamily": "{font.family.sans}",
         "fontWeight": "{font.weight.semibold}",
-        "fontSize": "{type-size.h3}",
-        "lineHeight": "{font.line-height.130}"
+        "fontSize": "{font.size.4xl}",
+        "lineHeight": "{font.line-height.130}",
+        "letterSpacing": "{font.letter-spacing.snug}"
       }
     },
     "h4": {
@@ -41,8 +45,9 @@
       "$value": {
         "fontFamily": "{font.family.sans}",
         "fontWeight": "{font.weight.semibold}",
-        "fontSize": "{type-size.h4}",
-        "lineHeight": "{font.line-height.135}"
+        "fontSize": "{font.size.3xl}",
+        "lineHeight": "{font.line-height.135}",
+        "letterSpacing": "{font.letter-spacing.normal}"
       }
     },
     "h5": {
@@ -50,8 +55,9 @@
       "$value": {
         "fontFamily": "{font.family.sans}",
         "fontWeight": "{font.weight.medium}",
-        "fontSize": "{type-size.h5}",
-        "lineHeight": "{font.line-height.140}"
+        "fontSize": "{font.size.2xl}",
+        "lineHeight": "{font.line-height.140}",
+        "letterSpacing": "{font.letter-spacing.normal}"
       }
     },
     "h6": {
@@ -59,8 +65,9 @@
       "$value": {
         "fontFamily": "{font.family.sans}",
         "fontWeight": "{font.weight.medium}",
-        "fontSize": "{type-size.h6}",
-        "lineHeight": "{font.line-height.145}"
+        "fontSize": "{font.size.xl}",
+        "lineHeight": "{font.line-height.145}",
+        "letterSpacing": "{font.letter-spacing.normal}"
       }
     },
     "body-large": {
@@ -68,17 +75,9 @@
       "$value": {
         "fontFamily": "{font.family.sans}",
         "fontWeight": "{font.weight.regular}",
-        "fontSize": "{type-size.body-large}",
-        "lineHeight": "{font.line-height.150}"
-      }
-    },
-    "body-medium": {
-      "$type": "typography",
-      "$value": {
-        "fontFamily": "{font.family.sans}",
-        "fontWeight": "{font.weight.regular}",
-        "fontSize": "{type-size.body-medium}",
-        "lineHeight": "{font.line-height.155}"
+        "fontSize": "{font.size.lg}",
+        "lineHeight": "{font.line-height.150}",
+        "letterSpacing": "{font.letter-spacing.normal}"
       }
     },
     "body": {
@@ -86,8 +85,9 @@
       "$value": {
         "fontFamily": "{font.family.sans}",
         "fontWeight": "{font.weight.regular}",
-        "fontSize": "{type-size.body}",
-        "lineHeight": "{font.line-height.160}"
+        "fontSize": "{font.size.base}",
+        "lineHeight": "{font.line-height.160}",
+        "letterSpacing": "{font.letter-spacing.normal}"
       }
     },
     "body-small": {
@@ -95,17 +95,19 @@
       "$value": {
         "fontFamily": "{font.family.sans}",
         "fontWeight": "{font.weight.regular}",
-        "fontSize": "{type-size.body-small}",
-        "lineHeight": "{font.line-height.135}"
+        "fontSize": "{font.size.sm}",
+        "lineHeight": "{font.line-height.160}",
+        "letterSpacing": "{font.letter-spacing.wide}"
       }
     },
-    "body-xsmall": {
+    "caption": {
       "$type": "typography",
       "$value": {
         "fontFamily": "{font.family.sans}",
         "fontWeight": "{font.weight.regular}",
-        "fontSize": "{type-size.body-xsmall}",
-        "lineHeight": "{font.line-height.135}"
+        "fontSize": "{font.size.xs}",
+        "lineHeight": "{font.line-height.160}",
+        "letterSpacing": "{font.letter-spacing.wide}"
       }
     }
   }

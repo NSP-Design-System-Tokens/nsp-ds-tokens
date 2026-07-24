@@ -10,7 +10,15 @@ export const TOKENS_DIR = resolve(ROOT, "tokens");
 
 // top-level key -> Figma collection. Order is meaningful (numbered in Figma).
 export const TIERS = {
-  "1. Primitives": ["color", "size", "font"],
+  "1. Primitives": [
+    "color",
+    "size",
+    "font",
+    "spacing",
+    "motion",
+    "z-index",
+    "border-width",
+  ],
   "2. Brand": ["palette"],
   "3. Semantic": [
     "surface",
@@ -22,6 +30,11 @@ export const TIERS = {
     "emphasis",
     "typography",
     "shadow",
+    "inset",
+    "stack",
+    "inline",
+    "section-gap",
+    "page-margin",
   ],
   "4. Responsive": ["type-size", "breakpoint"],
 };

@@ -1,0 +1,35 @@
+{
+  "inset": {
+    "xs": { "$type": "dimension", "$value": "{spacing.2}" },
+    "sm": { "$type": "dimension", "$value": "{spacing.3}" },
+    "md": { "$type": "dimension", "$value": "{spacing.4}" },
+    "lg": { "$type": "dimension", "$value": "{spacing.6}" },
+    "xl": { "$type": "dimension", "$value": "{spacing.8}" }
+  },
+  "stack": {
+    "2xs": { "$type": "dimension", "$value": "{spacing.0.5}" },
+    "xs": { "$type": "dimension", "$value": "{spacing.1}" },
+    "sm": { "$type": "dimension", "$value": "{spacing.2}" },
+    "md": { "$type": "dimension", "$value": "{spacing.4}" },
+    "lg": { "$type": "dimension", "$value": "{spacing.6}" },
+    "xl": { "$type": "dimension", "$value": "{spacing.10}" },
+    "2xl": { "$type": "dimension", "$value": "{spacing.16}" }
+  },
+  "inline": {
+    "xs": { "$type": "dimension", "$value": "{spacing.1}" },
+    "sm": { "$type": "dimension", "$value": "{spacing.2}" },
+    "md": { "$type": "dimension", "$value": "{spacing.3}" },
+    "lg": { "$type": "dimension", "$value": "{spacing.4}" },
+    "xl": { "$type": "dimension", "$value": "{spacing.6}" }
+  },
+  "section-gap": {
+    "sm": { "$type": "dimension", "$value": "{spacing.16}" },
+    "md": { "$type": "dimension", "$value": "{spacing.24}" },
+    "lg": { "$type": "dimension", "$value": "{spacing.32}" }
+  },
+  "page-margin": {
+    "sm": { "$type": "dimension", "$value": "{spacing.4}" },
+    "md": { "$type": "dimension", "$value": "{spacing.8}" },
+    "lg": { "$type": "dimension", "$value": "{spacing.16}" }
+  }
+}

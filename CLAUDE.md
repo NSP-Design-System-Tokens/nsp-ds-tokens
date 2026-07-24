@@ -93,6 +93,78 @@ Regole:
 3. Il validator/build ignora `$extensions.nsp` (namespace custom). Non rompe nulla.
 4. Il marker è il criterio automatico dell'estrazione futura (Fase D3, vedi `ROADMAP.md`): script filtrerà `origin === "brand-poli"` per spostare i nodi in un repo di progetto separato.
 
+## Non-color primitive scales
+
+Added in v0.2.0. Rules for extending them.
+
+### Spacing (`core/spacing.json`)
+
+32-step scale. Base unit = 4px. Key = the **multiplier** (not the px value), so
+`spacing.4` = 4×4px = 16px, `spacing.0.5` = 0.5×4px = 2px. Multiplier keys are
+stable: if the base changes, the names remain correct. Half-steps (0.5, 1.5, 2.5,
+3.5) use decimal notation allowed by the validator regex. Steps follow the Tailwind
+4-base grid up to multiplier 12 (48px), then skip to 14, 16, 18, 20, 24, 28, 32,
+36, 40, 44, 48, 56, 64, 80, 96 (= 384px). To add a step: add the multiplier key,
+run validate. The CSS emitter picks up new keys via `emitGroup("spacing")`.
+
+Semantic roles in `semantic/spacing.json` use different top-level keys (`inset`,
+`stack`, `inline`, `section-gap`, `page-margin`) so they coexist in the merged tree
+without key collision. Add new roles as new top-level keys in that file and in TIERS
+`"3. Semantic"` in `scripts/lib/tokens.mjs`.
+
+### Typography size scale (`core/font.json → font.size.*`)
+
+14 raw size steps (2xs → 9xl) anchored to the Tailwind / Radix type-size convention:
+2xs=11px, xs=12px, sm=14px, base=16px, lg=18px, xl=20px, 2xl=24px, 3xl=30px,
+4xl=36px, 5xl=48px, 6xl=60px, 7xl=72px, 8xl=96px, 9xl=128px.
+
+These are primitive dimension tokens with no modes. They are the **only** font size
+source for typography composites — composites reference `{font.size.*}` directly.
+`type-size.*` (in `responsive/`) remains as a standalone responsive scale for
+components that need viewport-adaptive sizes, but the typography composites do NOT
+reference it. That separation is intentional: composites are static contracts,
+responsive sizes are a layout primitive.
+
+Canonical composite mapping (11 semantic slots):
+
+```
+display → font.size.8xl   h1 → font.size.6xl   h2 → font.size.5xl
+h3 → font.size.4xl        h4 → font.size.3xl   h5 → font.size.2xl
+h6 → font.size.xl         body-large → font.size.lg   body → font.size.base
+body-small → font.size.sm  caption → font.size.xs
+```
+
+Scale names (2xs, 3xl, etc.) are primitives, NOT composite names. A composite must
+have a semantic name (display, h1, body, caption). Never add a composite named after
+a scale step.
+
+### Letter-spacing (`core/font.json → font.letter-spacing.*`)
+
+6 steps in em (DTCG dimension): tight (−0.05em), snug (−0.025em), normal (0em),
+wide (+0.025em), wider (+0.05em), widest (+0.1em). Used as `letterSpacing` in all
+typography composites. Convention: tight for large display text (4xl+), normal for
+body, wide for small captions (2xs/xs).
+
+### Motion (`core/motion.json`)
+
+`motion.duration.*` → DTCG `duration` type (string with `ms`). CSS emitter passes
+through the string as-is.
+
+`motion.easing.*` → DTCG `cubicBezier` type (4-element number array). CSS emitter
+wraps the array in `cubic-bezier(…)` — see `emitGroup()` in `build-css.mjs`.
+
+Three easings (ease-out/ease-in/ease-in-out). Extend by adding named entries.
+The `cubicBezier` wrapper logic lives once in `emitGroup` — do not duplicate.
+
+### Z-index (`core/z-index.json`)
+
+7 named levels (base=0, raised=1, dropdown=10, sticky=20, overlay=30, modal=40,
+toast=50). DTCG `number` type. Gaps between levels leave room for insertion.
+
+### Border-width (`core/border-width.json`)
+
+3 named widths: hairline=1px, thin=2px, thick=4px. DTCG `dimension`.
+
 ## Color space
 
 Existing brand palettes stay in exact hex. New palettes may be authored in OKLCH;
