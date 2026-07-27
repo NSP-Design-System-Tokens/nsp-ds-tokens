@@ -1,5 +1,6 @@
 {
   "radius": {
+    "$extensions": { "com.figma.scoping": ["CORNER_RADIUS"] },
     "none": { "$type": "number", "$value": 0 },
     "sm": { "$type": "number", "$value": 4 },
     "md": { "$type": "number", "$value": 8 },

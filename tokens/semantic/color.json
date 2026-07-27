@@ -1,5 +1,6 @@
 {
   "surface": {
+    "$extensions": { "com.figma.scoping": ["FRAME_FILL", "SHAPE_FILL"] },
     "page": {
       "$type": "color",
       "$value": "{palette.neutral.0}",
@@ -282,6 +283,7 @@
     }
   },
   "text": {
+    "$extensions": { "com.figma.scoping": ["TEXT_FILL"] },
     "title": {
       "$type": "color",
       "$value": "{palette.primary.500}",
@@ -474,6 +476,7 @@
     }
   },
   "stroke": {
+    "$extensions": { "com.figma.scoping": ["STROKE_COLOR"] },
     "default": {
       "$type": "color",
       "$value": "{palette.neutral.500}",
@@ -598,6 +601,7 @@
     }
   },
   "icon": {
+    "$extensions": { "com.figma.scoping": ["SHAPE_FILL"] },
     "default": {
       "$type": "color",
       "$value": "{palette.neutral.500}",

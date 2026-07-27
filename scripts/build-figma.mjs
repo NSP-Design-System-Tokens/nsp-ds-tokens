@@ -39,8 +39,23 @@ const sanitizeAliases = (v) =>
       )
     : v;
 
+// Walk merged from root along path, returning the last declared com.figma.scoping array.
+// Group-level $extensions["com.figma.scoping"] is inherited by all descendant leaves.
+function resolveScopes(path) {
+  let node = merged;
+  let scopes = null;
+  for (const seg of path) {
+    const ext = node?.$extensions?.["com.figma.scoping"];
+    if (Array.isArray(ext)) scopes = ext;
+    node = node?.[seg];
+  }
+  const leafExt = node?.$extensions?.["com.figma.scoping"];
+  if (Array.isArray(leafExt)) scopes = leafExt;
+  return scopes;
+}
+
 // convert one leaf to its Figma shape (by $type)
-function figmaLeaf(node) {
+function figmaLeaf(node, scopes) {
   const conv = (val, type) => {
     if (typeof val === "string" && val.startsWith("{"))
       return sanitizeAliases(val);
@@ -53,6 +68,7 @@ function figmaLeaf(node) {
   const type = node.$type;
   const figType = FIGMA_TYPE_MAP[type] ?? type;
   const out = { $type: figType, $value: conv(node.$value, type) };
+  if (scopes !== null) out.scopes = scopes;
   const modes = node.$extensions?.["com.figma.modes"];
   if (modes) {
     const m = {};
@@ -62,11 +78,12 @@ function figmaLeaf(node) {
   return out;
 }
 
-function convertTree(tree) {
-  if (isLeaf(tree)) return figmaLeaf(tree);
+// path starts at group name so resolveScopes can walk from merged root
+function convertTree(tree, path = []) {
+  if (isLeaf(tree)) return figmaLeaf(tree, resolveScopes(path));
   const out = {};
   for (const [k, v] of Object.entries(tree))
-    if (!k.startsWith("$")) out[figKey(k)] = convertTree(v);
+    if (!k.startsWith("$")) out[figKey(k)] = convertTree(v, [...path, k]);
   return out;
 }
 
@@ -77,7 +94,7 @@ const collections = {};
 for (const [tier, groups] of Object.entries(TIERS)) {
   const bucket = {};
   for (const g of groups) {
-    if (g in merged && !EXCLUDE.has(g)) bucket[g] = convertTree(merged[g]);
+    if (g in merged && !EXCLUDE.has(g)) bucket[g] = convertTree(merged[g], [g]);
   }
   if (Object.keys(bucket).length) collections[tier] = bucket;
 }

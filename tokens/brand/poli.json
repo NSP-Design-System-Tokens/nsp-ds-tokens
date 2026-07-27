@@ -1,5 +1,6 @@
 {
   "palette": {
+    "$extensions": { "com.figma.scoping": [] },
     "primary": {
       "$extensions": { "nsp": { "origin": "brand-poli" } },
       "50": {

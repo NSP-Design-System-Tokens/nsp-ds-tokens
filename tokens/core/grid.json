@@ -1,5 +1,6 @@
 {
   "grid": {
+    "$extensions": { "com.figma.scoping": ["GAP", "WIDTH_HEIGHT"] },
     "columns": {
       "$type": "number",
       "$value": 12,

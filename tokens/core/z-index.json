@@ -1,5 +1,6 @@
 {
   "z-index": {
+    "$extensions": { "com.figma.scoping": [] },
     "base": { "$type": "number", "$value": 0 },
     "raised": { "$type": "number", "$value": 1 },
     "dropdown": { "$type": "number", "$value": 10 },

@@ -1,5 +1,6 @@
 {
   "section": {
+    "$extensions": { "com.figma.scoping": ["GAP", "WIDTH_HEIGHT"] },
     "padding": {
       "2xl": {
         "$type": "dimension",

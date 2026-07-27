@@ -1,5 +1,6 @@
 {
   "color": {
+    "$extensions": { "com.figma.scoping": [] },
     "white": {
       "$type": "color",
       "$value": "#ffffff",
