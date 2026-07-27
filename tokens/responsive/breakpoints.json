@@ -1,6 +1,0 @@
-{
-  "breakpoint": {
-    "md": { "$type": "dimension", "$value": "820px" },
-    "lg": { "$type": "dimension", "$value": "1250px" }
-  }
-}

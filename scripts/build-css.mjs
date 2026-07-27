@@ -19,7 +19,14 @@ const refToVar = (v) =>
     (_, p) => `var(--${p.replace(/\./g, "-")})`,
   );
 const scalar = (v) => (typeof v === "string" ? refToVar(v) : String(v));
-const bpWidth = (mode) => merged.breakpoint?.[mode]?.$value;
+// prefer breakpoint.threshold.* (CSS switch point) over breakpoint.* (Figma frame size)
+const bpWidth = (mode) => {
+  const thresh = merged.breakpoint?.threshold?.[mode]?.$value;
+  const direct = merged.breakpoint?.[mode]?.$value;
+  const v = thresh !== undefined ? thresh : direct;
+  if (v === undefined) return null;
+  return typeof v === "number" ? `${v}px` : v;
+};
 
 // emit `--group-path: value` for every leaf in a group, at an optional mode
 function emitGroup(group, mode) {
@@ -112,7 +119,7 @@ const rootLines = [
   ...emitGroup("border-width"),
   ...emitGroup("radius"),
   ...emitGroup("palette"),
-  ...emitGroup("type-size", "base"),
+  ...emitGroup("type-size", "mobile"),
   ...emitGroup("breakpoint"),
   ...emitGroup("grid", "mobile"),
   ...emitGroup("surface", "light"),
@@ -144,8 +151,8 @@ const darkLines = [
   ...emitShadow("dark"),
 ];
 
-// --- mobile-first media queries for responsive type sizes ---
-const respModes = listModes(merged["type-size"]).filter((m) => m !== "base");
+// --- mobile-first media queries for type sizes + layout (mobile base in :root) ---
+const respModes = listModes(merged["type-size"]).filter((m) => m !== "mobile");
 respModes.sort(
   (a, b) => (parseFloat(bpWidth(a)) || 0) - (parseFloat(bpWidth(b)) || 0),
 );
@@ -156,22 +163,13 @@ const queries = respModes
       `@media (min-width: ${bpWidth(m)}) {\n${block(":root", emitGroup("type-size", m)).replace(/^/gm, "  ")}\n}`,
   );
 
-// --- mobile-first media queries for layout tokens (grid + section) ---
-// prefer breakpoint.threshold.* (CSS switch point) over breakpoint.* (Figma frame)
-const layoutBpWidth = (mode) => {
-  const thresh = merged.breakpoint?.threshold?.[mode]?.$value;
-  const direct = merged.breakpoint?.[mode]?.$value;
-  const v = thresh !== undefined ? thresh : direct;
-  if (v === undefined) return null;
-  return typeof v === "number" ? `${v}px` : v;
-};
 const layoutGroups = ["grid", "section"];
 const layoutModes = ["tablet", "desktop"]; // ascending breakpoint order
 const layoutQueries = layoutModes
-  .filter((m) => layoutBpWidth(m))
+  .filter((m) => bpWidth(m))
   .map((m) => {
     const inner = layoutGroups.flatMap((g) => emitGroup(g, m));
-    return `@media (min-width: ${layoutBpWidth(m)}) {\n${block(":root", inner).replace(/^/gm, "  ")}\n}`;
+    return `@media (min-width: ${bpWidth(m)}) {\n${block(":root", inner).replace(/^/gm, "  ")}\n}`;
   });
 
 const css =

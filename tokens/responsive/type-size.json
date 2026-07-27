@@ -6,9 +6,9 @@
       "$value": "40px",
       "$extensions": {
         "com.figma.modes": {
-          "base": "40px",
-          "md": "72px",
-          "lg": "100px"
+          "mobile": "40px",
+          "tablet": "72px",
+          "desktop": "100px"
         }
       }
     },
@@ -17,9 +17,9 @@
       "$value": "32px",
       "$extensions": {
         "com.figma.modes": {
-          "base": "32px",
-          "md": "56px",
-          "lg": "80px"
+          "mobile": "32px",
+          "tablet": "56px",
+          "desktop": "80px"
         }
       }
     },
@@ -28,9 +28,9 @@
       "$value": "28px",
       "$extensions": {
         "com.figma.modes": {
-          "base": "28px",
-          "md": "48px",
-          "lg": "60px"
+          "mobile": "28px",
+          "tablet": "48px",
+          "desktop": "60px"
         }
       }
     },
@@ -39,9 +39,9 @@
       "$value": "24px",
       "$extensions": {
         "com.figma.modes": {
-          "base": "24px",
-          "md": "36px",
-          "lg": "48px"
+          "mobile": "24px",
+          "tablet": "36px",
+          "desktop": "48px"
         }
       }
     },
@@ -50,9 +50,9 @@
       "$value": "20px",
       "$extensions": {
         "com.figma.modes": {
-          "base": "20px",
-          "md": "28px",
-          "lg": "36px"
+          "mobile": "20px",
+          "tablet": "28px",
+          "desktop": "36px"
         }
       }
     },
@@ -61,9 +61,9 @@
       "$value": "20px",
       "$extensions": {
         "com.figma.modes": {
-          "base": "20px",
-          "md": "24px",
-          "lg": "30px"
+          "mobile": "20px",
+          "tablet": "24px",
+          "desktop": "30px"
         }
       }
     },
@@ -72,9 +72,9 @@
       "$value": "18px",
       "$extensions": {
         "com.figma.modes": {
-          "base": "18px",
-          "md": "20px",
-          "lg": "24px"
+          "mobile": "18px",
+          "tablet": "20px",
+          "desktop": "24px"
         }
       }
     },
@@ -83,9 +83,9 @@
       "$value": "18px",
       "$extensions": {
         "com.figma.modes": {
-          "base": "18px",
-          "md": "20px",
-          "lg": "20px"
+          "mobile": "18px",
+          "tablet": "20px",
+          "desktop": "20px"
         }
       }
     },
@@ -94,9 +94,9 @@
       "$value": "16px",
       "$extensions": {
         "com.figma.modes": {
-          "base": "16px",
-          "md": "18px",
-          "lg": "18px"
+          "mobile": "16px",
+          "tablet": "18px",
+          "desktop": "18px"
         }
       }
     },
@@ -105,9 +105,9 @@
       "$value": "16px",
       "$extensions": {
         "com.figma.modes": {
-          "base": "16px",
-          "md": "16px",
-          "lg": "16px"
+          "mobile": "16px",
+          "tablet": "16px",
+          "desktop": "16px"
         }
       }
     },
@@ -116,9 +116,9 @@
       "$value": "14px",
       "$extensions": {
         "com.figma.modes": {
-          "base": "14px",
-          "md": "14px",
-          "lg": "14px"
+          "mobile": "14px",
+          "tablet": "14px",
+          "desktop": "14px"
         }
       }
     },
@@ -127,9 +127,9 @@
       "$value": "12px",
       "$extensions": {
         "com.figma.modes": {
-          "base": "12px",
-          "md": "12px",
-          "lg": "12px"
+          "mobile": "12px",
+          "tablet": "12px",
+          "desktop": "12px"
         }
       }
     }

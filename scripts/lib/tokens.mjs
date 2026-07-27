@@ -39,8 +39,7 @@ export const TIERS = {
     "shadow",
   ],
   "4. Spacing": ["inset", "stack", "inline", "section-gap", "page-margin"],
-  "5. Layout": ["section", "grid", "visible", "breakpoint"],
-  "6. Type Scale": ["type-size"],
+  "5. Layout": ["section", "grid", "visible", "type-size", "breakpoint"],
 };
 
 // which top-level groups carry which mode axis
@@ -53,8 +52,8 @@ export const COLOR_MODE_GROUPS = [
   "emphasis-brand",
   "emphasis",
 ];
-export const RESP_MODE_GROUPS = ["type-size"];
-export const LAYOUT_MODE_GROUPS = ["grid", "visible", "section"];
+export const RESP_MODE_GROUPS = [];
+export const LAYOUT_MODE_GROUPS = ["grid", "visible", "section", "type-size"];
 
 export const isLeaf = (n) => n && typeof n === "object" && "$value" in n;
 
