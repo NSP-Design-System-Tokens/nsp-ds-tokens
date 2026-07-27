@@ -8,7 +8,13 @@ import { fileURLToPath } from "node:url";
 export const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 export const TOKENS_DIR = resolve(ROOT, "tokens");
 
-// top-level key -> Figma collection. Order is meaningful (numbered in Figma).
+// top-level key -> Figma collection. One mode axis per collection.
+// "1. Primitives" — no modes (raw ramps, atoms)
+// "2. Brand"      — no modes (palette roles)
+// "3. Color Roles"— light / dark
+// "4. Spacing"    — no modes (semantic spacing roles)
+// "5. Layout"     — desktop / tablet / mobile
+// "6. Type Scale" — base / md / lg
 export const TIERS = {
   "1. Primitives": [
     "color",
@@ -21,7 +27,7 @@ export const TIERS = {
     "radius",
   ],
   "2. Brand": ["palette"],
-  "3. Semantic": [
+  "3. Color Roles": [
     "surface",
     "text",
     "stroke",
@@ -31,14 +37,10 @@ export const TIERS = {
     "emphasis",
     "typography",
     "shadow",
-    "inset",
-    "stack",
-    "inline",
-    "section-gap",
-    "page-margin",
-    "section",
   ],
-  "4. Responsive": ["type-size", "breakpoint", "grid", "visible"],
+  "4. Spacing": ["inset", "stack", "inline", "section-gap", "page-margin"],
+  "5. Layout": ["section", "grid", "visible", "breakpoint"],
+  "6. Type Scale": ["type-size"],
 };
 
 // which top-level groups carry which mode axis

@@ -97,7 +97,12 @@ for (const f of contrastFails) {
 // 3b. layering: semantic tokens must not reference color primitives directly.
 // The alias tier (palette.*) is the only legal seam between semantic and core
 // for color; a semantic {color.*} ref means the palette has been bypassed.
-const SEMANTIC_GROUPS = TIERS["3. Semantic"];
+const SEMANTIC_GROUPS = [
+  ...(TIERS["3. Color Roles"] ?? []),
+  ...(TIERS["4. Spacing"] ?? []),
+  ...(TIERS["5. Layout"] ?? []),
+  ...(TIERS["6. Type Scale"] ?? []),
+];
 for (const g of SEMANTIC_GROUPS) {
   if (!(g in merged)) continue;
   eachLeaf(merged[g], (n, path) => {

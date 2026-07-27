@@ -14,7 +14,12 @@
 import { isLeaf, TIERS } from "./tokens.mjs";
 
 export const VALID_ORIGINS = new Set(["base", "brand-poli"]);
-const SEMANTIC_GROUPS = TIERS["3. Semantic"];
+const SEMANTIC_GROUPS = [
+  ...(TIERS["3. Color Roles"] ?? []),
+  ...(TIERS["4. Spacing"] ?? []),
+  ...(TIERS["5. Layout"] ?? []),
+  ...(TIERS["6. Type Scale"] ?? []),
+];
 
 export function refsIn(val) {
   const acc = [];

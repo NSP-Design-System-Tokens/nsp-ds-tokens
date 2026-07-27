@@ -1,5 +1,6 @@
 {
   "type-size": {
+    "$extensions": { "com.figma.scoping": ["FONT_SIZE"] },
     "display": {
       "$type": "dimension",
       "$value": "40px",

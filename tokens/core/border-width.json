@@ -1,6 +1,6 @@
 {
   "border-width": {
-    "$extensions": { "com.figma.scoping": ["WIDTH_HEIGHT"] },
+    "$extensions": { "com.figma.scoping": [] },
     "hairline": { "$type": "dimension", "$value": "1px" },
     "thin": { "$type": "dimension", "$value": "2px" },
     "thick": { "$type": "dimension", "$value": "4px" }

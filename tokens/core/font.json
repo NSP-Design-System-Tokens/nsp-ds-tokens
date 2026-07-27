@@ -1,5 +1,6 @@
 {
   "font": {
+    "$extensions": { "com.figma.scoping": [] },
     "family": {
       "sans": {
         "$type": "fontFamily",
@@ -11,7 +12,6 @@
       }
     },
     "weight": {
-      "$extensions": { "com.figma.scoping": ["FONT_WEIGHT"] },
       "light": {
         "$type": "fontWeight",
         "$value": 300
@@ -80,7 +80,6 @@
       }
     },
     "letter-spacing": {
-      "$extensions": { "com.figma.scoping": ["LETTER_SPACING"] },
       "tight": { "$type": "dimension", "$value": "-0.05em" },
       "snug": { "$type": "dimension", "$value": "-0.025em" },
       "normal": { "$type": "dimension", "$value": "0em" },
@@ -89,7 +88,6 @@
       "widest": { "$type": "dimension", "$value": "0.1em" }
     },
     "size": {
-      "$extensions": { "com.figma.scoping": ["FONT_SIZE"] },
       "2xs": { "$type": "dimension", "$value": "11px" },
       "xs": { "$type": "dimension", "$value": "12px" },
       "sm": { "$type": "dimension", "$value": "14px" },

@@ -1,6 +1,6 @@
 {
   "spacing": {
-    "$extensions": { "com.figma.scoping": ["GAP", "WIDTH_HEIGHT"] },
+    "$extensions": { "com.figma.scoping": [] },
     "0": { "$type": "dimension", "$value": "0px" },
     "0.5": { "$type": "dimension", "$value": "2px" },
     "1": { "$type": "dimension", "$value": "4px" },
