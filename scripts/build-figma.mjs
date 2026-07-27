@@ -105,6 +105,10 @@ const WEIGHT = {
 };
 const cap = (s) => (s ? s[0].toUpperCase() + s.slice(1) : s);
 
+// resolve a composite property: skip resolution for raw literal strings (textCase, textDecoration)
+const resolveOrLiteral = (val, mode) =>
+  typeof val === "string" && val.startsWith("{") ? resolve1(val, mode) : val;
+
 const textStyles = [];
 for (const [name, node] of Object.entries(merged.typography ?? {})) {
   const c = node.$value;
@@ -113,15 +117,18 @@ for (const [name, node] of Object.entries(merged.typography ?? {})) {
   const lh = resolve1(c.lineHeight);
   for (const mode of modesOf(c.fontSize)) {
     const size = toNum(resolve1(c.fontSize, mode));
+    // letterSpacing stored as em (e.g. "0.025em") → convert to px relative to fontSize
+    const lsRaw = resolveOrLiteral(c.letterSpacing, mode);
+    const lsPx = lsRaw ? parseFloat(lsRaw) * size : 0;
     textStyles.push({
       name: `${cap(name)}/${mode ? cap(mode) : "Default"}`,
       fontFamily: family,
       fontStyle: WEIGHT[weight] ?? "Regular",
       fontSize: size,
       lineHeight: typeof lh === "number" ? `${Math.round(lh * 100)}%` : "AUTO",
-      letterSpacing: "0px",
-      textDecoration: "NONE",
-      textCase: "ORIGINAL",
+      letterSpacing: `${lsPx.toFixed(2)}px`,
+      textDecoration: resolveOrLiteral(c.textDecoration, mode) ?? "NONE",
+      textCase: resolveOrLiteral(c.textCase, mode) ?? "ORIGINAL",
     });
   }
 }

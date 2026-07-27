@@ -14,7 +14,7 @@
       "$type": "typography",
       "$value": {
         "fontFamily": "{font.family.sans}",
-        "fontWeight": "{font.weight.semibold}",
+        "fontWeight": "{font.weight.bold}",
         "fontSize": "{font.size.6xl}",
         "lineHeight": "{font.line-height.110}",
         "letterSpacing": "{font.letter-spacing.tight}"
@@ -24,7 +24,7 @@
       "$type": "typography",
       "$value": {
         "fontFamily": "{font.family.sans}",
-        "fontWeight": "{font.weight.semibold}",
+        "fontWeight": "{font.weight.bold}",
         "fontSize": "{font.size.5xl}",
         "lineHeight": "{font.line-height.120}",
         "letterSpacing": "{font.letter-spacing.snug}"
@@ -108,6 +108,40 @@
         "fontSize": "{font.size.xs}",
         "lineHeight": "{font.line-height.160}",
         "letterSpacing": "{font.letter-spacing.wide}"
+      }
+    },
+    "label": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontWeight": "{font.weight.medium}",
+        "fontSize": "{font.size.sm}",
+        "lineHeight": "{font.line-height.120}",
+        "letterSpacing": "{font.letter-spacing.wide}",
+        "textCase": "UPPER"
+      }
+    },
+    "cta": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontWeight": "{font.weight.medium}",
+        "fontSize": "{font.size.sm}",
+        "lineHeight": "{font.line-height.120}",
+        "letterSpacing": "{font.letter-spacing.wide}",
+        "textDecoration": "UNDERLINE",
+        "textCase": "UPPER"
+      }
+    },
+    "overline": {
+      "$type": "typography",
+      "$value": {
+        "fontFamily": "{font.family.sans}",
+        "fontWeight": "{font.weight.medium}",
+        "fontSize": "{font.size.xs}",
+        "lineHeight": "{font.line-height.120}",
+        "letterSpacing": "{font.letter-spacing.wider}",
+        "textCase": "UPPER"
       }
     }
   }

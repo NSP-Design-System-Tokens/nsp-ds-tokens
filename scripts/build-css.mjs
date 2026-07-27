@@ -41,21 +41,39 @@ function emitGroup(group, mode) {
   return lines;
 }
 
-// typography composite -> four expanded custom properties per token
+const TEXT_CASE_CSS = {
+  UPPER: "uppercase",
+  LOWER: "lowercase",
+  TITLE: "capitalize",
+  ORIGINAL: "none",
+};
+const TEXT_DEC_CSS = {
+  NONE: "none",
+  UNDERLINE: "underline",
+  STRIKETHROUGH: "line-through",
+};
+
+// typography composite -> expanded custom properties per token
 function emitTypography() {
   const lines = [];
   for (const [name, node] of Object.entries(merged.typography ?? {})) {
     const c = node.$value;
-    const map = {
-      fontFamily: "font-family",
-      fontWeight: "font-weight",
-      fontSize: "font-size",
-      lineHeight: "line-height",
-      letterSpacing: "letter-spacing",
-    };
-    for (const [key, css] of Object.entries(map)) {
+    const props = [
+      ["fontFamily", "font-family", (v) => scalar(v)],
+      ["fontWeight", "font-weight", (v) => scalar(v)],
+      ["fontSize", "font-size", (v) => scalar(v)],
+      ["lineHeight", "line-height", (v) => scalar(v)],
+      ["letterSpacing", "letter-spacing", (v) => scalar(v)],
+      [
+        "textDecoration",
+        "text-decoration",
+        (v) => TEXT_DEC_CSS[v] ?? scalar(v),
+      ],
+      ["textCase", "text-transform", (v) => TEXT_CASE_CSS[v] ?? scalar(v)],
+    ];
+    for (const [key, css, transform] of props) {
       if (c[key] !== undefined)
-        lines.push(`  --typography-${name}-${css}: ${scalar(c[key])};`);
+        lines.push(`  --typography-${name}-${css}: ${transform(c[key])};`);
     }
   }
   return lines;
