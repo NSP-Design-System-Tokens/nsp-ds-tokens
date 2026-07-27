@@ -28,10 +28,22 @@ const FIGMA_TYPE_MAP = {
   fontWeight: "number", // numeric weight (300-900)
 };
 
+// Figma variable names cannot contain ".". Decimal keys like "0.5" must become "0-5".
+// Apply the same transform inside alias strings so references still resolve.
+const figKey = (k) => (/^\d+\.\d+$/.test(k) ? k.replace(".", "-") : k);
+const sanitizeAliases = (v) =>
+  typeof v === "string"
+    ? v.replace(
+        /\{([^}]+)\}/g,
+        (_, p) => `{${p.replace(/(\d+)\.(\d+)/g, "$1-$2")}}`,
+      )
+    : v;
+
 // convert one leaf to its Figma shape (by $type)
 function figmaLeaf(node) {
   const conv = (val, type) => {
-    if (typeof val === "string" && val.startsWith("{")) return val; // alias
+    if (typeof val === "string" && val.startsWith("{"))
+      return sanitizeAliases(val);
     if (type === "color") return toHex(val);
     if (type === "dimension") return toNum(val);
     if (type === "fontWeight")
@@ -54,7 +66,7 @@ function convertTree(tree) {
   if (isLeaf(tree)) return figmaLeaf(tree);
   const out = {};
   for (const [k, v] of Object.entries(tree))
-    if (!k.startsWith("$")) out[k] = convertTree(v);
+    if (!k.startsWith("$")) out[figKey(k)] = convertTree(v);
   return out;
 }
 
