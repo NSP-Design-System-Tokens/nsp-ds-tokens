@@ -5,17 +5,7 @@
     "sm": { "$type": "number", "$value": 4 },
     "md": { "$type": "number", "$value": 8 },
     "lg": { "$type": "number", "$value": 12 },
-    "xl": {
-      "$type": "number",
-      "$value": 16,
-      "$extensions": {
-        "com.figma.modes": {
-          "desktop": 16,
-          "tablet": 12,
-          "mobile": 8
-        }
-      }
-    },
+    "xl": { "$type": "number", "$value": 16 },
     "full": { "$type": "number", "$value": 9999 }
   }
 }
