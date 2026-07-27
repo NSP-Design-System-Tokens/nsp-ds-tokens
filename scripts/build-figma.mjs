@@ -20,16 +20,26 @@ const toHex = (v) => {
 };
 const toNum = (v) => (typeof v === "string" ? parseFloat(v) : v);
 
+// Figma Variables accept only: color, number, boolean, string.
+// Map DTCG types that have a direct Figma equivalent; the rest are excluded upstream.
+const FIGMA_TYPE_MAP = {
+  dimension: "number", // strip unit, keep value
+  fontFamily: "string", // font name is a string variable
+  fontWeight: "number", // numeric weight (300-900)
+};
+
 // convert one leaf to its Figma shape (by $type)
 function figmaLeaf(node) {
   const conv = (val, type) => {
     if (typeof val === "string" && val.startsWith("{")) return val; // alias
     if (type === "color") return toHex(val);
     if (type === "dimension") return toNum(val);
+    if (type === "fontWeight")
+      return typeof val === "string" ? parseFloat(val) : val;
     return val;
   };
   const type = node.$type;
-  const figType = type === "dimension" ? "number" : type;
+  const figType = FIGMA_TYPE_MAP[type] ?? type;
   const out = { $type: figType, $value: conv(node.$value, type) };
   const modes = node.$extensions?.["com.figma.modes"];
   if (modes) {
@@ -49,7 +59,8 @@ function convertTree(tree) {
 }
 
 // --- variables: regroup tiers into $collections, excluding composites ---
-const EXCLUDE = new Set(["typography", "shadow"]);
+// motion excluded: duration + cubicBezier have no Figma Variable equivalent
+const EXCLUDE = new Set(["typography", "shadow", "motion"]);
 const collections = {};
 for (const [tier, groups] of Object.entries(TIERS)) {
   const bucket = {};
@@ -115,11 +126,38 @@ for (const [name, node] of Object.entries(merged.typography ?? {})) {
   }
 }
 
+// --- grid styles: one per layout mode ---
+const modeCap = (s) => s[0].toUpperCase() + s.slice(1);
+const resolveNum = (refOrVal, mode) => {
+  const v =
+    typeof refOrVal === "string" && refOrVal.startsWith("{")
+      ? resolve1(refOrVal, mode)
+      : refOrVal;
+  return typeof v === "string" ? parseFloat(v) : v;
+};
+const gridStyles = [];
+for (const mode of ["desktop", "tablet", "mobile"]) {
+  const g = merged.grid;
+  if (!g) break;
+  const colNode = g.columns;
+  const gutNode = g.gutter;
+  const marNode = g.margin;
+  const pick = (node) =>
+    node.$extensions?.["com.figma.modes"]?.[mode] ?? node.$value;
+  gridStyles.push({
+    name: `Grid/${modeCap(mode)}`,
+    pattern: "COLUMNS",
+    alignment: "STRETCH",
+    count: resolveNum(pick(colNode), mode),
+    gutterSize: resolveNum(pick(gutNode), mode),
+    offset: resolveNum(pick(marNode), mode),
+  });
+}
+
 writeFileSync(
   resolve(ROOT, "dist/figma-styles.json"),
-  JSON.stringify({ textStyles, colorStyles: [], gridStyles: [] }, null, 2) +
-    "\n",
+  JSON.stringify({ textStyles, colorStyles: [], gridStyles }, null, 2) + "\n",
 );
 console.log(
-  `figma  -> dist/figma-styles.json (${textStyles.length} text styles)`,
+  `figma  -> dist/figma-styles.json (${textStyles.length} text styles, ${gridStyles.length} grid styles)`,
 );

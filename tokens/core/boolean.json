@@ -1,0 +1,48 @@
+{
+  "visible": {
+    "desktop-only": {
+      "$type": "boolean",
+      "$value": true,
+      "$extensions": {
+        "com.figma.modes": {
+          "desktop": true,
+          "tablet": false,
+          "mobile": false
+        }
+      }
+    },
+    "mobile-only": {
+      "$type": "boolean",
+      "$value": false,
+      "$extensions": {
+        "com.figma.modes": {
+          "desktop": false,
+          "tablet": false,
+          "mobile": true
+        }
+      }
+    },
+    "desktop-tablet": {
+      "$type": "boolean",
+      "$value": true,
+      "$extensions": {
+        "com.figma.modes": {
+          "desktop": true,
+          "tablet": true,
+          "mobile": false
+        }
+      }
+    },
+    "tablet-mobile": {
+      "$type": "boolean",
+      "$value": false,
+      "$extensions": {
+        "com.figma.modes": {
+          "desktop": false,
+          "tablet": true,
+          "mobile": true
+        }
+      }
+    }
+  }
+}

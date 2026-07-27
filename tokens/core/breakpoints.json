@@ -1,0 +1,11 @@
+{
+  "breakpoint": {
+    "desktop": { "$type": "number", "$value": 1920 },
+    "tablet": { "$type": "number", "$value": 768 },
+    "mobile": { "$type": "number", "$value": 375 },
+    "threshold": {
+      "desktop": { "$type": "number", "$value": 1024 },
+      "tablet": { "$type": "number", "$value": 768 }
+    }
+  }
+}

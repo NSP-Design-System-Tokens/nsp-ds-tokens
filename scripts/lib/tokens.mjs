@@ -18,6 +18,7 @@ export const TIERS = {
     "motion",
     "z-index",
     "border-width",
+    "radius",
   ],
   "2. Brand": ["palette"],
   "3. Semantic": [
@@ -35,8 +36,9 @@ export const TIERS = {
     "inline",
     "section-gap",
     "page-margin",
+    "section",
   ],
-  "4. Responsive": ["type-size", "breakpoint"],
+  "4. Responsive": ["type-size", "breakpoint", "grid", "visible"],
 };
 
 // which top-level groups carry which mode axis
@@ -50,6 +52,7 @@ export const COLOR_MODE_GROUPS = [
   "emphasis",
 ];
 export const RESP_MODE_GROUPS = ["type-size"];
+export const LAYOUT_MODE_GROUPS = ["grid", "visible", "section"];
 
 export const isLeaf = (n) => n && typeof n === "object" && "$value" in n;
 

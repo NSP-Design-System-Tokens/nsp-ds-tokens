@@ -10,6 +10,7 @@ import {
   TIERS,
   COLOR_MODE_GROUPS,
   RESP_MODE_GROUPS,
+  LAYOUT_MODE_GROUPS,
 } from "./lib/tokens.mjs";
 import { checkContrast } from "./lib/contrast.mjs";
 import {
@@ -80,6 +81,7 @@ function checkAxis(groups, label) {
 }
 checkAxis(COLOR_MODE_GROUPS, "color mode");
 checkAxis(RESP_MODE_GROUPS, "responsive mode");
+checkAxis(LAYOUT_MODE_GROUPS, "layout mode");
 
 // 3c. contrast: fg/bg pairs derived from naming convention (text.on-<X> ↔
 // surface.<X>; generic text/icon/stroke ↔ page + card). 4.5:1 for text, 3:1

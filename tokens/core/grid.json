@@ -1,0 +1,37 @@
+{
+  "grid": {
+    "columns": {
+      "$type": "number",
+      "$value": 12,
+      "$extensions": {
+        "com.figma.modes": {
+          "desktop": 12,
+          "tablet": 8,
+          "mobile": 4
+        }
+      }
+    },
+    "gutter": {
+      "$type": "number",
+      "$value": "{spacing.8}",
+      "$extensions": {
+        "com.figma.modes": {
+          "desktop": "{spacing.8}",
+          "tablet": "{spacing.4}",
+          "mobile": "{spacing.4}"
+        }
+      }
+    },
+    "margin": {
+      "$type": "number",
+      "$value": "{spacing.20}",
+      "$extensions": {
+        "com.figma.modes": {
+          "desktop": "{spacing.20}",
+          "tablet": "{spacing.8}",
+          "mobile": "{spacing.4}"
+        }
+      }
+    }
+  }
+}

@@ -92,9 +92,11 @@ const rootLines = [
   ...emitGroup("motion"),
   ...emitGroup("z-index"),
   ...emitGroup("border-width"),
+  ...emitGroup("radius"),
   ...emitGroup("palette"),
   ...emitGroup("type-size", "base"),
   ...emitGroup("breakpoint"),
+  ...emitGroup("grid", "mobile"),
   ...emitGroup("surface", "light"),
   ...emitGroup("text", "light"),
   ...emitGroup("stroke", "light"),
@@ -107,6 +109,7 @@ const rootLines = [
   ...emitGroup("inline"),
   ...emitGroup("section-gap"),
   ...emitGroup("page-margin"),
+  ...emitGroup("section", "mobile"),
   ...emitTypography(),
   ...emitShadow("light"),
 ];
@@ -135,12 +138,31 @@ const queries = respModes
       `@media (min-width: ${bpWidth(m)}) {\n${block(":root", emitGroup("type-size", m)).replace(/^/gm, "  ")}\n}`,
   );
 
+// --- mobile-first media queries for layout tokens (grid + section) ---
+// prefer breakpoint.threshold.* (CSS switch point) over breakpoint.* (Figma frame)
+const layoutBpWidth = (mode) => {
+  const thresh = merged.breakpoint?.threshold?.[mode]?.$value;
+  const direct = merged.breakpoint?.[mode]?.$value;
+  const v = thresh !== undefined ? thresh : direct;
+  if (v === undefined) return null;
+  return typeof v === "number" ? `${v}px` : v;
+};
+const layoutGroups = ["grid", "section"];
+const layoutModes = ["tablet", "desktop"]; // ascending breakpoint order
+const layoutQueries = layoutModes
+  .filter((m) => layoutBpWidth(m))
+  .map((m) => {
+    const inner = layoutGroups.flatMap((g) => emitGroup(g, m));
+    return `@media (min-width: ${layoutBpWidth(m)}) {\n${block(":root", inner).replace(/^/gm, "  ")}\n}`;
+  });
+
 const css =
   [
     "/* Generated. Edit tokens/, not this file. */",
     block(":root", rootLines),
     block('[data-theme="dark"]', darkLines),
     ...queries,
+    ...layoutQueries,
   ].join("\n\n") + "\n";
 
 mkdirSync(resolve(ROOT, "build/css"), { recursive: true });
