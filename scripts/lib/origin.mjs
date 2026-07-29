@@ -13,7 +13,16 @@
 
 import { isLeaf, TIERS } from "./tokens.mjs";
 
+// Kept for compatibility; prefer isValidOrigin() for open-ended brand checks.
 export const VALID_ORIGINS = new Set(["base", "brand-poli"]);
+
+// Accepts "base" or any "brand-*" string (e.g. "brand-wolfhaus", "brand-test").
+export function isValidOrigin(origin) {
+  return (
+    origin === "base" ||
+    (typeof origin === "string" && origin.startsWith("brand-"))
+  );
+}
 const SEMANTIC_GROUPS = [
   ...(TIERS["3. Color Roles"] ?? []),
   ...(TIERS["4. Spacing"] ?? []),

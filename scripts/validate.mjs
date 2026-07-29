@@ -17,7 +17,7 @@ import {
   refsIn,
   deriveSemanticOrigins,
   paletteSlotOrigins,
-  VALID_ORIGINS,
+  isValidOrigin,
 } from "./lib/origin.mjs";
 
 const merged = loadMerged();
@@ -134,9 +134,9 @@ function checkOrigin(subtree, rootName) {
         errors.push(
           `origin: ${[rootName, ...path].join(".")} missing $extensions.nsp.origin`,
         );
-      } else if (!VALID_ORIGINS.has(origin)) {
+      } else if (!isValidOrigin(origin)) {
         errors.push(
-          `origin: ${[rootName, ...path].join(".")} unknown origin "${origin}" (allowed: ${[...VALID_ORIGINS].join(", ")})`,
+          `origin: ${[rootName, ...path].join(".")} unknown origin "${origin}" (allowed: "base" or "brand-*")`,
         );
       }
       return;
@@ -170,10 +170,14 @@ if (errors.length) {
 console.log(`validate: ok (${paths.size} tokens)`);
 
 // origin audit: distribution of derived semantic origins (informational)
-const originCounts = { base: 0, "brand-poli": 0 };
-for (const { origin } of semanticOrigins) originCounts[origin]++;
+const originCounts = {};
+for (const { origin } of semanticOrigins)
+  originCounts[origin] = (originCounts[origin] ?? 0) + 1;
+const originSummary = Object.entries(originCounts)
+  .map(([k, n]) => `${k}: ${n}`)
+  .join(", ");
 console.log(
-  `origin:  semantic ${semanticOrigins.length} tokens — base: ${originCounts.base}, brand-poli: ${originCounts["brand-poli"]}`,
+  `origin:  semantic ${semanticOrigins.length} tokens — ${originSummary}`,
 );
 
 // 4. warning: unused primitives (dead ramps / stops)
