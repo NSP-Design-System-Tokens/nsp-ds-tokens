@@ -16,30 +16,31 @@ Non ti servono palette complete, rampe di colore, varianti chiare e scure. Quell
 
 ## 2. Crea il repo del progetto
 
-Il repo del progetto è una copia della struttura di nsp-tokens-poli, non di nsp-tokens (la libreria). Poli è il tuo template di progetto.
+Un comando solo. Lo script di scaffolding nella libreria crea tutto: struttura dei file, placeholder da compilare, dipendenza installata, istruzioni operative.
 
 ```bash
-# Crea la cartella del progetto
-mkdir nsp-tokens-nomecliente
-cd nsp-tokens-nomecliente
-
-# Inizializza
-npm init -y
-git init
-
-# Installa la libreria base come dipendenza
-npm install ../nsp-tokens    # o il path/url del tuo repo libreria
+node ../nsp-tokens/scripts/create-project.mjs nomecliente
 ```
 
-Copia da nsp-tokens-poli la struttura dei file (non i valori, la struttura):
+Questo genera `nsp-tokens-nomecliente/` con dentro:
 
-- `tokens/core/color.json` (qui andranno le scale custom del brand)
-- `tokens/brand/nomecliente.json` (gli slot alias: primary, secondary, accent)
-- `tokens/semantic/color.json` (i ruoli semantici brand-specific)
-- `scripts/build.mjs` (o il riferimento alla build della libreria)
-- `CLAUDE.md` del progetto
+```
+nsp-tokens-nomecliente/
+  tokens/
+    core/
+      color.json          ← qui metterai la scala brand (placeholder vuoti)
+    brand/
+      nomecliente.json    ← gli slot alias da configurare
+    semantic/
+      color.json          ← i ruoli semantici brand-specific (template)
+  CLAUDE.md               ← istruzioni operative per CC
+  package.json            ← dipendenza su nsp-tokens già configurata
+  .gitignore
+```
 
-La libreria base porta tutto il resto: neutri, stati, spacing, tipografia, layout, gate.
+I file contengono la struttura corretta con placeholder che indicano cosa mettere dove. Non contengono valori di un altro brand da sovrascrivere: parti vuoto e pulito.
+
+La libreria base porta tutto il resto: neutri, stati, spacing, tipografia, layout, gate. Non li tocchi, non li copi, li erediti.
 
 ## 3. Genera la scala di brand
 
@@ -52,26 +53,27 @@ Vai su https://www.radix-ui.com/colors/custom e inserisci il colore del cliente 
 Radix genera un blocco CSS. Ti servono SOLO i 12 valori hex della sezione base, le prime 12 righe dentro `:root, .light, .light-theme`:
 
 ```
---custom-1 attraverso --custom-12
+--custom-1:  #......   ← Step 1
+--custom-2:  #......   ← Step 2
+...
+--custom-12: #......   ← Step 12
 ```
 
 Copia i 12 hex. Poi switcha a dark theme e copia gli altri 12 hex.
 
-IGNORA tutto il resto:
+Ignora tutto il resto del blocco CSS:
 
-- le varianti alpha (`--custom-a1` ... `a12`) — non ti servono
-- il blocco `@supports display-p3` — ottimizzazione wide-gamut, non per i token
-- `--custom-contrast/surface/indicator/track` — scorciatoie tema Radix
-
-Il risultato: 24 valori hex (12 light + 12 dark) da mettere in `tokens/core/color.json` come scala a 12 step.
+- le varianti alpha (`--custom-a1` ... `a12`): non ti servono
+- il blocco `@supports display-p3`: ottimizzazione wide-gamut, non per i token
+- `--custom-contrast/surface/indicator/track`: scorciatoie tema Radix
 
 ### Se Radix non produce il risultato giusto
 
-Se il colore è molto scuro o molto saturo, Radix potrebbe spostarlo troppo. Confronta lo step 9 generato con il colore originale: devono essere visivamente identici o quasi. Se divergono troppo (come è successo con Poli, dove Radix pink era troppo acceso rispetto al magenta scuro), genera la scala custom con lo script che hai nel repo, ancorata al colore esatto del cliente come step 9.
+Confronta lo step 9 generato con il colore originale del cliente: devono essere visivamente identici o quasi. Se divergono troppo (come è successo con Poli, dove Radix pink era troppo acceso rispetto al magenta scuro), genera la scala custom con lo script del repo, ancorata al colore esatto del cliente come step 9.
 
 ### Il risultato
 
-Una scala di 12 step, light e dark, dove:
+24 valori hex (12 light + 12 dark), dove ogni step ha un ruolo fisso:
 
 - Step 1-2: sfondi app chiarissimi
 - Step 3-5: tinte per hover/pressed (il ghost button)
@@ -81,58 +83,35 @@ Una scala di 12 step, light e dark, dove:
 - Step 11: testo su fondo chiaro
 - Step 12: testo su fondo scuro
 
-Metti questa scala in `tokens/core/color.json` del progetto, con un nome di colore (non di brand): se il colore è un magenta lo chiami `color.magenta`, se è un blu `color.blue`. Il nome del cliente non va nei primitivi.
+Metti i valori in `tokens/core/color.json` del progetto, nei placeholder. Il nome della scala è un nome di colore (non di brand): se il colore è un magenta lo chiami `color.magenta`, se è un blu `color.blue`. Il nome del cliente non va nei primitivi.
 
 ## 4. Se c'è un colore d'accento
 
-Stesso procedimento: genera la scala a 12 step. Mettila in `tokens/core/color.json` accanto alla prima. Per Poli era il bronze (oro scuro).
+Stesso procedimento: genera la scala a 12 step dal tool Radix o dallo script. Mettila in `tokens/core/color.json` accanto alla prima. Per Poli era il bronze (oro scuro).
 
 ## 5. Configura gli slot alias
 
-Apri `tokens/brand/nomecliente.json`. Questo è l'unico file dove il nome del cliente appare. Qui colleghi le scale ai ruoli:
+Apri `tokens/brand/nomecliente.json`. Lo script di scaffolding ha già creato i placeholder per i quattro slot. Colleghi le scale ai ruoli:
 
-```json
-{
-  "palette": {
-    "primary": {
-      "Commento": "Il magenta del cliente",
-      "slot mappings qui: primary.50 → color.magenta.light.2, ecc."
-    },
-    "secondary": {
-      "Commento": "Brand soft: stessa scala del primary, step bassi",
-      "slot mappings: secondary.3 → color.magenta.light.3, ecc."
-    },
-    "tertiary": {
-      "Commento": "Neutro: usa mauve dalla libreria base",
-      "slot mappings: tertiary.3 → color.mauve.light.3, ecc."
-    },
-    "accent": {
-      "Commento": "Il colore d'accento (se c'è)",
-      "slot mappings: accent.9 → color.bronze.light.9, ecc."
-    }
-  }
-}
-```
-
-La convenzione per gli slot:
-
-- **primary** = il colore pieno del brand. Bottoni primari, header, elementi forti.
+- **primary** = il colore pieno del brand. Step 9 per il fondo pieno, 11/12 per il testo. Bottoni primari, header, elementi forti.
 - **secondary** = lo stesso colore ma in versione ghost/soft. Step 3-5 per gli sfondi, 11-12 per il testo. Bottoni secondari, chip, badge.
-- **tertiary** = neutro (mauve dalla libreria). Bottoni di basso rilievo, azioni terziarie.
+- **tertiary** = neutro (mauve dalla libreria). Step 3-5 per gli sfondi, 11-12 per il testo. Bottoni di basso rilievo, azioni terziarie.
 - **accent** = il colore d'accento se esiste. Evidenziazioni, badge speciali, dettagli decorativi.
 
 Se il cliente non ha un accento, puoi omettere lo slot accent o puntarlo a una variante del primary.
 
+Nota: tertiary usa mauve dalla libreria base, non una scala propria. Lo slot è brand-specific (la decisione di avere tre livelli di azione è del progetto), ma il colore è condiviso.
+
 ## 6. Configura i ruoli semantici brand-specific
 
-In `tokens/semantic/color.json` del progetto, i ruoli che usano il brand:
+Apri `tokens/semantic/color.json` del progetto. Lo script di scaffolding ha già creato il template con i ruoli e i riferimenti da aggiornare. I principali:
 
-- `surface.primary` → `palette.primary.500` (il fondo del bottone primario)
-- `surface.primary-hover` → `palette.primary.700`
-- `surface.secondary` → `palette.secondary.3` (con modo dark → .3d)
-- `text.on-primary` → bianco (o nero, dipende dalla luminosità del brand)
-- `text.on-secondary` → `palette.secondary.12` (testo scuro della stessa scala)
-- eccetera, seguendo il pattern di Poli come modello.
+- `surface.primary` → `palette.primary.9` (il fondo del bottone primario)
+- `surface.primary-hover` → `palette.primary.10`
+- `surface.secondary` → `palette.secondary.3` (con modo dark)
+- `text.on-primary` → bianco o nero (dipende dalla luminosità del brand: se lo step 9 è scuro, il testo sopra è bianco; se è chiaro, è nero)
+- `text.on-secondary` → `palette.secondary.12` (testo della stessa scala)
+- eccetera, seguendo il template.
 
 I ruoli che NON dipendono dal brand (surface.page, text.default, stroke.default, tutti gli stati error/success/warning) vengono dalla libreria base e non li tocchi.
 
@@ -151,7 +130,7 @@ Questo combina i token del progetto con quelli della libreria base, esegue la va
 
 Se il gate fallisce, ti dice esattamente cosa non va:
 
-- **Riferimento non risolto**: uno slot punta a un primitivo che non esiste. Controlla i nomi.
+- **Riferimento non risolto**: uno slot punta a un primitivo che non esiste. Controlla i nomi nella scala e negli slot.
 - **Contrasto insufficiente**: una coppia testo/superficie non raggiunge la soglia. Il colore del brand è troppo chiaro o troppo scuro per il testo che ci hai messo sopra. Aggiusta il valore (scegli uno step diverso) o cambia il testo (da bianco a nero o viceversa).
 - **Layering violation**: un token semantico punta direttamente a un primitivo saltando la palette. Passa per lo slot.
 
@@ -209,8 +188,9 @@ Non editare mai le variabili direttamente in Figma. Se lo fai, la modifica vive 
 | Spacing, tipografia, motion, layout, z-index, radius | Libreria                        | spacing._, font.size._, grid.*       |
 | Gate e validazione                                   | Libreria                        | scripts/validate.mjs                 |
 | Plugin Figma                                         | Separato (figma-token-manager/) | code.js                              |
+| Script di scaffolding                                | Libreria                        | scripts/create-project.mjs           |
 | Scala di brand del cliente                           | Progetto                        | color.magenta (in nsp-tokens-poli)   |
-| Slot alias (primary, secondary, accent)              | Progetto                        | brand/poli.json                      |
+| Slot alias (primary, secondary, accent)              | Progetto                        | brand/nomecliente.json               |
 | Ruoli semantici brand-specific                       | Progetto                        | surface.primary, text.on-primary     |
 
 ---
@@ -219,11 +199,12 @@ Non editare mai le variabili direttamente in Figma. Se lo fai, la modifica vive 
 
 - [ ] Colore primario del cliente (hex)
 - [ ] Colore accento se esiste (hex)
-- [ ] Repo progetto creato e libreria installata
-- [ ] Scala brand generata (12 step, light + dark)
-- [ ] Scala accento generata (se serve)
-- [ ] Slot alias configurati (primary, secondary, tertiary, accent)
-- [ ] Ruoli semantici brand-specific configurati
+- [ ] `node ../nsp-tokens/scripts/create-project.mjs nomecliente`
+- [ ] Scala brand generata (12 light + 12 dark da Radix o script)
+- [ ] Valori inseriti in `tokens/core/color.json`
+- [ ] Scala accento generata e inserita (se serve)
+- [ ] Slot alias configurati in `tokens/brand/nomecliente.json`
+- [ ] Ruoli semantici aggiornati in `tokens/semantic/color.json`
 - [ ] `npm run build` verde (gate passa)
 - [ ] Import Figma: variabili + styles + match
 - [ ] Verifica in Figma: colori, dark mode, responsive, grid

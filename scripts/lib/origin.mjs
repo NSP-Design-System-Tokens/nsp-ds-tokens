@@ -57,7 +57,7 @@ export function paletteSlotOrigins(merged) {
 }
 
 // Derive origin for one leaf. Returns:
-//   { origin: "base"|"brand-poli", unanchored: string[] }
+//   { origin: "base"|"brand-*", unanchored: string[] }
 // unanchored = palette slot names referenced but missing declared origin.
 export function deriveLeafOrigin(leaf, slotOrigins) {
   const modes = leaf.$extensions?.["com.figma.modes"] ?? {};
@@ -76,8 +76,8 @@ export function deriveLeafOrigin(leaf, slotOrigins) {
     const declared = slotOrigins[slot];
     if (declared === null) {
       if (!unanchored.includes(slot)) unanchored.push(slot);
-    } else if (declared === "brand-poli") {
-      origin = "brand-poli";
+    } else if (typeof declared === "string" && declared.startsWith("brand-")) {
+      origin = declared; // propagate the specific brand name (e.g. "brand-wolfhaus")
     }
   }
 
