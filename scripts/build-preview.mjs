@@ -173,7 +173,6 @@ const SEMANTIC_ROLES = [
   "icon",
   "emphasis-brand",
   "emphasis",
-  "border",
 ];
 const semClaimed = new Set();
 const semanticGroups = SEMANTIC_ROLES.map((role) => {
@@ -258,7 +257,7 @@ const semanticSpacingGroups = spacingRoles
     const id = `sub-space-${slug(role)}`;
     const roleChips = list.map(
       (v) => `<div class="chip">
-  <div class="sw" style="background:var(--surface-primary);width:min(var(--${v.name}),96px);height:min(var(--${v.name}),96px)"></div>
+  <div class="sw" style="background:var(--palette-neutral-9);width:min(var(--${v.name}),96px);height:min(var(--${v.name}),96px)"></div>
   <div class="lbl">${v.name.replace(role + "-", "")}</div><div class="val">${v.value}</div></div>`,
     );
     return subsec(id, role, list.length, roleChips);
@@ -490,7 +489,7 @@ const contrastInner = ctSummary + ctGroupsHtml;
 // --- views ------------------------------------------------------------------
 const viewPalette = `<div class="view active" id="view-palette">
   ${sec("sec-primitives", "Primitives — color ramps", primInner)}
-  ${sec("sec-brand", "Brand — palette slots", palInner)}
+  ${sec("sec-palette", "Palette Slots", palInner)}
 </div>`;
 
 const viewSemantic = `<div class="view" id="view-semantic">
@@ -512,7 +511,7 @@ const viewScales = `<div class="view" id="view-scales">
   ${sec("sec-z-index", `Z-Index · ${zIndexVars.length}`, `<div class="stack">${zIndexRows}</div>`)}
   ${sec("sec-border-width", "Border Width", `<div class="stack">${bwRows}</div>`)}
   ${sec("sec-elevation", `Elevation · ${shadowVars.length} — shadows`, `<div class="row">${shadows.join("")}</div>`)}
-  ${sec("sec-sizing", "Sizing", `<div class="stack">${sizeBars.join("")}</div>`)}
+  ${sizeVars.length ? sec("sec-sizing", "Sizing", `<div class="stack">${sizeBars.join("")}</div>`) : ""}
 </div>`;
 
 // --- html -------------------------------------------------------------------
@@ -545,7 +544,7 @@ ${css}
     cursor: pointer; font-size: 12px; font-weight: 600; text-transform: uppercase;
     letter-spacing: .08em; color: var(--text-subtle); text-align: left; width: 100%;
     padding: 8px 0 8px 12px; display: block; font-family: inherit; transition: color .15s; }
-  .nav-btn.nav-active { color: var(--text-default); border-left-color: var(--text-primary); }
+  .nav-btn.nav-active { color: var(--text-default); border-left-color: var(--palette-neutral-9); }
   .nav-btn:hover { color: var(--text-default); }
 
   .view { display: none; }
@@ -566,8 +565,8 @@ ${css}
   .origin-group { margin-bottom:32px; }
   .origin-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.08em;
     padding:4px 10px; border-radius:4px; display:inline-block; margin-bottom:16px; }
-  .origin-brand-poli { background:color-mix(in srgb,var(--surface-primary) 20%,transparent);
-    color:var(--text-primary); border:1px solid color-mix(in srgb,var(--surface-primary) 40%,transparent); }
+  .origin-brand-poli { background:color-mix(in srgb,var(--palette-neutral-9) 20%,transparent);
+    color:var(--text-default); border:1px solid color-mix(in srgb,var(--palette-neutral-9) 40%,transparent); }
   .origin-base { background:color-mix(in srgb,var(--surface-card) 60%,transparent);
     color:var(--text-subtle); border:1px solid var(--stroke-divider); }
   .chip { width:132px; }
@@ -578,7 +577,7 @@ ${css}
   .stack { display:flex; flex-direction:column; gap:14px; }
   .bar-row { display:flex; align-items:center; gap:16px; }
   .bar-lbl { width:64px; font-size:12px; }
-  .bar { height:14px; background: var(--surface-primary); border-radius:2px; min-width:1px; }
+  .bar { height:14px; background: var(--palette-neutral-9); border-radius:2px; min-width:1px; }
   .bw-bar { width:120px; border-top-style:solid; border-top-color:var(--text-default); }
   .bar-val { font-size:11px; color: var(--text-subtle); }
   .type-row { display:flex; align-items:baseline; justify-content:space-between; gap:24px;
@@ -647,7 +646,7 @@ ${css}
     nav.index ul { display: flex; gap: 4px; }
     .nav-btn { border-left: none; border-bottom: 3px solid transparent;
       padding: 8px 10px; width: auto; }
-    .nav-btn.nav-active { border-bottom-color: var(--text-primary); }
+    .nav-btn.nav-active { border-bottom-color: var(--palette-neutral-9); }
   }
 </style>
 </head>

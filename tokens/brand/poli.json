@@ -80,22 +80,6 @@
       "a9": {
         "$type": "color",
         "$value": "{color.black-alpha.a9}"
-      },
-      "low": {
-        "$type": "color",
-        "$value": "{palette.neutral.3}"
-      },
-      "mid": {
-        "$type": "color",
-        "$value": "{palette.neutral.5}"
-      },
-      "high": {
-        "$type": "color",
-        "$value": "{palette.neutral.11}"
-      },
-      "max": {
-        "$type": "color",
-        "$value": "{palette.neutral.12}"
       }
     },
     "error": {
