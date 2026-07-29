@@ -47,7 +47,23 @@ Questo è il passo chiave. Prendi il colore primario del cliente e genera una sc
 
 ### Usando lo strumento Radix
 
-Vai su https://www.radix-ui.com/colors/custom e inserisci il colore del cliente come "accent color". Radix genera una scala a 12 step, light e dark, calibrata per il contrasto. Copia i 24 valori (12 light + 12 dark).
+Vai su https://www.radix-ui.com/colors/custom e inserisci il colore del cliente come "accent color".
+
+Radix genera un blocco CSS. Ti servono SOLO i 12 valori hex della sezione base, le prime 12 righe dentro `:root, .light, .light-theme`:
+
+```
+--custom-1 attraverso --custom-12
+```
+
+Copia i 12 hex. Poi switcha a dark theme e copia gli altri 12 hex.
+
+IGNORA tutto il resto:
+
+- le varianti alpha (`--custom-a1` ... `a12`) — non ti servono
+- il blocco `@supports display-p3` — ottimizzazione wide-gamut, non per i token
+- `--custom-contrast/surface/indicator/track` — scorciatoie tema Radix
+
+Il risultato: 24 valori hex (12 light + 12 dark) da mettere in `tokens/core/color.json` come scala a 12 step.
 
 ### Se Radix non produce il risultato giusto
 
