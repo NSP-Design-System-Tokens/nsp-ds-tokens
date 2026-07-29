@@ -91,13 +91,23 @@ function deepMerge(a, b, path = "") {
 }
 
 export function loadMerged() {
-  const files = readdirSync(TOKENS_DIR, { recursive: true })
-    .filter((f) => f.endsWith(".json"))
-    .sort();
+  return loadMergedWith([]);
+}
+
+// Load base tokens from TOKENS_DIR then merge additional token directories on top.
+// Used by brand project repos: loadMergedWith([resolve(brandRoot, "tokens")]).
+// Order: base first, then each extra dir in array order. Callers must ensure no
+// key collisions between base and extra (extraction script enforces this).
+export function loadMergedWith(extraDirs = []) {
   const merged = {};
-  for (const f of files) {
-    const data = JSON.parse(readFileSync(resolve(TOKENS_DIR, f), "utf8"));
-    deepMerge(merged, data, f);
+  for (const dir of [TOKENS_DIR, ...extraDirs]) {
+    const files = readdirSync(dir, { recursive: true })
+      .filter((f) => f.endsWith(".json"))
+      .sort();
+    for (const f of files) {
+      const data = JSON.parse(readFileSync(resolve(dir, f), "utf8"));
+      deepMerge(merged, data, f);
+    }
   }
   return merged;
 }

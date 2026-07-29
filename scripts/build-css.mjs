@@ -138,8 +138,9 @@ const rootLines = [
   ...emitShadow("light"),
 ];
 
-// --- dark : semantic color overrides only ---
+// --- dark : moded primitive overrides + semantic color overrides ---
 const darkLines = [
+  ...emitGroup("color", "dark"),
   ...emitGroup("surface", "dark"),
   ...emitGroup("text", "dark"),
   ...emitGroup("stroke", "dark"),

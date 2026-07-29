@@ -33,7 +33,11 @@ All ramps in `core/color.json` follow one of two origins. This is the authoritat
 
 **When adding a new scale:**
 
-- New neutral or status hue → import Radix as-is, same `light.1-12` / `dark.1-12` structure.
+- New neutral or status hue → import Radix as-is. Store as a unified 12-step scale
+  where each step token (`color.<hue>.N`) carries `$extensions["com.figma.modes"]`
+  with the Radix light and dark hex. `$value` = light hex (base mode). Do **not**
+  use the old two-sub-tree layout (`color.<hue>.light.*` + `color.<hue>.dark.*`);
+  that structure was superseded in v0.3.0.
 - New brand identity → generate a custom scale anchored on the brand's identity hex (see below).
 - New brand (`brand/<name>.json`) → generate its own custom scale; shared Radix scales (mauve, red, green, orange) are not re-generated per brand.
 
@@ -50,7 +54,7 @@ Radix 12-step scales assign functional meaning by position:
 | 11    | Accessible text on light backgrounds (≥ 4.5:1 on white)        |
 | 12    | Accessible text on dark backgrounds (≥ 4.5:1 on dark surfaces) |
 
-Palette slots map to these steps. For `on-<role>` text colors sitting ON a solid fill (step 9): bright-hue fills (red, green) don't achieve 4.5:1 with white; use `palette.neutral.black` as the `text.on-<role>` value instead (matches the warning convention: `text.on-warning` already uses `palette.neutral.900`).
+Palette slots map to these steps. For `on-<role>` text colors sitting ON a solid fill (step 9): bright-hue fills (red, green, orange) don't achieve 4.5:1 with white; use `palette.neutral.black` as the `text.on-<role>` value instead (see `text.on-warning` and `icon.on-warning` which use `palette.neutral.black` for both modes).
 
 #### Regenerating the Poli brand scale
 

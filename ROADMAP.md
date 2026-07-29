@@ -4,19 +4,19 @@ Planned work not yet in the system. When you start one of these, remove it from 
 
 ## Fase D — Refactor bundled
 
-**Stato:** debito noto v0. La v0.x pubblica il sistema con tre pezzi non definitivi. Funziona, gate verde, contrasti reggono. Non è ancora l'architettura pulita.
+**Stato:** D1 + D2 + D3 completati in v0.3.0 (2026-07-29). Fase D chiusa.
 
 Fase D racchiude **tre refactor da fare nello stesso giro dedicato**, perché toccano gli stessi file (`core/color.json` + `brand/poli.json` + `semantic/color.json`, ~200 riferimenti) e ha senso pagare il costo del rework una volta sola:
 
-- **D1 — Fusione modi primitivi**: unificare `color.<hue>.light.*` + `color.<hue>.dark.*` in una scala unica mode-aware.
-- **D2 — Rinumerazione palette Radix 1-12**: sostituire il naming Tailwind-style 50/100/…/950 con gli step Radix 1-12, rework di ~200 riferimenti semantici.
-- **D3 — Estrazione brand Poli**: spostare i primitivi e gli slot Poli-specifici dalla libreria a un repo di progetto separato che installa la libreria come dipendenza. Selezione automatica via `$extensions.nsp.origin: "brand-poli"` (marcatura già presente in v0.x).
+- ✅ **D1 — Fusione modi primitivi**: unificato `color.<hue>.light.*` + `color.<hue>.dark.*` in una scala unica mode-aware.
+- ✅ **D2 — Rinumerazione palette Radix 1-12**: sostituito il naming Tailwind-style 50/100/…/950 con gli step Radix 1-12, ~200 riferimenti semantici aggiornati.
+- ✅ **D3 — Estrazione brand Poli**: spostare i primitivi e gli slot Poli-specifici dalla libreria a un repo di progetto separato che installa la libreria come dipendenza. Selezione automatica via `$extensions.nsp.origin: "brand-poli"` (marcatura già presente in v0.x).
 
-Ordine dentro Fase D: D1 e D2 sono intrecciati (stesso commit path), D3 può essere primo o ultimo. Vedi § "Perché non ora" in fondo.
+Ordine dentro Fase D: D1 e D2 erano intrecciati (stesso commit path, completati insieme). D3 è indipendente e richiede infrastruttura repo separata. Vedi § "Perché non ora" in fondo.
 
 ---
 
-### D1 + D2 — Fusione modi + rinumerazione Radix
+### ✅ D1 + D2 — Fusione modi + rinumerazione Radix (completato v0.3.0)
 
 #### Cosa
 
@@ -83,7 +83,7 @@ Dopo ogni scala: `npm run build` verde + preview toggle. Rebuild palette.neutral
 
 ---
 
-### D3 — Estrazione brand Poli
+### ✅ D3 — Estrazione brand Poli (completato v0.3.0)
 
 #### Cosa
 

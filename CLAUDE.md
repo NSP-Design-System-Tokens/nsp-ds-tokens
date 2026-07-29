@@ -18,10 +18,10 @@ No Tokens Studio, no bidirectional sync, no editing in Figma.
 ## Tiers (bottom to top)
 
 ```
-core/        Primitives   raw ramps + dimensions + font atoms      no modes
+core/        Primitives   raw ramps + dimensions + font atoms      color ramps: light/dark modes
 brand/       Brand        assigns primitives to roles (palette.*)  no modes
 semantic/    Semantic     roles by function; composites            color modes: light/dark
-responsive/  Responsive   type-size, breakpoints                    resp modes: base/md/lg
+responsive/  Responsive   type-size, breakpoints                   resp modes: base/md/lg
 ```
 
 - Primitives are meaningless raw values. Nobody consumes them directly.
@@ -34,12 +34,16 @@ responsive/  Responsive   type-size, breakpoints                    resp modes: 
 
 ## Two mode axes
 
-- **Color** on semantic color roles: `light` / `dark`. CSS emits `:root` +
-  `[data-theme="dark"]` overrides.
+- **Color** on both color primitives and semantic color roles: `light` / `dark`.
+  CSS emits `:root` (base = light) + `[data-theme="dark"]` overrides. The dark block
+  emits both `color.*` primitive overrides and semantic role overrides; the `var()`
+  chain means only the leaf that changes needs to appear in the dark block.
 - **Responsive** on `type-size`: `base` (mobile) / `md` / `lg`. CSS emits base in
   `:root` and `min-width` media queries (mobile-first) at the `breakpoint` widths.
 
-Modes live in `$extensions["com.figma.modes"]`; `$value` mirrors the base mode.
+Modes live in `$extensions["com.figma.modes"]`; `$value` mirrors the base (light)
+mode. Color primitives (`color.<hue>.N`) carry both modes in the primitive itself;
+semantic tokens carry modes only when they reference different palette steps per mode.
 
 ## Full DTCG typing
 
@@ -69,7 +73,12 @@ All ramps in `core/color.json` follow one of two origins. The rule is stated onc
 | Neutral + states | **Radix as-is**          | `mauve`, `pink`, `red`, `green`, `orange`          |
 | Brand identity   | **Custom, Radix method** | `poli-magenta` (and each future brand's own scale) |
 
-**Radix as-is** — import the exact hex values from `@radix-ui/colors`. No tweaks. Use light.1-12 / dark.1-12 structure.
+**Radix as-is** — import the exact hex values from `@radix-ui/colors`. No tweaks.
+Store as a single unified 12-step scale (`color.<hue>.1` – `color.<hue>.12`) where
+each step token carries `$extensions["com.figma.modes"] { light, dark }` with the
+Radix light and dark hex values respectively. `$value` = the light hex (base mode).
+Do not use the old two-sub-tree layout (`color.<hue>.light.*` + `color.<hue>.dark.*`);
+that structure was replaced in v0.3.0 by the unified moded scale.
 
 **Custom, Radix method** — generate a 12-step OKLCH scale anchored on the brand's identity color, then snap it to hex. Step 9 = identity color (exact). See the guide for the regeneration script.
 

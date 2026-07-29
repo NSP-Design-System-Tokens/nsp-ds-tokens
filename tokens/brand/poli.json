@@ -1,235 +1,69 @@
 {
   "palette": {
-    "$extensions": { "com.figma.scoping": [] },
-    "primary": {
-      "$extensions": { "nsp": { "origin": "brand-poli" } },
-      "50": {
-        "$type": "color",
-        "$value": "{color.magenta.light.2}"
-      },
-      "100": {
-        "$type": "color",
-        "$value": "{color.magenta.light.3}"
-      },
-      "200": {
-        "$type": "color",
-        "$value": "{color.magenta.dark.12}"
-      },
-      "300": {
-        "$type": "color",
-        "$value": "{color.magenta.light.8}"
-      },
-      "500": {
-        "$type": "color",
-        "$value": "{color.magenta.light.9}"
-      },
-      "700": {
-        "$type": "color",
-        "$value": "{color.magenta.light.10}"
-      },
-      "900": {
-        "$type": "color",
-        "$value": "{color.magenta.light.12}"
-      },
-      "default": {
-        "$type": "color",
-        "$value": "{palette.primary.500}"
-      },
-      "subtle": {
-        "$type": "color",
-        "$value": "{palette.primary.100}"
-      },
-      "emphasis": {
-        "$type": "color",
-        "$value": "{palette.primary.700}"
-      },
-      "hover": {
-        "$type": "color",
-        "$value": "{palette.primary.700}"
-      }
-    },
-    "secondary": {
-      "$extensions": { "nsp": { "origin": "brand-poli" } },
-      "3": {
-        "$type": "color",
-        "$value": "{color.pink.light.3}"
-      },
-      "3d": {
-        "$type": "color",
-        "$value": "{color.pink.dark.3}"
-      },
-      "4": {
-        "$type": "color",
-        "$value": "{color.pink.light.4}"
-      },
-      "4d": {
-        "$type": "color",
-        "$value": "{color.pink.dark.4}"
-      },
-      "5": {
-        "$type": "color",
-        "$value": "{color.pink.light.5}"
-      },
-      "5d": {
-        "$type": "color",
-        "$value": "{color.pink.dark.5}"
-      },
-      "11": {
-        "$type": "color",
-        "$value": "{color.pink.light.11}"
-      },
-      "11d": {
-        "$type": "color",
-        "$value": "{color.pink.dark.11}"
-      },
-      "12": {
-        "$type": "color",
-        "$value": "{color.pink.light.12}"
-      },
-      "12d": {
-        "$type": "color",
-        "$value": "{color.pink.dark.12}"
-      }
-    },
-    "tertiary": {
-      "$extensions": { "nsp": { "origin": "brand-poli" } },
-      "3": {
-        "$type": "color",
-        "$value": "{color.mauve.light.3}"
-      },
-      "3d": {
-        "$type": "color",
-        "$value": "{color.mauve.dark.3}"
-      },
-      "4": {
-        "$type": "color",
-        "$value": "{color.mauve.light.4}"
-      },
-      "4d": {
-        "$type": "color",
-        "$value": "{color.mauve.dark.4}"
-      },
-      "5": {
-        "$type": "color",
-        "$value": "{color.mauve.light.5}"
-      },
-      "5d": {
-        "$type": "color",
-        "$value": "{color.mauve.dark.5}"
-      },
-      "11": {
-        "$type": "color",
-        "$value": "{color.mauve.light.11}"
-      },
-      "11d": {
-        "$type": "color",
-        "$value": "{color.mauve.dark.11}"
-      },
-      "12": {
-        "$type": "color",
-        "$value": "{color.mauve.light.12}"
-      },
-      "12d": {
-        "$type": "color",
-        "$value": "{color.mauve.dark.12}"
-      }
-    },
-    "accent": {
-      "$extensions": { "nsp": { "origin": "brand-poli" } },
-      "2": {
-        "$type": "color",
-        "$value": "{color.bronze.light.2}"
-      },
-      "3": {
-        "$type": "color",
-        "$value": "{color.bronze.light.3}"
-      },
-      "4": {
-        "$type": "color",
-        "$value": "{color.bronze.light.4}"
-      },
-      "5": {
-        "$type": "color",
-        "$value": "{color.bronze.light.5}"
-      },
-      "7": {
-        "$type": "color",
-        "$value": "{color.bronze.light.7}"
-      },
-      "9": {
-        "$type": "color",
-        "$value": "{color.bronze.light.9}"
-      },
-      "10": {
-        "$type": "color",
-        "$value": "{color.bronze.light.10}"
-      },
-      "default": {
-        "$type": "color",
-        "$value": "{palette.accent.9}"
-      },
-      "light": {
-        "$type": "color",
-        "$value": "{palette.accent.5}"
-      },
-      "dark": {
-        "$type": "color",
-        "$value": "{palette.accent.10}"
-      }
+    "$extensions": {
+      "com.figma.scoping": []
     },
     "neutral": {
-      "$extensions": { "nsp": { "origin": "base" } },
       "0": {
         "$type": "color",
         "$value": "{color.white}"
       },
+      "1": {
+        "$type": "color",
+        "$value": "{color.mauve.1}"
+      },
+      "2": {
+        "$type": "color",
+        "$value": "{color.mauve.2}"
+      },
+      "3": {
+        "$type": "color",
+        "$value": "{color.mauve.3}"
+      },
+      "4": {
+        "$type": "color",
+        "$value": "{color.mauve.4}"
+      },
+      "5": {
+        "$type": "color",
+        "$value": "{color.mauve.5}"
+      },
+      "6": {
+        "$type": "color",
+        "$value": "{color.mauve.6}"
+      },
+      "7": {
+        "$type": "color",
+        "$value": "{color.mauve.7}"
+      },
+      "8": {
+        "$type": "color",
+        "$value": "{color.mauve.8}"
+      },
+      "9": {
+        "$type": "color",
+        "$value": "{color.mauve.9}"
+      },
+      "10": {
+        "$type": "color",
+        "$value": "{color.mauve.10}"
+      },
+      "11": {
+        "$type": "color",
+        "$value": "{color.mauve.11}"
+      },
+      "12": {
+        "$type": "color",
+        "$value": "{color.mauve.12}"
+      },
+      "$extensions": {
+        "nsp": {
+          "origin": "base"
+        }
+      },
       "black": {
         "$type": "color",
         "$value": "{color.black}"
-      },
-      "50": {
-        "$type": "color",
-        "$value": "{color.mauve.light.2}"
-      },
-      "100": {
-        "$type": "color",
-        "$value": "{color.mauve.light.3}"
-      },
-      "200": {
-        "$type": "color",
-        "$value": "{color.mauve.light.4}"
-      },
-      "300": {
-        "$type": "color",
-        "$value": "{color.mauve.light.5}"
-      },
-      "400": {
-        "$type": "color",
-        "$value": "{color.mauve.light.7}"
-      },
-      "500": {
-        "$type": "color",
-        "$value": "{color.mauve.light.9}"
-      },
-      "600": {
-        "$type": "color",
-        "$value": "{color.mauve.light.10}"
-      },
-      "700": {
-        "$type": "color",
-        "$value": "{color.mauve.light.11}"
-      },
-      "800": {
-        "$type": "color",
-        "$value": "{color.mauve.light.12}"
-      },
-      "900": {
-        "$type": "color",
-        "$value": "{color.mauve.light.12}"
-      },
-      "950": {
-        "$type": "color",
-        "$value": "{color.mauve.light.12}"
       },
       "a1": {
         "$type": "color",
@@ -249,84 +83,96 @@
       },
       "low": {
         "$type": "color",
-        "$value": "{palette.neutral.100}"
+        "$value": "{palette.neutral.3}"
       },
       "mid": {
         "$type": "color",
-        "$value": "{palette.neutral.300}"
+        "$value": "{palette.neutral.5}"
       },
       "high": {
         "$type": "color",
-        "$value": "{palette.neutral.700}"
+        "$value": "{palette.neutral.11}"
       },
       "max": {
         "$type": "color",
-        "$value": "{palette.neutral.900}"
+        "$value": "{palette.neutral.12}"
       }
     },
     "error": {
-      "$extensions": { "nsp": { "origin": "base" } },
-      "200": {
+      "9": {
         "$type": "color",
-        "$value": "{color.red.dark.12}"
+        "$value": "{color.red.9}"
       },
-      "500": {
+      "10": {
         "$type": "color",
-        "$value": "{color.red.light.9}"
-      },
-      "600": {
-        "$type": "color",
-        "$value": "{color.red.light.10}"
+        "$value": "{color.red.10}"
       },
       "11": {
         "$type": "color",
-        "$value": "{color.red.light.11}"
+        "$value": "{color.red.11}"
+      },
+      "12": {
+        "$type": "color",
+        "$value": "{color.red.12}"
+      },
+      "$extensions": {
+        "nsp": {
+          "origin": "base"
+        }
       },
       "default": {
         "$type": "color",
-        "$value": "{palette.error.500}"
+        "$value": "{palette.error.9}"
       }
     },
     "success": {
-      "$extensions": { "nsp": { "origin": "base" } },
-      "200": {
+      "9": {
         "$type": "color",
-        "$value": "{color.green.dark.12}"
+        "$value": "{color.green.9}"
       },
-      "500": {
+      "10": {
         "$type": "color",
-        "$value": "{color.green.light.9}"
-      },
-      "600": {
-        "$type": "color",
-        "$value": "{color.green.light.10}"
+        "$value": "{color.green.10}"
       },
       "11": {
         "$type": "color",
-        "$value": "{color.green.light.11}"
+        "$value": "{color.green.11}"
+      },
+      "12": {
+        "$type": "color",
+        "$value": "{color.green.12}"
+      },
+      "$extensions": {
+        "nsp": {
+          "origin": "base"
+        }
       },
       "default": {
         "$type": "color",
-        "$value": "{palette.success.500}"
+        "$value": "{palette.success.9}"
       }
     },
     "warning": {
-      "$extensions": { "nsp": { "origin": "base" } },
-      "300": {
+      "9": {
         "$type": "color",
-        "$value": "{color.orange.dark.12}"
+        "$value": "{color.orange.9}"
       },
-      "500": {
+      "11": {
         "$type": "color",
-        "$value": "{color.orange.light.9}"
+        "$value": "{color.orange.11}"
       },
-      "700": {
+      "12": {
         "$type": "color",
-        "$value": "{color.orange.light.11}"
+        "$value": "{color.orange.12}"
+      },
+      "$extensions": {
+        "nsp": {
+          "origin": "base"
+        }
       },
       "default": {
         "$type": "color",
-        "$value": "{palette.warning.500}"
+        "$value": "{palette.warning.9}"
       }
     }
   }

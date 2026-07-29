@@ -5,6 +5,61 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [0.3.0] — 2026-07-29
+
+### D1 — Primitive color modes fused (Fase D)
+
+- All color ramps (`bronze`, `mauve`, `pink`, `red`, `green`, `orange`, `magenta`)
+  converted from two separate `light.*` / `dark.*` sub-trees into a single unified
+  scale (`color.<hue>.N`) where dark values live in
+  `$extensions["com.figma.modes"].dark`. `black-alpha`, `white`, `black` remain flat
+  (invariant across color modes).
+- CSS build now emits `emitGroup("color", "dark")` in the `[data-theme="dark"]` block
+  so dark primitive overrides cascade into all `var()` chains that reference them.
+- Figma build required no changes; `figmaLeaf()` already handles `com.figma.modes`.
+
+### D2 — Palette renumbered to Radix 1-12 (Fase D)
+
+- All `palette.*` slots re-wired to the new unified step numbers (`palette.primary.9`,
+  etc.). Named aliases updated: `default`, `subtle`, `emphasis`, `hover`, `strong`.
+- `d`-suffix dark slots (`secondary.3d`, etc.) eliminated; dark values are carried
+  automatically by the moded primitive they reference.
+- `palette.neutral` rebuilt with Radix step logic: 1-12 from `color.mauve`, alpha
+  steps `a1/a2/a4/a9`, semantic aliases `low=3`, `mid=5`, `high=11`, `max=12`.
+- `palette.error/success/warning` restricted to steps 9/10/11/12 (solid + text range).
+- `tokens/semantic/color.json` updated: ~200 token references renumbered; dark mode
+  references corrected for Radix dark-scale semantics (step 12 = high-contrast text
+  on dark, not step 11 or the old 200-numbered slots).
+- Contrast gate: 0 failures across all 434 tokens, light + dark modes.
+
+### D3 — Brand Poli extraction (Fase D)
+
+- `scripts/extract-brand.mjs` added: reads the merged token tree, splits by
+  `$extensions.nsp.origin` (primitives + palette slots) and by
+  `deriveSemanticOrigins()` (semantic leaves), writes two self-consistent output
+  trees to `dist/brand-poli/tokens/` and `dist/base/tokens/`.
+- Heuristic layer added alongside graph derivation: semantic tokens whose path
+  contains a brand-role segment (`primary`, `secondary`, `tertiary`, `accent`) are
+  promoted to `brand-poli` even when their graph origin resolves to `base`
+  (catches `surface.tertiary-dark`, `surface.tertiary-darker`, `text.on-primary`,
+  `icon.on-primary`).
+- Sum check: 126 brand-poli + 308 base = 434 (system total ✓).
+- `nsp-tokens` source cleaned to base-only: brand primitives (`magenta`, `bronze`,
+  `pink`) removed from `core/color.json`; brand identity palette slots (`primary`,
+  `secondary`, `tertiary`, `accent`) removed from `brand/poli.json`; 35 brand-poli
+  semantic tokens removed from `semantic/color.json`. Library now 308 tokens, 0
+  brand-poli.
+- `scripts/lib/tokens.mjs` extended with `loadMergedWith(extraDirs)`: reads
+  `TOKENS_DIR` first, then any additional directories in order, deepMerging all
+  JSON files. Enables brand repos to overlay their tokens on the base library.
+- `nsp-tokens-poli/` created as a sibling repo: installs `nsp-tokens` as a
+  `file:` dependency; wraps `scripts/lib/{tokens,contrast,origin}.mjs` via
+  re-export; copies build/validate scripts unchanged; carries brand token files in
+  `tokens/{core,brand,semantic}/`. `npm run build` passes; 434 tokens (308 base +
+  126 brand-poli), 0 validate errors.
+
+---
+
 ## [0.2.0] — 2026-07-24
 
 ### Structural changes (same tier model, deeper architecture)
