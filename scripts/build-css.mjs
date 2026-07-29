@@ -111,7 +111,6 @@ const block = (sel, lines) => `${sel} {\n${lines.join("\n")}\n}`;
 // --- :root : primitives + palette + base sizes + light semantic + composites ---
 const rootLines = [
   ...emitGroup("color"),
-  ...emitGroup("size"),
   ...emitGroup("font"),
   ...emitGroup("spacing"),
   ...emitGroup("motion"),
@@ -132,8 +131,8 @@ const rootLines = [
   ...emitGroup("inset"),
   ...emitGroup("stack"),
   ...emitGroup("inline"),
-  ...emitGroup("section-gap"),
-  ...emitGroup("page-margin"),
+  ...emitGroup("section-gap", "mobile"),
+  ...emitGroup("page-margin", "mobile"),
   ...emitGroup("section", "mobile"),
   ...emitTypography(),
   ...emitShadow("light"),
@@ -163,7 +162,7 @@ const queries = respModes
       `@media (min-width: ${bpWidth(m)}) {\n${block(":root", emitGroup("type-size", m)).replace(/^/gm, "  ")}\n}`,
   );
 
-const layoutGroups = ["grid", "section"];
+const layoutGroups = ["section-gap", "page-margin", "grid", "section"];
 const layoutModes = ["tablet", "desktop"]; // ascending breakpoint order
 const layoutQueries = layoutModes
   .filter((m) => bpWidth(m))
@@ -206,7 +205,6 @@ for (const g of [
   "emphasis",
 ])
   collect(g, colors, false);
-collect("size", spacing, true);
 collect("spacing", spacing, true);
 collect("type-size", fontSize, true);
 

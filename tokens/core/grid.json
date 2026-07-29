@@ -1,6 +1,5 @@
 {
   "grid": {
-    "$extensions": { "com.figma.scoping": ["GAP", "WIDTH_HEIGHT"] },
     "columns": {
       "$type": "number",
       "$value": 12,
@@ -16,6 +15,7 @@
       "$type": "number",
       "$value": "{spacing.8}",
       "$extensions": {
+        "com.figma.scoping": ["GAP", "WIDTH_HEIGHT"],
         "com.figma.modes": {
           "desktop": "{spacing.8}",
           "tablet": "{spacing.4}",
@@ -27,6 +27,7 @@
       "$type": "number",
       "$value": "{spacing.20}",
       "$extensions": {
+        "com.figma.scoping": ["GAP", "WIDTH_HEIGHT"],
         "com.figma.modes": {
           "desktop": "{spacing.20}",
           "tablet": "{spacing.8}",

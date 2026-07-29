@@ -8,7 +8,7 @@
         "com.figma.modes": {
           "mobile": "40px",
           "tablet": "72px",
-          "desktop": "100px"
+          "desktop": "{font.size.8xl}"
         }
       }
     },
@@ -19,7 +19,7 @@
         "com.figma.modes": {
           "mobile": "32px",
           "tablet": "56px",
-          "desktop": "80px"
+          "desktop": "{font.size.7xl}"
         }
       }
     },
@@ -30,7 +30,7 @@
         "com.figma.modes": {
           "mobile": "28px",
           "tablet": "48px",
-          "desktop": "60px"
+          "desktop": "{font.size.6xl}"
         }
       }
     },
@@ -41,7 +41,7 @@
         "com.figma.modes": {
           "mobile": "24px",
           "tablet": "36px",
-          "desktop": "48px"
+          "desktop": "{font.size.5xl}"
         }
       }
     },
@@ -52,7 +52,7 @@
         "com.figma.modes": {
           "mobile": "20px",
           "tablet": "28px",
-          "desktop": "36px"
+          "desktop": "{font.size.4xl}"
         }
       }
     },
@@ -63,7 +63,7 @@
         "com.figma.modes": {
           "mobile": "20px",
           "tablet": "24px",
-          "desktop": "30px"
+          "desktop": "{font.size.3xl}"
         }
       }
     },
@@ -74,7 +74,7 @@
         "com.figma.modes": {
           "mobile": "18px",
           "tablet": "20px",
-          "desktop": "24px"
+          "desktop": "{font.size.2xl}"
         }
       }
     },
@@ -85,18 +85,7 @@
         "com.figma.modes": {
           "mobile": "18px",
           "tablet": "20px",
-          "desktop": "20px"
-        }
-      }
-    },
-    "body-medium": {
-      "$type": "dimension",
-      "$value": "16px",
-      "$extensions": {
-        "com.figma.modes": {
-          "mobile": "16px",
-          "tablet": "18px",
-          "desktop": "18px"
+          "desktop": "{font.size.xl}"
         }
       }
     },
@@ -107,7 +96,7 @@
         "com.figma.modes": {
           "mobile": "16px",
           "tablet": "16px",
-          "desktop": "16px"
+          "desktop": "{font.size.base}"
         }
       }
     },
@@ -118,18 +107,7 @@
         "com.figma.modes": {
           "mobile": "14px",
           "tablet": "14px",
-          "desktop": "14px"
-        }
-      }
-    },
-    "body-xsmall": {
-      "$type": "dimension",
-      "$value": "12px",
-      "$extensions": {
-        "com.figma.modes": {
-          "mobile": "12px",
-          "tablet": "12px",
-          "desktop": "12px"
+          "desktop": "{font.size.sm}"
         }
       }
     }

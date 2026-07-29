@@ -15,7 +15,7 @@
       "$value": {
         "fontFamily": "{font.family.sans}",
         "fontWeight": "{font.weight.bold}",
-        "fontSize": "{font.size.6xl}",
+        "fontSize": "{font.size.7xl}",
         "lineHeight": "{font.line-height.110}",
         "letterSpacing": "{font.letter-spacing.tight}"
       }
@@ -25,7 +25,7 @@
       "$value": {
         "fontFamily": "{font.family.sans}",
         "fontWeight": "{font.weight.bold}",
-        "fontSize": "{font.size.5xl}",
+        "fontSize": "{font.size.6xl}",
         "lineHeight": "{font.line-height.120}",
         "letterSpacing": "{font.letter-spacing.snug}"
       }
@@ -35,7 +35,7 @@
       "$value": {
         "fontFamily": "{font.family.sans}",
         "fontWeight": "{font.weight.semibold}",
-        "fontSize": "{font.size.4xl}",
+        "fontSize": "{font.size.5xl}",
         "lineHeight": "{font.line-height.130}",
         "letterSpacing": "{font.letter-spacing.snug}"
       }
@@ -45,7 +45,7 @@
       "$value": {
         "fontFamily": "{font.family.sans}",
         "fontWeight": "{font.weight.semibold}",
-        "fontSize": "{font.size.3xl}",
+        "fontSize": "{font.size.4xl}",
         "lineHeight": "{font.line-height.135}",
         "letterSpacing": "{font.letter-spacing.normal}"
       }
@@ -55,7 +55,7 @@
       "$value": {
         "fontFamily": "{font.family.sans}",
         "fontWeight": "{font.weight.medium}",
-        "fontSize": "{font.size.2xl}",
+        "fontSize": "{font.size.3xl}",
         "lineHeight": "{font.line-height.140}",
         "letterSpacing": "{font.letter-spacing.normal}"
       }
@@ -65,7 +65,7 @@
       "$value": {
         "fontFamily": "{font.family.sans}",
         "fontWeight": "{font.weight.medium}",
-        "fontSize": "{font.size.xl}",
+        "fontSize": "{font.size.2xl}",
         "lineHeight": "{font.line-height.145}",
         "letterSpacing": "{font.letter-spacing.normal}"
       }
@@ -75,7 +75,7 @@
       "$value": {
         "fontFamily": "{font.family.sans}",
         "fontWeight": "{font.weight.regular}",
-        "fontSize": "{font.size.lg}",
+        "fontSize": "{font.size.xl}",
         "lineHeight": "{font.line-height.150}",
         "letterSpacing": "{font.letter-spacing.normal}"
       }

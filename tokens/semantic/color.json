@@ -579,6 +579,7 @@
     }
   },
   "logo": {
+    "$extensions": { "com.figma.scoping": ["SHAPE_FILL"] },
     "default": {
       "$type": "color",
       "$value": "{palette.primary.500}",
@@ -794,6 +795,7 @@
     }
   },
   "emphasis-brand": {
+    "$extensions": { "com.figma.scoping": ["FRAME_FILL", "SHAPE_FILL"] },
     "default": {
       "$type": "color",
       "$value": "{palette.primary.300}",
@@ -816,6 +818,7 @@
     }
   },
   "emphasis": {
+    "$extensions": { "com.figma.scoping": ["FRAME_FILL", "SHAPE_FILL"] },
     "default": {
       "$type": "color",
       "$value": "{palette.accent.default}",

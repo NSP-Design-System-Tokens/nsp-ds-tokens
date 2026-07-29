@@ -18,7 +18,6 @@ export const TOKENS_DIR = resolve(ROOT, "tokens");
 export const TIERS = {
   "1. Primitives": [
     "color",
-    "size",
     "font",
     "spacing",
     "motion",
@@ -38,8 +37,16 @@ export const TIERS = {
     "typography",
     "shadow",
   ],
-  "4. Spacing": ["inset", "stack", "inline", "section-gap", "page-margin"],
-  "5. Layout": ["section", "grid", "visible", "type-size", "breakpoint"],
+  "4. Spacing": ["inset", "stack", "inline"],
+  "5. Layout": [
+    "section-gap",
+    "page-margin",
+    "section",
+    "grid",
+    "visible",
+    "type-size",
+    "breakpoint",
+  ],
 };
 
 // which top-level groups carry which mode axis
@@ -53,7 +60,14 @@ export const COLOR_MODE_GROUPS = [
   "emphasis",
 ];
 export const RESP_MODE_GROUPS = [];
-export const LAYOUT_MODE_GROUPS = ["grid", "visible", "section", "type-size"];
+export const LAYOUT_MODE_GROUPS = [
+  "section-gap",
+  "page-margin",
+  "grid",
+  "visible",
+  "section",
+  "type-size",
+];
 
 export const isLeaf = (n) => n && typeof n === "object" && "$value" in n;
 

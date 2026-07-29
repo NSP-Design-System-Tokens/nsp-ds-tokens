@@ -1,4 +1,76 @@
 {
+  "section-gap": {
+    "$extensions": { "com.figma.scoping": ["GAP", "WIDTH_HEIGHT"] },
+    "lg": {
+      "$type": "dimension",
+      "$value": "{spacing.12}",
+      "$extensions": {
+        "com.figma.modes": {
+          "mobile": "{spacing.12}",
+          "tablet": "{spacing.20}",
+          "desktop": "{spacing.32}"
+        }
+      }
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": "{spacing.8}",
+      "$extensions": {
+        "com.figma.modes": {
+          "mobile": "{spacing.8}",
+          "tablet": "{spacing.12}",
+          "desktop": "{spacing.24}"
+        }
+      }
+    },
+    "sm": {
+      "$type": "dimension",
+      "$value": "{spacing.6}",
+      "$extensions": {
+        "com.figma.modes": {
+          "mobile": "{spacing.6}",
+          "tablet": "{spacing.8}",
+          "desktop": "{spacing.16}"
+        }
+      }
+    }
+  },
+  "page-margin": {
+    "$extensions": { "com.figma.scoping": ["GAP", "WIDTH_HEIGHT"] },
+    "lg": {
+      "$type": "dimension",
+      "$value": "{spacing.4}",
+      "$extensions": {
+        "com.figma.modes": {
+          "mobile": "{spacing.4}",
+          "tablet": "{spacing.8}",
+          "desktop": "{spacing.20}"
+        }
+      }
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": "{spacing.4}",
+      "$extensions": {
+        "com.figma.modes": {
+          "mobile": "{spacing.4}",
+          "tablet": "{spacing.6}",
+          "desktop": "{spacing.16}"
+        }
+      }
+    },
+    "sm": {
+      "$type": "dimension",
+      "$value": "{spacing.4}",
+      "$extensions": {
+        "com.figma.modes": {
+          "mobile": "{spacing.4}",
+          "tablet": "{spacing.4}",
+          "desktop": "{spacing.8}"
+        }
+      }
+    }
+  },
   "section": {
     "$extensions": { "com.figma.scoping": ["GAP", "WIDTH_HEIGHT"] },
     "padding": {

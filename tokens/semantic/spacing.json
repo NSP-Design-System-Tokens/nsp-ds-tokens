@@ -24,17 +24,5 @@
     "md": { "$type": "dimension", "$value": "{spacing.3}" },
     "lg": { "$type": "dimension", "$value": "{spacing.4}" },
     "xl": { "$type": "dimension", "$value": "{spacing.6}" }
-  },
-  "section-gap": {
-    "$extensions": { "com.figma.scoping": ["GAP", "WIDTH_HEIGHT"] },
-    "sm": { "$type": "dimension", "$value": "{spacing.16}" },
-    "md": { "$type": "dimension", "$value": "{spacing.24}" },
-    "lg": { "$type": "dimension", "$value": "{spacing.32}" }
-  },
-  "page-margin": {
-    "$extensions": { "com.figma.scoping": ["GAP", "WIDTH_HEIGHT"] },
-    "sm": { "$type": "dimension", "$value": "{spacing.4}" },
-    "md": { "$type": "dimension", "$value": "{spacing.8}" },
-    "lg": { "$type": "dimension", "$value": "{spacing.16}" }
   }
 }

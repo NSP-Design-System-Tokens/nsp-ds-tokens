@@ -39,6 +39,18 @@ const sanitizeAliases = (v) =>
       )
     : v;
 
+// Figma treats the first mode in a collection as the default shown to the designer.
+// Designers work desktop/light-first, so we reorder modes before writing the Figma
+// dist. CSS output (build-css.mjs) keeps mobile/light-first — the two outputs serve
+// opposite conventions: Figma = desktop-first, CSS = mobile-first.
+const FIGMA_MODE_ORDER = ["desktop", "tablet", "mobile", "light", "dark"];
+function reorderModesForFigma(modes) {
+  const out = {};
+  for (const k of FIGMA_MODE_ORDER) if (k in modes) out[k] = modes[k];
+  for (const [k, v] of Object.entries(modes)) if (!(k in out)) out[k] = v;
+  return out;
+}
+
 // Walk merged from root along path, returning the last declared com.figma.scoping array.
 // Group-level $extensions["com.figma.scoping"] is inherited by all descendant leaves.
 function resolveScopes(path) {
@@ -72,7 +84,8 @@ function figmaLeaf(node, scopes) {
   const modes = node.$extensions?.["com.figma.modes"];
   if (modes) {
     const m = {};
-    for (const [k, v] of Object.entries(modes)) m[k] = conv(v, type);
+    for (const [k, v] of Object.entries(reorderModesForFigma(modes)))
+      m[k] = conv(v, type);
     out.$extensions = { "com.figma.modes": m };
   }
   return out;
