@@ -11,7 +11,7 @@ Planned work not yet in the system. When you start one of these, remove it from 
 ## Rename + tooling — completato in v0.3.0
 
 - ✅ Package renamed `nsp-tokens` → `nsp-ds-tokens`.
-- ✅ `create-project.mjs` extracted to standalone `create-nsp-project` tool (`npx github:asimonato/create-nsp-project`). Library no longer ships scaffolding.
+- ✅ `create-project.mjs` extracted to standalone `create-nsp-project` tool (`npx github:NSP-Design-System-Tokens/create-nsp-project`). Library no longer ships scaffolding.
 
 ---
 

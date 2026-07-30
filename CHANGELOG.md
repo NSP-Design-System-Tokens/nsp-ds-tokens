@@ -5,12 +5,37 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [0.3.3] — 2026-07-30
+
+### Changed
+
+- Migrated repository to the **NSP-Design-System-Tokens** GitHub organization.
+  All `github:` references updated from `asimonato/` to `NSP-Design-System-Tokens/`.
+  External consumers must update their `package.json` dependency string:
+  ```
+  "nsp-ds-tokens": "github:NSP-Design-System-Tokens/nsp-ds-tokens#v0.3.3"
+  ```
+  GitHub redirects are in place from the old owner path for the transition period.
+- Color scales in `core/color.json` reordered for conceptual clarity (brand/identity
+  scales first, neutral and state scales follow). No token values changed.
+
+---
+
+## [0.3.2] — 2026-07-30
+
+### Changed
+
+- Semantic color token groups in `semantic/` reordered for functional clarity
+  (surface → text → border → interactive). No token values or names changed.
+
+---
+
 ## [0.3.1] — 2026-07-30
 
 ### Removed
 
 - `scripts/create-project.mjs` removed from library. Scaffolding logic moved to
-  standalone tool `create-nsp-project` (`npx github:asimonato/create-nsp-project`).
+  standalone tool `create-nsp-project` (`npx github:NSP-Design-System-Tokens/create-nsp-project`).
 
 ---
 
@@ -80,9 +105,9 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 ### create-nsp-project — standalone scaffold tool
 
 - New sibling repo `create-nsp-project` extracts the scaffolding logic from the
-  library. Ships as a standalone `npx github:asimonato/create-nsp-project` command.
+  library. Ships as a standalone `npx github:NSP-Design-System-Tokens/create-nsp-project` command.
 - No local library clone required: generated project depends on
-  `github:asimonato/nsp-ds-tokens#v0.3.0`; `npm install` fetches the library from
+  `github:NSP-Design-System-Tokens/nsp-ds-tokens#v0.3.0`; `npm install` fetches the library from
   GitHub and `scripts/` are copied from the installed package.
 - Contrast math inlined (no import from lib); `LIB_VERSION` constant updated per
   library release.

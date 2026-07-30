@@ -27,7 +27,7 @@ qualsiasi-cartella-di-lavoro/
 ### Il comando
 
 ```bash
-npx github:asimonato/create-nsp-project
+npx github:NSP-Design-System-Tokens/create-nsp-project
 ```
 
 Lo script chiede in sequenza:
@@ -40,7 +40,7 @@ Lo script chiede in sequenza:
 Puoi anche passare tutto in un comando solo, senza le domande interattive:
 
 ```bash
-npx github:asimonato/create-nsp-project nomecliente "#911e50" "#..." "#..."
+npx github:NSP-Design-System-Tokens/create-nsp-project nomecliente "#911e50" "#..." "#..."
 ```
 
 Cosa fa lo script, in automatico:
@@ -110,20 +110,20 @@ Non editare mai le variabili direttamente in Figma: la modifica vive solo lì e 
 
 ## Riepilogo: cosa va dove
 
-| Cosa                                                                                        | Dove                                                           |
-| ------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
-| Neutri, stati (rosso/verde/arancione), spacing, tipografia, layout, motion, z-index, radius | Libreria (nsp-ds-tokens)                                       |
-| Gate e validazione                                                                          | Libreria                                                       |
-| Plugin Figma                                                                                | Separato (figma-token-manager/)                                |
-| Script di scaffolding interattivo                                                           | create-nsp-project (`npx github:asimonato/create-nsp-project`) |
-| Scale di brand, slot, ruoli semantici brand-specific                                        | Progetto (nsp-ds-tokens-nomecliente), generati dallo script    |
+| Cosa                                                                                        | Dove                                                                          |
+| ------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
+| Neutri, stati (rosso/verde/arancione), spacing, tipografia, layout, motion, z-index, radius | Libreria (nsp-ds-tokens)                                                      |
+| Gate e validazione                                                                          | Libreria                                                                      |
+| Plugin Figma                                                                                | Separato (figma-token-manager/)                                               |
+| Script di scaffolding interattivo                                                           | create-nsp-project (`npx github:NSP-Design-System-Tokens/create-nsp-project`) |
+| Scale di brand, slot, ruoli semantici brand-specific                                        | Progetto (nsp-ds-tokens-nomecliente), generati dallo script                   |
 
 ---
 
 ## Checklist rapida nuovo progetto
 
 - [ ] Colore primario del cliente (hex), secondario e accento se esistono
-- [ ] `npx github:asimonato/create-nsp-project`
+- [ ] `npx github:NSP-Design-System-Tokens/create-nsp-project`
 - [ ] Gate verde (o avviso di contrasto risolto con una scelta di design)
 - [ ] Import Figma: variabili + styles + match
 - [ ] Verifica in Figma: colori, dark mode, responsive, grid
