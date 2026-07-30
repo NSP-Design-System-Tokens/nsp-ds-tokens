@@ -5,6 +5,15 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [Unreleased]
+
+### Removed
+
+- `scripts/create-project.mjs` removed from library. Scaffolding logic moved to
+  standalone tool `create-nsp-project` (`npx github:asimonato/create-nsp-project`).
+
+---
+
 ## [0.3.0] — 2026-07-30
 
 ### D1 — Primitive color modes fused (Fase D)
