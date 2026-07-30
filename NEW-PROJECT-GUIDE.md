@@ -110,13 +110,13 @@ Non editare mai le variabili direttamente in Figma: la modifica vive solo lì e 
 
 ## Riepilogo: cosa va dove
 
-| Cosa                                                                                        | Dove                                                        |
-| ------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
-| Neutri, stati (rosso/verde/arancione), spacing, tipografia, layout, motion, z-index, radius | Libreria (nsp-ds-tokens)                                    |
-| Gate e validazione                                                                          | Libreria                                                    |
-| Plugin Figma                                                                                | Separato (figma-token-manager/)                             |
+| Cosa                                                                                        | Dove                                                           |
+| ------------------------------------------------------------------------------------------- | -------------------------------------------------------------- |
+| Neutri, stati (rosso/verde/arancione), spacing, tipografia, layout, motion, z-index, radius | Libreria (nsp-ds-tokens)                                       |
+| Gate e validazione                                                                          | Libreria                                                       |
+| Plugin Figma                                                                                | Separato (figma-token-manager/)                                |
 | Script di scaffolding interattivo                                                           | create-nsp-project (`npx github:asimonato/create-nsp-project`) |
-| Scale di brand, slot, ruoli semantici brand-specific                                        | Progetto (nsp-ds-tokens-nomecliente), generati dallo script |
+| Scale di brand, slot, ruoli semantici brand-specific                                        | Progetto (nsp-ds-tokens-nomecliente), generati dallo script    |
 
 ---
 

@@ -13,16 +13,6 @@
         }
       }
     },
-    "dark": {
-      "$type": "color",
-      "$value": "{palette.neutral.black}",
-      "$extensions": {
-        "com.figma.modes": {
-          "light": "{palette.neutral.black}",
-          "dark": "{palette.neutral.black}"
-        }
-      }
-    },
     "page-contrast": {
       "$type": "color",
       "$value": "{palette.neutral.2}",
@@ -30,76 +20,6 @@
         "com.figma.modes": {
           "light": "{palette.neutral.2}",
           "dark": "{palette.neutral.2}"
-        }
-      }
-    },
-    "disabled": {
-      "$type": "color",
-      "$value": "{palette.neutral.3}",
-      "$extensions": {
-        "com.figma.modes": {
-          "light": "{palette.neutral.3}",
-          "dark": "{palette.neutral.3}"
-        }
-      }
-    },
-    "white": {
-      "$type": "color",
-      "$value": "{palette.neutral.0}",
-      "$extensions": {
-        "com.figma.modes": {
-          "light": "{palette.neutral.0}",
-          "dark": "{palette.neutral.0}"
-        }
-      }
-    },
-    "error": {
-      "$type": "color",
-      "$value": "{palette.error.9}",
-      "$extensions": {
-        "com.figma.modes": {
-          "light": "{palette.error.9}",
-          "dark": "{palette.error.9}"
-        }
-      }
-    },
-    "success": {
-      "$type": "color",
-      "$value": "{palette.success.9}",
-      "$extensions": {
-        "com.figma.modes": {
-          "light": "{palette.success.9}",
-          "dark": "{palette.success.9}"
-        }
-      }
-    },
-    "warning": {
-      "$type": "color",
-      "$value": "{palette.warning.9}",
-      "$extensions": {
-        "com.figma.modes": {
-          "light": "{palette.warning.9}",
-          "dark": "{palette.warning.9}"
-        }
-      }
-    },
-    "neutral": {
-      "$type": "color",
-      "$value": "{palette.neutral.2}",
-      "$extensions": {
-        "com.figma.modes": {
-          "light": "{palette.neutral.2}",
-          "dark": "{palette.neutral.2}"
-        }
-      }
-    },
-    "blur": {
-      "$type": "color",
-      "$value": "{palette.neutral.a1}",
-      "$extensions": {
-        "com.figma.modes": {
-          "light": "{palette.neutral.a1}",
-          "dark": "{palette.neutral.a1}"
         }
       }
     },
@@ -143,6 +63,76 @@
         }
       }
     },
+    "dark": {
+      "$type": "color",
+      "$value": "{palette.neutral.black}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.neutral.black}",
+          "dark": "{palette.neutral.black}"
+        }
+      }
+    },
+    "white": {
+      "$type": "color",
+      "$value": "{palette.neutral.0}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.neutral.0}",
+          "dark": "{palette.neutral.0}"
+        }
+      }
+    },
+    "neutral": {
+      "$type": "color",
+      "$value": "{palette.neutral.2}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.neutral.2}",
+          "dark": "{palette.neutral.2}"
+        }
+      }
+    },
+    "error": {
+      "$type": "color",
+      "$value": "{palette.error.9}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.error.9}",
+          "dark": "{palette.error.9}"
+        }
+      }
+    },
+    "success": {
+      "$type": "color",
+      "$value": "{palette.success.9}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.success.9}",
+          "dark": "{palette.success.9}"
+        }
+      }
+    },
+    "warning": {
+      "$type": "color",
+      "$value": "{palette.warning.9}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.warning.9}",
+          "dark": "{palette.warning.9}"
+        }
+      }
+    },
+    "blur": {
+      "$type": "color",
+      "$value": "{palette.neutral.a1}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.neutral.a1}",
+          "dark": "{palette.neutral.a1}"
+        }
+      }
+    },
     "overlay": {
       "$type": "color",
       "$value": "{palette.neutral.a9}",
@@ -150,6 +140,16 @@
         "com.figma.modes": {
           "light": "{palette.neutral.a9}",
           "dark": "{palette.neutral.a9}"
+        }
+      }
+    },
+    "disabled": {
+      "$type": "color",
+      "$value": "{palette.neutral.3}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.neutral.3}",
+          "dark": "{palette.neutral.3}"
         }
       }
     }
@@ -168,56 +168,6 @@
         }
       }
     },
-    "on-dark": {
-      "$type": "color",
-      "$value": "{palette.neutral.0}",
-      "$extensions": {
-        "com.figma.modes": {
-          "light": "{palette.neutral.0}",
-          "dark": "{palette.neutral.0}"
-        }
-      }
-    },
-    "on-error": {
-      "$type": "color",
-      "$value": "{palette.neutral.black}",
-      "$extensions": {
-        "com.figma.modes": {
-          "light": "{palette.neutral.black}",
-          "dark": "{palette.neutral.black}"
-        }
-      }
-    },
-    "on-success": {
-      "$type": "color",
-      "$value": "{palette.neutral.black}",
-      "$extensions": {
-        "com.figma.modes": {
-          "light": "{palette.neutral.black}",
-          "dark": "{palette.neutral.black}"
-        }
-      }
-    },
-    "on-warning": {
-      "$type": "color",
-      "$value": "{palette.neutral.black}",
-      "$extensions": {
-        "com.figma.modes": {
-          "light": "{palette.neutral.black}",
-          "dark": "{palette.neutral.black}"
-        }
-      }
-    },
-    "disabled": {
-      "$type": "color",
-      "$value": "{palette.neutral.7}",
-      "$extensions": {
-        "com.figma.modes": {
-          "light": "{palette.neutral.7}",
-          "dark": "{palette.neutral.9}"
-        }
-      }
-    },
     "subtle": {
       "$type": "color",
       "$value": "{palette.neutral.11}",
@@ -225,16 +175,6 @@
         "com.figma.modes": {
           "light": "{palette.neutral.11}",
           "dark": "{palette.neutral.11}"
-        }
-      }
-    },
-    "error": {
-      "$type": "color",
-      "$value": "{palette.error.11}",
-      "$extensions": {
-        "com.figma.modes": {
-          "light": "{palette.error.11}",
-          "dark": "{palette.error.12}"
         }
       }
     },
@@ -248,6 +188,46 @@
         }
       }
     },
+    "disabled": {
+      "$type": "color",
+      "$value": "{palette.neutral.7}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.neutral.7}",
+          "dark": "{palette.neutral.9}"
+        }
+      }
+    },
+    "on-dark": {
+      "$type": "color",
+      "$value": "{palette.neutral.0}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.neutral.0}",
+          "dark": "{palette.neutral.0}"
+        }
+      }
+    },
+    "error": {
+      "$type": "color",
+      "$value": "{palette.error.11}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.error.11}",
+          "dark": "{palette.error.12}"
+        }
+      }
+    },
+    "on-error": {
+      "$type": "color",
+      "$value": "{palette.neutral.black}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.neutral.black}",
+          "dark": "{palette.neutral.black}"
+        }
+      }
+    },
     "success": {
       "$type": "color",
       "$value": "{palette.success.11}",
@@ -258,6 +238,16 @@
         }
       }
     },
+    "on-success": {
+      "$type": "color",
+      "$value": "{palette.neutral.black}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.neutral.black}",
+          "dark": "{palette.neutral.black}"
+        }
+      }
+    },
     "warning": {
       "$type": "color",
       "$value": "{palette.warning.11}",
@@ -265,6 +255,16 @@
         "com.figma.modes": {
           "light": "{palette.warning.11}",
           "dark": "{palette.warning.12}"
+        }
+      }
+    },
+    "on-warning": {
+      "$type": "color",
+      "$value": "{palette.neutral.black}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.neutral.black}",
+          "dark": "{palette.neutral.black}"
         }
       }
     }
@@ -283,16 +283,6 @@
         }
       }
     },
-    "disabled": {
-      "$type": "color",
-      "$value": "{palette.neutral.3}",
-      "$extensions": {
-        "com.figma.modes": {
-          "light": "{palette.neutral.3}",
-          "dark": "{palette.neutral.3}"
-        }
-      }
-    },
     "divider": {
       "$type": "color",
       "$value": "{palette.neutral.a2}",
@@ -303,16 +293,6 @@
         }
       }
     },
-    "on-dark": {
-      "$type": "color",
-      "$value": "{palette.neutral.0}",
-      "$extensions": {
-        "com.figma.modes": {
-          "light": "{palette.neutral.0}",
-          "dark": "{palette.neutral.0}"
-        }
-      }
-    },
     "input-focus": {
       "$type": "color",
       "$value": "{palette.neutral.12}",
@@ -320,6 +300,26 @@
         "com.figma.modes": {
           "light": "{palette.neutral.12}",
           "dark": "{palette.neutral.12}"
+        }
+      }
+    },
+    "disabled": {
+      "$type": "color",
+      "$value": "{palette.neutral.3}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.neutral.3}",
+          "dark": "{palette.neutral.3}"
+        }
+      }
+    },
+    "on-dark": {
+      "$type": "color",
+      "$value": "{palette.neutral.0}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.neutral.0}",
+          "dark": "{palette.neutral.0}"
         }
       }
     },
@@ -433,27 +433,17 @@
         }
       }
     },
+    "error": {
+      "$type": "color",
+      "$value": "{palette.error.9}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.error.9}",
+          "dark": "{palette.error.12}"
+        }
+      }
+    },
     "on-error": {
-      "$type": "color",
-      "$value": "{palette.neutral.black}",
-      "$extensions": {
-        "com.figma.modes": {
-          "light": "{palette.neutral.black}",
-          "dark": "{palette.neutral.black}"
-        }
-      }
-    },
-    "on-success": {
-      "$type": "color",
-      "$value": "{palette.neutral.black}",
-      "$extensions": {
-        "com.figma.modes": {
-          "light": "{palette.neutral.black}",
-          "dark": "{palette.neutral.black}"
-        }
-      }
-    },
-    "on-warning": {
       "$type": "color",
       "$value": "{palette.neutral.black}",
       "$extensions": {
@@ -473,13 +463,13 @@
         }
       }
     },
-    "error": {
+    "on-success": {
       "$type": "color",
-      "$value": "{palette.error.9}",
+      "$value": "{palette.neutral.black}",
       "$extensions": {
         "com.figma.modes": {
-          "light": "{palette.error.9}",
-          "dark": "{palette.error.12}"
+          "light": "{palette.neutral.black}",
+          "dark": "{palette.neutral.black}"
         }
       }
     },
@@ -490,6 +480,16 @@
         "com.figma.modes": {
           "light": "{palette.warning.11}",
           "dark": "{palette.warning.12}"
+        }
+      }
+    },
+    "on-warning": {
+      "$type": "color",
+      "$value": "{palette.neutral.black}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.neutral.black}",
+          "dark": "{palette.neutral.black}"
         }
       }
     }
