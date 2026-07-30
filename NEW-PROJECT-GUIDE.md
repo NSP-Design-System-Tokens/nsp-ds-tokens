@@ -2,7 +2,7 @@
 
 Questa guida copre l'intero processo, dal momento in cui arriva un nuovo cliente al momento in cui hai Figma pronto per progettare.
 
-Prerequisiti: nsp-ds-tokens (la libreria base) clonata e funzionante sul tuo computer, npm installato, il plugin Figma Token Manager installato in Figma.
+Prerequisiti: Node.js ≥ 18, npm, il plugin Figma Token Manager installato in Figma. Non serve clonare la libreria.
 
 ---
 
@@ -16,31 +16,18 @@ Non ti servono palette, rampe, varianti chiare e scure: le genera lo script.
 
 ### Dove ti posizioni
 
-Lo script crea il nuovo progetto come cartella SORELLA della libreria, allo stesso livello sul disco. Il progetto non vive mai dentro la cartella della libreria. Struttura risultante:
+Puoi essere in qualsiasi cartella sul disco. Lo script crea la cartella del progetto lì dove sei:
 
 ```
 qualsiasi-cartella-di-lavoro/
-  nsp-ds-tokens/                ← la libreria (clonata una volta sola)
   nsp-ds-tokens-poli/           ← un progetto esistente
   nsp-ds-tokens-nomecliente/    ← il progetto che stai per creare
-```
-
-Se non hai ancora la libreria sul computer, clonala una volta:
-
-```bash
-git clone <url-della-libreria> nsp-ds-tokens
-```
-
-Per ogni progetto nuovo, ti sposti DENTRO la cartella della libreria e lanci lo script da lì:
-
-```bash
-cd nsp-ds-tokens
 ```
 
 ### Il comando
 
 ```bash
-node scripts/create-project.mjs
+npx github:asimonato/create-nsp-project
 ```
 
 Lo script chiede in sequenza:
@@ -53,16 +40,16 @@ Lo script chiede in sequenza:
 Puoi anche passare tutto in un comando solo, senza le domande interattive:
 
 ```bash
-node scripts/create-project.mjs nomecliente --primary "#911e50" --secondary "#..." --accent "#..."
+npx github:asimonato/create-nsp-project nomecliente "#911e50" "#..." "#..."
 ```
 
 Cosa fa lo script, in automatico:
 
-1. Crea il progetto in `../nsp-ds-tokens-nomecliente` (accanto alla libreria, un livello sopra) con la libreria installata come dipendenza
+1. Crea il progetto in `./nsp-ds-tokens-nomecliente` (nella cartella corrente)
 2. Genera le scale a 12 step (light + dark) per ogni colore fornito, ancorate esattamente all'hex dato allo step 9
 3. Sceglie automaticamente il colore del testo giusto su ogni superficie (bianco o nero, qualunque contrasti di più) e lo step giusto per i ruoli di testo/icona (scansiona gli step finché non trova quello che passa la soglia di contrasto)
 4. Scrive tutti i file token già compilati — primitivi, slot, ruoli semantici
-5. Lancia `npm install` e `npm run build` da solo
+5. Lancia `npm install` (scarica `nsp-ds-tokens` da GitHub) e `npm run build` da solo
 
 Al termine, uno di questi due esiti:
 
@@ -128,7 +115,7 @@ Non editare mai le variabili direttamente in Figma: la modifica vive solo lì e 
 | Neutri, stati (rosso/verde/arancione), spacing, tipografia, layout, motion, z-index, radius | Libreria (nsp-ds-tokens)                                    |
 | Gate e validazione                                                                          | Libreria                                                    |
 | Plugin Figma                                                                                | Separato (figma-token-manager/)                             |
-| Script di scaffolding interattivo                                                           | Libreria (scripts/create-project.mjs)                       |
+| Script di scaffolding interattivo                                                           | create-nsp-project (`npx github:asimonato/create-nsp-project`) |
 | Scale di brand, slot, ruoli semantici brand-specific                                        | Progetto (nsp-ds-tokens-nomecliente), generati dallo script |
 
 ---
@@ -136,7 +123,7 @@ Non editare mai le variabili direttamente in Figma: la modifica vive solo lì e 
 ## Checklist rapida nuovo progetto
 
 - [ ] Colore primario del cliente (hex), secondario e accento se esistono
-- [ ] `cd nsp-ds-tokens && node scripts/create-project.mjs`
+- [ ] `npx github:asimonato/create-nsp-project`
 - [ ] Gate verde (o avviso di contrasto risolto con una scelta di design)
 - [ ] Import Figma: variabili + styles + match
 - [ ] Verifica in Figma: colori, dark mode, responsive, grid
