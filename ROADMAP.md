@@ -17,4 +17,17 @@ Planned work not yet in the system. When you start one of these, remove it from 
 
 ## Prossimi passi
 
-Nessun lavoro pianificato al momento. Aggiungere qui quando emerge nuova intenzione.
+### Spacing half-steps ordering in Figma (cosmetic, bassa priorità)
+
+**Sintomo:** le variabili `spacing/0-5`, `spacing/1-5`, `spacing/2-5`, `spacing/3-5` appaiono in fondo alla collezione `1. Primitives` in Figma, dopo `spacing/96`, anziché interspersed.
+
+**Causa tecnica:** V8 integer-key hoisting. JavaScript tratta le chiavi stringa che rappresentano interi canonici (`"0"`, `"1"`, ..., `"96"`) come array indices e le enumera prima in ordine numerico, indipendentemente dall'ordine di inserimento nell'oggetto. Le chiavi `"0-5"`, `"1-5"` ecc. (non-integer) vengono dopo in insertion order. Questo comportamento si applica a `Object.entries()`, `JSON.stringify()` e `JSON.parse()` — non è aggirabile senza cambiare i nomi delle chiavi.
+
+**Impatto:** puramente cosmetico. I valori sono corretti, la risoluzione alias in Figma funziona per nome e non dipende dall'ordine. Il source `core/spacing.json` è già in ordine corretto.
+
+**Condizione per riconsiderare:** se l'uso diretto dei mezzi-step (`0-5` = 2px, `1-5` = 6px, `2-5` = 10px, `3-5` = 14px) da parte dei designer in Figma diventa frequente, valutare migrazione a **px-values** come nomi nel dist — opzione più pulita tra le alternative:
+
+- `spacing/0px`, `spacing/2px`, `spacing/4px`, ..., `spacing/384px`
+- Chiavi non-integer (per il suffisso `px`), ordine da insertion order
+- Richiede aggiornare `build-figma.mjs` (transform multiplier→px nel dist) e `sanitizeAliases` (tradurre `{spacing.N}` → `{spacing.Npx}` nelle alias)
+- Naming più intuitivo per i designer (vedono px diretti, non moltiplicatori)
