@@ -1,4 +1,4 @@
-# nsp-tokens
+# nsp-ds-tokens
 
 Code-first design tokens for Neosperience projects. Modular DTCG source is the
 single source of truth in Git. One build feeds Figma and the web. No Tokens Studio,
