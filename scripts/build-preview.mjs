@@ -520,7 +520,7 @@ const html = `<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>nsp-tokens preview</title>
+<title>nsp-ds-tokens preview</title>
 <style>
 ${css}
 </style>
@@ -651,7 +651,7 @@ ${css}
 </style>
 </head>
 <body>
-<header><h1>nsp-tokens</h1><button class="toggle" id="t">Dark</button></header>
+<header><h1>NSP-DS-tokens</h1><button class="toggle" id="t">Dark</button></header>
 <div class="layout">
 <nav class="index">
   <ul>

@@ -5,7 +5,7 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
-## [0.3.0] — 2026-07-29
+## [0.3.0] — 2026-07-30
 
 ### D1 — Primitive color modes fused (Fase D)
 
@@ -44,7 +44,7 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   (catches `surface.tertiary-dark`, `surface.tertiary-darker`, `text.on-primary`,
   `icon.on-primary`).
 - Sum check: 126 brand-poli + 308 base = 434 (system total ✓).
-- `nsp-tokens` source cleaned to base-only: brand primitives (`magenta`, `bronze`,
+- `nsp-ds-tokens` source cleaned to base-only: brand primitives (`magenta`, `bronze`,
   `pink`) removed from `core/color.json`; brand identity palette slots (`primary`,
   `secondary`, `tertiary`, `accent`) removed from `brand/poli.json`; 35 brand-poli
   semantic tokens removed from `semantic/color.json`. Library now 308 tokens, 0
@@ -52,11 +52,31 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 - `scripts/lib/tokens.mjs` extended with `loadMergedWith(extraDirs)`: reads
   `TOKENS_DIR` first, then any additional directories in order, deepMerging all
   JSON files. Enables brand repos to overlay their tokens on the base library.
-- `nsp-tokens-poli/` created as a sibling repo: installs `nsp-tokens` as a
+- `nsp-ds-tokens-poli/` created as a sibling repo: installs `nsp-ds-tokens` as a
   `file:` dependency; wraps `scripts/lib/{tokens,contrast,origin}.mjs` via
   re-export; copies build/validate scripts unchanged; carries brand token files in
   `tokens/{core,brand,semantic}/`. `npm run build` passes; 434 tokens (308 base +
   126 brand-poli), 0 validate errors.
+
+### Rename — nsp-tokens → nsp-ds-tokens
+
+- Package renamed from `nsp-tokens` to `nsp-ds-tokens` (npm convention; readable
+  form `NSP-DS-tokens` used in docs/titles). All internal references updated:
+  `package.json`, `scripts/build-preview.mjs`, `scripts/create-project.mjs`,
+  `NEW-PROJECT-GUIDE.md`, `README.md`, `ROADMAP.md`.
+- `nsp-tokens-poli/` dependency updated: key `nsp-tokens` → `nsp-ds-tokens`,
+  path `file:../nsp-tokens` → `file:../nsp-ds-tokens`; lib wrappers re-pointed.
+- GitHub remote renamed to `nsp-ds-tokens`; local remote URL updated.
+
+### create-nsp-project — standalone scaffold tool
+
+- New sibling repo `create-nsp-project` extracts the scaffolding logic from the
+  library. Ships as a standalone `npx github:asimonato/create-nsp-project` command.
+- No local library clone required: generated project depends on
+  `github:asimonato/nsp-ds-tokens#v0.3.0`; `npm install` fetches the library from
+  GitHub and `scripts/` are copied from the installed package.
+- Contrast math inlined (no import from lib); `LIB_VERSION` constant updated per
+  library release.
 
 ---
 

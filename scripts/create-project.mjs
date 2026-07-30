@@ -229,7 +229,7 @@ async function main() {
     const [, , argName, argPrimary, argSecondary, argAccent] = process.argv;
 
     console.log(
-      "\n── nsp-tokens project generator ─────────────────────────\n",
+      "\n── nsp-ds-tokens project generator ─────────────────────────\n",
     );
 
     // 1. Gather inputs
@@ -243,7 +243,7 @@ async function main() {
       process.exit(1);
     }
 
-    const dest = resolve(LIB_ROOT, `../nsp-tokens-${name}`);
+    const dest = resolve(LIB_ROOT, `../nsp-ds-tokens-${name}`);
     if (existsSync(dest)) {
       console.error(`✗ Directory already exists: ${dest}`);
       process.exit(1);
@@ -363,10 +363,10 @@ async function main() {
 
     // package.json
     write("package.json", {
-      name: `nsp-tokens-${name}`,
+      name: `nsp-ds-tokens-${name}`,
       version: "0.1.0",
       type: "module",
-      description: `${name} brand tokens — extends nsp-tokens base library.`,
+      description: `${name} brand tokens — extends nsp-ds-tokens base library.`,
       scripts: {
         validate: "node scripts/validate.mjs",
         "contrast-report": "node scripts/validate.mjs",
@@ -378,7 +378,7 @@ async function main() {
       },
       dependencies: {
         culori: "^4.0.1",
-        "nsp-tokens": `file:${relToLib}`,
+        "nsp-ds-tokens": `file:${relToLib}`,
       },
     });
 
@@ -388,7 +388,7 @@ async function main() {
     // scripts/lib/ wrappers
     write(
       "scripts/lib/tokens.mjs",
-      `// Wrapper: re-export everything from nsp-tokens lib, override ROOT + loadMerged
+      `// Wrapper: re-export everything from nsp-ds-tokens lib, override ROOT + loadMerged
 // so all build and validate scripts operate on base+brand merged tree.
 
 import { resolve, dirname } from "node:path";
@@ -404,9 +404,9 @@ export {
   COLOR_MODE_GROUPS,
   RESP_MODE_GROUPS,
   LAYOUT_MODE_GROUPS,
-} from "nsp-tokens/scripts/lib/tokens.mjs";
+} from "nsp-ds-tokens/scripts/lib/tokens.mjs";
 
-import { loadMergedWith } from "nsp-tokens/scripts/lib/tokens.mjs";
+import { loadMergedWith } from "nsp-ds-tokens/scripts/lib/tokens.mjs";
 
 export const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 export const TOKENS_DIR = resolve(ROOT, "tokens");
@@ -418,11 +418,11 @@ export function loadMerged() {
     );
     write(
       "scripts/lib/contrast.mjs",
-      `export * from "nsp-tokens/scripts/lib/contrast.mjs";\n`,
+      `export * from "nsp-ds-tokens/scripts/lib/contrast.mjs";\n`,
     );
     write(
       "scripts/lib/origin.mjs",
-      `export * from "nsp-tokens/scripts/lib/origin.mjs";\n`,
+      `export * from "nsp-ds-tokens/scripts/lib/origin.mjs";\n`,
     );
 
     // Copy build + validate scripts verbatim from library
@@ -545,9 +545,9 @@ export function loadMerged() {
 
     write(
       "CLAUDE.md",
-      `# CLAUDE.md — nsp-tokens-${name}
+      `# CLAUDE.md — nsp-ds-tokens-${name}
 
-Brand token project for **${name}**. Extends [nsp-tokens](${relToLib}) base library.
+Brand token project for **${name}**. Extends [nsp-ds-tokens](${relToLib}) base library.
 
 ## What this is
 

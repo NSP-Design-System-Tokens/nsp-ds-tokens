@@ -87,7 +87,7 @@ Dopo ogni scala: `npm run build` verde + preview toggle. Rebuild palette.neutral
 
 #### Cosa
 
-Spostare tutto ciò che è marcato `$extensions.nsp.origin: "brand-poli"` fuori dalla libreria in un repo di progetto separato che installa `nsp-tokens` come dipendenza.
+Spostare tutto ciò che è marcato `$extensions.nsp.origin: "brand-poli"` fuori dalla libreria in un repo di progetto separato che installa `nsp-ds-tokens` come dipendenza.
 
 Ambito della marcatura (già presente in v0.x):
 
@@ -101,9 +101,9 @@ La libreria deve contenere solo architettura + base neutra + stati Neosperience 
 
 #### Come
 
-Script di estrazione filtra i sorgenti DTCG per `$extensions.nsp.origin === "brand-poli"`, sposta i nodi corrispondenti in un nuovo repo `nsp-tokens-poli` (o simile). Il repo di progetto:
+Script di estrazione filtra i sorgenti DTCG per `$extensions.nsp.origin === "brand-poli"`, sposta i nodi corrispondenti in un nuovo repo `nsp-ds-tokens-poli` (o simile). Il repo di progetto:
 
-1. Installa `nsp-tokens` come dipendenza (contiene base + slot funzionali).
+1. Installa `nsp-ds-tokens` come dipendenza (contiene base + slot funzionali).
 2. Definisce i propri primitivi Poli in `tokens/core/color.json` locale.
 3. Definisce i propri slot identity in `tokens/brand/poli.json` locale.
 4. Merge dei sorgenti in build (la libreria espone il merger, il progetto lo invoca).

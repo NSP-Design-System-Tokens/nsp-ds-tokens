@@ -1,151 +1,85 @@
-# Guida pratica: nuovo progetto cliente con nsp-tokens
+# Guida pratica: nuovo progetto cliente con nsp-ds-tokens
 
-Questa guida copre l'intero processo, dal momento in cui arriva un nuovo cliente al momento in cui hai Figma pronto per progettare. Ogni passo è concreto: cosa fai, dove, con quale comando.
+Questa guida copre l'intero processo, dal momento in cui arriva un nuovo cliente al momento in cui hai Figma pronto per progettare.
 
-Prerequisiti: nsp-tokens (la libreria base) clonata e funzionante sul tuo computer, npm installato, il plugin Figma Token Manager installato in Figma.
+Prerequisiti: nsp-ds-tokens (la libreria base) clonata e funzionante sul tuo computer, npm installato, il plugin Figma Token Manager installato in Figma.
 
 ---
 
 ## 1. Raccogli i colori del cliente
 
-Prima di toccare qualsiasi file, ti serve una sola cosa: il colore primario del brand. È il colore d'identità, quello che il cliente riconosce come "suo". Un hex, un Pantone convertito, il colore del logo. Esempio: per Poli era #911e50 (un magenta scuro).
+Ti servono solo gli hex. Il colore primario del brand è obbligatorio (es. #911e50). Il secondario e l'accento sono opzionali: se il cliente non li ha, li salti.
 
-Se il cliente ha anche un colore secondario d'accento (un oro, un blu, un verde), prendilo. Se non ce l'ha, parti col solo primario e vedi dopo se ne serve uno.
+Non ti servono palette, rampe, varianti chiare e scure: le genera lo script.
 
-Non ti servono palette complete, rampe di colore, varianti chiare e scure. Quelle le genera il sistema. Ti serve solo il punto di ancoraggio: il colore pieno del brand.
+## 2. Crea il progetto
 
-## 2. Crea il repo del progetto
+### Dove ti posizioni
 
-Un comando solo. Lo script di scaffolding nella libreria crea tutto: struttura dei file, placeholder da compilare, dipendenza installata, istruzioni operative.
+Lo script crea il nuovo progetto come cartella SORELLA della libreria, allo stesso livello sul disco. Il progetto non vive mai dentro la cartella della libreria. Struttura risultante:
+
+```
+qualsiasi-cartella-di-lavoro/
+  nsp-ds-tokens/                ← la libreria (clonata una volta sola)
+  nsp-ds-tokens-poli/           ← un progetto esistente
+  nsp-ds-tokens-nomecliente/    ← il progetto che stai per creare
+```
+
+Se non hai ancora la libreria sul computer, clonala una volta:
 
 ```bash
-node ../nsp-tokens/scripts/create-project.mjs nomecliente
+git clone <url-della-libreria> nsp-ds-tokens
 ```
 
-Questo genera `nsp-tokens-nomecliente/` con dentro:
-
-```
-nsp-tokens-nomecliente/
-  tokens/
-    core/
-      color.json          ← qui metterai la scala brand (placeholder vuoti)
-    brand/
-      nomecliente.json    ← gli slot alias da configurare
-    semantic/
-      color.json          ← i ruoli semantici brand-specific (template)
-  CLAUDE.md               ← istruzioni operative per CC
-  package.json            ← dipendenza su nsp-tokens già configurata
-  .gitignore
-```
-
-I file contengono la struttura corretta con placeholder che indicano cosa mettere dove. Non contengono valori di un altro brand da sovrascrivere: parti vuoto e pulito.
-
-La libreria base porta tutto il resto: neutri, stati, spacing, tipografia, layout, gate. Non li tocchi, non li copi, li erediti.
-
-## 3. Genera la scala di brand
-
-Questo è il passo chiave. Prendi il colore primario del cliente e genera una scala a 12 step col metodo Radix.
-
-### Usando lo strumento Radix
-
-Vai su https://www.radix-ui.com/colors/custom e inserisci il colore del cliente come "accent color".
-
-Radix genera un blocco CSS. Ti servono SOLO i 12 valori hex della sezione base, le prime 12 righe dentro `:root, .light, .light-theme`:
-
-```
---custom-1:  #......   ← Step 1
---custom-2:  #......   ← Step 2
-...
---custom-12: #......   ← Step 12
-```
-
-Copia i 12 hex. Poi switcha a dark theme e copia gli altri 12 hex.
-
-Ignora tutto il resto del blocco CSS:
-
-- le varianti alpha (`--custom-a1` ... `a12`): non ti servono
-- il blocco `@supports display-p3`: ottimizzazione wide-gamut, non per i token
-- `--custom-contrast/surface/indicator/track`: scorciatoie tema Radix
-
-### Se Radix non produce il risultato giusto
-
-Confronta lo step 9 generato con il colore originale del cliente: devono essere visivamente identici o quasi. Se divergono troppo (come è successo con Poli, dove Radix pink era troppo acceso rispetto al magenta scuro), genera la scala custom con lo script del repo, ancorata al colore esatto del cliente come step 9.
-
-### Il risultato
-
-24 valori hex (12 light + 12 dark), dove ogni step ha un ruolo fisso:
-
-- Step 1-2: sfondi app chiarissimi
-- Step 3-5: tinte per hover/pressed (il ghost button)
-- Step 6-8: bordi
-- Step 9: il colore pieno del brand (= il colore del cliente)
-- Step 10: hover del colore pieno
-- Step 11: testo su fondo chiaro
-- Step 12: testo su fondo scuro
-
-Metti i valori in `tokens/core/color.json` del progetto, nei placeholder. Il nome della scala è un nome di colore (non di brand): se il colore è un magenta lo chiami `color.magenta`, se è un blu `color.blue`. Il nome del cliente non va nei primitivi.
-
-## 4. Se c'è un colore d'accento
-
-Stesso procedimento: genera la scala a 12 step dal tool Radix o dallo script. Mettila in `tokens/core/color.json` accanto alla prima. Per Poli era il bronze (oro scuro).
-
-## 5. Configura gli slot alias
-
-Apri `tokens/brand/nomecliente.json`. Lo script di scaffolding ha già creato i placeholder per i quattro slot. Colleghi le scale ai ruoli:
-
-- **primary** = il colore pieno del brand. Step 9 per il fondo pieno, 11/12 per il testo. Bottoni primari, header, elementi forti.
-- **secondary** = lo stesso colore ma in versione ghost/soft. Step 3-5 per gli sfondi, 11-12 per il testo. Bottoni secondari, chip, badge.
-- **tertiary** = neutro (mauve dalla libreria). Step 3-5 per gli sfondi, 11-12 per il testo. Bottoni di basso rilievo, azioni terziarie.
-- **accent** = il colore d'accento se esiste. Evidenziazioni, badge speciali, dettagli decorativi.
-
-Se il cliente non ha un accento, puoi omettere lo slot accent o puntarlo a una variante del primary.
-
-Nota: tertiary usa mauve dalla libreria base, non una scala propria. Lo slot è brand-specific (la decisione di avere tre livelli di azione è del progetto), ma il colore è condiviso.
-
-## 6. Configura i ruoli semantici brand-specific
-
-Apri `tokens/semantic/color.json` del progetto. Lo script di scaffolding ha già creato il template con i ruoli e i riferimenti da aggiornare. I principali:
-
-- `surface.primary` → `palette.primary.9` (il fondo del bottone primario)
-- `surface.primary-hover` → `palette.primary.10`
-- `surface.secondary` → `palette.secondary.3` (con modo dark)
-- `text.on-primary` → bianco o nero (dipende dalla luminosità del brand: se lo step 9 è scuro, il testo sopra è bianco; se è chiaro, è nero)
-- `text.on-secondary` → `palette.secondary.12` (testo della stessa scala)
-- eccetera, seguendo il template.
-
-I ruoli che NON dipendono dal brand (surface.page, text.default, stroke.default, tutti gli stati error/success/warning) vengono dalla libreria base e non li tocchi.
-
-## 7. Lancia la build e verifica
+Per ogni progetto nuovo, ti sposti DENTRO la cartella della libreria e lanci lo script da lì:
 
 ```bash
-npm run build
+cd nsp-ds-tokens
 ```
 
-Questo combina i token del progetto con quelli della libreria base, esegue la validazione e i gate (riferimenti, layering, contrasto, origin), e produce gli output:
+### Il comando
 
-- `dist/figma-variables.json`
-- `dist/figma-styles.json`
-- `build/css/tokens.css`
-- `build/tailwind/tokens.cjs`
+```bash
+node scripts/create-project.mjs
+```
 
-Se il gate fallisce, ti dice esattamente cosa non va:
+Lo script chiede in sequenza:
 
-- **Riferimento non risolto**: uno slot punta a un primitivo che non esiste. Controlla i nomi nella scala e negli slot.
-- **Contrasto insufficiente**: una coppia testo/superficie non raggiunge la soglia. Il colore del brand è troppo chiaro o troppo scuro per il testo che ci hai messo sopra. Aggiusta il valore (scegli uno step diverso) o cambia il testo (da bianco a nero o viceversa).
-- **Layering violation**: un token semantico punta direttamente a un primitivo saltando la palette. Passa per lo slot.
+- Nome del progetto
+- Colore primario (hex)
+- Colore secondario (hex, invio per saltare)
+- Colore accento (hex, invio per saltare)
 
-Itera finché il gate è verde.
+Puoi anche passare tutto in un comando solo, senza le domande interattive:
 
-## 8. Importa in Figma
+```bash
+node scripts/create-project.mjs nomecliente --primary "#911e50" --secondary "#..." --accent "#..."
+```
+
+Cosa fa lo script, in automatico:
+
+1. Crea il progetto in `../nsp-ds-tokens-nomecliente` (accanto alla libreria, un livello sopra) con la libreria installata come dipendenza
+2. Genera le scale a 12 step (light + dark) per ogni colore fornito, ancorate esattamente all'hex dato allo step 9
+3. Sceglie automaticamente il colore del testo giusto su ogni superficie (bianco o nero, qualunque contrasti di più) e lo step giusto per i ruoli di testo/icona (scansiona gli step finché non trova quello che passa la soglia di contrasto)
+4. Scrive tutti i file token già compilati — primitivi, slot, ruoli semantici
+5. Lancia `npm install` e `npm run build` da solo
+
+Al termine, uno di questi due esiti:
+
+**Gate verde**: il progetto è pronto, vai al passo 3 (Figma).
+
+**Avviso di contrasto**: succede con colori intrinsecamente chiari (un giallo acceso, per esempio), dove nessuno step raggiunge il contrasto minimo per il testo. Lo script te lo dice onestamente invece di produrre un progetto rotto in silenzio. In questo caso è una decisione di design vera: o accetti un compromesso (testo un po' sotto soglia AAA ma sopra AA), o scegli una tonalità leggermente diversa del colore del cliente, o chiedi aiuto per una scala custom con più margine.
+
+## 3. Importa in Figma
 
 Apri Figma, crea un file nuovo per il progetto (o apri quello esistente).
 
 ### Primo import (file nuovo)
 
 1. Lancia il plugin: Plugins → Development → Figma Token Manager
-2. **Import Variables**: carica `dist/figma-variables.json`. Il plugin crea le collezioni con variabili, modi, alias e scope.
+2. **Import Variables**: carica `dist/figma-variables.json` dal progetto. Il plugin crea le collezioni con variabili, modi, alias e scope.
 3. **Import Styles**: carica `dist/figma-styles.json`. Il plugin crea i text styles e i grid styles.
-4. **Match Variables to Styles**: clicca il bottone. Il plugin lega i font size dei text styles alle variabili responsive (type-size), così la tipografia cambia con il breakpoint.
+4. **Match Variables to Styles**: clicca il bottone. Il plugin lega i font size dei text styles alle variabili responsive, così la tipografia cambia con il breakpoint.
 
 ### Aggiornamento (file esistente)
 
@@ -160,51 +94,49 @@ Stessi tre passi. L'import è idempotente: aggiorna le variabili e gli styles es
 - Cambia il modo del frame da Desktop a Mobile: il font size deve scalare.
 - Applica un grid style (Grid/Desktop): deve avere 12 colonne, 32px gutter, 80px margine.
 
-## 9. Progetta
+## 4. Progetta
 
-Da qui in poi lavori in Figma come sempre, con una differenza: ogni colore, spacing, font size, radius che applichi è una variabile, non un valore fisso. Quando scegli un fill, scegli dalla lista delle variabili (che grazie agli scope mostra solo quelle pertinenti al contesto). Quando imposti un gap, lo prendi dalle variabili di spacing.
+Da qui in poi lavori in Figma come sempre, con una differenza: ogni colore, spacing, font size, radius che applichi è una variabile, non un valore fisso. Quando scegli un fill, scegli dalla lista delle variabili (che grazie agli scope mostra solo quelle pertinenti al contesto).
 
-Se ti accorgi che manca un token (un colore che ti serve e non c'è, uno spacing che non esiste nella scala), non lo inventi in Figma: torni al JSON, lo aggiungi nel tier giusto, rilanci la build, reimporti. Il JSON è la sorgente, Figma è la destinazione.
+Se ti accorgi che manca un token, non lo inventi in Figma: torni al JSON del progetto, lo aggiungi, rilanci `npm run build`, reimporti. Il JSON è la sorgente, Figma è la destinazione.
 
-## 10. Quando cambi qualcosa
+## 5. Quando cambi qualcosa
 
-Il flusso è sempre lo stesso, in qualsiasi momento:
-
-1. Edita il JSON nel repo del progetto
+1. Edita il JSON nel repo del progetto (es. vuoi cambiare una sfumatura del brand)
 2. `npm run build` (il gate verifica automaticamente)
 3. Reimporta in Figma col plugin
 4. Figma si aggiorna
 
-Non editare mai le variabili direttamente in Figma. Se lo fai, la modifica vive solo lì e viene sovrascritta al prossimo import.
+Non editare mai le variabili direttamente in Figma: la modifica vive solo lì e viene sovrascritta al prossimo import.
+
+---
+
+## Cosa sapere se qualcosa non torna
+
+**Il colore generato non assomiglia a quello del cliente**: capita con colori molto scuri o molto saturi, dove l'algoritmo di generazione sposta troppo il risultato. Lo script ancora sempre lo step 9 all'hex esatto fornito, quindi il colore pieno è sempre fedele; eventuali scarti percettibili riguardano gli step intermedi, non il colore principale.
+
+**Il gate fallisce dopo aver modificato un valore a mano**: hai probabilmente cambiato un colore che rompe una coppia di contrasto già bilanciata dallo script. Il messaggio del gate ti dice quale coppia e su quale superficie: puoi scegliere uno step diverso per il ruolo di testo coinvolto.
+
+**Voglio un quarto colore (es. un blu per un'informazione specifica)**: aggiungi la scala nel `tokens/core/color.json` del progetto (a mano o rigenerandola con lo stesso metodo), crei un nuovo slot nel file brand, e lo agganci a un ruolo semantico nuovo. È un'estensione del progetto, non tocca la libreria.
 
 ---
 
 ## Riepilogo: cosa va dove
 
-| Cosa                                                 | Dove                            | Esempio                              |
-| ---------------------------------------------------- | ------------------------------- | ------------------------------------ |
-| Scale di colore neutre (mauve)                       | Libreria (nsp-tokens)           | color.mauve                          |
-| Scale di stato (rosso, verde, arancione)             | Libreria                        | color.red, color.green, color.orange |
-| Spacing, tipografia, motion, layout, z-index, radius | Libreria                        | spacing._, font.size._, grid.*       |
-| Gate e validazione                                   | Libreria                        | scripts/validate.mjs                 |
-| Plugin Figma                                         | Separato (figma-token-manager/) | code.js                              |
-| Script di scaffolding                                | Libreria                        | scripts/create-project.mjs           |
-| Scala di brand del cliente                           | Progetto                        | color.magenta (in nsp-tokens-poli)   |
-| Slot alias (primary, secondary, accent)              | Progetto                        | brand/nomecliente.json               |
-| Ruoli semantici brand-specific                       | Progetto                        | surface.primary, text.on-primary     |
+| Cosa                                                                                        | Dove                                                        |
+| ------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |
+| Neutri, stati (rosso/verde/arancione), spacing, tipografia, layout, motion, z-index, radius | Libreria (nsp-ds-tokens)                                    |
+| Gate e validazione                                                                          | Libreria                                                    |
+| Plugin Figma                                                                                | Separato (figma-token-manager/)                             |
+| Script di scaffolding interattivo                                                           | Libreria (scripts/create-project.mjs)                       |
+| Scale di brand, slot, ruoli semantici brand-specific                                        | Progetto (nsp-ds-tokens-nomecliente), generati dallo script |
 
 ---
 
 ## Checklist rapida nuovo progetto
 
-- [ ] Colore primario del cliente (hex)
-- [ ] Colore accento se esiste (hex)
-- [ ] `node ../nsp-tokens/scripts/create-project.mjs nomecliente`
-- [ ] Scala brand generata (12 light + 12 dark da Radix o script)
-- [ ] Valori inseriti in `tokens/core/color.json`
-- [ ] Scala accento generata e inserita (se serve)
-- [ ] Slot alias configurati in `tokens/brand/nomecliente.json`
-- [ ] Ruoli semantici aggiornati in `tokens/semantic/color.json`
-- [ ] `npm run build` verde (gate passa)
+- [ ] Colore primario del cliente (hex), secondario e accento se esistono
+- [ ] `cd nsp-ds-tokens && node scripts/create-project.mjs`
+- [ ] Gate verde (o avviso di contrasto risolto con una scelta di design)
 - [ ] Import Figma: variabili + styles + match
 - [ ] Verifica in Figma: colori, dark mode, responsive, grid

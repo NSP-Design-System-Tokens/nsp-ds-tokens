@@ -1,6 +1,6 @@
 {
-  "name": "nsp-tokens",
-  "version": "0.2.1",
+  "name": "nsp-ds-tokens",
+  "version": "0.3.0",
   "type": "module",
   "description": "Code-first design tokens: modular DTCG source, one build, Figma + web outputs.",
   "files": [
