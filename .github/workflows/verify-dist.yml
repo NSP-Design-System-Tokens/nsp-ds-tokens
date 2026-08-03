@@ -1,0 +1,39 @@
+name: Verify dist
+
+# Gate: dist/figma-variables.json and dist/figma-styles.json must match
+# what `npm run build` produces from current sources.
+# Fails the tag push or PR if dist is stale.
+on:
+  push:
+    tags:
+      - "v*"
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  verify-dist:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Rebuild dist
+        run: npm run build
+
+      - name: Check dist is up-to-date
+        run: |
+          if ! git diff --exit-code dist/figma-variables.json dist/figma-styles.json; then
+            echo ""
+            echo "ERROR: dist/ files are stale."
+            echo "Run 'npm run build' locally and commit the updated dist files before tagging."
+            echo "See CLAUDE.md § Release procedure."
+            exit 1
+          fi
