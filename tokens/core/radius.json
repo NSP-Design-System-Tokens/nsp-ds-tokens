@@ -2,7 +2,7 @@
   "radius": {
     "$extensions": { "com.figma.scoping": ["CORNER_RADIUS"] },
     "none": { "$type": "number", "$value": 0 },
-    "sm": { "$type": "number", "$value": 4 },
+    "sm": { "$type": "number", "$value": 5 },
     "md": { "$type": "number", "$value": 8 },
     "lg": { "$type": "number", "$value": 12 },
     "xl": { "$type": "number", "$value": 16 },
