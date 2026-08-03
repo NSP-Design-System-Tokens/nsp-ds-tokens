@@ -197,6 +197,29 @@ npm run build      # validate + figma + css + preview
 Outputs: `dist/figma-variables.json`, `dist/figma-styles.json`,
 `build/css/tokens.css`, `build/tailwind/tokens.cjs`, `build/preview/index.html`.
 
+## Release procedure
+
+`dist/figma-variables.json` and `dist/figma-styles.json` are intentionally tracked in
+Git (`.gitignore` has explicit `!dist/figma-*.json` exceptions). They are the published
+artefacts consumed directly from GitHub by the Figma Token Manager plugin and by brand
+projects installed via `github:NSP-Design-System-Tokens/nsp-ds-tokens#<tag>`.
+
+Every release **must** include updated dist files:
+
+```bash
+npm run build                         # regenerate dist/ + build/
+git add dist/figma-variables.json dist/figma-styles.json package.json CHANGELOG.md
+git commit -m "chore(release): v<X.Y.Z>"
+git tag v<X.Y.Z>
+git push origin main --tags
+```
+
+If dist/ is stale on a tag, the plugin will serve old token data. When in doubt,
+re-run the build and amend before tagging.
+
+Consider adding a GitHub Action that runs `npm run build` on tag push and commits
+the updated dist files automatically (see ROADMAP.md).
+
 ## The validator is the contract
 
 `scripts/validate.mjs` fails the build on: dangling `{references}`, a moded token

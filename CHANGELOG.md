@@ -5,6 +5,20 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [0.3.4] — 2026-08-03
+
+### Changed
+
+- `dist/figma-variables.json` and `dist/figma-styles.json` are now tracked in Git.
+  `.gitignore` has explicit `!dist/figma-*.json` exceptions so these compiled artefacts
+  are included in every release tag. Enables the Figma Token Manager plugin (and any
+  consumer using a `github:` URL) to fetch compiled output from `raw.githubusercontent.com`
+  without a local build step. No token values changed; publish-pipeline change only.
+- `CLAUDE.md` documents the release procedure: every release must include updated dist
+  files via `git add dist/figma-variables.json dist/figma-styles.json`.
+
+---
+
 ## [0.3.3] — 2026-07-30
 
 ### Changed

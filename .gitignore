@@ -1,3 +1,12 @@
 node_modules/
 build/
-dist/
+# dist/ contents are ignored except the two published Figma artefacts.
+# Using glob (dist/*) instead of directory (dist/) so git can apply the
+# negation patterns below — a directory ignore blocks descending into it.
+dist/*
+# Exception: dist/figma-variables.json and dist/figma-styles.json are
+# intentionally versioned. The Figma Token Manager plugin fetches them
+# directly from GitHub by tag. Every release must include updated dist files
+# (see CLAUDE.md § Release procedure).
+!dist/figma-variables.json
+!dist/figma-styles.json

@@ -1,0 +1,171 @@
+{
+  "textStyles": [
+    {
+      "name": "Display/Default",
+      "fontFamily": "Montserrat",
+      "fontStyle": "Light",
+      "fontSize": 100,
+      "lineHeight": "100%",
+      "letterSpacing": "-5.00px",
+      "textDecoration": "NONE",
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "H1/Default",
+      "fontFamily": "Montserrat",
+      "fontStyle": "Bold",
+      "fontSize": 80,
+      "lineHeight": "110%",
+      "letterSpacing": "-4.00px",
+      "textDecoration": "NONE",
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "H2/Default",
+      "fontFamily": "Montserrat",
+      "fontStyle": "Bold",
+      "fontSize": 60,
+      "lineHeight": "120%",
+      "letterSpacing": "-1.50px",
+      "textDecoration": "NONE",
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "H3/Default",
+      "fontFamily": "Montserrat",
+      "fontStyle": "SemiBold",
+      "fontSize": 48,
+      "lineHeight": "130%",
+      "letterSpacing": "-1.20px",
+      "textDecoration": "NONE",
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "H4/Default",
+      "fontFamily": "Montserrat",
+      "fontStyle": "SemiBold",
+      "fontSize": 36,
+      "lineHeight": "135%",
+      "letterSpacing": "0.00px",
+      "textDecoration": "NONE",
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "H5/Default",
+      "fontFamily": "Montserrat",
+      "fontStyle": "Medium",
+      "fontSize": 30,
+      "lineHeight": "140%",
+      "letterSpacing": "0.00px",
+      "textDecoration": "NONE",
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "H6/Default",
+      "fontFamily": "Montserrat",
+      "fontStyle": "Medium",
+      "fontSize": 24,
+      "lineHeight": "145%",
+      "letterSpacing": "0.00px",
+      "textDecoration": "NONE",
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "Body-large/Default",
+      "fontFamily": "Montserrat",
+      "fontStyle": "Regular",
+      "fontSize": 20,
+      "lineHeight": "150%",
+      "letterSpacing": "0.00px",
+      "textDecoration": "NONE",
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "Body/Default",
+      "fontFamily": "Montserrat",
+      "fontStyle": "Regular",
+      "fontSize": 16,
+      "lineHeight": "160%",
+      "letterSpacing": "0.00px",
+      "textDecoration": "NONE",
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "Body-small/Default",
+      "fontFamily": "Montserrat",
+      "fontStyle": "Regular",
+      "fontSize": 14,
+      "lineHeight": "160%",
+      "letterSpacing": "0.35px",
+      "textDecoration": "NONE",
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "Caption/Default",
+      "fontFamily": "Montserrat",
+      "fontStyle": "Regular",
+      "fontSize": 12,
+      "lineHeight": "160%",
+      "letterSpacing": "0.30px",
+      "textDecoration": "NONE",
+      "textCase": "ORIGINAL"
+    },
+    {
+      "name": "Label/Default",
+      "fontFamily": "Montserrat",
+      "fontStyle": "Medium",
+      "fontSize": 14,
+      "lineHeight": "120%",
+      "letterSpacing": "0.35px",
+      "textDecoration": "NONE",
+      "textCase": "UPPER"
+    },
+    {
+      "name": "Cta/Default",
+      "fontFamily": "Montserrat",
+      "fontStyle": "Medium",
+      "fontSize": 14,
+      "lineHeight": "120%",
+      "letterSpacing": "0.35px",
+      "textDecoration": "UNDERLINE",
+      "textCase": "UPPER"
+    },
+    {
+      "name": "Overline/Default",
+      "fontFamily": "Montserrat",
+      "fontStyle": "Medium",
+      "fontSize": 12,
+      "lineHeight": "120%",
+      "letterSpacing": "0.60px",
+      "textDecoration": "NONE",
+      "textCase": "UPPER"
+    }
+  ],
+  "colorStyles": [],
+  "gridStyles": [
+    {
+      "name": "Grid/Desktop",
+      "pattern": "COLUMNS",
+      "alignment": "STRETCH",
+      "count": 12,
+      "gutterSize": 32,
+      "offset": 80
+    },
+    {
+      "name": "Grid/Tablet",
+      "pattern": "COLUMNS",
+      "alignment": "STRETCH",
+      "count": 8,
+      "gutterSize": 16,
+      "offset": 32
+    },
+    {
+      "name": "Grid/Mobile",
+      "pattern": "COLUMNS",
+      "alignment": "STRETCH",
+      "count": 4,
+      "gutterSize": 16,
+      "offset": 16
+    }
+  ]
+}
