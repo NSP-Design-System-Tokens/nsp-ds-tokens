@@ -2,7 +2,7 @@
   "textStyles": [
     {
       "name": "Display/Default",
-      "fontFamily": "Montserrat",
+      "fontFamily": "Roboto",
       "fontStyle": "Light",
       "fontSize": 100,
       "lineHeight": "100%",
@@ -12,7 +12,7 @@
     },
     {
       "name": "H1/Default",
-      "fontFamily": "Montserrat",
+      "fontFamily": "Roboto",
       "fontStyle": "Bold",
       "fontSize": 80,
       "lineHeight": "110%",
@@ -22,7 +22,7 @@
     },
     {
       "name": "H2/Default",
-      "fontFamily": "Montserrat",
+      "fontFamily": "Roboto",
       "fontStyle": "Bold",
       "fontSize": 60,
       "lineHeight": "120%",
@@ -32,7 +32,7 @@
     },
     {
       "name": "H3/Default",
-      "fontFamily": "Montserrat",
+      "fontFamily": "Roboto",
       "fontStyle": "SemiBold",
       "fontSize": 48,
       "lineHeight": "130%",
@@ -42,7 +42,7 @@
     },
     {
       "name": "H4/Default",
-      "fontFamily": "Montserrat",
+      "fontFamily": "Roboto",
       "fontStyle": "SemiBold",
       "fontSize": 36,
       "lineHeight": "135%",
@@ -52,7 +52,7 @@
     },
     {
       "name": "H5/Default",
-      "fontFamily": "Montserrat",
+      "fontFamily": "Roboto",
       "fontStyle": "Medium",
       "fontSize": 30,
       "lineHeight": "140%",
@@ -62,7 +62,7 @@
     },
     {
       "name": "H6/Default",
-      "fontFamily": "Montserrat",
+      "fontFamily": "Roboto",
       "fontStyle": "Medium",
       "fontSize": 24,
       "lineHeight": "145%",
@@ -72,7 +72,7 @@
     },
     {
       "name": "Body-large/Default",
-      "fontFamily": "Montserrat",
+      "fontFamily": "Roboto",
       "fontStyle": "Regular",
       "fontSize": 20,
       "lineHeight": "150%",
@@ -82,7 +82,7 @@
     },
     {
       "name": "Body/Default",
-      "fontFamily": "Montserrat",
+      "fontFamily": "Roboto",
       "fontStyle": "Regular",
       "fontSize": 16,
       "lineHeight": "160%",
@@ -92,7 +92,7 @@
     },
     {
       "name": "Body-small/Default",
-      "fontFamily": "Montserrat",
+      "fontFamily": "Roboto",
       "fontStyle": "Regular",
       "fontSize": 14,
       "lineHeight": "160%",
@@ -102,7 +102,7 @@
     },
     {
       "name": "Caption/Default",
-      "fontFamily": "Montserrat",
+      "fontFamily": "Roboto",
       "fontStyle": "Regular",
       "fontSize": 12,
       "lineHeight": "160%",
@@ -112,7 +112,7 @@
     },
     {
       "name": "Label/Default",
-      "fontFamily": "Montserrat",
+      "fontFamily": "Roboto",
       "fontStyle": "Medium",
       "fontSize": 14,
       "lineHeight": "120%",
@@ -122,7 +122,7 @@
     },
     {
       "name": "Cta/Default",
-      "fontFamily": "Montserrat",
+      "fontFamily": "Roboto",
       "fontStyle": "Medium",
       "fontSize": 14,
       "lineHeight": "120%",
@@ -132,7 +132,7 @@
     },
     {
       "name": "Overline/Default",
-      "fontFamily": "Montserrat",
+      "fontFamily": "Roboto",
       "fontStyle": "Medium",
       "fontSize": 12,
       "lineHeight": "120%",

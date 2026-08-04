@@ -553,7 +553,7 @@
         "family": {
           "sans": {
             "$type": "string",
-            "$value": "Montserrat"
+            "$value": "Roboto"
           },
           "sans-2": {
             "$type": "string",
@@ -1207,6 +1207,11 @@
           "9": {
             "$type": "color",
             "$value": "{color.orange.9}",
+            "scopes": []
+          },
+          "10": {
+            "$type": "color",
+            "$value": "{color.orange.10}",
             "scopes": []
           },
           "11": {
