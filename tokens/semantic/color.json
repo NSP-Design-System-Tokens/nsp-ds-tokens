@@ -96,7 +96,7 @@
     },
     "error": {
       "$type": "color",
-      "$value": "{palette.error.11}"
+      "$value": "{palette.error.12}"
     },
     "on-error": {
       "$type": "color",
@@ -104,7 +104,7 @@
     },
     "success": {
       "$type": "color",
-      "$value": "{palette.success.11}"
+      "$value": "{palette.success.12}"
     },
     "on-success": {
       "$type": "color",
@@ -112,7 +112,7 @@
     },
     "warning": {
       "$type": "color",
-      "$value": "{palette.warning.11}"
+      "$value": "{palette.warning.12}"
     },
     "on-warning": {
       "$type": "color",
