@@ -15,6 +15,37 @@ No Tokens Studio, no bidirectional sync, no editing in Figma.
 2. `npm run validate` must pass. The build runs it first and fails on any error.
 3. Resolution flows downward only. A tier never references a tier above it.
 
+STOP. Read this carefully before doing anything else.
+
+RULE — ABSOLUTE, NO EXCEPTIONS:
+
+The projects nsp-ds-tokens-poli, nsp-ds-tokens-kkk-test, nsp-ds-tokens-test,
+nsp-ds-tokens-newtest, nsp-ds-tokens-newtest2, and ANY other project in the
+projects/ directory are TEST ARTIFACTS. They are disposable. They are NOT
+sources of truth. They are NOT references. Do NOT read them, do NOT analyze
+them, do NOT use them to understand the system state.
+
+The sources of truth are EXACTLY THREE repos and nothing else:
+
+1. nsp-ds-tokens — the base library
+2. create-nsp-project — the scaffolding tool
+3. figma-token-manager — the Figma plugin
+
+If a bug exists, it exists in one of these three. If a fix is needed, it goes
+into one of these three. If you need to understand what the system produces,
+you READ THE CODE that generates it, not the output of a past test run.
+
+Test projects are GENERATED OUTPUT. They are rebuilt from scratch to verify
+changes. Analyzing their files to understand problems is like reading yesterday's
+printout to debug today's code. Stop doing it.
+
+When verifying a fix: generate a NEW project from scratch, import in Figma,
+check the result. Never patch or analyze an existing test project.
+
+Add this rule to your working memory for the entire session. If you catch
+yourself opening a file under projects/, stop and ask yourself what you're
+actually trying to learn, then find it in the source code instead.
+
 ## Tiers (bottom to top)
 
 ```
