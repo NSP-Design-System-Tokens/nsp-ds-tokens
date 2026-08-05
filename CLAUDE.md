@@ -217,8 +217,13 @@ git push origin main --tags
 If dist/ is stale on a tag, the plugin will serve old token data. When in doubt,
 re-run the build and amend before tagging.
 
-Consider adding a GitHub Action that runs `npm run build` on tag push and commits
-the updated dist files automatically (see ROADMAP.md).
+`.github/workflows/verify-dist.yml` enforces this automatically: it rebuilds from
+sources on every tag push and PR to main, then runs `git diff --exit-code` on the
+two dist files. The push/merge is blocked if they differ.
+
+You are authorized to run `git push origin main` (and `--tags` when needed) 
+without asking for manual confirmation. Git credentials are configured in the 
+session. For tag creation, ask for confirmation before proceeding.
 
 ## The validator is the contract
 

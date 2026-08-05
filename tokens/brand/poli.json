@@ -141,6 +141,10 @@
         "$type": "color",
         "$value": "{color.orange.9}"
       },
+      "10": {
+        "$type": "color",
+        "$value": "{color.orange.10}"
+      },
       "11": {
         "$type": "color",
         "$value": "{color.orange.11}"

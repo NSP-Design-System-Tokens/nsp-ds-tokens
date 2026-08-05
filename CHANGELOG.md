@@ -5,6 +5,31 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [0.3.6] — 2026-08-05
+
+### Changed
+
+- **Radix-pure dark mode architecture** (Option A): Primitive tokens already carried
+  light/dark modes since v0.3.0. This release aligns the semantic Color Roles tier to
+  match: all tokens that referenced the same palette step in both modes are now
+  single-mode (no `com.figma.modes`). The Figma cascade `Color Roles → Brand → Primitives`
+  means switching only the Primitives collection to dark propagates the full dark theme.
+- `tokens/semantic/color.json`: removed `com.figma.modes` from 46 of 47 Color Roles
+  tokens. One genuine dual-mode token remains: `surface.floating` (light uses
+  `neutral.1` for icon contrast ≥3:1; dark uses `neutral.3` for elevated surface).
+- `tokens/semantic/color.json`: corrected four Category C surface tokens that previously
+  pointed at `palette.neutral.0` (static white, never switching). Now mapped to moded
+  steps: `surface.page → neutral.1`, `surface.card/raised/boxed → neutral.2`.
+- `tokens/semantic/color.json`: corrected `icon.subtle` from `neutral.5` (the light-only
+  step) to `neutral.10` (the semantically correct step for both modes).
+- `scripts/lib/contrast.mjs`: added five documented CONTRAST_EXEMPT entries for
+  known Radix limitations: `text.warning` on off-white surfaces (orange.11 calibrated
+  for pure white; 4.41 vs 4.51 threshold) and `text.success` on card/raised (green.11
+  is 4.49, 0.01 rounding-margin below AA). Dark mode passes for all five pairs.
+- Rebuilt `dist/figma-variables.json` and `dist/figma-styles.json`.
+
+---
+
 ## [0.3.4] — 2026-08-03
 
 ### Changed

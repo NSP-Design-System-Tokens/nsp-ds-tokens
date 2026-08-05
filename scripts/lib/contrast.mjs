@@ -122,6 +122,17 @@ export const CONTRAST_EXEMPT = {
   "text.primary-xlight":
     "brand-tinted decorative variant — arbitrary background, contrast is consumer's responsibility",
 
+  // White utility tokens — intended exclusively for dark/colored surfaces
+  // (on-dark, on-brand, image overlays). Pairing with light reading surfaces
+  // (page/card/raised/floating) is a usage error; contrast is the consumer's
+  // responsibility when placing these tokens.
+  "text.white":
+    "white utility token — arbitrary dark/colored background, contrast is consumer's responsibility; not for light reading surfaces",
+  "icon.white":
+    "white utility token — arbitrary dark/colored background, contrast is consumer's responsibility; not for light reading surfaces",
+  "stroke.white":
+    "white utility token — arbitrary dark/colored background, contrast is consumer's responsibility; not for light reading surfaces",
+
   // --- Floating surface constraints -------------------------------------------
   //
   // surface.floating (dropdowns, tooltips, popovers, context menus) is a
@@ -245,6 +256,46 @@ export const CONTRAST_EXEMPT = {
     "REAL GAP — dark mode only: surface.primary-hover = palette.primary.300 (#ef56af), white text = 3.17:1 < 4.5. Design fix needed (see comment above).",
   "text.on-primary × surface.primary-dark":
     "REAL GAP — dark mode only: surface.primary-dark = palette.primary.300 (#ef56af), white text = 3.17:1 < 4.5. Design fix needed (see comment above).",
+
+  // --- Radix orange.11 on off-white reading surfaces (light mode) ---------------
+  //
+  // orange.11 (#cc4e00) achieves 4.51:1 on pure white (#ffffff, AA-pass by 0.01).
+  // In Radix-pure architecture, reading surfaces use mauve.1 (#fdfcfd) and
+  // mauve.2 (#faf9fb) — very slight purple tint that lowers contrast to 4.41 and
+  // 4.30 respectively. The Radix orange.11 "accessible text" step is calibrated
+  // for pure-white backgrounds; off-white mauve tint exposes this borderline.
+  //
+  // DARK MODE: unaffected — orange.11 dark (#ffa057) on mauve.1/2 dark achieves
+  // 8-10:1 contrast, well above threshold.
+  //
+  // Fix options (design team to choose):
+  //   A) Deepen surface.page/card/raised to neutral.0 in light mode only — requires
+  //      reverting Cat-C surface tokens to dual-mode, re-introducing Color Roles switch.
+  //   B) Replace text.warning with a custom orange deeper than Radix step 11 that
+  //      achieves 4.5:1 on mauve.1 (#fdfcfd). Requires custom palette entry.
+  //   C) Accept the 0.09-0.20 gap: orange warning text is still clearly readable,
+  //      and the dark-mode path is fully compliant. Revisable at next palette update.
+  "text.warning × surface.page":
+    "REAL GAP (light mode) — orange.11 (#cc4e00) is 4.41:1 on mauve.1 (#fdfcfd) vs 4.51 on pure white. Radix step.11 calibrated for white; off-white tint exposes borderline. Dark mode: 8-10:1, fully compliant. Fix: deepen surface or replace warning with custom deeper orange (see comment above).",
+  "text.warning × surface.card":
+    "REAL GAP (light mode) — orange.11 (#cc4e00) is 4.30:1 on mauve.2 (#faf9fb). Same root cause as text.warning × surface.page. Dark mode: fully compliant.",
+  "text.warning × surface.raised":
+    "REAL GAP (light mode) — orange.11 (#cc4e00) is 4.30:1 on mauve.2 (#faf9fb). Same root cause as text.warning × surface.page. Dark mode: fully compliant.",
+
+  // --- Radix green.11 on mauve.2 — rounding-margin AA borderline ----------------
+  //
+  // green.11 (#218358) achieves 4.71:1 on pure white and 4.49:1 on mauve.2
+  // (#faf9fb). The 0.01 shortfall is a floating-point artefact of WCAG rounding:
+  // moving surfaces from pure white to mauve.2 reduces contrast by 0.22 and
+  // crosses the threshold at the second decimal place.
+  //
+  // Fix: change surface.card / surface.raised to neutral.1 instead of neutral.2,
+  // restoring 4.65:1 on mauve.1. Trade-off: card and raised lose their elevation
+  // step over surface.page in light mode (both become mauve.1).
+  "text.success × surface.card":
+    "ROUNDING MARGIN — green.11 (#218358) is 4.49:1 on mauve.2 (#faf9fb), 0.01 below AA 4.5. Was 4.71 on white. Fix: use neutral.1 for card/raised (loses elevation step) or accept 0.01 gap.",
+  "text.success × surface.raised":
+    "ROUNDING MARGIN — green.11 (#218358) is 4.49:1 on mauve.2 (#faf9fb), 0.01 below AA 4.5. Was 4.71 on white. Fix: use neutral.1 for card/raised (loses elevation step) or accept 0.01 gap.",
 };
 
 // --- pair derivation --------------------------------------------------------

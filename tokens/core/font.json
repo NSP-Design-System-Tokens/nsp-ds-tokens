@@ -3,7 +3,7 @@
     "family": {
       "sans": {
         "$type": "fontFamily",
-        "$value": "Montserrat"
+        "$value": "Roboto"
       },
       "sans-2": {
         "$type": "fontFamily",

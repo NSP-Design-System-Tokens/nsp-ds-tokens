@@ -163,10 +163,10 @@ Origin markers: `base` = shared · `brand-poli` = Poli-specific
 
 **Figma scope:** _(none)_ · **Type:** `fontFamily` → `string`
 
-| Token                | Value      |
-| -------------------- | ---------- |
-| `font.family.sans`   | Montserrat |
-| `font.family.sans-2` | Inter      |
+| Token                | Value  |
+| -------------------- | ------ |
+| `font.family.sans`   | Roboto |
+| `font.family.sans-2` | Inter  |
 
 #### `font.weight`
 
@@ -742,22 +742,22 @@ All shadows: offsetX=0, spread=0.
 
 ### Text Styles (14)
 
-| Name               | Family     | Style    | Size  | Line-height | Letter-spacing | Case  | Decoration |
-| ------------------ | ---------- | -------- | ----- | ----------- | -------------- | ----- | ---------- |
-| Display/Default    | Montserrat | Light    | 100px | 100%        | −5.00px        | —     | —          |
-| H1/Default         | Montserrat | Bold     | 80px  | 110%        | −4.00px        | —     | —          |
-| H2/Default         | Montserrat | Bold     | 60px  | 120%        | −1.50px        | —     | —          |
-| H3/Default         | Montserrat | SemiBold | 48px  | 130%        | −1.20px        | —     | —          |
-| H4/Default         | Montserrat | SemiBold | 36px  | 135%        | 0.00px         | —     | —          |
-| H5/Default         | Montserrat | Medium   | 30px  | 140%        | 0.00px         | —     | —          |
-| H6/Default         | Montserrat | Medium   | 24px  | 145%        | 0.00px         | —     | —          |
-| Body-large/Default | Montserrat | Regular  | 20px  | 150%        | 0.00px         | —     | —          |
-| Body/Default       | Montserrat | Regular  | 16px  | 160%        | 0.00px         | —     | —          |
-| Body-small/Default | Montserrat | Regular  | 14px  | 160%        | +0.35px        | —     | —          |
-| Caption/Default    | Montserrat | Regular  | 12px  | 160%        | +0.30px        | —     | —          |
-| Label/Default      | Montserrat | Medium   | 14px  | 120%        | +0.35px        | UPPER | —          |
-| Cta/Default        | Montserrat | Medium   | 14px  | 120%        | +0.35px        | UPPER | underline  |
-| Overline/Default   | Montserrat | Medium   | 12px  | 120%        | +0.60px        | UPPER | —          |
+| Name               | Family | Style    | Size  | Line-height | Letter-spacing | Case  | Decoration |
+| ------------------ | ------ | -------- | ----- | ----------- | -------------- | ----- | ---------- |
+| Display/Default    | Roboto | Light    | 100px | 100%        | −5.00px        | —     | —          |
+| H1/Default         | Roboto | Bold     | 80px  | 110%        | −4.00px        | —     | —          |
+| H2/Default         | Roboto | Bold     | 60px  | 120%        | −1.50px        | —     | —          |
+| H3/Default         | Roboto | SemiBold | 48px  | 130%        | −1.20px        | —     | —          |
+| H4/Default         | Roboto | SemiBold | 36px  | 135%        | 0.00px         | —     | —          |
+| H5/Default         | Roboto | Medium   | 30px  | 140%        | 0.00px         | —     | —          |
+| H6/Default         | Roboto | Medium   | 24px  | 145%        | 0.00px         | —     | —          |
+| Body-large/Default | Roboto | Regular  | 20px  | 150%        | 0.00px         | —     | —          |
+| Body/Default       | Roboto | Regular  | 16px  | 160%        | 0.00px         | —     | —          |
+| Body-small/Default | Roboto | Regular  | 14px  | 160%        | +0.35px        | —     | —          |
+| Caption/Default    | Roboto | Regular  | 12px  | 160%        | +0.30px        | —     | —          |
+| Label/Default      | Roboto | Medium   | 14px  | 120%        | +0.35px        | UPPER | —          |
+| Cta/Default        | Roboto | Medium   | 14px  | 120%        | +0.35px        | UPPER | underline  |
+| Overline/Default   | Roboto | Medium   | 12px  | 120%        | +0.60px        | UPPER | —          |
 
 ### Grid Styles (3)
 
