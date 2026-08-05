@@ -149,7 +149,7 @@
     },
     "success": {
       "$type": "color",
-      "$value": "{palette.success.default}"
+      "$value": "{palette.success.10}"
     },
     "warning": {
       "$type": "color",
@@ -203,7 +203,7 @@
     },
     "success": {
       "$type": "color",
-      "$value": "{palette.success.9}"
+      "$value": "{palette.success.10}"
     },
     "on-success": {
       "$type": "color",

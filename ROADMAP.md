@@ -31,3 +31,25 @@ Planned work not yet in the system. When you start one of these, remove it from 
 - Chiavi non-integer (per il suffisso `px`), ordine da insertion order
 - Richiede aggiornare `build-figma.mjs` (transform multiplier→px nel dist) e `sanitizeAliases` (tradurre `{spacing.N}` → `{spacing.Npx}` nelle alias)
 - Naming più intuitivo per i designer (vedono px diretti, non moltiplicatori)
+
+### Neutral configurable per progetto (media priorità)
+
+La scelta del neutro (quale grey Radix usare come base) dovrebbe diventare
+configurabile per progetto, come il brand. La libreria base attualmente usa
+Radix **gray** (puro, acromatico). Un progetto che vuole un grigio caldo lo
+sovrascrive nel suo repo puntando `palette.neutral` a una scala diversa.
+
+Candidati da supportare nativamente in `create-nsp-project`:
+
+| Scala Radix | Tinta                | Adatto a                            |
+| ----------- | -------------------- | ----------------------------------- |
+| `gray`      | nessuna (acromatico) | neutralità massima, brand tech/B2B  |
+| `mauve`     | viola/warm           | brand caldi, lifestyle, luxury      |
+| `slate`     | blu-grigio           | brand freddi, finance, enterprise   |
+| `sage`      | verde-grigio         | brand nature, salute, sostenibilità |
+| `sand`      | sabbia/warm          | brand retail, food, editorial       |
+
+**Implementazione suggerita:** aggiungere un flag `--neutral <scale>` a
+`create-nsp-project`. Il valore default rimane `gray`. Quando specificato,
+il progetto generato fa puntare `palette.neutral.*` a `color.<scale>.*`
+invece di `color.gray.*`. La libreria base non cambia — solo il brand repo.

@@ -10,51 +10,51 @@
       },
       "1": {
         "$type": "color",
-        "$value": "{color.mauve.1}"
+        "$value": "{color.gray.1}"
       },
       "2": {
         "$type": "color",
-        "$value": "{color.mauve.2}"
+        "$value": "{color.gray.2}"
       },
       "3": {
         "$type": "color",
-        "$value": "{color.mauve.3}"
+        "$value": "{color.gray.3}"
       },
       "4": {
         "$type": "color",
-        "$value": "{color.mauve.4}"
+        "$value": "{color.gray.4}"
       },
       "5": {
         "$type": "color",
-        "$value": "{color.mauve.5}"
+        "$value": "{color.gray.5}"
       },
       "6": {
         "$type": "color",
-        "$value": "{color.mauve.6}"
+        "$value": "{color.gray.6}"
       },
       "7": {
         "$type": "color",
-        "$value": "{color.mauve.7}"
+        "$value": "{color.gray.7}"
       },
       "8": {
         "$type": "color",
-        "$value": "{color.mauve.8}"
+        "$value": "{color.gray.8}"
       },
       "9": {
         "$type": "color",
-        "$value": "{color.mauve.9}"
+        "$value": "{color.gray.9}"
       },
       "10": {
         "$type": "color",
-        "$value": "{color.mauve.10}"
+        "$value": "{color.gray.10}"
       },
       "11": {
         "$type": "color",
-        "$value": "{color.mauve.11}"
+        "$value": "{color.gray.11}"
       },
       "12": {
         "$type": "color",
-        "$value": "{color.mauve.12}"
+        "$value": "{color.gray.12}"
       },
       "$extensions": {
         "nsp": {

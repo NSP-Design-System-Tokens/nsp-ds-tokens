@@ -70,7 +70,7 @@ All ramps in `core/color.json` follow one of two origins. The rule is stated onc
 
 | Category         | Origin                   | Scales                                             |
 | ---------------- | ------------------------ | -------------------------------------------------- |
-| Neutral + states | **Radix as-is**          | `mauve`, `pink`, `red`, `green`, `orange`          |
+| Neutral + states | **Radix as-is**          | `gray`, `pink`, `red`, `green`, `orange`           |
 | Brand identity   | **Custom, Radix method** | `poli-magenta` (and each future brand's own scale) |
 
 **Radix as-is** — import the exact hex values from `@radix-ui/colors`. No tweaks.
