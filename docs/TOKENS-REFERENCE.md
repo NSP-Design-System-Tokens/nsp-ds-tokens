@@ -515,18 +515,18 @@ Source: `tokens/semantic/color.json`
 
 ### `stroke` · scope: `STROKE_COLOR`
 
-| Token                | Light                     | Dark                  |
-| -------------------- | ------------------------- | --------------------- |
-| `stroke.default`     | `palette.neutral.500`     | `palette.neutral.300` |
-| `stroke.primary`     | `palette.primary.500`     | `palette.primary.300` |
-| `stroke.hover`       | `palette.primary.700`     | `palette.primary.300` |
-| `stroke.disabled`    | `palette.neutral.100`     | `palette.neutral.800` |
-| `stroke.divider`     | `palette.neutral.a2`      | `palette.neutral.a2`  |
-| `stroke.on-dark`     | `palette.neutral.0`       | `palette.neutral.0`   |
-| `stroke.input-focus` | `palette.neutral.900`     | `palette.neutral.100` |
-| `stroke.error`       | `palette.error.default`   | `palette.error.200`   |
-| `stroke.success`     | `palette.success.default` | `palette.success.200` |
-| `stroke.warning`     | `palette.warning.700`     | `palette.warning.300` |
+| Token               | Light                     | Dark                  |
+| ------------------- | ------------------------- | --------------------- |
+| `stroke.default`    | `palette.neutral.500`     | `palette.neutral.300` |
+| `stroke.primary`    | `palette.primary.500`     | `palette.primary.300` |
+| `stroke.hover`      | `palette.primary.700`     | `palette.primary.300` |
+| `stroke.disabled`   | `palette.neutral.100`     | `palette.neutral.800` |
+| `stroke.divider`    | `palette.neutral.a2`      | `palette.neutral.a2`  |
+| `stroke.on-dark`    | `palette.neutral.0`       | `palette.neutral.0`   |
+| `stroke.focus-ring` | `palette.neutral.900`     | `palette.neutral.100` |
+| `stroke.error`      | `palette.error.default`   | `palette.error.200`   |
+| `stroke.success`    | `palette.success.default` | `palette.success.200` |
+| `stroke.warning`    | `palette.warning.700`     | `palette.warning.300` |
 
 ### `logo` · scope: `SHAPE_FILL`
 

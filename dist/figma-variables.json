@@ -1316,7 +1316,7 @@
           "$value": "{palette.neutral.a2}",
           "scopes": ["STROKE_COLOR"]
         },
-        "input-focus": {
+        "focus-ring": {
           "$type": "color",
           "$value": "{palette.neutral.12}",
           "scopes": ["STROKE_COLOR"]

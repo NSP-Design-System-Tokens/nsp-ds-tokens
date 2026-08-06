@@ -5,6 +5,25 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [0.3.7] — 2026-08-06
+
+### Changed
+
+- **`stroke.input-focus` → `stroke.focus-ring`** (breaking rename, value unchanged).
+  Il token era nominato per un singolo componente (input); il focus ring è invece un
+  primitivo cross-component che si applica a bottoni, input, link, checkbox, tab e
+  qualunque elemento focusabile da tastiera. Il nuovo nome riflette la funzione reale.
+  Il valore `{palette.neutral.12}` rimane invariato in entrambe le modalità.
+  **Breaking:** chi referenzia `stroke.input-focus` in CSS, nei componenti o nei
+  token di progetto deve aggiornare il nome. Nessun cambio visivo a runtime.
+- Aggiornata `$description` del token con descrizione generale d'uso (outline esterno,
+  offset 2px).
+- Aggiornate le occorrenze nei file di documentazione: `docs/TOKENS-REFERENCE.md`,
+  `docs/DESIGN-SYSTEM-GUIDE.md`, `COMPONENTI-E-STATI.md`, `GUIDA-USO-DESIGNER.md`.
+- Rebuilt `dist/figma-variables.json` e `dist/figma-styles.json`.
+
+---
+
 ## [0.3.6] — 2026-08-05
 
 ### Changed

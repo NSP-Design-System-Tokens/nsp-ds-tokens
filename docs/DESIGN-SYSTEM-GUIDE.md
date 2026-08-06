@@ -174,7 +174,7 @@ Semantic color splits into a small, stable set of role groups:
   status surfaces (`error`, `success`, `warning`)
 - `text` — `default`, `subtle`, `disabled`, `placeholder`, plus status variants
   and `on-<surface>` counterparts
-- `stroke` — `default`, `divider`, `hover`, `disabled`, `input-focus`, plus
+- `stroke` — `default`, `divider`, `hover`, `disabled`, `focus-ring`, plus
   status variants and `on-dark`
 - `icon` — mirrors text roles with status variants and `on-<surface>` counterparts
 - `logo` — brand mark in different contexts (`default`, `white`)

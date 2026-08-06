@@ -131,9 +131,10 @@
       "$type": "color",
       "$value": "{palette.neutral.a2}"
     },
-    "input-focus": {
+    "focus-ring": {
       "$type": "color",
-      "$value": "{palette.neutral.12}"
+      "$value": "{palette.neutral.12}",
+      "$description": "Anello di focus per elementi interattivi navigati da tastiera. Applicato come outline esterno con offset di 2px."
     },
     "disabled": {
       "$type": "color",
