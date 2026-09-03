@@ -94,6 +94,10 @@
       "$type": "color",
       "$value": "{palette.neutral.0}"
     },
+    "white": {
+      "$type": "color",
+      "$value": "{palette.neutral.0}"
+    },
     "error": {
       "$type": "color",
       "$value": "{palette.error.12}"
@@ -144,6 +148,10 @@
       "$type": "color",
       "$value": "{palette.neutral.0}"
     },
+    "white": {
+      "$type": "color",
+      "$value": "{palette.neutral.0}"
+    },
     "error": {
       "$type": "color",
       "$value": "{palette.error.default}"
@@ -191,6 +199,10 @@
       "$value": "{palette.neutral.7}"
     },
     "on-dark": {
+      "$type": "color",
+      "$value": "{palette.neutral.0}"
+    },
+    "white": {
       "$type": "color",
       "$value": "{palette.neutral.0}"
     },

@@ -42,6 +42,8 @@ export const CONTRAST_EXEMPT = {
     "brand-tinted decorative variant — arbitrary background, contrast is consumer's responsibility",
   "text.primary-xlight":
     "brand-tinted decorative variant — arbitrary background, contrast is consumer's responsibility",
+  "icon.primary-xlight":
+    "brand-tinted decorative icon variant — arbitrary background, contrast is consumer's responsibility",
 
   // White utility tokens — intended exclusively for dark/colored surfaces
   // (on-dark, on-brand, image overlays). Pairing with light reading surfaces

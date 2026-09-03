@@ -18,6 +18,15 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- `text.white`, `icon.white`, `stroke.white` — white utility tokens (`{palette.neutral.0}`)
+  for use on dark or colored surfaces (on-dark, on-brand, image overlays). Complement the
+  existing `*.on-dark` tokens. These token names were already present in `CONTRAST_EXEMPT`
+  as anticipated entries (globally exempt: arbitrary background, consumer's responsibility).
+  Adding the actual token definitions makes the exemptions live.
+- `icon.primary-xlight` added to `CONTRAST_EXEMPT` in `contrast-exemptions.js`. Brand-tinted
+  decorative icon variant, same policy as `text.primary-xlight` (arbitrary background,
+  consumer's responsibility). Parity with the brand scaffold (`create-nsp-project`).
+
 - `scripts/lib/contrast-exemptions.js` — single source of truth for the
   `CONTRAST_EXEMPT` allowlist. `contrast.mjs` now re-exports from this file.
   `figma-token-manager/code.js` consumes the same data via
