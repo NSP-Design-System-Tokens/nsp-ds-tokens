@@ -7,6 +7,13 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Breaking Changes
+
+- `icon.default` now maps to `palette.neutral.12` (previously `palette.neutral.9`).
+  Icons previously appearing muted will render at full text weight. Consumers relying
+  on the previous appearance should switch to `icon.subtle` (`palette.neutral.10`)
+  for the muted variant.
+
 ### Changed
 
 - `icon.default` aligned to `text.default`: step 9 → step 12 (`palette.neutral.12`).
