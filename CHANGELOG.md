@@ -18,6 +18,18 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- Semantic spacing scales extended to 6xl (`inset`, `stack`) and 5xl (`inline`).
+  All new steps reference existing core primitives — no primitive additions needed.
+  `inline` stops at 5xl (80px) by design: at 96px+ a horizontal gap ceases to be an
+  inline spacing role and becomes a column separator. Keeping `inline` capped preserves
+  its semantic intent even at the cost of asymmetry with `inset`/`stack`.
+
+  | scale  | new steps                                         |
+  | ------ | ------------------------------------------------- |
+  | inset  | 2xl=48px, 3xl=64px, 4xl=80px, 5xl=96px, 6xl=128px |
+  | stack  | 3xl=80px, 4xl=96px, 5xl=128px, 6xl=160px          |
+  | inline | 2xl=32px, 3xl=48px, 4xl=64px, 5xl=80px            |
+
 - `breakpoint.frame-height` — moded number token (`com.figma.scoping: ["WIDTH_HEIGHT"]`).
   desktop=1080, tablet=1024, mobile=812. Complements the existing `breakpoint.frame-width`
   (desktop=1920, tablet=768, mobile=375) to give Figma frames a standard height axis.
