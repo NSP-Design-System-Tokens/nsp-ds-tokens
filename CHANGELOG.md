@@ -18,6 +18,12 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- `docs/DESIGN-PRINCIPLES.md` — records deliberate architectural decisions that
+  must not be silently "fixed." First entry: brand-coherence-over-accessibility
+  rubric (step 11 policy for `text.title`, `text.primary`, `icon.primary`).
+  Reference added to `CLAUDE.md` (nsp-ds-tokens, create-nsp-project,
+  figma-token-manager).
+
 - Semantic spacing scales extended to 6xl (`inset`, `stack`) and 5xl (`inline`).
   All new steps reference existing core primitives — no primitive additions needed.
   `inline` stops at 5xl (80px) by design: at 96px+ a horizontal gap ceases to be an
