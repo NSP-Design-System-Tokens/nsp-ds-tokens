@@ -7,6 +7,15 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Changed
+
+- `icon.default` aligned to `text.default`: step 9 → step 12 (`palette.neutral.12`).
+  Step 9 is a Radix "solid background" step, below the WCAG 3:1 threshold for icons on
+  off-white reading surfaces. Step 12 (same as `text.default`) is near-black and well
+  above threshold. `icon.dark` was already step 12 — now identical to `icon.default`.
+  Note: `icon.subtle` remains step 10; step 11 is currently unoccupied for neutral icons
+  (gap between default/step12 and subtle/step10).
+
 ### Added
 
 - `scripts/lib/contrast-exemptions.js` — single source of truth for the

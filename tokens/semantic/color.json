@@ -172,7 +172,7 @@
     },
     "default": {
       "$type": "color",
-      "$value": "{palette.neutral.9}"
+      "$value": "{palette.neutral.12}"
     },
     "dark": {
       "$type": "color",
