@@ -18,6 +18,10 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ### Added
 
+- `breakpoint.frame-height` — moded number token (`com.figma.scoping: ["WIDTH_HEIGHT"]`).
+  desktop=1080, tablet=1024, mobile=812. Complements the existing `breakpoint.frame-width`
+  (desktop=1920, tablet=768, mobile=375) to give Figma frames a standard height axis.
+
 - `text.white`, `icon.white`, `stroke.white` — white utility tokens (`{palette.neutral.0}`)
   for use on dark or colored surfaces (on-dark, on-brand, image overlays). Complement the
   existing `*.on-dark` tokens. These token names were already present in `CONTRAST_EXEMPT`

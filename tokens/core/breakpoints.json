@@ -19,6 +19,18 @@
           "mobile": 375
         }
       }
+    },
+    "frame-height": {
+      "$type": "number",
+      "$value": 1080,
+      "$extensions": {
+        "com.figma.scoping": ["WIDTH_HEIGHT"],
+        "com.figma.modes": {
+          "desktop": 1080,
+          "tablet": 1024,
+          "mobile": 812
+        }
+      }
     }
   }
 }
