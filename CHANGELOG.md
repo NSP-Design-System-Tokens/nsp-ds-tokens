@@ -5,6 +5,23 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [Unreleased]
+
+### Added
+
+- `scripts/lib/contrast-exemptions.js` — single source of truth for the
+  `CONTRAST_EXEMPT` allowlist. `contrast.mjs` now re-exports from this file.
+  `figma-token-manager/code.js` consumes the same data via
+  `figma-token-manager/scripts/sync-exemptions.mjs`. Run that script (from the
+  shared workspace root) whenever this file changes, before committing `code.js`.
+
+### Changed
+
+- `scripts/lib/contrast.mjs` re-exports `CONTRAST_EXEMPT` from
+  `contrast-exemptions.js` instead of declaring it inline. No behavioral change.
+
+---
+
 ## [0.3.7] — 2026-08-06
 
 ### Changed
