@@ -159,7 +159,7 @@ export const CONTRAST_EXEMPT = {
   //
   // REAL GAP — design decision required.
   //
-  // surface.primary-hover and surface.primary-dark resolve to palette.primary.300
+  // surface.primary-hover and surface.primary-light resolve to palette.primary.300
   // (#ef56af) in dark mode: the dark-mode convention lightens interactive surfaces
   // on hover/press (luminance inversion). text.on-primary = palette.neutral.0
   // (white) achieves only 3.17:1 on #ef56af, below the 4.5:1 text threshold.
@@ -175,8 +175,8 @@ export const CONTRAST_EXEMPT = {
   // is pending. Remove once a design fix is applied.
   "text.on-primary × surface.primary-hover":
     "REAL GAP — dark mode only: surface.primary-hover = palette.primary.300 (#ef56af), white text = 3.17:1 < 4.5. Design fix needed (see comment above).",
-  "text.on-primary × surface.primary-dark":
-    "REAL GAP — dark mode only: surface.primary-dark = palette.primary.300 (#ef56af), white text = 3.17:1 < 4.5. Design fix needed (see comment above).",
+  "text.on-primary × surface.primary-light":
+    "REAL GAP — dark mode only: surface.primary-light = palette.primary.300 (#ef56af), white text = 3.17:1 < 4.5. Design fix needed (see comment above).",
 
   // --- Radix orange.11 on off-white reading surfaces (light mode) ---------------
   //

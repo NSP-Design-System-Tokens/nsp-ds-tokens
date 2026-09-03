@@ -15,6 +15,12 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
   `figma-token-manager/scripts/sync-exemptions.mjs`. Run that script (from the
   shared workspace root) whenever this file changes, before committing `code.js`.
 
+### Fixed
+
+- `contrast-exemptions.js`: typo in exemption key `text.on-primary × surface.primary-dark`
+  corrected to `text.on-primary × surface.primary-light`. The token `surface.primary-dark`
+  does not exist; `surface.primary-light` is the correct dark-mode hover/pressed surface.
+
 ### Changed
 
 - `scripts/lib/contrast.mjs` re-exports `CONTRAST_EXEMPT` from
