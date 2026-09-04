@@ -252,6 +252,18 @@ re-run the build and amend before tagging.
 sources on every tag push and PR to main, then runs `git diff --exit-code` on the
 two dist files. The push/merge is blocked if they differ.
 
+**dist/ is build output — strict rules:**
+
+- Never edit files under `dist/` manually.
+- Never use the Write tool to write to `dist/`. Always regenerate via `npm run build`
+  executed through Bash (not the Write/Edit tools).
+- `.prettierignore` excludes `dist/` from Prettier post-processing. If you add new
+  build output directories, add them to `.prettierignore` too.
+- Rationale: the Claude Code PostToolUse hook runs `prettier --write` on any file
+  touched via Write/Edit. Prettier reformats single-element arrays differently from
+  `JSON.stringify`, causing `verify-dist.yml` to fail on the tag. This broke v0.4.0
+  and v0.4.1. The `.prettierignore` guard and this rule prevent recurrence.
+
 You are authorized to run `git push origin main` (and `--tags` when needed)
 without asking for manual confirmation. Git credentials are configured in the
 session. For tag creation, ask for confirmation before proceeding.

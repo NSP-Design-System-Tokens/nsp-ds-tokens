@@ -1,0 +1,3 @@
+# Build output — must match raw `npm run build` output exactly,
+# verified by verify-dist.yml. Do not let Prettier touch it.
+dist/
