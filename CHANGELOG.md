@@ -9,6 +9,18 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [0.4.2] — 2026-09-04
+
+### Fixed
+
+- `dist/figma-variables.json` was post-processed by Prettier via Claude Code PostToolUse
+  hook before the v0.4.1 commit, causing `verify-dist.yml` to fail on tag v0.4.1. Added
+  `.prettierignore` (excludes `dist/`) and documented in `CLAUDE.md` that `dist/` must
+  never be written manually or via Write tool. Consumers pinned to v0.4.0 or v0.4.1
+  should upgrade to v0.4.2.
+
+---
+
 ## [0.4.1] — 2026-09-04
 
 ### Fixed
