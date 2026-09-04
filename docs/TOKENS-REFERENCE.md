@@ -335,29 +335,25 @@ CSS-only. Excluded from Figma variables.
 
 #### `palette.neutral` · origin: base (mauve ramp + alpha)
 
-| Token                   | → color                 |
-| ----------------------- | ----------------------- |
-| `palette.neutral.0`     | `color.white`           |
-| `palette.neutral.black` | `color.black`           |
-| `palette.neutral.50`    | `color.mauve.light.2`   |
-| `palette.neutral.100`   | `color.mauve.light.3`   |
-| `palette.neutral.200`   | `color.mauve.light.4`   |
-| `palette.neutral.300`   | `color.mauve.light.5`   |
-| `palette.neutral.400`   | `color.mauve.light.7`   |
-| `palette.neutral.500`   | `color.mauve.light.9`   |
-| `palette.neutral.600`   | `color.mauve.light.10`  |
-| `palette.neutral.700`   | `color.mauve.light.11`  |
-| `palette.neutral.800`   | `color.mauve.light.12`  |
-| `palette.neutral.900`   | `color.mauve.light.12`  |
-| `palette.neutral.950`   | `color.mauve.light.12`  |
-| `palette.neutral.a1`    | `color.black-alpha.a1`  |
-| `palette.neutral.a2`    | `color.black-alpha.a2`  |
-| `palette.neutral.a4`    | `color.black-alpha.a4`  |
-| `palette.neutral.a9`    | `color.black-alpha.a9`  |
-| `palette.neutral.low`   | → `palette.neutral.100` |
-| `palette.neutral.mid`   | → `palette.neutral.300` |
-| `palette.neutral.high`  | → `palette.neutral.700` |
-| `palette.neutral.max`   | → `palette.neutral.900` |
+| Token                   | → color                |
+| ----------------------- | ---------------------- |
+| `palette.neutral.0`     | `color.white`          |
+| `palette.neutral.black` | `color.black`          |
+| `palette.neutral.50`    | `color.mauve.light.2`  |
+| `palette.neutral.100`   | `color.mauve.light.3`  |
+| `palette.neutral.200`   | `color.mauve.light.4`  |
+| `palette.neutral.300`   | `color.mauve.light.5`  |
+| `palette.neutral.400`   | `color.mauve.light.7`  |
+| `palette.neutral.500`   | `color.mauve.light.9`  |
+| `palette.neutral.600`   | `color.mauve.light.10` |
+| `palette.neutral.700`   | `color.mauve.light.11` |
+| `palette.neutral.800`   | `color.mauve.light.12` |
+| `palette.neutral.900`   | `color.mauve.light.12` |
+| `palette.neutral.950`   | `color.mauve.light.12` |
+| `palette.neutral.a1`    | `color.black-alpha.a1` |
+| `palette.neutral.a2`    | `color.black-alpha.a2` |
+| `palette.neutral.a4`    | `color.black-alpha.a4` |
+| `palette.neutral.a9`    | `color.black-alpha.a9` |
 
 #### `palette.error` · origin: base (red ramp)
 
@@ -397,66 +393,46 @@ Source: `tokens/semantic/color.json`
 
 ### `surface` · scope: `FRAME_FILL`, `SHAPE_FILL`
 
-| Token                      | Light                   | Dark                    |
-| -------------------------- | ----------------------- | ----------------------- |
-| `surface.page`             | `palette.neutral.0`     | `palette.neutral.950`   |
-| `surface.dark`             | `palette.neutral.black` | `palette.neutral.black` |
-| `surface.page-contrast`    | `palette.neutral.50`    | `palette.neutral.800`   |
-| `surface.secondary`        | `palette.secondary.3`   | `palette.secondary.3d`  |
-| `surface.secondary-hover`  | `palette.secondary.4`   | `palette.secondary.4d`  |
-| `surface.secondary-active` | `palette.secondary.5`   | `palette.secondary.5d`  |
-| `surface.tertiary`         | `palette.tertiary.3`    | `palette.tertiary.3d`   |
-| `surface.tertiary-hover`   | `palette.tertiary.4`    | `palette.tertiary.4d`   |
-| `surface.tertiary-active`  | `palette.tertiary.5`    | `palette.tertiary.5d`   |
-| `surface.tertiary-dark`    | `palette.neutral.700`   | `palette.neutral.200`   |
-| `surface.tertiary-darker`  | `palette.neutral.800`   | `palette.neutral.100`   |
-| `surface.disabled`         | `palette.neutral.100`   | `palette.neutral.800`   |
-| `surface.white`            | `palette.neutral.0`     | `palette.neutral.0`     |
-| `surface.error`            | `palette.error.500`     | `palette.error.500`     |
-| `surface.success`          | `palette.success.500`   | `palette.success.500`   |
-| `surface.warning`          | `palette.warning.500`   | `palette.warning.500`   |
-| `surface.neutral`          | `palette.neutral.50`    | `palette.neutral.800`   |
-| `surface.blur`             | `palette.neutral.a1`    | `palette.neutral.a1`    |
-| `surface.card`             | `palette.neutral.0`     | `palette.neutral.900`   |
-| `surface.raised`           | `palette.neutral.0`     | `palette.neutral.800`   |
-| `surface.floating`         | `palette.neutral.0`     | `palette.neutral.700`   |
-| `surface.boxed`            | `palette.neutral.50`    | `palette.neutral.800`   |
-| `surface.overlay`          | `palette.neutral.a9`    | `palette.neutral.a9`    |
+| Token                   | Light                   | Dark                    |
+| ----------------------- | ----------------------- | ----------------------- |
+| `surface.page`          | `palette.neutral.0`     | `palette.neutral.950`   |
+| `surface.dark`          | `palette.neutral.black` | `palette.neutral.black` |
+| `surface.page-contrast` | `palette.neutral.50`    | `palette.neutral.800`   |
+| `surface.disabled`      | `palette.neutral.100`   | `palette.neutral.800`   |
+| `surface.white`         | `palette.neutral.0`     | `palette.neutral.0`     |
+| `surface.error`         | `palette.error.500`     | `palette.error.500`     |
+| `surface.success`       | `palette.success.500`   | `palette.success.500`   |
+| `surface.warning`       | `palette.warning.500`   | `palette.warning.500`   |
+| `surface.neutral`       | `palette.neutral.50`    | `palette.neutral.800`   |
+| `surface.blur`          | `palette.neutral.a1`    | `palette.neutral.a1`    |
+| `surface.card`          | `palette.neutral.0`     | `palette.neutral.900`   |
+| `surface.raised`        | `palette.neutral.0`     | `palette.neutral.800`   |
+| `surface.floating`      | `palette.neutral.0`     | `palette.neutral.700`   |
+| `surface.boxed`         | `palette.neutral.50`    | `palette.neutral.800`   |
+| `surface.overlay`       | `palette.neutral.a9`    | `palette.neutral.a9`    |
 
 ### `text` · scope: `TEXT_FILL`
 
-| Token                 | Light                   | Dark                    |
-| --------------------- | ----------------------- | ----------------------- |
-| `text.title`          | `palette.primary.500`   | `palette.primary.200`   |
-| `text.default`        | `palette.neutral.800`   | `palette.neutral.100`   |
-| `text.primary`        | `palette.primary.500`   | `palette.primary.200`   |
-| `text.primary-light`  | `palette.primary.300`   | `palette.primary.300`   |
-| `text.primary-xlight` | `palette.primary.100`   | `palette.primary.100`   |
-| `text.primary-hover`  | `palette.primary.700`   | `palette.primary.100`   |
-| `text.on-primary`     | `palette.neutral.0`     | `palette.neutral.0`     |
-| `text.on-secondary`   | `palette.secondary.12`  | `palette.secondary.12d` |
-| `text.on-tertiary`    | `palette.tertiary.12`   | `palette.tertiary.12d`  |
-| `text.on-dark`        | `palette.neutral.0`     | `palette.neutral.0`     |
-| `text.white`          | `palette.neutral.0`     | `palette.neutral.0`     |
-| `text.on-error`       | `palette.neutral.black` | `palette.neutral.black` |
-| `text.on-success`     | `palette.neutral.black` | `palette.neutral.black` |
-| `text.on-warning`     | `palette.neutral.900`   | `palette.neutral.900`   |
-| `text.disabled`       | `palette.neutral.400`   | `palette.neutral.600`   |
-| `text.subtle`         | `palette.neutral.700`   | `palette.neutral.300`   |
-| `text.error`          | `palette.error.11`      | `palette.error.200`     |
-| `text.placeholder`    | `palette.neutral.700`   | `palette.neutral.300`   |
-| `text.success`        | `palette.success.11`    | `palette.success.200`   |
-| `text.warning`        | `palette.warning.700`   | `palette.warning.300`   |
-
-> **`text.primary` and `text.title`** — role defined in the base schema (referenced by `contrast-exemptions.js`); value materialized only in brand projects generated by `create-nsp-project`.
+| Token              | Light                   | Dark                    |
+| ------------------ | ----------------------- | ----------------------- |
+| `text.default`     | `palette.neutral.800`   | `palette.neutral.100`   |
+| `text.on-dark`     | `palette.neutral.0`     | `palette.neutral.0`     |
+| `text.white`       | `palette.neutral.0`     | `palette.neutral.0`     |
+| `text.on-error`    | `palette.neutral.black` | `palette.neutral.black` |
+| `text.on-success`  | `palette.neutral.black` | `palette.neutral.black` |
+| `text.on-warning`  | `palette.neutral.900`   | `palette.neutral.900`   |
+| `text.disabled`    | `palette.neutral.400`   | `palette.neutral.600`   |
+| `text.subtle`      | `palette.neutral.700`   | `palette.neutral.300`   |
+| `text.error`       | `palette.error.11`      | `palette.error.200`     |
+| `text.placeholder` | `palette.neutral.700`   | `palette.neutral.300`   |
+| `text.success`     | `palette.success.11`    | `palette.success.200`   |
+| `text.warning`     | `palette.warning.700`   | `palette.warning.300`   |
 
 ### `stroke` · scope: `STROKE_COLOR`
 
 | Token               | Light                     | Dark                  |
 | ------------------- | ------------------------- | --------------------- |
 | `stroke.default`    | `palette.neutral.500`     | `palette.neutral.300` |
-| `stroke.primary`    | `palette.primary.500`     | `palette.primary.300` |
-| `stroke.hover`      | `palette.primary.700`     | `palette.primary.300` |
 | `stroke.disabled`   | `palette.neutral.100`     | `palette.neutral.800` |
 | `stroke.divider`    | `palette.neutral.a2`      | `palette.neutral.a2`  |
 | `stroke.on-dark`    | `palette.neutral.0`       | `palette.neutral.0`   |
@@ -479,15 +455,8 @@ Source: `tokens/semantic/color.json`
 | `icon.default`       | `palette.neutral.12`    | `palette.neutral.12`    |
 | `icon.dark`          | `palette.neutral.800`   | `palette.neutral.100`   |
 | `icon.subtle`        | `palette.neutral.300`   | `palette.neutral.600`   |
-| `icon.primary`       | `palette.primary.500`   | `palette.primary.200`   |
-| `icon.primary-light` | `palette.primary.300`   | `palette.primary.300`   |
-| `icon.primary-hover` | `palette.primary.700`   | `palette.primary.100`   |
-| `icon.secondary`     | `palette.secondary.11`  | `palette.secondary.12d` |
 | `icon.disabled`      | `palette.neutral.200`   | `palette.neutral.700`   |
 | `icon.disabled-dark` | `palette.neutral.400`   | `palette.neutral.500`   |
-| `icon.on-primary`    | `palette.neutral.0`     | `palette.neutral.0`     |
-| `icon.on-secondary`  | `palette.secondary.12`  | `palette.secondary.12d` |
-| `icon.on-tertiary`   | `palette.tertiary.12`   | `palette.tertiary.12d`  |
 | `icon.on-dark`       | `palette.neutral.0`     | `palette.neutral.0`     |
 | `icon.white`         | `palette.neutral.0`     | `palette.neutral.0`     |
 | `icon.on-error`      | `palette.neutral.black` | `palette.neutral.black` |
@@ -497,25 +466,7 @@ Source: `tokens/semantic/color.json`
 | `icon.error`         | `palette.error.500`     | `palette.error.200`     |
 | `icon.warning`       | `palette.warning.700`   | `palette.warning.300`   |
 
-> **`icon.primary`** — role defined in the base schema (referenced by `contrast-exemptions.js`); value materialized only in brand projects generated by `create-nsp-project`.
-
 `icon.default` uses a single reference `palette.neutral.12` for both modes; mode resolution happens upstream via `color.gray.12` (light=`#202020` · dark=`#eeeeee`).
-
-### `emphasis-brand` · scope: `FRAME_FILL`, `SHAPE_FILL`
-
-> Role defined in the base schema (`tokens.mjs` TIERS, `COLOR_MODE_GROUPS`); value materialized only in brand projects generated by `create-nsp-project`.
-
-| Token                    | Light                 | Dark                  |
-| ------------------------ | --------------------- | --------------------- |
-| `emphasis-brand.default` | `palette.primary.300` | `palette.primary.300` |
-| `emphasis-brand.dark`    | `palette.primary.700` | `palette.primary.700` |
-
-### `emphasis` · scope: `FRAME_FILL`, `SHAPE_FILL`
-
-| Token              | Light                    | Dark                   |
-| ------------------ | ------------------------ | ---------------------- |
-| `emphasis.default` | `palette.accent.default` | `palette.accent.light` |
-| `emphasis.subtle`  | `palette.accent.2`       | `palette.accent.4`     |
 
 ---
 
@@ -797,9 +748,22 @@ Values shown are illustrative examples from the Poli brand (`palette.primary` �
 | `palette.accent.light`   | → `palette.accent.5`    |
 | `palette.accent.dark`    | → `palette.accent.10`   |
 
-### `surface` — primary-\* variants · scope: `FRAME_FILL`, `SHAPE_FILL`
+#### `palette.neutral` — semantic aliases
 
-Brand-colored primary surfaces. Generated as aliases to `palette.primary.*` steps.
+Named aliases for numeric neutral steps. Not materialized in the base `dist/`; scaffolded per project.
+
+| Token                  | → palette.neutral       |
+| ---------------------- | ----------------------- |
+| `palette.neutral.low`  | → `palette.neutral.100` |
+| `palette.neutral.mid`  | → `palette.neutral.300` |
+| `palette.neutral.high` | → `palette.neutral.700` |
+| `palette.neutral.max`  | → `palette.neutral.900` |
+
+### `surface` — primary, secondary & tertiary variants · scope: `FRAME_FILL`, `SHAPE_FILL`
+
+Brand-colored surfaces. `surface.tertiary-dark` and `surface.tertiary-darker` are also referenced in the base contrast-exemptions schema (schema-known).
+
+#### Primary variants
 
 | Token                    | Light                 | Dark                  |
 | ------------------------ | --------------------- | --------------------- |
@@ -809,6 +773,24 @@ Brand-colored primary surfaces. Generated as aliases to `palette.primary.*` step
 | `surface.primary-dark`   | `palette.primary.700` | `palette.primary.300` |
 | `surface.primary-hover`  | `palette.primary.700` | `palette.primary.300` |
 
+#### Secondary variants
+
+| Token                      | Light                 | Dark                   |
+| -------------------------- | --------------------- | ---------------------- |
+| `surface.secondary`        | `palette.secondary.3` | `palette.secondary.3d` |
+| `surface.secondary-hover`  | `palette.secondary.4` | `palette.secondary.4d` |
+| `surface.secondary-active` | `palette.secondary.5` | `palette.secondary.5d` |
+
+#### Tertiary variants
+
+| Token                     | Light                 | Dark                  |
+| ------------------------- | --------------------- | --------------------- |
+| `surface.tertiary`        | `palette.tertiary.3`  | `palette.tertiary.3d` |
+| `surface.tertiary-hover`  | `palette.tertiary.4`  | `palette.tertiary.4d` |
+| `surface.tertiary-active` | `palette.tertiary.5`  | `palette.tertiary.5d` |
+| `surface.tertiary-dark`   | `palette.neutral.700` | `palette.neutral.200` |
+| `surface.tertiary-darker` | `palette.neutral.800` | `palette.neutral.100` |
+
 ### `logo.default` · scope: `SHAPE_FILL`
 
 Brand lockup in primary color.
@@ -816,6 +798,60 @@ Brand lockup in primary color.
 | Token          | Light                 | Dark                  |
 | -------------- | --------------------- | --------------------- |
 | `logo.default` | `palette.primary.500` | `palette.primary.300` |
+
+### `text` — primary & title variants · scope: `TEXT_FILL`
+
+Brand-colored text roles. `text.title`, `text.primary`, `text.primary-light`, `text.primary-xlight`, `text.primary-hover`, `text.on-secondary`, and `text.on-tertiary` are also referenced in the base contrast-exemptions schema (schema-known).
+
+| Token                 | Light                  | Dark                    |
+| --------------------- | ---------------------- | ----------------------- |
+| `text.title`          | `palette.primary.500`  | `palette.primary.200`   |
+| `text.primary`        | `palette.primary.500`  | `palette.primary.200`   |
+| `text.primary-light`  | `palette.primary.300`  | `palette.primary.300`   |
+| `text.primary-xlight` | `palette.primary.100`  | `palette.primary.100`   |
+| `text.primary-hover`  | `palette.primary.700`  | `palette.primary.100`   |
+| `text.on-primary`     | `palette.neutral.0`    | `palette.neutral.0`     |
+| `text.on-secondary`   | `palette.secondary.12` | `palette.secondary.12d` |
+| `text.on-tertiary`    | `palette.tertiary.12`  | `palette.tertiary.12d`  |
+
+### `stroke` — primary variants · scope: `STROKE_COLOR`
+
+Brand-colored strokes. Both are also referenced in the base contrast-exemptions schema (schema-known).
+
+| Token            | Light                 | Dark                  |
+| ---------------- | --------------------- | --------------------- |
+| `stroke.primary` | `palette.primary.500` | `palette.primary.300` |
+| `stroke.hover`   | `palette.primary.700` | `palette.primary.300` |
+
+### `icon` — primary, secondary & on-brand variants · scope: `SHAPE_FILL`
+
+Brand-colored icons. `icon.primary`, `icon.primary-light`, and `icon.primary-hover` are also referenced in the base contrast-exemptions schema (schema-known).
+
+| Token                | Light                  | Dark                    |
+| -------------------- | ---------------------- | ----------------------- |
+| `icon.primary`       | `palette.primary.500`  | `palette.primary.200`   |
+| `icon.primary-light` | `palette.primary.300`  | `palette.primary.300`   |
+| `icon.primary-hover` | `palette.primary.700`  | `palette.primary.100`   |
+| `icon.secondary`     | `palette.secondary.11` | `palette.secondary.12d` |
+| `icon.on-primary`    | `palette.neutral.0`    | `palette.neutral.0`     |
+| `icon.on-secondary`  | `palette.secondary.12` | `palette.secondary.12d` |
+| `icon.on-tertiary`   | `palette.tertiary.12`  | `palette.tertiary.12d`  |
+
+### `emphasis-brand` · scope: `FRAME_FILL`, `SHAPE_FILL`
+
+Role defined in the base schema (`tokens.mjs` TIERS, `COLOR_MODE_GROUPS`) — schema-known. Values materialized per brand project.
+
+| Token                    | Light                 | Dark                  |
+| ------------------------ | --------------------- | --------------------- |
+| `emphasis-brand.default` | `palette.primary.300` | `palette.primary.300` |
+| `emphasis-brand.dark`    | `palette.primary.700` | `palette.primary.700` |
+
+### `emphasis` · scope: `FRAME_FILL`, `SHAPE_FILL`
+
+| Token              | Light                    | Dark                   |
+| ------------------ | ------------------------ | ---------------------- |
+| `emphasis.default` | `palette.accent.default` | `palette.accent.light` |
+| `emphasis.subtle`  | `palette.accent.2`       | `palette.accent.4`     |
 
 ---
 
@@ -829,7 +865,7 @@ Brand lockup in primary color.
 | `LETTER_SPACING`           | `font.letter-spacing`                                                                                       |
 | `TEXT_FILL`                | `text`                                                                                                      |
 | `STROKE_COLOR`             | `stroke`                                                                                                    |
-| `FRAME_FILL`, `SHAPE_FILL` | `surface`, `emphasis-brand`, `emphasis`                                                                     |
+| `FRAME_FILL`, `SHAPE_FILL` | `surface`                                                                                                   |
 | `SHAPE_FILL`               | `logo`, `icon`                                                                                              |
 | `GAP`, `WIDTH_HEIGHT`      | `grid.gutter`, `grid.margin`, `section.padding`, `inset`, `stack`, `inline`, `section-gap`, `page-margin`   |
 | `WIDTH_HEIGHT`             | `border-width`, `breakpoint.frame-width`                                                                    |
