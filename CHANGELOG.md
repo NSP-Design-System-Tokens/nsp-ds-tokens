@@ -9,6 +9,19 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ---
 
+## [0.4.1] — 2026-09-04
+
+### Fixed
+
+- Sync `dist/figma-variables.json` with sources. The v0.4.0 release tagged the source
+  changes for Fase 2 (new roles, extended spacing, `breakpoint.frame-height`) but shipped
+  a stale `dist/figma-variables.json` that did not reflect them. `verify-dist.yml`
+  correctly failed on v0.4.0 (run `33736878696`) but the failure was not addressed at
+  release time. This patch republishes the correct dist. No source changes; dist only.
+  Consumers pinned to v0.4.0 should upgrade to v0.4.1.
+
+---
+
 ## [0.4.0] — 2026-09-03
 
 ### Breaking Changes
