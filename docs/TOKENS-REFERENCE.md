@@ -503,6 +503,7 @@ Source: `tokens/semantic/color.json`
 | `text.on-secondary`   | `palette.secondary.12`  | `palette.secondary.12d` |
 | `text.on-tertiary`    | `palette.tertiary.12`   | `palette.tertiary.12d`  |
 | `text.on-dark`        | `palette.neutral.0`     | `palette.neutral.0`     |
+| `text.white`          | `palette.neutral.0`     | `palette.neutral.0`     |
 | `text.on-error`       | `palette.neutral.black` | `palette.neutral.black` |
 | `text.on-success`     | `palette.neutral.black` | `palette.neutral.black` |
 | `text.on-warning`     | `palette.neutral.900`   | `palette.neutral.900`   |
@@ -523,6 +524,7 @@ Source: `tokens/semantic/color.json`
 | `stroke.disabled`   | `palette.neutral.100`     | `palette.neutral.800` |
 | `stroke.divider`    | `palette.neutral.a2`      | `palette.neutral.a2`  |
 | `stroke.on-dark`    | `palette.neutral.0`       | `palette.neutral.0`   |
+| `stroke.white`      | `palette.neutral.0`       | `palette.neutral.0`   |
 | `stroke.focus-ring` | `palette.neutral.900`     | `palette.neutral.100` |
 | `stroke.error`      | `palette.error.default`   | `palette.error.200`   |
 | `stroke.success`    | `palette.success.default` | `palette.success.200` |
@@ -539,7 +541,7 @@ Source: `tokens/semantic/color.json`
 
 | Token                | Light                   | Dark                    |
 | -------------------- | ----------------------- | ----------------------- |
-| `icon.default`       | `palette.neutral.500`   | `palette.neutral.300`   |
+| `icon.default`       | `palette.neutral.12`    | `palette.neutral.12`    |
 | `icon.dark`          | `palette.neutral.800`   | `palette.neutral.100`   |
 | `icon.subtle`        | `palette.neutral.300`   | `palette.neutral.600`   |
 | `icon.primary`       | `palette.primary.500`   | `palette.primary.200`   |
@@ -552,12 +554,15 @@ Source: `tokens/semantic/color.json`
 | `icon.on-secondary`  | `palette.secondary.12`  | `palette.secondary.12d` |
 | `icon.on-tertiary`   | `palette.tertiary.12`   | `palette.tertiary.12d`  |
 | `icon.on-dark`       | `palette.neutral.0`     | `palette.neutral.0`     |
+| `icon.white`         | `palette.neutral.0`     | `palette.neutral.0`     |
 | `icon.on-error`      | `palette.neutral.black` | `palette.neutral.black` |
 | `icon.on-success`    | `palette.neutral.black` | `palette.neutral.black` |
 | `icon.on-warning`    | `palette.neutral.900`   | `palette.neutral.900`   |
 | `icon.success`       | `palette.success.500`   | `palette.success.200`   |
 | `icon.error`         | `palette.error.500`     | `palette.error.200`     |
 | `icon.warning`       | `palette.warning.700`   | `palette.warning.300`   |
+
+`icon.default` uses a single reference `palette.neutral.12` for both modes; mode resolution happens upstream via `color.gray.12` (light=`#202020` · dark=`#eeeeee`).
 
 ### `emphasis-brand` · scope: `FRAME_FILL`, `SHAPE_FILL`
 
@@ -582,13 +587,18 @@ Static — no modes. Component-internal density; does not change with breakpoint
 
 ### `inset` — component padding
 
-| Token      | → spacing   | px  |
-| ---------- | ----------- | --- |
-| `inset.xs` | `spacing.2` | 8   |
-| `inset.sm` | `spacing.3` | 12  |
-| `inset.md` | `spacing.4` | 16  |
-| `inset.lg` | `spacing.6` | 24  |
-| `inset.xl` | `spacing.8` | 32  |
+| Token       | → spacing    | px  |
+| ----------- | ------------ | --- |
+| `inset.xs`  | `spacing.2`  | 8   |
+| `inset.sm`  | `spacing.3`  | 12  |
+| `inset.md`  | `spacing.4`  | 16  |
+| `inset.lg`  | `spacing.6`  | 24  |
+| `inset.xl`  | `spacing.8`  | 32  |
+| `inset.2xl` | `spacing.12` | 48  |
+| `inset.3xl` | `spacing.16` | 64  |
+| `inset.4xl` | `spacing.20` | 80  |
+| `inset.5xl` | `spacing.24` | 96  |
+| `inset.6xl` | `spacing.32` | 128 |
 
 ### `stack` — vertical gap
 
@@ -601,16 +611,24 @@ Static — no modes. Component-internal density; does not change with breakpoint
 | `stack.lg`  | `spacing.6`   | 24  |
 | `stack.xl`  | `spacing.10`  | 40  |
 | `stack.2xl` | `spacing.16`  | 64  |
+| `stack.3xl` | `spacing.20`  | 80  |
+| `stack.4xl` | `spacing.24`  | 96  |
+| `stack.5xl` | `spacing.32`  | 128 |
+| `stack.6xl` | `spacing.40`  | 160 |
 
 ### `inline` — horizontal gap
 
-| Token       | → spacing   | px  |
-| ----------- | ----------- | --- |
-| `inline.xs` | `spacing.1` | 4   |
-| `inline.sm` | `spacing.2` | 8   |
-| `inline.md` | `spacing.3` | 12  |
-| `inline.lg` | `spacing.4` | 16  |
-| `inline.xl` | `spacing.6` | 24  |
+| Token        | → spacing    | px  |
+| ------------ | ------------ | --- |
+| `inline.xs`  | `spacing.1`  | 4   |
+| `inline.sm`  | `spacing.2`  | 8   |
+| `inline.md`  | `spacing.3`  | 12  |
+| `inline.lg`  | `spacing.4`  | 16  |
+| `inline.xl`  | `spacing.6`  | 24  |
+| `inline.2xl` | `spacing.8`  | 32  |
+| `inline.3xl` | `spacing.12` | 48  |
+| `inline.4xl` | `spacing.16` | 64  |
+| `inline.5xl` | `spacing.20` | 80  |
 
 ---
 
@@ -628,8 +646,10 @@ Static — no modes. Component-internal density; does not change with breakpoint
 | `breakpoint.threshold.desktop` | 1024  | CSS min-width switch  |
 | `breakpoint.threshold.tablet`  | 768   | CSS min-width switch  |
 | `breakpoint.frame-width`       | moded | scope `WIDTH_HEIGHT`  |
+| `breakpoint.frame-height`      | moded | scope `WIDTH_HEIGHT`  |
 
-`breakpoint.frame-width` modes: desktop=1920 · tablet=768 · mobile=375
+`breakpoint.frame-width` modes: desktop=1920 · tablet=768 · mobile=375  
+`breakpoint.frame-height` modes: desktop=1080 · tablet=1024 · mobile=812
 
 ---
 
