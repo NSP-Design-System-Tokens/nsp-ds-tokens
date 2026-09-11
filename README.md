@@ -88,12 +88,12 @@ declared with rationale in `scripts/lib/contrast.mjs`. Gate runs on every build.
 ## Origin markers
 
 Every color primitive group and every `palette.*` slot carries
-`$extensions.nsp.origin`: `"base"` (shared across brands) or `"brand-poli"`
-(Poli-specific, future extraction).
+`$extensions.nsp.origin`: `"base"` (shared across brands) or `"brand"` (brand-specific,
+future extraction into a separate brand repo).
 
 Semantic token origin is derived by reference-graph traversal — not manually declared.
 Canonical function: `scripts/lib/origin.mjs`. 31 of 120 semantic tokens resolve to
-`brand-poli`; 89 to `base`. Validator enforces graph integrity on every build.
+`brand`; 89 to `base`. Validator enforces graph integrity on every build.
 
 ## Commands
 
@@ -120,14 +120,17 @@ Import Styles → paste `dist/figma-styles.json`; Match Variables to Styles. Ide
 
 ## Configuring a new brand
 
-1. Copy `brand/poli.json` → `brand/<name>.json`.
-2. Generate a custom 12-step OKLCH scale for the brand identity color (see guide).
-   Add it to `core/color.json`. Mark it `$extensions.nsp.origin: "brand-<name>"`.
-3. Keep `palette.*` role names identical. Repoint `palette.primary` (and optionally
-   `palette.secondary`, `palette.accent`) at the new primitives.
-4. `palette.neutral`, `palette.error`, `palette.success`, `palette.warning` reuse the
-   shared Radix scales unchanged.
-5. `npm run build` — gate must stay green.
+Brand projects live in separate repos scaffolded by `create-nsp-project`. Each brand
+repo overrides the `palette.*` identity slots (primary, secondary, tertiary, accent)
+with brand-specific color ramps and marks them `$extensions.nsp.origin: "brand"`.
+
+1. Generate a custom 12-step OKLCH scale for the brand identity color (see guide).
+2. Create `tokens/brand.json` in the brand repo. Keep `palette.*` role names identical
+   to the base library. Repoint `palette.primary` (and optionally `palette.secondary`,
+   `palette.accent`) at the new primitives.
+3. `palette.neutral`, `palette.error`, `palette.success`, `palette.warning` are
+   inherited from the base library unchanged.
+4. `npm run build` — gate must stay green.
 
 Semantic and Responsive tiers stay untouched. Same components, same classes, swapped
 palette.

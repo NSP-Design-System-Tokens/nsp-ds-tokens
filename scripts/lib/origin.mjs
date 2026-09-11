@@ -3,25 +3,21 @@
 // future D3 extraction script. Do not duplicate this logic elsewhere.
 //
 // Anchoring rule (declared): every palette slot carries $extensions.nsp.origin
-// ("base" | "brand-poli"). Only palette slots are marked; everything above
+// ("base" | "brand"). Only palette slots are marked; everything above
 // derives from them via reference graph traversal.
 //
-// Derivation rule (computed): a token is "brand-poli" if any of its direct
+// Derivation rule (computed): a token is "brand" if any of its direct
 // palette.* refs (across $value and all mode values) resolves to a slot whose
-// declared origin is "brand-poli". Otherwise "base". If a ref points to a slot
+// declared origin is "brand". Otherwise "base". If a ref points to a slot
 // with no declared origin, the graph is unanchored — validator fails.
 
 import { isLeaf, TIERS } from "./tokens.mjs";
 
-// Kept for compatibility; prefer isValidOrigin() for open-ended brand checks.
-export const VALID_ORIGINS = new Set(["base", "brand-poli"]);
+export const VALID_ORIGINS = new Set(["base", "brand"]);
 
-// Accepts "base" or any "brand-*" string (e.g. "brand-wolfhaus", "brand-test").
+// Strict binary: "base" or exactly "brand". No multi-brand variants in the base repo.
 export function isValidOrigin(origin) {
-  return (
-    origin === "base" ||
-    (typeof origin === "string" && origin.startsWith("brand-"))
-  );
+  return origin === "base" || origin === "brand";
 }
 const SEMANTIC_GROUPS = [
   ...(TIERS["3. Color Roles"] ?? []),
@@ -57,7 +53,7 @@ export function paletteSlotOrigins(merged) {
 }
 
 // Derive origin for one leaf. Returns:
-//   { origin: "base"|"brand-*", unanchored: string[] }
+//   { origin: "base"|"brand", unanchored: string[] }
 // unanchored = palette slot names referenced but missing declared origin.
 export function deriveLeafOrigin(leaf, slotOrigins) {
   const modes = leaf.$extensions?.["com.figma.modes"] ?? {};
@@ -76,8 +72,8 @@ export function deriveLeafOrigin(leaf, slotOrigins) {
     const declared = slotOrigins[slot];
     if (declared === null) {
       if (!unanchored.includes(slot)) unanchored.push(slot);
-    } else if (typeof declared === "string" && declared.startsWith("brand-")) {
-      origin = declared; // propagate the specific brand name (e.g. "brand-wolfhaus")
+    } else if (declared === "brand") {
+      origin = "brand";
     }
   }
 
@@ -86,7 +82,7 @@ export function deriveLeafOrigin(leaf, slotOrigins) {
 
 // Walk all semantic groups in merged, derive origin per leaf.
 // Returns:
-//   results: [{ path: string, origin: "base"|"brand-poli" }]
+//   results: [{ path: string, origin: "base"|"brand" }]
 //   errors:  [{ path: string, unanchored: string[] }]  — unanchored slot refs
 export function deriveSemanticOrigins(merged) {
   const slotOrigins = paletteSlotOrigins(merged);

@@ -154,9 +154,9 @@ const palGroup = (subs, label, cls) =>
 
 const palInner =
   palGroup(
-    palSubs.filter((s) => s.origin === "brand-poli"),
-    "Brand Poli — identity slots",
-    "origin-brand-poli",
+    palSubs.filter((s) => s.origin === "brand"),
+    "Brand — identity slots",
+    "origin-brand",
   ) +
   palGroup(
     palSubs.filter((s) => s.origin === "base"),
@@ -565,7 +565,7 @@ ${css}
   .origin-group { margin-bottom:32px; }
   .origin-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.08em;
     padding:4px 10px; border-radius:4px; display:inline-block; margin-bottom:16px; }
-  .origin-brand-poli { background:color-mix(in srgb,var(--palette-neutral-9) 20%,transparent);
+  .origin-brand { background:color-mix(in srgb,var(--palette-neutral-9) 20%,transparent);
     color:var(--text-default); border:1px solid color-mix(in srgb,var(--palette-neutral-9) 40%,transparent); }
   .origin-base { background:color-mix(in srgb,var(--surface-card) 60%,transparent);
     color:var(--text-subtle); border:1px solid var(--stroke-divider); }

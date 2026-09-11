@@ -117,21 +117,23 @@ that structure was replaced in v0.3.0 by the unified moded scale.
 
 - Functional / neutral colors (grey ramps, status colors) → Radix as-is. Not brand, so canonical Radix is fine.
 - Identity colors (the hue a brand owns) → custom Radix method. Preserves exact brand hex at step 9.
-- New brand: copy `brand/poli.json` → `brand/<name>.json`, generate its own custom scale, wire `palette.primary` to it. Neutral and state scales are shared across brands.
+- New brand: generate its own custom scale in a separate brand repo, wire `palette.primary` to it, mark all brand-specific primitives and slots with `$extensions.nsp.origin: "brand"`. Neutral and state scales are shared from the base library.
 
-## Origin marker (base vs brand-poli)
+## Origin marker (base vs brand)
 
 Ogni gruppo di primitivi color e ogni slot `palette.*` porta un marcatore architetturale in `$extensions.nsp.origin`:
 
 - `"base"` — condiviso da tutti i progetti (neutri, stati, alpha, slot funzionali `neutral/error/success/warning`).
-- `"brand-poli"` — Poli-specifico (`magenta`, `bronze`, `pink`, slot identity `primary/secondary/tertiary/accent`).
+- `"brand"` — specifico del brand corrente (`magenta`, `bronze`, `pink`, slot identity `primary/secondary/tertiary/accent`).
+
+Binario stretto: non esistono varianti `"brand-poli"`, `"brand-wolfhaus"` ecc. nel repo base. Il repo base conosce solo `"base"` e `"brand"`. I brand vivono in repo separati.
 
 Regole:
 
 1. Quando aggiungi un nuovo gruppo primitivo o slot palette, **devi** aggiungere il marker esplicito. L'assenza non è consentita (evita ambiguità).
 2. Il marker è metadato architettonico, NON descrizione d'uso. `$description` resta libero per la descrizione d'uso reale.
 3. Il validator/build ignora `$extensions.nsp` (namespace custom). Non rompe nulla.
-4. Il marker è il criterio automatico dell'estrazione futura (Fase D3, vedi `ROADMAP.md`): script filtrerà `origin === "brand-poli"` per spostare i nodi in un repo di progetto separato.
+4. Il marker è il criterio automatico dell'estrazione futura (Fase D3, vedi `ROADMAP.md`): script filtrerà `origin === "brand"` per spostare i nodi in un repo di progetto separato.
 
 ## Non-color primitive scales
 
@@ -277,9 +279,11 @@ loosening them.
 
 ## Adding a brand
 
-Copy `brand/poli.json` to `brand/<name>.json`, keep `palette.*` role names
-identical, point them at the new brand's primitives. Semantic and Responsive stay
-untouched. Wire per-brand build targets. Same components, same classes, swapped
+Brand projects live in separate repos. Create a new brand repo with `tokens/brand.json`
+containing the `palette.*` identity slots (primary, secondary, tertiary, accent) pointing
+at the brand's own color primitives. Mark all brand-specific nodes with
+`$extensions.nsp.origin: "brand"`. Keep `palette.*` role names identical to the base
+library. Semantic and Responsive stay untouched. Same components, same classes, swapped
 palette.
 
 ## Scaling from the example

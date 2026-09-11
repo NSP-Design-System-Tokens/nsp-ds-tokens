@@ -10,7 +10,7 @@ Scopes = `com.figma.scoping`. Modes shown where applicable.
 ### `color` · `tokens/core/color.json`
 
 **Figma scope:** `[]` (hidden from all pickers)  
-Origin markers: `base` = shared · `brand-poli` = Poli-specific
+Origin markers: `base` = shared · `brand` = brand-specific
 
 #### Solids
 
@@ -19,7 +19,7 @@ Origin markers: `base` = shared · `brand-poli` = Poli-specific
 | `color.white` | `#ffffff` |
 | `color.black` | `#000000` |
 
-#### `color.bronze` · origin: brand-poli
+#### `color.bronze` · origin: brand
 
 | Step | Light     | Dark      |
 | ---- | --------- | --------- |
@@ -121,7 +121,7 @@ Origin markers: `base` = shared · `brand-poli` = Poli-specific
 | 11   | `#65636d` | `#c5c2cc` |
 | 12   | `#211f26` | `#e9e8ec` |
 
-#### `color.pink` · origin: brand-poli
+#### `color.pink` · origin: brand
 
 | Step | Light     | Dark      |
 | ---- | --------- | --------- |
@@ -138,7 +138,7 @@ Origin markers: `base` = shared · `brand-poli` = Poli-specific
 | 11   | `#b3194d` | `#f287b4` |
 | 12   | `#621639` | `#fdd6e9` |
 
-#### `color.magenta` · origin: brand-poli
+#### `color.magenta` · origin: brand
 
 | Step | Light     | Dark      |
 | ---- | --------- | --------- |
@@ -329,7 +329,7 @@ CSS-only. Excluded from Figma variables.
 
 ## 2. Brand
 
-### `palette` · `tokens/brand/poli.json`
+### `palette` · `tokens/palette/default.json`
 
 **Figma scope:** `[]` (hidden) · **Type:** `color` · Values = aliases to `color.*`
 
@@ -687,7 +687,7 @@ Values shown are illustrative examples from the Poli brand (`palette.primary` �
 
 ### `palette` — brand identity slots
 
-#### `palette.primary` · origin: brand-poli
+#### `palette.primary` · origin: brand
 
 | Token                      | → color                  |
 | -------------------------- | ------------------------ |
@@ -703,7 +703,7 @@ Values shown are illustrative examples from the Poli brand (`palette.primary` �
 | `palette.primary.emphasis` | → `palette.primary.700`  |
 | `palette.primary.hover`    | → `palette.primary.700`  |
 
-#### `palette.secondary` · origin: brand-poli (pink ramp)
+#### `palette.secondary` · origin: brand (pink ramp)
 
 | Token                   | → color               |
 | ----------------------- | --------------------- |
@@ -718,7 +718,7 @@ Values shown are illustrative examples from the Poli brand (`palette.primary` �
 | `palette.secondary.12`  | `color.pink.light.12` |
 | `palette.secondary.12d` | `color.pink.dark.12`  |
 
-#### `palette.tertiary` · origin: brand-poli (mauve ramp)
+#### `palette.tertiary` · origin: brand (mauve ramp)
 
 | Token                  | → color                |
 | ---------------------- | ---------------------- |
@@ -733,7 +733,7 @@ Values shown are illustrative examples from the Poli brand (`palette.primary` �
 | `palette.tertiary.12`  | `color.mauve.light.12` |
 | `palette.tertiary.12d` | `color.mauve.dark.12`  |
 
-#### `palette.accent` · origin: brand-poli (bronze ramp)
+#### `palette.accent` · origin: brand (bronze ramp)
 
 | Token                    | → color                 |
 | ------------------------ | ----------------------- |

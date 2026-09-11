@@ -1,8 +1,8 @@
 // D3 extraction: read merged source, split by origin, write two inspection trees.
 //
 // Outputs (read-only — does NOT touch tokens/):
-//   dist/brand-poli/tokens/  — brand-poli primitives + palette slots + semantic leaves
-//   dist/base/tokens/        — everything else (self-consistent base library)
+//   dist/brand/tokens/  — brand primitives + palette slots + semantic leaves
+//   dist/base/tokens/   — everything else (self-consistent base library)
 //
 // Uses deriveLeafOrigin / deriveSemanticOrigins from lib/origin.mjs (canonical,
 // same function the validator uses — no duplicate logic).
@@ -19,22 +19,22 @@ import {
 const merged = loadMerged();
 
 // --- Build origin maps ---
-const slotOrigins = paletteSlotOrigins(merged); // palette.slotName → "base"|"brand-poli"|null
+const slotOrigins = paletteSlotOrigins(merged); // palette.slotName → "base"|"brand"|null
 const { results: semanticOrigins } = deriveSemanticOrigins(merged);
 
-// Set of "group.key.key..." paths for brand-poli semantic leaves (graph-derived)
+// Set of "group.key.key..." paths for brand semantic leaves (graph-derived)
 const brandPoliSemanticPaths = new Set(
-  semanticOrigins.filter((r) => r.origin === "brand-poli").map((r) => r.path),
+  semanticOrigins.filter((r) => r.origin === "brand").map((r) => r.path),
 );
 
-// Brand role names derived from palette slot origins (only brand-poli slots).
+// Brand role names derived from palette slot origins (only brand slots).
 // Does NOT include base slot names (neutral, error, success, warning) — those must
 // never promote a token that happens to contain "neutral" in its name.
 const brandRoleNames = Object.entries(slotOrigins)
-  .filter(([, o]) => o === "brand-poli")
+  .filter(([, o]) => o === "brand")
   .map(([slot]) => slot); // ["primary", "secondary", "tertiary", "accent"]
 
-// Heuristic: a semantic token is brand-poli if any segment of its path contains
+// Heuristic: a semantic token is brand if any segment of its path contains
 // a brand role name as a substring (catches "tertiary-dark", "on-primary", etc.).
 // Rationale: the graph only sees referenced values; meaning-by-name is a stronger
 // signal when a token's semantic existence depends on a brand role.
@@ -63,7 +63,7 @@ function splitColor(colorTree) {
   for (const [k, v] of Object.entries(colorTree)) {
     if (k.startsWith("$")) continue;
     const origin = originOfColorEntry(v);
-    (origin === "brand-poli" ? brand : base)[k] = v;
+    (origin === "brand" ? brand : base)[k] = v;
   }
   return { brand, base };
 }
@@ -79,7 +79,7 @@ function splitPalette(paletteTree) {
   for (const [slot, node] of Object.entries(paletteTree)) {
     if (slot.startsWith("$")) continue;
     const origin = slotOrigins[slot];
-    (origin === "brand-poli" ? brand : base)[slot] = node;
+    (origin === "brand" ? brand : base)[slot] = node;
   }
   return { brand, base };
 }
@@ -196,10 +196,10 @@ let totalSystem = 0;
 eachLeaf(merged, () => totalSystem++);
 
 // --- Reference integrity checks ---
-// BASE: must have zero refs to brand-poli palette slots
+// BASE: must have zero refs to brand palette slots
 const brandPoliSlots = new Set(
   Object.entries(slotOrigins)
-    .filter(([, o]) => o === "brand-poli")
+    .filter(([, o]) => o === "brand")
     .map(([s]) => `palette.${s}`),
 );
 const baseDanglingRefs = [];
@@ -244,14 +244,12 @@ for (const [g, tree] of Object.entries(semanticBrand))
   scanCrossRepoRefs(tree, g);
 
 // --- Write outputs ---
-const outBrand = resolve(ROOT, "dist/brand-poli");
+const outBrand = resolve(ROOT, "dist/brand");
 const outBase = resolve(ROOT, "dist/base");
 for (const d of [
   `${outBrand}/tokens/core`,
-  `${outBrand}/tokens/brand`,
   `${outBrand}/tokens/semantic`,
   `${outBase}/tokens/core`,
-  `${outBase}/tokens/brand`,
   `${outBase}/tokens/semantic`,
 ])
   mkdirSync(d, { recursive: true });
@@ -259,14 +257,14 @@ for (const d of [
 const write = (path, data) =>
   writeFileSync(path, JSON.stringify(data, null, 2) + "\n");
 
-// brand-poli
+// brand
 write(`${outBrand}/tokens/core/color.json`, { color: colorBrand });
-write(`${outBrand}/tokens/brand/poli.json`, { palette: paletteBrand });
+write(`${outBrand}/tokens/brand.json`, { palette: paletteBrand });
 write(`${outBrand}/tokens/semantic/color.json`, semanticBrand);
 
 // base
 write(`${outBase}/tokens/core/color.json`, { color: colorBase });
-write(`${outBase}/tokens/brand/poli.json`, { palette: paletteBase });
+write(`${outBase}/tokens/brand.json`, { palette: paletteBase });
 write(`${outBase}/tokens/semantic/color.json`, semanticBase);
 
 // --- Collect heuristic promotions (tokens graph missed, heuristic caught) ---
@@ -277,7 +275,7 @@ const heuristicPromoted = semanticOrigins
 // --- Report ---
 console.log("=== D3 Extraction Report ===\n");
 
-console.log("brand-poli tokens (→ dist/brand-poli/):");
+console.log("brand tokens (→ dist/brand/):");
 for (const [k, n] of Object.entries(brandCounts))
   console.log(`  ${k.padEnd(22)}: ${n}`);
 console.log(`  ${"TOTAL".padEnd(22)}: ${totalBrand}`);
@@ -291,7 +289,7 @@ console.log(
   `\nsum check: ${totalBrand} + ${totalBase} = ${totalBrand + totalBase} (system total: ${totalSystem}) — ${totalBrand + totalBase === totalSystem ? "OK ✓" : "MISMATCH ✗"}`,
 );
 
-console.log("\nheuristic promotions (graph=base, heuristic=brand-poli):");
+console.log("\nheuristic promotions (graph=base, heuristic=brand):");
 if (heuristicPromoted.length === 0) {
   console.log("  none");
 } else {
@@ -300,11 +298,9 @@ if (heuristicPromoted.length === 0) {
 
 console.log("\nref integrity:");
 if (baseDanglingRefs.length === 0) {
-  console.log("  base → brand-poli refs : 0 (base is self-consistent ✓)");
+  console.log("  base → brand refs : 0 (base is self-consistent ✓)");
 } else {
-  console.log(
-    `  base → brand-poli refs : ${baseDanglingRefs.length} UNEXPECTED:`,
-  );
+  console.log(`  base → brand refs : ${baseDanglingRefs.length} UNEXPECTED:`);
   for (const r of baseDanglingRefs) console.log(`    ! ${r}`);
 }
 if (crossRepoRefs.size === 0) {

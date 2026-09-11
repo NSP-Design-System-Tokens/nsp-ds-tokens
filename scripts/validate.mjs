@@ -123,7 +123,7 @@ for (const g of SEMANTIC_GROUPS) {
 
 // 4. origin completeness: every leaf under color.* (primitives) and palette.*
 // (brand slots) must inherit an $extensions.nsp.origin from an ancestor group.
-// Enforces the base vs brand-poli anchor marker (see ROADMAP.md § Fase D3).
+// Enforces the base vs brand anchor marker (see ROADMAP.md § Fase D3).
 function checkOrigin(subtree, rootName) {
   if (!subtree) return;
   const walk = (node, path, inherited) => {
