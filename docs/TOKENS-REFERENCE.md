@@ -384,6 +384,86 @@ CSS-only. Excluded from Figma variables.
 | `palette.warning.700`     | `color.orange.light.11` |
 | `palette.warning.default` | → `palette.warning.500` |
 
+`palette.primary`, `palette.secondary`, `palette.tertiary`, and `palette.accent` are identity slots materialized in the base with neutral gray defaults. Brand projects override them by wiring these slots to their own color ramps.
+
+#### `palette.primary` · origin: base
+
+| Token                     | → color         |
+| ------------------------- | --------------- |
+| `palette.primary.1`       | `color.gray.1`  |
+| `palette.primary.2`       | `color.gray.2`  |
+| `palette.primary.3`       | `color.gray.3`  |
+| `palette.primary.4`       | `color.gray.4`  |
+| `palette.primary.5`       | `color.gray.5`  |
+| `palette.primary.6`       | `color.gray.6`  |
+| `palette.primary.7`       | `color.gray.7`  |
+| `palette.primary.8`       | `color.gray.8`  |
+| `palette.primary.9`       | `color.gray.9`  |
+| `palette.primary.10`      | `color.gray.10` |
+| `palette.primary.11`      | `color.gray.11` |
+| `palette.primary.12`      | `color.gray.12` |
+| `palette.primary.default` | `color.gray.9`  |
+| `palette.primary.subtle`  | `color.gray.3`  |
+| `palette.primary.hover`   | `color.gray.10` |
+
+#### `palette.secondary` · origin: base
+
+| Token                       | → color         |
+| --------------------------- | --------------- |
+| `palette.secondary.1`       | `color.gray.1`  |
+| `palette.secondary.2`       | `color.gray.2`  |
+| `palette.secondary.3`       | `color.gray.3`  |
+| `palette.secondary.4`       | `color.gray.4`  |
+| `palette.secondary.5`       | `color.gray.5`  |
+| `palette.secondary.6`       | `color.gray.6`  |
+| `palette.secondary.7`       | `color.gray.7`  |
+| `palette.secondary.8`       | `color.gray.8`  |
+| `palette.secondary.9`       | `color.gray.9`  |
+| `palette.secondary.10`      | `color.gray.10` |
+| `palette.secondary.11`      | `color.gray.11` |
+| `palette.secondary.12`      | `color.gray.12` |
+| `palette.secondary.default` | `color.gray.9`  |
+| `palette.secondary.subtle`  | `color.gray.3`  |
+| `palette.secondary.hover`   | `color.gray.10` |
+
+#### `palette.tertiary` · origin: base
+
+| Token                      | → color         |
+| -------------------------- | --------------- |
+| `palette.tertiary.1`       | `color.gray.1`  |
+| `palette.tertiary.2`       | `color.gray.2`  |
+| `palette.tertiary.3`       | `color.gray.3`  |
+| `palette.tertiary.4`       | `color.gray.4`  |
+| `palette.tertiary.5`       | `color.gray.5`  |
+| `palette.tertiary.6`       | `color.gray.6`  |
+| `palette.tertiary.7`       | `color.gray.7`  |
+| `palette.tertiary.8`       | `color.gray.8`  |
+| `palette.tertiary.9`       | `color.gray.9`  |
+| `palette.tertiary.10`      | `color.gray.10` |
+| `palette.tertiary.11`      | `color.gray.11` |
+| `palette.tertiary.12`      | `color.gray.12` |
+| `palette.tertiary.default` | `color.gray.9`  |
+
+#### `palette.accent` · origin: base
+
+| Token                    | → color         |
+| ------------------------ | --------------- |
+| `palette.accent.1`       | `color.gray.1`  |
+| `palette.accent.2`       | `color.gray.2`  |
+| `palette.accent.3`       | `color.gray.3`  |
+| `palette.accent.4`       | `color.gray.4`  |
+| `palette.accent.5`       | `color.gray.5`  |
+| `palette.accent.6`       | `color.gray.6`  |
+| `palette.accent.7`       | `color.gray.7`  |
+| `palette.accent.8`       | `color.gray.8`  |
+| `palette.accent.9`       | `color.gray.9`  |
+| `palette.accent.10`      | `color.gray.10` |
+| `palette.accent.11`      | `color.gray.11` |
+| `palette.accent.12`      | `color.gray.12` |
+| `palette.accent.default` | `color.gray.9`  |
+| `palette.accent.subtle`  | `color.gray.3`  |
+| `palette.accent.hover`   | `color.gray.10` |
+
 ---
 
 ## 3. Color Roles
@@ -410,6 +490,8 @@ Source: `tokens/semantic/color.json`
 | `surface.floating`      | `palette.neutral.0`     | `palette.neutral.700`   |
 | `surface.boxed`         | `palette.neutral.50`    | `palette.neutral.800`   |
 | `surface.overlay`       | `palette.neutral.a9`    | `palette.neutral.a9`    |
+| `surface.primary`       | `palette.primary.9`     | `palette.primary.9`     |
+| `surface.primary-hover` | `palette.primary.10`    | `palette.primary.8`     |
 
 ### `text` · scope: `TEXT_FILL`
 
@@ -427,6 +509,8 @@ Source: `tokens/semantic/color.json`
 | `text.placeholder` | `palette.neutral.700`   | `palette.neutral.300`   |
 | `text.success`     | `palette.success.11`    | `palette.success.200`   |
 | `text.warning`     | `palette.warning.700`   | `palette.warning.300`   |
+| `text.title`       | `palette.primary.11`    | `palette.primary.11`    |
+| `text.primary`     | `palette.primary.11`    | `palette.primary.11`    |
 
 ### `stroke` · scope: `STROKE_COLOR`
 
@@ -444,9 +528,10 @@ Source: `tokens/semantic/color.json`
 
 ### `logo` · scope: `SHAPE_FILL`
 
-| Token        | Light               | Dark                |
-| ------------ | ------------------- | ------------------- |
-| `logo.white` | `palette.neutral.0` | `palette.neutral.0` |
+| Token          | Light               | Dark                |
+| -------------- | ------------------- | ------------------- |
+| `logo.white`   | `palette.neutral.0` | `palette.neutral.0` |
+| `logo.default` | `palette.primary.9` | `palette.primary.8` |
 
 ### `icon` · scope: `SHAPE_FILL`
 
@@ -465,8 +550,16 @@ Source: `tokens/semantic/color.json`
 | `icon.success`       | `palette.success.500`   | `palette.success.200`   |
 | `icon.error`         | `palette.error.500`     | `palette.error.200`     |
 | `icon.warning`       | `palette.warning.700`   | `palette.warning.300`   |
+| `icon.primary`       | `palette.primary.11`    | `palette.primary.11`    |
 
 `icon.default` uses a single reference `palette.neutral.12` for both modes; mode resolution happens upstream via `color.gray.12` (light=`#202020` · dark=`#eeeeee`).
+
+### `emphasis-brand` · scope: `FRAME_FILL`, `SHAPE_FILL`
+
+| Token                    | Light                | Dark                 |
+| ------------------------ | -------------------- | -------------------- |
+| `emphasis-brand.default` | `palette.primary.8`  | `palette.primary.8`  |
+| `emphasis-brand.dark`    | `palette.primary.10` | `palette.primary.10` |
 
 ---
 
@@ -679,182 +772,6 @@ All shadows: offsetX=0, spread=0.
 
 ---
 
-## Per-Project Contracts
-
-The following tokens are not defined in the base library. They are contracts that projects scaffolded by `create-nsp-project` are guaranteed to produce, with values derived from the brand configuration. This section documents the contract (naming, semantic role), not brand-specific values.
-
-Values shown are illustrative examples from the Poli brand (`palette.primary` → magenta, `palette.secondary` → pink, `palette.tertiary` → mauve, `palette.accent` → bronze). Actual values vary per brand project.
-
-### `palette` — brand identity slots
-
-#### `palette.primary` · origin: brand
-
-| Token                      | → color                  |
-| -------------------------- | ------------------------ |
-| `palette.primary.50`       | `color.magenta.light.2`  |
-| `palette.primary.100`      | `color.magenta.light.3`  |
-| `palette.primary.200`      | `color.magenta.dark.12`  |
-| `palette.primary.300`      | `color.magenta.light.8`  |
-| `palette.primary.500`      | `color.magenta.light.9`  |
-| `palette.primary.700`      | `color.magenta.light.10` |
-| `palette.primary.900`      | `color.magenta.light.12` |
-| `palette.primary.default`  | → `palette.primary.500`  |
-| `palette.primary.subtle`   | → `palette.primary.100`  |
-| `palette.primary.emphasis` | → `palette.primary.700`  |
-| `palette.primary.hover`    | → `palette.primary.700`  |
-
-#### `palette.secondary` · origin: brand (pink ramp)
-
-| Token                   | → color               |
-| ----------------------- | --------------------- |
-| `palette.secondary.3`   | `color.pink.light.3`  |
-| `palette.secondary.3d`  | `color.pink.dark.3`   |
-| `palette.secondary.4`   | `color.pink.light.4`  |
-| `palette.secondary.4d`  | `color.pink.dark.4`   |
-| `palette.secondary.5`   | `color.pink.light.5`  |
-| `palette.secondary.5d`  | `color.pink.dark.5`   |
-| `palette.secondary.11`  | `color.pink.light.11` |
-| `palette.secondary.11d` | `color.pink.dark.11`  |
-| `palette.secondary.12`  | `color.pink.light.12` |
-| `palette.secondary.12d` | `color.pink.dark.12`  |
-
-#### `palette.tertiary` · origin: brand (mauve ramp)
-
-| Token                  | → color                |
-| ---------------------- | ---------------------- |
-| `palette.tertiary.3`   | `color.mauve.light.3`  |
-| `palette.tertiary.3d`  | `color.mauve.dark.3`   |
-| `palette.tertiary.4`   | `color.mauve.light.4`  |
-| `palette.tertiary.4d`  | `color.mauve.dark.4`   |
-| `palette.tertiary.5`   | `color.mauve.light.5`  |
-| `palette.tertiary.5d`  | `color.mauve.dark.5`   |
-| `palette.tertiary.11`  | `color.mauve.light.11` |
-| `palette.tertiary.11d` | `color.mauve.dark.11`  |
-| `palette.tertiary.12`  | `color.mauve.light.12` |
-| `palette.tertiary.12d` | `color.mauve.dark.12`  |
-
-#### `palette.accent` · origin: brand (bronze ramp)
-
-| Token                    | → color                 |
-| ------------------------ | ----------------------- |
-| `palette.accent.2`       | `color.bronze.light.2`  |
-| `palette.accent.3`       | `color.bronze.light.3`  |
-| `palette.accent.4`       | `color.bronze.light.4`  |
-| `palette.accent.5`       | `color.bronze.light.5`  |
-| `palette.accent.7`       | `color.bronze.light.7`  |
-| `palette.accent.9`       | `color.bronze.light.9`  |
-| `palette.accent.10`      | `color.bronze.light.10` |
-| `palette.accent.default` | → `palette.accent.9`    |
-| `palette.accent.light`   | → `palette.accent.5`    |
-| `palette.accent.dark`    | → `palette.accent.10`   |
-
-#### `palette.neutral` — semantic aliases
-
-Named aliases for numeric neutral steps. Not materialized in the base `dist/`; scaffolded per project.
-
-| Token                  | → palette.neutral       |
-| ---------------------- | ----------------------- |
-| `palette.neutral.low`  | → `palette.neutral.100` |
-| `palette.neutral.mid`  | → `palette.neutral.300` |
-| `palette.neutral.high` | → `palette.neutral.700` |
-| `palette.neutral.max`  | → `palette.neutral.900` |
-
-### `surface` — primary, secondary & tertiary variants · scope: `FRAME_FILL`, `SHAPE_FILL`
-
-Brand-colored surfaces. `surface.tertiary-dark` and `surface.tertiary-darker` are also referenced in the base contrast-exemptions schema (schema-known).
-
-#### Primary variants
-
-| Token                    | Light                 | Dark                  |
-| ------------------------ | --------------------- | --------------------- |
-| `surface.primary-xlight` | `palette.primary.100` | `palette.primary.700` |
-| `surface.primary-light`  | `palette.primary.300` | `palette.primary.700` |
-| `surface.primary`        | `palette.primary.500` | `palette.primary.500` |
-| `surface.primary-dark`   | `palette.primary.700` | `palette.primary.300` |
-| `surface.primary-hover`  | `palette.primary.700` | `palette.primary.300` |
-
-#### Secondary variants
-
-| Token                      | Light                 | Dark                   |
-| -------------------------- | --------------------- | ---------------------- |
-| `surface.secondary`        | `palette.secondary.3` | `palette.secondary.3d` |
-| `surface.secondary-hover`  | `palette.secondary.4` | `palette.secondary.4d` |
-| `surface.secondary-active` | `palette.secondary.5` | `palette.secondary.5d` |
-
-#### Tertiary variants
-
-| Token                     | Light                 | Dark                  |
-| ------------------------- | --------------------- | --------------------- |
-| `surface.tertiary`        | `palette.tertiary.3`  | `palette.tertiary.3d` |
-| `surface.tertiary-hover`  | `palette.tertiary.4`  | `palette.tertiary.4d` |
-| `surface.tertiary-active` | `palette.tertiary.5`  | `palette.tertiary.5d` |
-| `surface.tertiary-dark`   | `palette.neutral.700` | `palette.neutral.200` |
-| `surface.tertiary-darker` | `palette.neutral.800` | `palette.neutral.100` |
-
-### `logo.default` · scope: `SHAPE_FILL`
-
-Brand lockup in primary color.
-
-| Token          | Light                 | Dark                  |
-| -------------- | --------------------- | --------------------- |
-| `logo.default` | `palette.primary.500` | `palette.primary.300` |
-
-### `text` — primary & title variants · scope: `TEXT_FILL`
-
-Brand-colored text roles. `text.title`, `text.primary`, `text.primary-light`, `text.primary-xlight`, `text.primary-hover`, `text.on-secondary`, and `text.on-tertiary` are also referenced in the base contrast-exemptions schema (schema-known).
-
-| Token                 | Light                  | Dark                    |
-| --------------------- | ---------------------- | ----------------------- |
-| `text.title`          | `palette.primary.500`  | `palette.primary.200`   |
-| `text.primary`        | `palette.primary.500`  | `palette.primary.200`   |
-| `text.primary-light`  | `palette.primary.300`  | `palette.primary.300`   |
-| `text.primary-xlight` | `palette.primary.100`  | `palette.primary.100`   |
-| `text.primary-hover`  | `palette.primary.700`  | `palette.primary.100`   |
-| `text.on-primary`     | `palette.neutral.0`    | `palette.neutral.0`     |
-| `text.on-secondary`   | `palette.secondary.12` | `palette.secondary.12d` |
-| `text.on-tertiary`    | `palette.tertiary.12`  | `palette.tertiary.12d`  |
-
-### `stroke` — primary variants · scope: `STROKE_COLOR`
-
-Brand-colored strokes. Both are also referenced in the base contrast-exemptions schema (schema-known).
-
-| Token            | Light                 | Dark                  |
-| ---------------- | --------------------- | --------------------- |
-| `stroke.primary` | `palette.primary.500` | `palette.primary.300` |
-| `stroke.hover`   | `palette.primary.700` | `palette.primary.300` |
-
-### `icon` — primary, secondary & on-brand variants · scope: `SHAPE_FILL`
-
-Brand-colored icons. `icon.primary`, `icon.primary-light`, and `icon.primary-hover` are also referenced in the base contrast-exemptions schema (schema-known).
-
-| Token                | Light                  | Dark                    |
-| -------------------- | ---------------------- | ----------------------- |
-| `icon.primary`       | `palette.primary.500`  | `palette.primary.200`   |
-| `icon.primary-light` | `palette.primary.300`  | `palette.primary.300`   |
-| `icon.primary-hover` | `palette.primary.700`  | `palette.primary.100`   |
-| `icon.secondary`     | `palette.secondary.11` | `palette.secondary.12d` |
-| `icon.on-primary`    | `palette.neutral.0`    | `palette.neutral.0`     |
-| `icon.on-secondary`  | `palette.secondary.12` | `palette.secondary.12d` |
-| `icon.on-tertiary`   | `palette.tertiary.12`  | `palette.tertiary.12d`  |
-
-### `emphasis-brand` · scope: `FRAME_FILL`, `SHAPE_FILL`
-
-Role defined in the base schema (`tokens.mjs` TIERS, `COLOR_MODE_GROUPS`) — schema-known. Values materialized per brand project.
-
-| Token                    | Light                 | Dark                  |
-| ------------------------ | --------------------- | --------------------- |
-| `emphasis-brand.default` | `palette.primary.300` | `palette.primary.300` |
-| `emphasis-brand.dark`    | `palette.primary.700` | `palette.primary.700` |
-
-### `emphasis` · scope: `FRAME_FILL`, `SHAPE_FILL`
-
-| Token              | Light                    | Dark                   |
-| ------------------ | ------------------------ | ---------------------- |
-| `emphasis.default` | `palette.accent.default` | `palette.accent.light` |
-| `emphasis.subtle`  | `palette.accent.2`       | `palette.accent.4`     |
-
----
-
 ## Scope Summary
 
 | Figma scope                | Token groups                                                                                                |
@@ -865,7 +782,7 @@ Role defined in the base schema (`tokens.mjs` TIERS, `COLOR_MODE_GROUPS`) — sc
 | `LETTER_SPACING`           | `font.letter-spacing`                                                                                       |
 | `TEXT_FILL`                | `text`                                                                                                      |
 | `STROKE_COLOR`             | `stroke`                                                                                                    |
-| `FRAME_FILL`, `SHAPE_FILL` | `surface`                                                                                                   |
+| `FRAME_FILL`, `SHAPE_FILL` | `surface`, `emphasis-brand`                                                                                 |
 | `SHAPE_FILL`               | `logo`, `icon`                                                                                              |
 | `GAP`, `WIDTH_HEIGHT`      | `grid.gutter`, `grid.margin`, `section.padding`, `inset`, `stack`, `inline`, `section-gap`, `page-margin`   |
 | `WIDTH_HEIGHT`             | `border-width`, `breakpoint.frame-width`                                                                    |
