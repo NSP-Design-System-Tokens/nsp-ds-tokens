@@ -1229,6 +1229,304 @@
             "$value": "{palette.warning.9}",
             "scopes": []
           }
+        },
+        "primary": {
+          "1": {
+            "$type": "color",
+            "$value": "{color.gray.1}",
+            "scopes": []
+          },
+          "2": {
+            "$type": "color",
+            "$value": "{color.gray.2}",
+            "scopes": []
+          },
+          "3": {
+            "$type": "color",
+            "$value": "{color.gray.3}",
+            "scopes": []
+          },
+          "4": {
+            "$type": "color",
+            "$value": "{color.gray.4}",
+            "scopes": []
+          },
+          "5": {
+            "$type": "color",
+            "$value": "{color.gray.5}",
+            "scopes": []
+          },
+          "6": {
+            "$type": "color",
+            "$value": "{color.gray.6}",
+            "scopes": []
+          },
+          "7": {
+            "$type": "color",
+            "$value": "{color.gray.7}",
+            "scopes": []
+          },
+          "8": {
+            "$type": "color",
+            "$value": "{color.gray.8}",
+            "scopes": []
+          },
+          "9": {
+            "$type": "color",
+            "$value": "{color.gray.9}",
+            "scopes": []
+          },
+          "10": {
+            "$type": "color",
+            "$value": "{color.gray.10}",
+            "scopes": []
+          },
+          "11": {
+            "$type": "color",
+            "$value": "{color.gray.11}",
+            "scopes": []
+          },
+          "12": {
+            "$type": "color",
+            "$value": "{color.gray.12}",
+            "scopes": []
+          },
+          "default": {
+            "$type": "color",
+            "$value": "{color.gray.9}",
+            "scopes": []
+          },
+          "subtle": {
+            "$type": "color",
+            "$value": "{color.gray.3}",
+            "scopes": []
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{color.gray.10}",
+            "scopes": []
+          }
+        },
+        "secondary": {
+          "1": {
+            "$type": "color",
+            "$value": "{color.gray.1}",
+            "scopes": []
+          },
+          "2": {
+            "$type": "color",
+            "$value": "{color.gray.2}",
+            "scopes": []
+          },
+          "3": {
+            "$type": "color",
+            "$value": "{color.gray.3}",
+            "scopes": []
+          },
+          "4": {
+            "$type": "color",
+            "$value": "{color.gray.4}",
+            "scopes": []
+          },
+          "5": {
+            "$type": "color",
+            "$value": "{color.gray.5}",
+            "scopes": []
+          },
+          "6": {
+            "$type": "color",
+            "$value": "{color.gray.6}",
+            "scopes": []
+          },
+          "7": {
+            "$type": "color",
+            "$value": "{color.gray.7}",
+            "scopes": []
+          },
+          "8": {
+            "$type": "color",
+            "$value": "{color.gray.8}",
+            "scopes": []
+          },
+          "9": {
+            "$type": "color",
+            "$value": "{color.gray.9}",
+            "scopes": []
+          },
+          "10": {
+            "$type": "color",
+            "$value": "{color.gray.10}",
+            "scopes": []
+          },
+          "11": {
+            "$type": "color",
+            "$value": "{color.gray.11}",
+            "scopes": []
+          },
+          "12": {
+            "$type": "color",
+            "$value": "{color.gray.12}",
+            "scopes": []
+          },
+          "default": {
+            "$type": "color",
+            "$value": "{color.gray.9}",
+            "scopes": []
+          },
+          "subtle": {
+            "$type": "color",
+            "$value": "{color.gray.3}",
+            "scopes": []
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{color.gray.10}",
+            "scopes": []
+          }
+        },
+        "tertiary": {
+          "1": {
+            "$type": "color",
+            "$value": "{color.gray.1}",
+            "scopes": []
+          },
+          "2": {
+            "$type": "color",
+            "$value": "{color.gray.2}",
+            "scopes": []
+          },
+          "3": {
+            "$type": "color",
+            "$value": "{color.gray.3}",
+            "scopes": []
+          },
+          "4": {
+            "$type": "color",
+            "$value": "{color.gray.4}",
+            "scopes": []
+          },
+          "5": {
+            "$type": "color",
+            "$value": "{color.gray.5}",
+            "scopes": []
+          },
+          "6": {
+            "$type": "color",
+            "$value": "{color.gray.6}",
+            "scopes": []
+          },
+          "7": {
+            "$type": "color",
+            "$value": "{color.gray.7}",
+            "scopes": []
+          },
+          "8": {
+            "$type": "color",
+            "$value": "{color.gray.8}",
+            "scopes": []
+          },
+          "9": {
+            "$type": "color",
+            "$value": "{color.gray.9}",
+            "scopes": []
+          },
+          "10": {
+            "$type": "color",
+            "$value": "{color.gray.10}",
+            "scopes": []
+          },
+          "11": {
+            "$type": "color",
+            "$value": "{color.gray.11}",
+            "scopes": []
+          },
+          "12": {
+            "$type": "color",
+            "$value": "{color.gray.12}",
+            "scopes": []
+          },
+          "default": {
+            "$type": "color",
+            "$value": "{color.gray.9}",
+            "scopes": []
+          }
+        },
+        "accent": {
+          "1": {
+            "$type": "color",
+            "$value": "{color.gray.1}",
+            "scopes": []
+          },
+          "2": {
+            "$type": "color",
+            "$value": "{color.gray.2}",
+            "scopes": []
+          },
+          "3": {
+            "$type": "color",
+            "$value": "{color.gray.3}",
+            "scopes": []
+          },
+          "4": {
+            "$type": "color",
+            "$value": "{color.gray.4}",
+            "scopes": []
+          },
+          "5": {
+            "$type": "color",
+            "$value": "{color.gray.5}",
+            "scopes": []
+          },
+          "6": {
+            "$type": "color",
+            "$value": "{color.gray.6}",
+            "scopes": []
+          },
+          "7": {
+            "$type": "color",
+            "$value": "{color.gray.7}",
+            "scopes": []
+          },
+          "8": {
+            "$type": "color",
+            "$value": "{color.gray.8}",
+            "scopes": []
+          },
+          "9": {
+            "$type": "color",
+            "$value": "{color.gray.9}",
+            "scopes": []
+          },
+          "10": {
+            "$type": "color",
+            "$value": "{color.gray.10}",
+            "scopes": []
+          },
+          "11": {
+            "$type": "color",
+            "$value": "{color.gray.11}",
+            "scopes": []
+          },
+          "12": {
+            "$type": "color",
+            "$value": "{color.gray.12}",
+            "scopes": []
+          },
+          "default": {
+            "$type": "color",
+            "$value": "{color.gray.9}",
+            "scopes": []
+          },
+          "subtle": {
+            "$type": "color",
+            "$value": "{color.gray.3}",
+            "scopes": []
+          },
+          "hover": {
+            "$type": "color",
+            "$value": "{color.gray.10}",
+            "scopes": []
+          }
         }
       }
     },
@@ -1359,6 +1657,28 @@
             "FRAME_FILL",
             "SHAPE_FILL"
           ]
+        },
+        "primary": {
+          "$type": "color",
+          "$value": "{palette.primary.9}",
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ]
+        },
+        "primary-hover": {
+          "$type": "color",
+          "$value": "{palette.primary.10}",
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ],
+          "$extensions": {
+            "com.figma.modes": {
+              "light": "{palette.primary.10}",
+              "dark": "{palette.primary.8}"
+            }
+          }
         }
       },
       "text": {
@@ -1445,6 +1765,20 @@
           "scopes": [
             "TEXT_FILL"
           ]
+        },
+        "title": {
+          "$type": "color",
+          "$value": "{palette.primary.11}",
+          "scopes": [
+            "TEXT_FILL"
+          ]
+        },
+        "primary": {
+          "$type": "color",
+          "$value": "{palette.primary.11}",
+          "scopes": [
+            "TEXT_FILL"
+          ]
         }
       },
       "stroke": {
@@ -1519,6 +1853,19 @@
           "scopes": [
             "SHAPE_FILL"
           ]
+        },
+        "default": {
+          "$type": "color",
+          "$value": "{palette.primary.9}",
+          "scopes": [
+            "SHAPE_FILL"
+          ],
+          "$extensions": {
+            "com.figma.modes": {
+              "light": "{palette.primary.9}",
+              "dark": "{palette.primary.8}"
+            }
+          }
         }
       },
       "icon": {
@@ -1610,6 +1957,31 @@
           "$type": "color",
           "$value": "{palette.neutral.black}",
           "scopes": [
+            "SHAPE_FILL"
+          ]
+        },
+        "primary": {
+          "$type": "color",
+          "$value": "{palette.primary.11}",
+          "scopes": [
+            "SHAPE_FILL"
+          ]
+        }
+      },
+      "emphasis-brand": {
+        "default": {
+          "$type": "color",
+          "$value": "{palette.primary.8}",
+          "scopes": [
+            "FRAME_FILL",
+            "SHAPE_FILL"
+          ]
+        },
+        "dark": {
+          "$type": "color",
+          "$value": "{palette.primary.10}",
+          "scopes": [
+            "FRAME_FILL",
             "SHAPE_FILL"
           ]
         }

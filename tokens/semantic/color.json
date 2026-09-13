@@ -68,6 +68,20 @@
     "disabled": {
       "$type": "color",
       "$value": "{palette.neutral.3}"
+    },
+    "primary": {
+      "$type": "color",
+      "$value": "{palette.primary.9}"
+    },
+    "primary-hover": {
+      "$type": "color",
+      "$value": "{palette.primary.10}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.primary.10}",
+          "dark": "{palette.primary.8}"
+        }
+      }
     }
   },
   "text": {
@@ -121,6 +135,14 @@
     "on-warning": {
       "$type": "color",
       "$value": "{palette.neutral.black}"
+    },
+    "title": {
+      "$type": "color",
+      "$value": "{palette.primary.11}"
+    },
+    "primary": {
+      "$type": "color",
+      "$value": "{palette.primary.11}"
     }
   },
   "stroke": {
@@ -172,6 +194,16 @@
     "white": {
       "$type": "color",
       "$value": "{palette.neutral.0}"
+    },
+    "default": {
+      "$type": "color",
+      "$value": "{palette.primary.9}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.primary.9}",
+          "dark": "{palette.primary.8}"
+        }
+      }
     }
   },
   "icon": {
@@ -229,6 +261,23 @@
     "on-warning": {
       "$type": "color",
       "$value": "{palette.neutral.black}"
+    },
+    "primary": {
+      "$type": "color",
+      "$value": "{palette.primary.11}"
+    }
+  },
+  "emphasis-brand": {
+    "$extensions": {
+      "com.figma.scoping": ["FRAME_FILL", "SHAPE_FILL"]
+    },
+    "default": {
+      "$type": "color",
+      "$value": "{palette.primary.8}"
+    },
+    "dark": {
+      "$type": "color",
+      "$value": "{palette.primary.10}"
     }
   }
 }
