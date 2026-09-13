@@ -34,17 +34,6 @@ export const CONTRAST_EXEMPT = {
   "stroke.divider":
     "decorative divider — not a UI component boundary; SC 1.4.11 excludes decorative graphics",
 
-  // Decorative brand-tint variants used on arbitrary backgrounds chosen by the
-  // designer (dark surfaces, brand surfaces, image overlays, …). No fixed
-  // surface pairing, so the check cannot verify statically. Contrast is the
-  // consumer's responsibility when applying these.
-  "text.primary-light":
-    "brand-tinted decorative variant — arbitrary background, contrast is consumer's responsibility",
-  "text.primary-xlight":
-    "brand-tinted decorative variant — arbitrary background, contrast is consumer's responsibility",
-  "icon.primary-xlight":
-    "brand-tinted decorative icon variant — arbitrary background, contrast is consumer's responsibility",
-
   // White utility tokens — intended exclusively for dark/colored surfaces
   // (on-dark, on-brand, image overlays). Pairing with light reading surfaces
   // (page/card/raised/floating) is a usage error; contrast is the consumer's
@@ -84,43 +73,6 @@ export const CONTRAST_EXEMPT = {
   "text.warning × surface.floating":
     "PHYSICAL — orange hues have L≈0.10–0.16 = floating L=0.127; 4.5:1 requires negative luminance (impossible). Status text uses inner surface.card.",
 
-  // --- Tertiary button — dark neutral pressed/emphasis fills ----------------------
-  //
-  // USAGE — surface.tertiary-dark and surface.tertiary-darker resolve to
-  // palette.neutral.700 (#65636d mauve) and palette.neutral.800 (#211f26 mauve)
-  // in light mode. These are dark neutral fills for pressed/emphasis states.
-  //
-  // text.on-tertiary = palette.tertiary.11 = mauve.11 (#65636d light). On
-  // tertiary-dark (same #65636d) = 1:1 contrast (impossible to pass). On
-  // tertiary-darker (#211f26): 2.51:1 < 4.5 threshold.
-  //
-  // Usage rule: dark fills (tertiary-dark/darker) use text.on-dark (white), not
-  // text.on-tertiary. Component tokens must enforce the switch. The semantic gate
-  // cannot statically verify per-state label tokens (rejected by design).
-  "text.on-tertiary × surface.tertiary-dark":
-    "USAGE — tertiary-dark = mauve.11 (#65636d); on-tertiary text = same hue/lum. Dark fills use text.on-dark (white) instead.",
-  "text.on-tertiary × surface.tertiary-darker":
-    "USAGE — tertiary-darker = mauve.12 (#211f26, near-black); on-tertiary = mauve.11 = 2.51:1 < 4.5. Dark fills use text.on-dark (white).",
-  "icon.on-tertiary × surface.tertiary-dark":
-    "USAGE — tertiary-dark = mauve.11 (#65636d); on-tertiary icon = same hue/lum. Dark fills use icon.on-dark (white) instead.",
-  "icon.on-tertiary × surface.tertiary-darker":
-    "USAGE — tertiary-darker = mauve.12 (#211f26); on-tertiary icon = mauve.11 = 2.51:1 < 3.0. Dark fills use icon.on-dark (white).",
-
-  // --- Secondary button — dark-mode on-secondary on neutral-tinted surfaces ------
-  //
-  // USAGE — In dark mode, surface.tertiary-dark resolves to palette.neutral.200
-  // = mauve.light.4 (#eae7ec, very light). text.on-secondary in dark mode =
-  // palette.secondary.11d = pink.dark.11 (#f287b4). Light pink on light mauve
-  // = L≈0.39 vs L≈0.82 → 2.53:1 < 4.5. These dark fills show text.on-dark.
-  "text.on-secondary × surface.tertiary-dark":
-    "USAGE — dark mode: tertiary-dark = mauve.4 (#eae7ec light); on-secondary-dark = pink.11d (#f287b4) = 2.53:1. Dark fills use text.on-dark.",
-  "text.on-secondary × surface.tertiary-darker":
-    "USAGE — dark mode: tertiary-darker = mauve.3 (#f2eff3 light); on-secondary-dark = pink.11d = similar lum. Dark fills use text.on-dark.",
-  "icon.on-secondary × surface.tertiary-dark":
-    "USAGE — dark mode: tertiary-dark = mauve.4 light; on-secondary-dark icon = pink.11d. Dark fills use icon.on-dark.",
-  "icon.on-secondary × surface.tertiary-darker":
-    "USAGE — dark mode: tertiary-darker = mauve.3 light; on-secondary icon = pink.11d. Dark fills use icon.on-dark.",
-
   // USAGE — secondary/muted text has intentionally reduced contrast. These
   // roles are valid on page and card (where they pass), but are not placed on
   // floating surfaces. Floating item copy uses text.default, not text.subtle.
@@ -138,22 +90,4 @@ export const CONTRAST_EXEMPT = {
     "USAGE (revisable) — brand heading does not occur in floating containers (dropdown/tooltip/popover). Revisit if floating hosts rich branded content.",
   "text.primary × surface.floating":
     "USAGE (revisable) — brand primary text does not occur in floating containers. Revisit if floating hosts interactive brand-colored copy.",
-  "text.primary-hover × surface.floating":
-    "USAGE (revisable) — brand hover state does not occur in floating containers. Revisit if floating hosts interactive brand states.",
-
-  // USAGE — decorative brand-tint icon; same reasoning as text.primary-light
-  // (already globally exempt). No fixed floating pairing; contrast is the
-  // consumer's responsibility when placing on arbitrary surfaces.
-  "icon.primary-light × surface.floating":
-    "USAGE (revisable) — decorative brand-tint icon; no fixed floating pairing. Contrast is consumer's responsibility.",
-
-  // USAGE — stroke.primary/hover pass on surface.raised (3.17) and surface.card
-  // (4.89). In a command palette, the input background must be surface.raised or
-  // surface.card, not surface.floating directly. The focus ring is then on
-  // raised/card, where it passes. Inner-container model holds; not a real gap.
-  // Revisable if an input is placed directly on floating without inner surface.
-  "stroke.primary × surface.floating":
-    "USAGE (revisable) — focus stroke on inner surface: raised 3.17 ✓, card 4.89 ✓. Inputs inside floating must use surface.raised/card as background.",
-  "stroke.hover × surface.floating":
-    "USAGE (revisable) — hover border on inner surface: raised 3.17 ✓, card 4.89 ✓. Inputs inside floating must use surface.raised/card as background.",
 };
