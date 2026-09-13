@@ -82,7 +82,12 @@ function deepMerge(a, b, path = "") {
     ) {
       deepMerge(a[k], v, `${path}.${k}`);
     } else if (k in a) {
-      throw new Error(`token collision at ${path}.${k} (defined in two files)`);
+      // Leaf collisions: last-writer-wins. This is the mechanism by which brand
+      // projects override base defaults for identity roles (palette.primary,
+      // surface.primary, etc.) materialized in Option 3. The info log surfaces
+      // overrides without blocking the build.
+      console.log(`[merge] override at ${path}.${k}`);
+      a[k] = v;
     } else {
       a[k] = v;
     }
