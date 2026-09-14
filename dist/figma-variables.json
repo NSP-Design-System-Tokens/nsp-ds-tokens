@@ -551,13 +551,29 @@
       },
       "font": {
         "family": {
-          "sans": {
+          "roboto": {
             "$type": "string",
             "$value": "Roboto"
           },
-          "sans-2": {
+          "inter": {
             "$type": "string",
             "$value": "Inter"
+          },
+          "roboto-mono": {
+            "$type": "string",
+            "$value": "Roboto Mono"
+          },
+          "headings": {
+            "$type": "string",
+            "$value": "{font.family.roboto}"
+          },
+          "body": {
+            "$type": "string",
+            "$value": "{font.family.roboto}"
+          },
+          "monospace": {
+            "$type": "string",
+            "$value": "{font.family.roboto-mono}"
           }
         },
         "weight": {

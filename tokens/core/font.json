@@ -1,13 +1,29 @@
 {
   "font": {
     "family": {
-      "sans": {
+      "roboto": {
         "$type": "fontFamily",
         "$value": "Roboto"
       },
-      "sans-2": {
+      "inter": {
         "$type": "fontFamily",
         "$value": "Inter"
+      },
+      "roboto-mono": {
+        "$type": "fontFamily",
+        "$value": "Roboto Mono"
+      },
+      "headings": {
+        "$type": "fontFamily",
+        "$value": "{font.family.roboto}"
+      },
+      "body": {
+        "$type": "fontFamily",
+        "$value": "{font.family.roboto}"
+      },
+      "monospace": {
+        "$type": "fontFamily",
+        "$value": "{font.family.roboto-mono}"
       }
     },
     "weight": {

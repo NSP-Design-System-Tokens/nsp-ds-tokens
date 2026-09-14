@@ -3,7 +3,7 @@
     "display": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{font.family.sans}",
+        "fontFamily": "{font.family.headings}",
         "fontWeight": "{font.weight.light}",
         "fontSize": "{font.size.8xl}",
         "lineHeight": "{font.line-height.100}",
@@ -13,7 +13,7 @@
     "h1": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{font.family.sans}",
+        "fontFamily": "{font.family.headings}",
         "fontWeight": "{font.weight.bold}",
         "fontSize": "{font.size.7xl}",
         "lineHeight": "{font.line-height.110}",
@@ -23,7 +23,7 @@
     "h2": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{font.family.sans}",
+        "fontFamily": "{font.family.headings}",
         "fontWeight": "{font.weight.bold}",
         "fontSize": "{font.size.6xl}",
         "lineHeight": "{font.line-height.120}",
@@ -33,7 +33,7 @@
     "h3": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{font.family.sans}",
+        "fontFamily": "{font.family.headings}",
         "fontWeight": "{font.weight.semibold}",
         "fontSize": "{font.size.5xl}",
         "lineHeight": "{font.line-height.130}",
@@ -43,7 +43,7 @@
     "h4": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{font.family.sans}",
+        "fontFamily": "{font.family.headings}",
         "fontWeight": "{font.weight.semibold}",
         "fontSize": "{font.size.4xl}",
         "lineHeight": "{font.line-height.135}",
@@ -53,7 +53,7 @@
     "h5": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{font.family.sans}",
+        "fontFamily": "{font.family.headings}",
         "fontWeight": "{font.weight.medium}",
         "fontSize": "{font.size.3xl}",
         "lineHeight": "{font.line-height.140}",
@@ -63,7 +63,7 @@
     "h6": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{font.family.sans}",
+        "fontFamily": "{font.family.headings}",
         "fontWeight": "{font.weight.medium}",
         "fontSize": "{font.size.2xl}",
         "lineHeight": "{font.line-height.145}",
@@ -73,7 +73,7 @@
     "body-large": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{font.family.sans}",
+        "fontFamily": "{font.family.body}",
         "fontWeight": "{font.weight.regular}",
         "fontSize": "{font.size.xl}",
         "lineHeight": "{font.line-height.150}",
@@ -83,7 +83,7 @@
     "body": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{font.family.sans}",
+        "fontFamily": "{font.family.body}",
         "fontWeight": "{font.weight.regular}",
         "fontSize": "{font.size.base}",
         "lineHeight": "{font.line-height.160}",
@@ -93,7 +93,7 @@
     "body-small": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{font.family.sans}",
+        "fontFamily": "{font.family.body}",
         "fontWeight": "{font.weight.regular}",
         "fontSize": "{font.size.sm}",
         "lineHeight": "{font.line-height.160}",
@@ -103,7 +103,7 @@
     "caption": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{font.family.sans}",
+        "fontFamily": "{font.family.body}",
         "fontWeight": "{font.weight.regular}",
         "fontSize": "{font.size.xs}",
         "lineHeight": "{font.line-height.160}",
@@ -113,7 +113,7 @@
     "label": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{font.family.sans}",
+        "fontFamily": "{font.family.body}",
         "fontWeight": "{font.weight.medium}",
         "fontSize": "{font.size.sm}",
         "lineHeight": "{font.line-height.120}",
@@ -124,7 +124,7 @@
     "cta": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{font.family.sans}",
+        "fontFamily": "{font.family.body}",
         "fontWeight": "{font.weight.medium}",
         "fontSize": "{font.size.sm}",
         "lineHeight": "{font.line-height.120}",
@@ -136,7 +136,7 @@
     "overline": {
       "$type": "typography",
       "$value": {
-        "fontFamily": "{font.family.sans}",
+        "fontFamily": "{font.family.body}",
         "fontWeight": "{font.weight.medium}",
         "fontSize": "{font.size.xs}",
         "lineHeight": "{font.line-height.120}",
