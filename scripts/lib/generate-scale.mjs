@@ -224,6 +224,29 @@ export function computeOnColor(backgroundHex, mode) {
   return { hex: chosen.hex, ref: chosen.ref, ratio, passed, fallback: false };
 }
 
+// ── computeOnColorPair (dual-mode aggregation) ──────────────────────────────
+
+export function computeOnColorPair(lightSurfaceHex, darkSurfaceHex) {
+  const light = computeOnColor(lightSurfaceHex, "light");
+  const dark = computeOnColor(darkSurfaceHex, "dark");
+
+  const result = {
+    lightHex: light.hex,
+    darkHex: dark.hex,
+    lightRef: light.ref,
+    darkRef: dark.ref,
+    lightRatio: light.ratio,
+    darkRatio: dark.ratio,
+    lightPassed: light.passed,
+    darkPassed: dark.passed,
+  };
+
+  if (light.fallback) result.lightFallback = true;
+  if (dark.fallback) result.darkFallback = true;
+
+  return result;
+}
+
 // ── Scale generation ─────────────────────────────────────────────────────────
 
 export function generateScale(anchorHex) {

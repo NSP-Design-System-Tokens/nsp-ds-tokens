@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 import {
   generateScale,
   computeOnColor,
+  computeOnColorPair,
   pickTextStep,
   pickIconStep,
   buildColorTree,
@@ -215,5 +216,92 @@ describe("tertiary-brand #e85d04", () => {
 
   it("brandSlot output matches fixture", () => {
     assert.deepStrictEqual(brandSlot("color.tertiary", "brand"), fix.slot);
+  });
+});
+
+// ── computeOnColorPair ──────────────────────────────────────────────────────
+
+describe("computeOnColorPair", () => {
+  it("primary #004B93 — both modes pass", () => {
+    const scale = generateScale("#004B93");
+    const pair = round(
+      computeOnColorPair(scale.lightSteps[8], scale.darkSteps[8]),
+    );
+    assert.deepStrictEqual(pair, {
+      lightHex: "#fcfcfc",
+      darkHex: "#eeeeee",
+      lightRef: "{palette.neutral.1}",
+      darkRef: "{palette.neutral.12}",
+      lightRatio: 8.431233,
+      darkRatio: 7.455409,
+      lightPassed: true,
+      darkPassed: true,
+    });
+  });
+
+  it("secondary #2989CC — light below 4.5 (exemption case)", () => {
+    const scale = generateScale("#2989CC");
+    const pair = round(
+      computeOnColorPair(scale.lightSteps[8], scale.darkSteps[8]),
+    );
+    assert.deepStrictEqual(pair, {
+      lightHex: "#202020",
+      darkHex: "#111111",
+      lightRef: "{palette.neutral.12}",
+      darkRef: "{palette.neutral.1}",
+      lightRatio: 4.301787,
+      darkRatio: 4.985554,
+      lightPassed: false,
+      darkPassed: true,
+    });
+  });
+
+  it("gamut-limit #0000ff — both modes pass", () => {
+    const scale = generateScale("#0000ff");
+    const pair = round(
+      computeOnColorPair(scale.lightSteps[8], scale.darkSteps[8]),
+    );
+    assert.deepStrictEqual(pair, {
+      lightHex: "#fcfcfc",
+      darkHex: "#eeeeee",
+      lightRef: "{palette.neutral.1}",
+      darkRef: "{palette.neutral.12}",
+      lightRatio: 8.375166,
+      darkRatio: 7.405831,
+      lightPassed: true,
+      darkPassed: true,
+    });
+  });
+
+  it("tertiary #e85d04 — both modes pass", () => {
+    const scale = generateScale("#e85d04");
+    const pair = round(
+      computeOnColorPair(scale.lightSteps[8], scale.darkSteps[8]),
+    );
+    assert.deepStrictEqual(pair, {
+      lightHex: "#202020",
+      darkHex: "#111111",
+      lightRef: "{palette.neutral.12}",
+      darkRef: "{palette.neutral.1}",
+      lightRatio: 4.654172,
+      darkRatio: 5.39395,
+      lightPassed: true,
+      darkPassed: true,
+    });
+  });
+
+  it("agrees with individual computeOnColor calls", () => {
+    const scale = generateScale("#004B93");
+    const pair = computeOnColorPair(scale.lightSteps[8], scale.darkSteps[8]);
+    const light = computeOnColor(scale.lightSteps[8], "light");
+    const dark = computeOnColor(scale.darkSteps[8], "dark");
+    assert.strictEqual(pair.lightHex, light.hex);
+    assert.strictEqual(pair.darkHex, dark.hex);
+    assert.strictEqual(pair.lightRef, light.ref);
+    assert.strictEqual(pair.darkRef, dark.ref);
+    assert.strictEqual(pair.lightRatio, light.ratio);
+    assert.strictEqual(pair.darkRatio, dark.ratio);
+    assert.strictEqual(pair.lightPassed, light.passed);
+    assert.strictEqual(pair.darkPassed, dark.passed);
   });
 });
