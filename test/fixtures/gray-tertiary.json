@@ -1,0 +1,64 @@
+{
+  "input": {
+    "description": "Default tertiary — no brand color, graySlot path"
+  },
+  "slot": {
+    "1": {
+      "$type": "color",
+      "$value": "{palette.neutral.1}"
+    },
+    "2": {
+      "$type": "color",
+      "$value": "{palette.neutral.2}"
+    },
+    "3": {
+      "$type": "color",
+      "$value": "{palette.neutral.3}"
+    },
+    "4": {
+      "$type": "color",
+      "$value": "{palette.neutral.4}"
+    },
+    "5": {
+      "$type": "color",
+      "$value": "{palette.neutral.5}"
+    },
+    "6": {
+      "$type": "color",
+      "$value": "{palette.neutral.6}"
+    },
+    "7": {
+      "$type": "color",
+      "$value": "{palette.neutral.7}"
+    },
+    "8": {
+      "$type": "color",
+      "$value": "{palette.neutral.8}"
+    },
+    "9": {
+      "$type": "color",
+      "$value": "{palette.neutral.9}"
+    },
+    "10": {
+      "$type": "color",
+      "$value": "{palette.neutral.10}"
+    },
+    "11": {
+      "$type": "color",
+      "$value": "{palette.neutral.11}"
+    },
+    "12": {
+      "$type": "color",
+      "$value": "{palette.neutral.12}"
+    },
+    "default": {
+      "$type": "color",
+      "$value": "{palette.neutral.9}"
+    },
+    "$extensions": {
+      "nsp": {
+        "origin": "base"
+      }
+    }
+  }
+}

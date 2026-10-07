@@ -1,0 +1,132 @@
+{
+  "input": {
+    "anchor": "#e85d04",
+    "description": "Brand-colored tertiary through generateScale + computeOnColor"
+  },
+  "scale": {
+    "lightSteps": [
+      "#fff9f6",
+      "#fff2ed",
+      "#ffe5da",
+      "#ffd8c7",
+      "#ffc5ad",
+      "#ffad8b",
+      "#ff834b",
+      "#dd5b0f",
+      "#e85d04",
+      "#d15200",
+      "#b14400",
+      "#853100"
+    ],
+    "darkSteps": [
+      "#0a0100",
+      "#160400",
+      "#270900",
+      "#391100",
+      "#481700",
+      "#581e00",
+      "#6c2700",
+      "#792c00",
+      "#e85d04",
+      "#fd712a",
+      "#ffb292",
+      "#fff2ec"
+    ],
+    "anchor": "#e85d04"
+  },
+  "onColor": {
+    "step9Light": {
+      "hex": "#202020",
+      "ref": "{palette.neutral.12}",
+      "ratio": 4.654172,
+      "passed": true,
+      "fallback": false
+    },
+    "step9Dark": {
+      "hex": "#111111",
+      "ref": "{palette.neutral.1}",
+      "ratio": 5.39395,
+      "passed": true,
+      "fallback": false
+    }
+  },
+  "textStep": {
+    "step": 11,
+    "hex": "#b14400",
+    "ratio": 5.396284,
+    "passed": true
+  },
+  "iconStep": {
+    "step": 9,
+    "hex": "#e85d04",
+    "ratio": 3.500785,
+    "passed": true
+  },
+  "slot": {
+    "1": {
+      "$type": "color",
+      "$value": "{color.tertiary.1}"
+    },
+    "2": {
+      "$type": "color",
+      "$value": "{color.tertiary.2}"
+    },
+    "3": {
+      "$type": "color",
+      "$value": "{color.tertiary.3}"
+    },
+    "4": {
+      "$type": "color",
+      "$value": "{color.tertiary.4}"
+    },
+    "5": {
+      "$type": "color",
+      "$value": "{color.tertiary.5}"
+    },
+    "6": {
+      "$type": "color",
+      "$value": "{color.tertiary.6}"
+    },
+    "7": {
+      "$type": "color",
+      "$value": "{color.tertiary.7}"
+    },
+    "8": {
+      "$type": "color",
+      "$value": "{color.tertiary.8}"
+    },
+    "9": {
+      "$type": "color",
+      "$value": "{color.tertiary.9}"
+    },
+    "10": {
+      "$type": "color",
+      "$value": "{color.tertiary.10}"
+    },
+    "11": {
+      "$type": "color",
+      "$value": "{color.tertiary.11}"
+    },
+    "12": {
+      "$type": "color",
+      "$value": "{color.tertiary.12}"
+    },
+    "default": {
+      "$type": "color",
+      "$value": "{color.tertiary.9}"
+    },
+    "subtle": {
+      "$type": "color",
+      "$value": "{color.tertiary.3}"
+    },
+    "hover": {
+      "$type": "color",
+      "$value": "{color.tertiary.10}"
+    },
+    "$extensions": {
+      "nsp": {
+        "origin": "brand"
+      }
+    }
+  }
+}

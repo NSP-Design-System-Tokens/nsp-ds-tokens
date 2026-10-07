@@ -1,0 +1,156 @@
+{
+  "input": {
+    "primary": "#004B93",
+    "secondary": "#2989CC"
+  },
+  "primary": {
+    "scale": {
+      "lightSteps": [
+        "#f7faff",
+        "#eff6ff",
+        "#deedff",
+        "#cee4ff",
+        "#b8d7ff",
+        "#9bc8ff",
+        "#74aef6",
+        "#4f8bd5",
+        "#004b93",
+        "#003e7b",
+        "#002c5b",
+        "#001531"
+      ],
+      "darkSteps": [
+        "#00030d",
+        "#00091b",
+        "#00132e",
+        "#001f43",
+        "#002854",
+        "#003265",
+        "#003f7c",
+        "#00468b",
+        "#004b93",
+        "#1a5da6",
+        "#4181ce",
+        "#6cadfd"
+      ],
+      "anchor": "#004b93"
+    },
+    "onColor": {
+      "step9Light": {
+        "hex": "#fcfcfc",
+        "ref": "{palette.neutral.1}",
+        "ratio": 8.431233,
+        "passed": true,
+        "fallback": false
+      },
+      "step9Dark": {
+        "hex": "#eeeeee",
+        "ref": "{palette.neutral.12}",
+        "ratio": 7.455409,
+        "passed": true,
+        "fallback": false
+      }
+    },
+    "textStep": {
+      "step": 9,
+      "hex": "#004b93",
+      "ratio": 8.2159,
+      "passed": true
+    },
+    "iconStep": {
+      "step": 9,
+      "hex": "#004b93",
+      "ratio": 8.649993,
+      "passed": true
+    }
+  },
+  "secondary": {
+    "scale": {
+      "lightSteps": [
+        "#f6fbff",
+        "#edf7ff",
+        "#dbeeff",
+        "#c8e6ff",
+        "#aedaff",
+        "#8dcbff",
+        "#63b2f1",
+        "#3990d0",
+        "#2989cc",
+        "#107abc",
+        "#00659f",
+        "#004874"
+      ],
+      "darkSteps": [
+        "#00040a",
+        "#000a16",
+        "#001527",
+        "#002139",
+        "#002b48",
+        "#003658",
+        "#00436c",
+        "#004c79",
+        "#2989cc",
+        "#3f9ce0",
+        "#75c2ff",
+        "#d3ebff"
+      ],
+      "anchor": "#2989cc"
+    },
+    "onColor": {
+      "step9Light": {
+        "hex": "#202020",
+        "ref": "{palette.neutral.12}",
+        "ratio": 4.301787,
+        "passed": false,
+        "fallback": false
+      },
+      "step9Dark": {
+        "hex": "#111111",
+        "ref": "{palette.neutral.1}",
+        "ratio": 4.985554,
+        "passed": true,
+        "fallback": false
+      },
+      "step3Light": {
+        "hex": "#202020",
+        "ref": "{palette.neutral.12}",
+        "ratio": 13.721891,
+        "passed": true,
+        "fallback": false
+      },
+      "step3Dark": {
+        "hex": "#eeeeee",
+        "ref": "{palette.neutral.12}",
+        "ratio": 15.925078,
+        "passed": true,
+        "fallback": false
+      }
+    },
+    "textStep": {
+      "step": 11,
+      "hex": "#00659f",
+      "ratio": 5.932618,
+      "passed": true
+    },
+    "iconStep": {
+      "step": 9,
+      "hex": "#2989cc",
+      "ratio": 3.787555,
+      "passed": true
+    }
+  },
+  "hoverContrast": {
+    "primary": {
+      "lightStep8vs9": 2.465792,
+      "darkStep8vs9": 1.079537,
+      "lightStep9vs10": 1.229201,
+      "darkStep9vs10": 1.301741
+    },
+    "secondary": {
+      "lightStep8vs9": 1.095521,
+      "darkStep8vs9": 2.400338,
+      "lightStep9vs10": 1.223402,
+      "darkStep9vs10": 1.270292
+    }
+  }
+}

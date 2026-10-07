@@ -1,0 +1,64 @@
+{
+  "input": {
+    "anchor": "#0000ff"
+  },
+  "scale": {
+    "lightSteps": [
+      "#f8faff",
+      "#f0f5ff",
+      "#e2ecff",
+      "#d3e2ff",
+      "#bfd5ff",
+      "#a7c4ff",
+      "#80a9ff",
+      "#4980ff",
+      "#0000ff",
+      "#0028c4",
+      "#001d97",
+      "#000d5c"
+    ],
+    "darkSteps": [
+      "#000117",
+      "#00032a",
+      "#000744",
+      "#000e60",
+      "#001478",
+      "#001b90",
+      "#0023af",
+      "#0028c3",
+      "#0000ff",
+      "#0a47ff",
+      "#4a81ff",
+      "#8fb4ff"
+    ],
+    "anchor": "#0000ff"
+  },
+  "onColor": {
+    "step9Light": {
+      "hex": "#fcfcfc",
+      "ref": "{palette.neutral.1}",
+      "ratio": 8.375166,
+      "passed": true,
+      "fallback": false
+    },
+    "step9Dark": {
+      "hex": "#eeeeee",
+      "ref": "{palette.neutral.12}",
+      "ratio": 7.405831,
+      "passed": true,
+      "fallback": false
+    }
+  },
+  "textStep": {
+    "step": 9,
+    "hex": "#0000ff",
+    "ratio": 8.161265,
+    "passed": true
+  },
+  "iconStep": {
+    "step": 9,
+    "hex": "#0000ff",
+    "ratio": 8.592471,
+    "passed": true
+  }
+}

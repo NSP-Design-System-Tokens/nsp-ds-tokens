@@ -21,7 +21,8 @@
     "build:figma": "node scripts/build-figma.mjs",
     "build:css": "node scripts/build-css.mjs",
     "build:preview": "node scripts/build-preview.mjs",
-    "build": "npm run validate && npm run build:figma && npm run build:css && npm run build:preview"
+    "build": "npm run validate && npm run build:figma && npm run build:css && npm run build:preview",
+    "test": "node --test"
   },
   "dependencies": {
     "culori": "^4.0.1",

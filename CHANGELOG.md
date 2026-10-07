@@ -7,6 +7,15 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
 ## [Unreleased]
 
+### Added
+
+- `scripts/lib/generate-scale.mjs` — canonical zero-dependency OKLCH scale generator.
+  Single-source engine (delta 0 vs culori) with binary-search gamut clamping,
+  `computeOnColor` Opzione A (real neutral hex from `tokens/core/color.json`,
+  dark-mode fallback to `#ffffff`), alpha compositing via `composeOver`.
+  Golden baseline: 25 tests across real brand (#004B93/#2989CC), gamut-limit
+  (#0000ff), gray tertiary, and brand-colored tertiary cases.
+
 ---
 
 ## [0.4.2] — 2026-09-04
