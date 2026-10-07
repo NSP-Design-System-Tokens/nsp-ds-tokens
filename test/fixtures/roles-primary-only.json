@@ -1,0 +1,190 @@
+{
+  "surface": {
+    "primary": {
+      "$type": "color",
+      "$value": "{palette.primary.9}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.primary.9}",
+          "dark": "{palette.primary.9}"
+        }
+      }
+    },
+    "primary-hover": {
+      "$type": "color",
+      "$value": "{palette.primary.10}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.primary.10}",
+          "dark": "{palette.primary.8}"
+        }
+      }
+    },
+    "primary-active": {
+      "$type": "color",
+      "$value": "{palette.primary.11}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.primary.11}",
+          "dark": "{palette.primary.7}"
+        }
+      }
+    },
+    "primary-light": {
+      "$type": "color",
+      "$value": "{palette.primary.8}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.primary.8}",
+          "dark": "{palette.primary.10}"
+        }
+      }
+    },
+    "primary-xlight": {
+      "$type": "color",
+      "$value": "{palette.primary.3}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.primary.3}",
+          "dark": "{palette.primary.10}"
+        }
+      }
+    },
+    "tertiary-subtle": {
+      "$type": "color",
+      "$value": "{palette.tertiary.3}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.tertiary.3}",
+          "dark": "{palette.tertiary.3}"
+        }
+      }
+    },
+    "tertiary-subtle-hover": {
+      "$type": "color",
+      "$value": "{palette.tertiary.4}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.tertiary.4}",
+          "dark": "{palette.tertiary.4}"
+        }
+      }
+    },
+    "tertiary-subtle-active": {
+      "$type": "color",
+      "$value": "{palette.tertiary.5}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.tertiary.5}",
+          "dark": "{palette.tertiary.5}"
+        }
+      }
+    }
+  },
+  "text": {
+    "title": {
+      "$type": "color",
+      "$value": "{palette.primary.11}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.primary.11}",
+          "dark": "{palette.primary.11}"
+        }
+      }
+    },
+    "primary": {
+      "$type": "color",
+      "$value": "{palette.primary.11}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.primary.11}",
+          "dark": "{palette.primary.11}"
+        }
+      }
+    },
+    "primary-hover": {
+      "$type": "color",
+      "$value": "{palette.primary.10}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.primary.10}",
+          "dark": "{palette.primary.12}"
+        }
+      }
+    },
+    "on-primary": {
+      "$type": "color",
+      "$value": "{palette.neutral.1}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.neutral.1}",
+          "dark": "{palette.neutral.12}"
+        }
+      }
+    }
+  },
+  "stroke": {
+    "primary": {
+      "$type": "color",
+      "$value": "{palette.primary.9}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.primary.9}",
+          "dark": "{palette.primary.11}"
+        }
+      }
+    },
+    "hover": {
+      "$type": "color",
+      "$value": "{palette.primary.10}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.primary.10}",
+          "dark": "{palette.primary.11}"
+        }
+      }
+    }
+  },
+  "icon": {
+    "primary": {
+      "$type": "color",
+      "$value": "{palette.primary.11}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.primary.11}",
+          "dark": "{palette.primary.11}"
+        }
+      }
+    },
+    "primary-hover": {
+      "$type": "color",
+      "$value": "{palette.primary.10}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.primary.10}",
+          "dark": "{palette.primary.12}"
+        }
+      }
+    },
+    "primary-light": {
+      "$type": "color",
+      "$value": "{palette.primary.8}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.primary.8}",
+          "dark": "{palette.primary.11}"
+        }
+      }
+    },
+    "on-primary": {
+      "$type": "color",
+      "$value": "{palette.neutral.1}",
+      "$extensions": {
+        "com.figma.modes": {
+          "light": "{palette.neutral.1}",
+          "dark": "{palette.neutral.12}"
+        }
+      }
+    }
+  }
+}
