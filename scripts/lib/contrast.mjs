@@ -127,7 +127,12 @@ export function derivePairs(merged) {
       if (name.startsWith("$")) continue;
       if (name.startsWith("on-")) {
         const bgBase = name.slice(3);
-        if (!surfaceHas(bgBase)) continue;
+        if (!surfaceHas(bgBase)) {
+          console.warn(
+            `[contrast] on-${bgBase} skipped: surface.${bgBase} not in token tree`,
+          );
+          continue;
+        }
         const bgNames = [
           bgBase,
           ...stateSuffixes.map((s) => bgBase + s).filter(surfaceHas),
@@ -161,7 +166,22 @@ export function checkContrast(merged) {
   for (const { fg, bg, mode } of derivePairs(merged)) {
     const fgHex = resolveColor(merged, fg, mode);
     const bgHex = resolveColor(merged, bg, mode);
-    if (!fgHex || !bgHex) continue;
+    if (!fgHex || !bgHex) {
+      const row = {
+        fg,
+        bg,
+        mode,
+        fgHex: fgHex ?? null,
+        bgHex: bgHex ?? null,
+        ratio: null,
+        threshold: thresholdFor(fg.split(".")[0]),
+        status: "FAIL",
+        reason: "unresolved color",
+      };
+      results.push(row);
+      failures.push(row);
+      continue;
+    }
     const ratio = contrast(fgHex, bgHex);
     const group = fg.split(".")[0];
     const threshold = thresholdFor(group);

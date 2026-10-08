@@ -90,7 +90,7 @@ checkAxis(LAYOUT_MODE_GROUPS, "layout mode");
 const { failures: contrastFails } = checkContrast(merged);
 for (const f of contrastFails) {
   errors.push(
-    `contrast: ${f.fg} × ${f.bg} (${f.mode}) = ${f.ratio.toFixed(2)} < ${f.threshold}`,
+    `contrast: ${f.fg} × ${f.bg} (${f.mode}) = ${f.reason ?? f.ratio.toFixed(2) + " < " + f.threshold}`,
   );
 }
 
