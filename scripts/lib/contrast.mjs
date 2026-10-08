@@ -124,6 +124,7 @@ export function derivePairs(merged) {
   for (const group of ["text", "icon", "stroke"]) {
     const bucket = merged[group] ?? {};
     for (const name of Object.keys(bucket)) {
+      if (name.startsWith("$")) continue;
       if (name.startsWith("on-")) {
         const bgBase = name.slice(3);
         if (!surfaceHas(bgBase)) continue;
