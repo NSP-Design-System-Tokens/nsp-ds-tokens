@@ -60,3 +60,53 @@ meets the threshold.
 exist in the scaffold but are only used for interaction-state derivatives
 (`text.primary-hover`, `icon.primary-hover`, `stroke.primary`) where a one-step
 escalation from the base is expected and the visual result remains coherent.
+
+---
+
+## Surface naming convention: full vs subtle
+
+### Rule
+
+Surface token names encode the kind of surface they represent:
+
+- **Bare name** `surface.<color>` is reserved for a **full-color surface** — the
+  anchor of that color in the surface layer. It exists only when a color genuinely
+  has a full-color surface. Today only `primary` qualifies (`surface.primary`).
+
+- **Subtle suffix** `surface.<color>-subtle` is used for a **soft-tint surface** —
+  a muted, low-chroma background derived from that color. Interaction states follow
+  the same suffix chain: `surface.<color>-subtle-hover`,
+  `surface.<color>-subtle-active`.
+
+- **On-tokens follow their surface.** When a surface is named `-subtle`, every
+  `on-` foreground token follows suit: `text.on-<color>-subtle`,
+  `icon.on-<color>-subtle`. If the surface renames, the on-tokens rename with it.
+
+- **No full surface → no bare name.** A color that does not have a full-color
+  surface does not get the bare `surface.<color>` token. It only has the `-subtle`
+  variants. Its strong anchor step remains available as foreground (icons, text) and
+  in `palette.*`, but not as a surface.
+
+### Reasoning
+
+Primary is the dominant brand color: its full-color surface (step 9) carries
+buttons, CTAs, and hero panels — contexts where the identity hue must be
+unmistakable. Secondary and tertiary serve as supporting tints — subtle backgrounds
+that visually group or layer content without competing with primary. Encoding this
+distinction in the name makes the hierarchy self-documenting: `surface.primary` is
+a strong statement; `surface.secondary-subtle` is a quiet backdrop. No designer or
+developer needs to guess which surface is bold and which is muted.
+
+### Scope
+
+This convention applies to every semantic surface token (`surface.*`), current and
+future. It does not affect palette primitives (`palette.*`), foreground tokens
+(`text.*`, `icon.*`) except the `on-` companions described above, or border tokens.
+
+### Examples
+
+| Color     | Full surface      | Subtle surface             | On-token (subtle)          |
+| --------- | ----------------- | -------------------------- | -------------------------- |
+| primary   | `surface.primary` | `surface.primary-subtle`   | `text.on-primary-subtle`   |
+| secondary | —                 | `surface.secondary-subtle` | `text.on-secondary-subtle` |
+| tertiary  | —                 | `surface.tertiary-subtle`  | `text.on-tertiary-subtle`  |
