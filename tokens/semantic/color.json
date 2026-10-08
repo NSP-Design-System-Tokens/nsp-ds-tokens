@@ -138,11 +138,13 @@
     },
     "title": {
       "$type": "color",
-      "$value": "{palette.primary.11}"
+      "$value": "{palette.primary.11}",
+      "$description": "Foreground per heading, risolve a palette.primary.11. Semanticamente distinto da text.primary anche se oggi i due condividono lo step, per lasciare spazio a brand che vogliano differenziare (es. title step 12, primary step 11)."
     },
     "primary": {
       "$type": "color",
-      "$value": "{palette.primary.11}"
+      "$value": "{palette.primary.11}",
+      "$description": "Foreground per body copy brand-colored, risolve a palette.primary.11. Semanticamente distinto da text.title anche se oggi i due condividono lo step."
     }
   },
   "stroke": {
@@ -264,7 +266,8 @@
     },
     "primary": {
       "$type": "color",
-      "$value": "{palette.primary.11}"
+      "$value": "{palette.primary.11}",
+      "$description": "Foreground per icone brand-colored, risolve a palette.primary.11. Distinto dai text.* perché rappresenta grafica non testuale, non testo."
     }
   },
   "emphasis-brand": {
