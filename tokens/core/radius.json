@@ -1,11 +1,11 @@
 {
   "radius": {
     "$extensions": { "com.figma.scoping": ["CORNER_RADIUS"] },
-    "none": { "$type": "number", "$value": 0 },
-    "sm": { "$type": "number", "$value": 4 },
-    "md": { "$type": "number", "$value": 8 },
-    "lg": { "$type": "number", "$value": 12 },
-    "xl": { "$type": "number", "$value": 16 },
-    "full": { "$type": "number", "$value": 9999 }
+    "none": { "$type": "dimension", "$value": "0px" },
+    "sm": { "$type": "dimension", "$value": "4px" },
+    "md": { "$type": "dimension", "$value": "8px" },
+    "lg": { "$type": "dimension", "$value": "12px" },
+    "xl": { "$type": "dimension", "$value": "16px" },
+    "full": { "$type": "dimension", "$value": "9999px" }
   }
 }
