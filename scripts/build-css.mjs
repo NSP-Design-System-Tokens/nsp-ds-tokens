@@ -28,13 +28,15 @@ const bpWidth = (mode) => {
   return typeof v === "number" ? `${v}px` : v;
 };
 
+const cssKey = (k) => (/^\d+\.\d+$/.test(k) ? k.replace(".", "-") : k);
+
 // emit `--group-path: value` for every leaf in a group, at an optional mode
 function emitGroup(group, mode) {
   const tree = merged[group];
   if (!tree) return [];
   const lines = [];
   eachLeaf(tree, (n, path) => {
-    const name = [group, ...path].join("-");
+    const name = [group, ...path.map(cssKey)].join("-");
     const v =
       mode && n.$extensions?.["com.figma.modes"]?.[mode] !== undefined
         ? n.$extensions["com.figma.modes"][mode]
@@ -191,7 +193,8 @@ const colors = {},
   fontSize = {};
 const collect = (group, bag, strip) =>
   eachLeaf(merged[group] ?? {}, (n, path) => {
-    const full = [group, ...path].join("-");
+    const norm = path.map(cssKey);
+    const full = [group, ...norm].join("-");
     bag[strip ? path.join("-") : full] = `var(--${full})`;
   });
 for (const g of [
