@@ -1,0 +1,49 @@
+{
+  "content-rhythm": {
+    "$extensions": { "com.figma.scoping": ["GAP", "WIDTH_HEIGHT"] },
+    "sm": {
+      "$type": "dimension",
+      "$value": "{spacing.4}",
+      "$extensions": {
+        "com.figma.modes": {
+          "mobile": "{spacing.4}",
+          "tablet": "{spacing.4}",
+          "desktop": "{spacing.4}"
+        }
+      }
+    },
+    "md": {
+      "$type": "dimension",
+      "$value": "{spacing.6}",
+      "$extensions": {
+        "com.figma.modes": {
+          "mobile": "{spacing.6}",
+          "tablet": "{spacing.6}",
+          "desktop": "{spacing.6}"
+        }
+      }
+    },
+    "lg": {
+      "$type": "dimension",
+      "$value": "{spacing.8}",
+      "$extensions": {
+        "com.figma.modes": {
+          "mobile": "{spacing.8}",
+          "tablet": "{spacing.8}",
+          "desktop": "{spacing.8}"
+        }
+      }
+    },
+    "xl": {
+      "$type": "dimension",
+      "$value": "{spacing.16}",
+      "$extensions": {
+        "com.figma.modes": {
+          "mobile": "{spacing.12}",
+          "tablet": "52px",
+          "desktop": "{spacing.16}"
+        }
+      }
+    }
+  }
+}
